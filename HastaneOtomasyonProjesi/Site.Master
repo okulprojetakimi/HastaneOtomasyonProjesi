@@ -17,7 +17,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body style="background: url(arkaplan.jpg);">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
