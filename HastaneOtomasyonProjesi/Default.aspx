@@ -4,13 +4,7 @@
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <h2>Sizi seviyorum canlar ❤️❤️❤️❤️❤️</h2>
-            <h1>Heyooo deneme</h1>
-            <h1>Çok kötü bir hata mevcut!</h1>
-            <h1>Hata 1 GİTTTİİİİİ :D</h1>
-            <p class="lead">Belim ağrıyo kesin fıtık olacam :\ ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+            <h1>Ne yaparsan yap aşk ile yap ;D</h1>
         </section>
 
         <div class="row">
