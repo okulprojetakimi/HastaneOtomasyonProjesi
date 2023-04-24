@@ -66,5 +66,33 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+     <style type="text/css">
+	.fix_Button
+	{
+		width: 150px;
+		height: 125px;
+		border: none;
+		border-radius: 5px;
+		background: hsla(120, 6%, 90%, 1);
+		background: linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
+		background: -moz-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
+		background: -webkit-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
+		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E4E7E4", endColorstr="#4E587D", GradientType=1 );
+	}
+	.fix_Button:hover
+	{
+		width: 150px;
+		height: 125px;
+		border: none;
+		border-radius: 5px;
+		background: hsla(0, 0%, 89%, 1);
+		background: linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
+		background: -moz-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
+		background: -webkit-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
+		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E2E2E2", endColorstr="#424242", GradientType=1 );
+		transition: 1.5s;
+	}
+	
+</style>
 </body>
 </html>
