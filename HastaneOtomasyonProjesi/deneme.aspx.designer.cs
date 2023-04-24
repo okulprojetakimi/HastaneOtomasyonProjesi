@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi
 {
 
 
-    public partial class cikis
+    public partial class deneme
     {
     }
 }
