@@ -20,13 +20,15 @@
 		<div class="div_giris_Kutusu">
 			<br>
 			<h3>Giriş Yap</h3>
+            <p>&nbsp;</p>
 			<form action="" method="POST">
-				<bl-input style="width: 250px;" label="Kullanıcı Adı" placeholder="Kullanıcı adınızı giriniz." name="kullaniciAdi_Input" label-fixed></bl-input>
+				<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
 				<br><br>
-				<bl-input style="width: 250px;" label="Kullanıcı Şifre" type="password" placeholder="Kullanıcı şifrenizi giriniz." name="kullaniciSifre_Input" label-fixed></bl-input>
-				<br><br>
-				<bl-button>Giriş Yap</bl-button>
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <br />
+                <br>
 			</form>
+		    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
 		</div>
 	</center>
     </main>
