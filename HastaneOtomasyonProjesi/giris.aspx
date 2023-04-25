@@ -19,19 +19,21 @@
 		<a href="giris.html"><img src="assets/img/logo.png"></a>
 		<div class="div_giris_Kutusu">
 			<br>
-			<h3>Giriş Yap<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-            </h3>
+			<h3>Giriş Yap</h3>
             <p>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:TextBox ID="kullaniciAdi" runat="server"></asp:TextBox>
             </p>
-			<form action="" method="POST">
-				<asp:TextBox name="TextBox2" ID="TextBox2" runat="server"></asp:TextBox>
-				<br><br>
-                <asp:TextBox name="TextBox1" ID="TextBox1" runat="server"></asp:TextBox>
-                <br />
-                <br>
-			</form>
-		    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <p>
+                <asp:TextBox ID="kullaniciSifre" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Giriş yap" />
+            </p>
+            <p>
+                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+            </p>
+			
+
 		</div>
 	</center>
     </main>
