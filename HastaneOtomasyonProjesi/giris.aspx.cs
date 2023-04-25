@@ -18,38 +18,8 @@ namespace HastaneOtomasyonProjesi
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string sonErisimTarihi = DateTime.Now.ToLongTimeString().ToString(); /* Erişim Tarihi*/
-            /* Kullanıcı arama  */
-            string kullaniciSorgula = "SELECT COUNT(*) FROM personel_kullaniciHesap WHERE personelKullaniciAdi = @kadi AND personelKullaniciSifre = @ksifre";
-
-            using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-            {
-                sqlBaglantisi.Open();
-                using (SqlCommand uyeSorgula = new SqlCommand(kullaniciSorgula, sqlBaglantisi))
-                {
-                    uyeSorgula.Parameters.AddWithValue("@kadi", Request.Form["TextBox2"]);
-                    uyeSorgula.Parameters.AddWithValue("@ksifre", Request.Form["TextBox1"]);
-                    /* Sorgulama yapılır */
-                    SqlDataReader uyeSorgulama = uyeSorgula.ExecuteReader();
-                    uyeSorgulama.Read();
-                    int uyeSonuc = (int)uyeSorgulama[0];
-
-                    if (uyeSorgulama.HasRows)
-                    {
-                        /* Kullanıcı mevcut ise gerçekleşecekler */
-
-                        /* Cookie aç */
-                        /* Buraya cookie oluşturma kodunu yaz !!*/
-                        /* Panele yönlendir */
-                        Response.Redirect("panel.aspx");
-                    }
-                    else
-                    {
-
-                    }
-                    sqlBaglantisi.Close();
-                }
-            }
+            Label1.Text = Request.Form["TextBox2"];
+            Label2.Text = Request.Form["TextBox1"];
         }
     }
 }
