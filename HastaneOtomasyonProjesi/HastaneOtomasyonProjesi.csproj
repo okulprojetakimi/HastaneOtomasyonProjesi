@@ -120,7 +120,6 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="deneme.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -194,13 +193,6 @@
     </Compile>
     <Compile Include="cikis.aspx.designer.cs">
       <DependentUpon>cikis.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="deneme.aspx.cs">
-      <DependentUpon>deneme.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="deneme.aspx.designer.cs">
-      <DependentUpon>deneme.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>
