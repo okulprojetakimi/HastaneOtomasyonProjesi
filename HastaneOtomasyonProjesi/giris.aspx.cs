@@ -60,7 +60,7 @@ namespace HastaneOtomasyonProjesi
                             sqlBagla.Close();
                         }
                         /* Cookie tanımlanıyor ! */
-                        HttpCookie yetkiDuzeyi = new HttpCookie("yetkiDuzeyi");
+                        HttpCookie yetkiDuzeyi = new HttpCookie("erisimCookie");
                         yetkiDuzeyi.Value = personelErisimKodu;
                         yetkiDuzeyi.Expires = DateTime.Now.AddDays(1);
                         Response.Cookies.Add(yetkiDuzeyi);
