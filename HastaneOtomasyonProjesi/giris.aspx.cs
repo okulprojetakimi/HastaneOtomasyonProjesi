@@ -34,27 +34,26 @@ namespace HastaneOtomasyonProjesi
                     uyeSorgula.Parameters.AddWithValue("@ksifre", kullaniciSifre.Text);
                     SqlDataReader sqlOku = uyeSorgula.ExecuteReader();
                     sqlOku.Read();
-                    int personelErisimDuzeyi = (int)sqlOku["personel_ErisimDuzeyi"];
-                    int personelId = (int)sqlOku["personelKId"];
-                    string personelErisimKodu = "";
-                    
-                    /* Personel erişim kodu oluşturma */
-                    Random rastgeleSayiUret = new Random();
-                    string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
-                    for (int index = 0; index < 16; index++)
-                    {
-                        personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
-                    }
 
                     if (sqlOku.HasRows)
                     {
+                        string personelErisimKodu = "";
+                        /* Personel erişim kodu oluşturma */
+                        Random rastgeleSayiUret = new Random();
+                        string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
+                        for (int index = 0; index < 16; index++)
+                        {
+                            personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
+                        }
+
                         using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
                             sqlBagla.Open();
-                            using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu WHERE personelKId = @personelIdsi"))
+                            using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu WHERE personelKullaniciAdi = @personelKadi AND personelKullaniciSifre = @kSifre", sqlBagla))
                             {
                                 yetkiKoduVer.Parameters.AddWithValue("@erisimkodu", personelErisimKodu);
-                                yetkiKoduVer.Parameters.AddWithValue("@personelIdsi", personelId);
+                                yetkiKoduVer.Parameters.AddWithValue("@personelKadi", kullaniciAdi.Text);
+                                yetkiKoduVer.Parameters.AddWithValue("@kSifre", kullaniciSifre.Text);
                                 yetkiKoduVer.ExecuteNonQuery();
                                 yetkiKoduVer.Dispose();
                             }
