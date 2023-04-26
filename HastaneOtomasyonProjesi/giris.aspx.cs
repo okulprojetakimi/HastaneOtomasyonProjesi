@@ -34,20 +34,20 @@ namespace HastaneOtomasyonProjesi
                     uyeSorgula.Parameters.AddWithValue("@ksifre", kullaniciSifre.Text);
                     SqlDataReader sqlOku = uyeSorgula.ExecuteReader();
                     sqlOku.Read();
-                    int personelErisimDuzeyi = (int)sqlOku["personel_ErisimDuzeyi"];
-                    int personelId = (int)sqlOku["personelKId"];
-                    string personelErisimKodu = "";
-                    
-                    /* Personel erişim kodu oluşturma */
-                    Random rastgeleSayiUret = new Random();
-                    string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
-                    for (int index = 0; index < 16; index++)
-                    {
-                        personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
-                    }
 
                     if (sqlOku.HasRows)
                     {
+                        int personelErisimDuzeyi = (int)sqlOku["personel_ErisimDuzeyi"];
+                        int personelId = (int)sqlOku["personelKId"];
+                        string personelErisimKodu = "";
+                        /* Personel erişim kodu oluşturma */
+                        Random rastgeleSayiUret = new Random();
+                        string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
+                        for (int index = 0; index < 16; index++)
+                        {
+                            personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
+                        }
+
                         using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
                             sqlBagla.Open();
