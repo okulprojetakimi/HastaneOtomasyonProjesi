@@ -49,9 +49,10 @@ namespace HastaneOtomasyonProjesi
                         using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
                             sqlBagla.Open();
-                            using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu WHERE personelKullaniciAdi = @personelKadi AND personelKullaniciSifre = @kSifre", sqlBagla))
+                            using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu, personelSonErisim = @sonErisimT WHERE personelKullaniciAdi = @personelKadi AND personelKullaniciSifre = @kSifre", sqlBagla))
                             {
                                 yetkiKoduVer.Parameters.AddWithValue("@erisimkodu", personelErisimKodu);
+                                yetkiKoduVer.Parameters.AddWithValue("@sonErisimT", DateTime.Parse(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString()));
                                 yetkiKoduVer.Parameters.AddWithValue("@personelKadi", kullaniciAdi.Text);
                                 yetkiKoduVer.Parameters.AddWithValue("@kSifre", kullaniciSifre.Text);
                                 yetkiKoduVer.ExecuteNonQuery();
