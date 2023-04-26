@@ -19,7 +19,8 @@
 		<a href="giris.html"><img src="assets/img/logo.png"></a>
 		<div class="div_giris_Kutusu">
 			<br>
-			<h3>Giriş Yap</h3>
+			<h3>Giriş Yap<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            </h3>
             <p>
                 <asp:TextBox ID="kullaniciAdi" runat="server"></asp:TextBox>
             </p>
