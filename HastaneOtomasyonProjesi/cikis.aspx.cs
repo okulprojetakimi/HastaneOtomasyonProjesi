@@ -11,9 +11,7 @@ namespace HastaneOtomasyonProjesi
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie silCerez = Request.Cookies["erisimCookie"];
-            silCerez.Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies.Add(silCerez);
+            Request.Cookies["erisimCookie"].Expires = DateTime.Now.AddDays(-1);
         }
     }
 }
