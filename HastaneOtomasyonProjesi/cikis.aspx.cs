@@ -16,6 +16,7 @@ namespace HastaneOtomasyonProjesi
                 HttpCookie cerezim = new HttpCookie("erisimCookie");
                 cerezim.Expires = DateTime.Now.AddDays(-1d);
                 Response.Cookies.Add(cerezim);
+                Response.Redirect("/giris.aspx");
             }
         }
     }

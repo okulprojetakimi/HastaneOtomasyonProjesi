@@ -4,7 +4,6 @@
     <center>
         <h1>Çıkış İşlemi Başarıyla Gerçekleştirildi!</h1>
         <br />
-        <p>5 Saniye içerisinde yönlendirileceksiniz!</p>
-        <meta http-equiv="refresh" content="5; url="/giris.aspx">
+        <p>Yönlendirileceksiniz!</p>
     </center>
 </asp:Content>
