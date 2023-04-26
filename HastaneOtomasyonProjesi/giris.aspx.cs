@@ -65,7 +65,7 @@ namespace HastaneOtomasyonProjesi
                         yetkiDuzeyi.Expires = DateTime.Now.AddDays(1);
                         Response.Cookies.Add(yetkiDuzeyi);
 
-                        /* Son olarak panele yönlendirme yapılıyor! */
+                        /* Son olarak panele yönlendirme yapılıyor!  */
                         Response.Redirect("/panel.aspx");
                     }
                     else
