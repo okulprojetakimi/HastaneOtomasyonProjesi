@@ -25,7 +25,7 @@
                 <asp:TextBox ID="kullaniciAdi" runat="server"></asp:TextBox>
             </p>
             <p>
-                <asp:TextBox ID="kullaniciSifre" runat="server"></asp:TextBox>
+                <asp:TextBox ID="kullaniciSifre" runat="server" TextMode="Password"></asp:TextBox>
             </p>
             <p>
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Giriş yap" />

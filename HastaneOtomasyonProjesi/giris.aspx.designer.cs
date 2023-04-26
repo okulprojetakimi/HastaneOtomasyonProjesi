@@ -15,6 +15,15 @@ namespace HastaneOtomasyonProjesi
     {
 
         /// <summary>
+        /// Label2 denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
         /// kullaniciAdi denetimi.
         /// </summary>
         /// <remarks>
