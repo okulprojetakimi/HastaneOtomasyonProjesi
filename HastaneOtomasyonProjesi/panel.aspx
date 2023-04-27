@@ -8,7 +8,7 @@
 				<img src="assets/img/logo.png">
 				<table cellpadding="35">
 					<tr>
-						<td><a href="hastaIslemleri.aspx"><button onclick="alert('selam!')" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t1.png"></button></a></td>
+						<td><a href="hastaIslemleri.aspx"><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t1.png"></button></a></td>
 						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t2.png"></button></td>
 						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t3.png"></button></td>
 						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t4.png"></button></td>
