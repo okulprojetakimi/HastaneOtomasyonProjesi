@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hastaIslemleri.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaIslemleri" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="hastaIslemleri.aspx.cs" MasterPageFile="~/Site.Master" Inherits="HastaneOtomasyonProjesi.hastaIslemleri" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            
         </div>
     </form>
 </body>
 </html>
+ 
