@@ -9,15 +9,15 @@
 				<table cellpadding="35">
 					<tr>
 						<td><a href="hastaIslemleri.aspx"><button onclick="alert('selam!')" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t1.png"></button></a></td>
-						<td><button class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t2.png"></button></td>
-						<td><button class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t3.png"></button></td>
-						<td><button class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t4.png"></button></td>
+						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t2.png"></button></td>
+						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t3.png"></button></td>
+						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t4.png"></button></td>
 					</tr>
 				    <tr class="td_2">
-						<td><button class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t5.png"></button></td>
-						<td><button class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t6.png"></button></td>
-						<td><button class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t7.png"></button></td>
-						<td><button class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t8.png"></button></td>
+						<td><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t5.png"></button></td>
+						<td><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t6.png"></button></td>
+						<td><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t7.png"></button></td>
+						<td><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t8.png"></button></td>
 					</tr>
 				</table>
 				
