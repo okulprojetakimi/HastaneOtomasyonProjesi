@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderId="maincontent" runat="server">
     <main>
 
-        <!-- Hasta Işlemleri -->
+        <!-- Hasta Işlemleri --> 
 
     </main>
 </asp:Content>
