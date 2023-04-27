@@ -16,7 +16,6 @@
 		}
 	</style>
 	<center>
-		<a href="giris.html"><img src="assets/img/logo.png"></a>
 		<div class="div_giris_Kutusu">
 			<br>
 			<h3>Giriş Yap<asp:Label ID="Label2" runat="server" Text=""></asp:Label>
