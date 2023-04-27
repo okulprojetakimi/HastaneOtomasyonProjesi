@@ -121,6 +121,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="giris.aspx" />
+    <Content Include="hastaIslemleri.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="giris.aspx.designer.cs">
       <DependentUpon>giris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hastaIslemleri.aspx.cs">
+      <DependentUpon>hastaIslemleri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hastaIslemleri.aspx.designer.cs">
+      <DependentUpon>hastaIslemleri.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>
