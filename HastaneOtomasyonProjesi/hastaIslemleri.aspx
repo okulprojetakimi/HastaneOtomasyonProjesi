@@ -1,18 +1,9 @@
-﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="hastaIslemleri.aspx.cs" MasterPageFile="~/Site.Master" Inherits="HastaneOtomasyonProjesi.hastaIslemleri" %>
+﻿<%@ Page Title="Hasta İşlemleri" Language="C#"  AutoEventWireup="true" CodeBehind="hastaIslemleri.aspx.cs" MasterPageFile="~/Site.Master" Inherits="HastaneOtomasyonProjesi.hastaIslemleri" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderId="maincontent" runat="server">
+    <main>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            
-        </div>
-    </form>
-</body>
-</html>
- 
+        <!-- Hasta Işlemleri -->
+
+    </main>
+</asp:Content>
