@@ -30,6 +30,6 @@ namespace HastaneOtomasyonProjesi
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button hastaIslemPaneli;
+        protected global::System.Web.UI.WebControls.ImageButton hastaIslemPaneli;
     }
 }
