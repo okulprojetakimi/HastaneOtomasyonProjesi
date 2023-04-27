@@ -3,8 +3,6 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <main>  
-		<form id="form1" runat="server">
-			<img src="assets/img/logo.png">
             <!-- HBYS MOdülleri panel giriş butonları -->
            <center>
 				<img src="assets/img/logo.png">
@@ -22,11 +20,10 @@
 						<td><button class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t8.png"></button></td>
 					</tr>
 				</table>
-				<a style="position: absolute; left: 90%; top: 90%; right: 0%;" href="cikis.aspx"><img src="assets/img/logout.png"></a>
+				
 			</center>
-
-		    <a style="position: absolute; left: 90%; top: 90%; right: 0%;" href="cikis.aspx"><img src="assets/img/logout.png"></a>
-        </form>
+		<a style="position: absolute; left: 90%; top: 90%; right: 0%;" href="cikis.aspx"><img src="assets/img/logout.png"></a>
+		
     </main>
 
 </asp:Content>
