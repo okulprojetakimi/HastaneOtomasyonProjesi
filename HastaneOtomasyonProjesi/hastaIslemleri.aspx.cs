@@ -25,7 +25,6 @@ namespace HastaneOtomasyonProjesi
             {
                 string hastaIsim = Request.Form["hastaIsmi"];
                 string hastaSoyismi = Request.Form["hastaSoyismi"];
-
                 using (SqlConnection vtBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
                     vtBagla.Open();
@@ -39,11 +38,12 @@ namespace HastaneOtomasyonProjesi
                             /* Veri Tablosuna Ekleme */
                             DataTable hastaTablosu = new DataTable();
                             hastaTablosu.Load(veriOkuyucu);
-                            hastaTablosuGrid.DataSource = hastaTablosu;
+                            ornGridView.DataSource = veriOkuyucu;
+                            ornGridView.DataBind();
                         }
                         hastaCek.Dispose();
                         vtBagla.Close();
-                        
+
                     }
                 }
             }
