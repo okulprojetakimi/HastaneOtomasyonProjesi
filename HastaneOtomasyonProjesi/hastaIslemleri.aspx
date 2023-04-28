@@ -32,7 +32,23 @@
         </form>
 
         <!-- Hasta tablosu -->
-       <asp:GridView ID="ornGridView" runat="server" CellPadding="4"                ForeColor="#333333" GridLines="Horizontal" AutoGenerateColumns="False"                Width="530px">                <footerstyle backcolor="#990000" font-bold="True" forecolor="White" />                <rowstyle backcolor="#FFFBD6" forecolor="#333333" />                <columns>                    <asp:BoundField HeaderText="İsim" DataField="AD" />                    <asp:BoundField HeaderText="Soyisim" DataField="SOYAD" />                    <asp:BoundField HeaderText="Adres" DataField="ADRES" />                    <asp:BoundField HeaderText="Bölüm" DataField="BOLUM" />                </columns>                <pagerstyle backcolor="#FFCC66" forecolor="#333333"                    horizontalalign="Center" />                <selectedrowstyle backcolor="#FFCC66" font-bold="True" forecolor="Navy" />                <headerstyle backcolor="#990000" font-bold="True" forecolor="White" />                <alternatingrowstyle backcolor="White" />            </asp:GridView>
+       <asp:GridView ID="ornGridView" runat="server" CellPadding="4"
+                ForeColor="#333333" GridLines="Horizontal" AutoGenerateColumns="False"
+                Width="530px">
+                <footerstyle backcolor="#990000" font-bold="True" forecolor="White" />
+                <rowstyle backcolor="#FFFBD6" forecolor="#333333" />
+                <columns>
+                    <asp:BoundField HeaderText="İsim" DataField="AD" />
+                    <asp:BoundField HeaderText="Soyisim" DataField="SOYAD" />
+                    <asp:BoundField HeaderText="Adres" DataField="ADRES" />
+                    <asp:BoundField HeaderText="Bölüm" DataField="BOLUM" />
+                </columns>
+                <pagerstyle backcolor="#FFCC66" forecolor="#333333"
+                    horizontalalign="Center" />
+                <selectedrowstyle backcolor="#FFCC66" font-bold="True" forecolor="Navy" />
+                <headerstyle backcolor="#990000" font-bold="True" forecolor="White" />
+                <alternatingrowstyle backcolor="White" />
+            </asp:GridView>
 
         <!-- Hasta Listesi -->
 
