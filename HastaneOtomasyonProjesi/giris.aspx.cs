@@ -29,56 +29,63 @@ namespace HastaneOtomasyonProjesi
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            try
             {
-                sqlBaglantisi.Open();
-                using (SqlCommand uyeSorgula = new SqlCommand("SELECT personel_ErisimDuzey, personelKId FROM personel_kullaniciHesap WHERE personelKullaniciAdi = @kadi AND personelKullaniciSifre = @ksifre", sqlBaglantisi))
+                using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
-                    uyeSorgula.Parameters.AddWithValue("@kadi", kullaniciAdi.Text);
-                    uyeSorgula.Parameters.AddWithValue("@ksifre", kullaniciSifre.Text);
-                    SqlDataReader sqlOku = uyeSorgula.ExecuteReader();
-                    sqlOku.Read();
-
-                    if (sqlOku.HasRows)
+                    sqlBaglantisi.Open();
+                    using (SqlCommand uyeSorgula = new SqlCommand("SELECT personel_ErisimDuzey, personelKId FROM personel_kullaniciHesap WHERE personelKullaniciAdi = @kadi AND personelKullaniciSifre = @ksifre", sqlBaglantisi))
                     {
-                        string personelErisimKodu = "";
-                        /* Personel erişim kodu oluşturma */
-                        Random rastgeleSayiUret = new Random();
-                        string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
-                        for (int index = 0; index < 16; index++)
-                        {
-                            personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
-                        }
+                        uyeSorgula.Parameters.AddWithValue("@kadi", kullaniciAdi.Text);
+                        uyeSorgula.Parameters.AddWithValue("@ksifre", kullaniciSifre.Text);
+                        SqlDataReader sqlOku = uyeSorgula.ExecuteReader();
+                        sqlOku.Read();
 
-                        using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                        if (sqlOku.HasRows)
                         {
-                            sqlBagla.Open();
-                            using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu, personelSonErisim = @sonErisimT WHERE personelKullaniciAdi = @personelKadi AND personelKullaniciSifre = @kSifre", sqlBagla))
+                            string personelErisimKodu = "";
+                            /* Personel erişim kodu oluşturma */
+                            Random rastgeleSayiUret = new Random();
+                            string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
+                            for (int index = 0; index < 16; index++)
                             {
-                                yetkiKoduVer.Parameters.AddWithValue("@erisimkodu", personelErisimKodu);
-                                yetkiKoduVer.Parameters.AddWithValue("@sonErisimT", DateTime.Parse(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString()));
-                                yetkiKoduVer.Parameters.AddWithValue("@personelKadi", kullaniciAdi.Text);
-                                yetkiKoduVer.Parameters.AddWithValue("@kSifre", kullaniciSifre.Text);
-                                yetkiKoduVer.ExecuteNonQuery();
-                                yetkiKoduVer.Dispose();
+                                personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
                             }
-                            sqlBagla.Close();
-                        }
-                        /* Cookie tanımlanıyor ! */
-                        HttpCookie yetkiDuzeyi = new HttpCookie("erisimCookie");
-                        yetkiDuzeyi.Value = personelErisimKodu;
-                        yetkiDuzeyi.Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies.Add(yetkiDuzeyi);
 
-                        /* Son olarak panele yönlendirme yapılıyor!  */
-                        Response.Redirect("/panel.aspx");
+                            using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                            {
+                                sqlBagla.Open();
+                                using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu, personelSonErisim = @sonErisimT WHERE personelKullaniciAdi = @personelKadi AND personelKullaniciSifre = @kSifre", sqlBagla))
+                                {
+                                    yetkiKoduVer.Parameters.AddWithValue("@erisimkodu", personelErisimKodu);
+                                    yetkiKoduVer.Parameters.AddWithValue("@sonErisimT", DateTime.Parse(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString()));
+                                    yetkiKoduVer.Parameters.AddWithValue("@personelKadi", kullaniciAdi.Text);
+                                    yetkiKoduVer.Parameters.AddWithValue("@kSifre", kullaniciSifre.Text);
+                                    yetkiKoduVer.ExecuteNonQuery();
+                                    yetkiKoduVer.Dispose();
+                                }
+                                sqlBagla.Close();
+                            }
+                            /* Cookie tanımlanıyor ! */
+                            HttpCookie yetkiDuzeyi = new HttpCookie("erisimCookie");
+                            yetkiDuzeyi.Value = personelErisimKodu;
+                            yetkiDuzeyi.Expires = DateTime.Now.AddDays(1);
+                            Response.Cookies.Add(yetkiDuzeyi);
+
+                            /* Son olarak panele yönlendirme yapılıyor!  */
+                            Response.Redirect("/panel.aspx");
+                        }
+                        else
+                        {
+                            Label1.Text = "Kullanıcı adı veya şifre yanlış!";
+                        }
+                        sqlBaglantisi.Close();
                     }
-                    else
-                    {
-                        Label1.Text = "Kullanıcı adı veya şifre yanlış!";
-                    }
-                    sqlBaglantisi.Close();
                 }
+            }
+            catch (Exception)
+            {
+                Label1.Text = "Teknik bir hata var Lütfen sistem yöneticisi ile görüşün!";
             }
         }
     }
