@@ -22,7 +22,7 @@
 </head>
 <body style="background: url(arkaplan.jpg);">
     <center>
-        <img src="logo.png" />
+        <a href="/panel.aspx"><img src="logo.png" /></a>
     </center>
     <form runat="server">
         <asp:ScriptManager runat="server">
