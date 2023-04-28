@@ -4,6 +4,7 @@
     <main>
 
         <!-- Hasta Işlemleri ( Hasta arama filtreleme) -->
+        <% Response.Write(Response.Cookies["erisimCookie"]); %>
         <form action="" method="post">
             <h2 style="color : white;">Hasta Filtreleme</h2>
             <table cellpadding="15">
@@ -43,26 +44,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
-                    <td><a href="secilenHasta.aspx"><button type="button" class="btn btn-info">Hasta İşlem</button></a></td>
+                    <td><a href="secilenHasta.aspx?hastaId=<%  %>"><button type="button" class="btn btn-info">Hasta İşlem</button></a></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                     <td><a href="secilenHasta.aspx"><button type="button" class="btn btn-info">Hasta İşlem</button></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                     <td><a href="secilenHasta.aspx"><button type="button" class="btn btn-info">Hasta İşlem</button></a></td>
-                </tr>
+
+                   
             </tbody>
         </table>
 
