@@ -4,37 +4,41 @@
     <main>
 
         <!-- Hasta Işlemleri ( Hasta arama filtreleme) -->
-        <form>
+        <form action="" method="post">
+            <h2 style="color : white;">Hasta Filtreleme</h2>
             <table cellpadding="15">
                 <tr>
                     <td>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Hasta ismi giriniz">
+                            <input type="email" class="form-control" id="hastaIsim" placeholder="Hasta ismi giriniz">
                         </div>
                     </td>
 
-                    <!-- -->
+                    <!-- --> 
                     <td>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Hasta ismi giriniz">
+                            <input type="email" class="form-control" id="hastaSoyisim" placeholder="Hasta soyismi giriniz">
                         </div>
                     </td>
                     <!-- -->
                     <td>
-                        <button type="submit" class="btn btn-primary">Hasta ara</button></td>
+                        <button type="submit" name="hasta_Ara" class="btn btn-primary">Hasta ara</button>
+                    </td>
                 </tr>
             </table>
+            
         </form>
 
         <!-- Hasta tablosu -->
+        <h1 style="color: white;">Hasta Listesi</h1>
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Hasta İşlem</th>
+                    <th scope="col"><i class="fa-sharp fa-solid fa-passport"></i> Hasta TC</th>
+                    <th scope="col"><i class="fa-solid fa-id-card-clip"></i> Hasta İsim</th>
+                    <th scope="col"><i class="fa-solid fa-id-card-clip"></i> Hasta Soyisim</th>
+                    <th scope="col"><i class="fa-regular fa-calendar-days"></i> Hasta Kayıt Tarihi</th>
+                    <th scope="col"><i class="fa-solid fa-user-gear"></i> Hasta İşlem</th>
                 </tr>
             </thead>
             <tbody>
