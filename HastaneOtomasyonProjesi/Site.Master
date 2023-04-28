@@ -1,12 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HastaneOtomasyonProjesi.SiteMaster" %>
 
-<%
-    HttpCookie kontrolEt = Request.Cookies["erisimCookie"];
-    if (kontrolEt == null)
-    {
-        Response.Redirect("/giris.aspx");
-    }
-%>
 <!DOCTYPE html>
 
 <html lang="tr">
