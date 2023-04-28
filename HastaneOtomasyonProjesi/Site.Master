@@ -1,10 +1,17 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HastaneOtomasyonProjesi.SiteMaster" %>
 
+<%
+    HttpCookie kontrolEt = Request.Cookies["erisimCookie"];
+    if (kontrolEt == null)
+    {
+        Response.Redirect("/giris.aspx");
+    }
+%>
 <!DOCTYPE html>
 
 <html lang="tr">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Super HBYS</title>
@@ -13,17 +20,18 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@trendyol/baklava@2.0.0/dist/themes/default.css" />
-	<script type="module" src="https://cdn.jsdelivr.net/npm/@trendyol/baklava@2.0.0/dist/baklava.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@trendyol/baklava@2.0.0/dist/baklava.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/js/mdb.min.js" integrity="sha512-XFd1m0eHgU1F05yOmuzEklFHtiacLVbtdBufAyZwFR0zfcq7vc6iJuxerGPyVFOXlPGgM8Uhem9gwzMI8SJ5uw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body style="background: url(arkaplan.jpg);">
     <center>
-        <a href="/panel.aspx"><img src="logo.png" /></a>
+        <a href="/panel.aspx">
+            <img src="logo.png" /></a>
     </center>
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -57,33 +65,31 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
-     <style type="text/css">
-	.fix_Button
-	{
-		width: 150px;
-		height: 125px;
-		border: none;
-		border-radius: 5px;
-		background: hsla(120, 6%, 90%, 1);
-		background: linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
-		background: -moz-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
-		background: -webkit-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
-		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E4E7E4", endColorstr="#4E587D", GradientType=1 );
-	}
-	.fix_Button:hover
-	{
-		width: 150px;
-		height: 125px;
-		border: none;
-		border-radius: 5px;
-		background: hsla(0, 0%, 89%, 1);
-		background: linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
-		background: -moz-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
-		background: -webkit-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
-		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E2E2E2", endColorstr="#424242", GradientType=1 );
-		transition: 1.5s;
-	}
-	
-</style>
+    <style type="text/css">
+        .fix_Button {
+            width: 150px;
+            height: 125px;
+            border: none;
+            border-radius: 5px;
+            background: hsla(120, 6%, 90%, 1);
+            background: linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
+            background: -moz-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
+            background: -webkit-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E4E7E4", endColorstr="#4E587D", GradientType=1 );
+        }
+
+            .fix_Button:hover {
+                width: 150px;
+                height: 125px;
+                border: none;
+                border-radius: 5px;
+                background: hsla(0, 0%, 89%, 1);
+                background: linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
+                background: -moz-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
+                background: -webkit-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
+                filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E2E2E2", endColorstr="#424242", GradientType=1 );
+                transition: 1.5s;
+            }
+    </style>
 </body>
 </html>
