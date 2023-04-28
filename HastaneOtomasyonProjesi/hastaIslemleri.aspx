@@ -4,21 +4,20 @@
     <main>
 
         <!-- Hasta Işlemleri ( Hasta arama filtreleme) -->
-        <% Response.Write(Response.Cookies["erisimCookie"]); %>
         <form action="" method="post">
             <h2 style="color : white;">Hasta Filtreleme</h2>
             <table cellpadding="15">
                 <tr>
                     <td>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="hastaIsim" placeholder="Hasta ismi giriniz">
+                            <input type="email" class="form-control" id="hastaIsim" name="hastaIsmi" placeholder="Hasta ismi giriniz">
                         </div>
                     </td>
 
                     <!-- --> 
                     <td>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="hastaSoyisim" placeholder="Hasta soyismi giriniz">
+                            <input type="email" class="form-control" id="hastaSoyisim" name="hastaSoyismi" placeholder="Hasta soyismi giriniz">
                         </div>
                     </td>
                     <!-- -->
@@ -31,7 +30,12 @@
         </form>
 
         <!-- Hasta tablosu -->
-        <h1 style="color: white;">Hasta Listesi</h1>
+       <table cellpadding="10">
+           <tr>
+               <td> <h1 style="color: white;">Hasta Listesi</h1></td>
+               <td><a href="hastaEkle.aspx"><button class="btn btn-success" type="button">+ Hasta Ekle</button></a></td>
+           </tr>
+       </table>
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
@@ -44,14 +48,12 @@
             </thead>
             <tbody>
                 <tr>
-                     <th scope="row">1</th>
+                    <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
-                    <td><a href="secilenHasta.aspx?hastaId=<%  %>"><button type="button" class="btn btn-info">Hasta İşlem</button></a></td>
-                </tr>
-
-                   
+                    <td><a href="secilenHasta.aspx?hastaId="><button type="button" class="btn btn-info">Hasta İşlem</button></a></td>
+                </tr>     
             </tbody>
         </table>
 
