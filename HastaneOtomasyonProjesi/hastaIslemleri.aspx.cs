@@ -39,7 +39,7 @@ namespace HastaneOtomasyonProjesi
                             /* Veri Tablosuna Ekleme */
                             DataTable hastaTablosu = new DataTable();
                             hastaTablosu.Load(veriOkuyucu);
-
+                            hastaTablosuGrid.DataSource = hastaTablosu;
                         }
                         hastaCek.Dispose();
                         vtBagla.Close();
