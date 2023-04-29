@@ -33,6 +33,15 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.GridView enYeniOnHasta;
 
         /// <summary>
+        /// hasta_Tc_Numara denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hasta_Tc_Numara;
+
+        /// <summary>
         /// hasta_Goruntule denetimi.
         /// </summary>
         /// <remarks>

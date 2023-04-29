@@ -84,7 +84,8 @@
                 <tr>
                     <th>
                         <div class="form-group">
-                            <input maxlength="11" type="text" class="form-control" id="hasta_Goruntuleme_Tc" name="hasta_Goruntuleme_Tc" placeholder="Hasta TCKN">
+                            <asp:TextBox CssClass="form-control" id="hasta_Tc_Numara" runat="server" />
+                            <!-- <input maxlength="11" type="text" class="form-control" id="hasta_Goruntuleme_Tc" name="hasta_Goruntuleme_Tc" placeholder="Hasta TCKN"> -->
                             <label style="color: white;"><span>Görüntülemek istediğiniz hastanın tc sini giriniz.</span></label>
                         </div>
                     </th>
@@ -95,6 +96,5 @@
             <!-- <button type="submit" name="hasta_Goruntule" class="btn btn-info">Hasta Görüntüle</button> -->
             
         </form>
-
     </main>
 </asp:Content>
