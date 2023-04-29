@@ -21,7 +21,7 @@
                     </td>
                     <!-- -->
                     <td>
-                        <button type="submit" name="hasta_Ara" class="btn btn-primary">Hasta ara</button>
+                        <button type="submit" name="hasta_Filtrele" class="btn btn-primary">Hasta ara</button>
                     </td>
                 </tr>
             </table>
@@ -52,6 +52,14 @@
                 .table tr:nth-child(even) {
                     background-color: #f2f2f2;
                 }
+
+                .table tr {
+                    background-color: #fff;
+                }
+
+                .table tr:nth-child(even) {
+                        background-color: #f2f2f2;
+                }
         </style>
         <div>
             <asp:GridView ID="enYeniOnHasta" runat="server" AutoGenerateColumns="false" CssClass="table">
@@ -65,7 +73,25 @@
             </asp:GridView>
         </div>
 
-        <!-- Hasta Listesi -->
+        <!-- Hasta Listesi Bitişi -->
+        <br />
+        <!-- Hasta Görüntüleme Formu -->
+        <form action="" method="post">
+            <h2 style="color: white;">Hasta Görüntüleme</h2>
+            <br />
+            <table cellpading="10">
+                <tr>
+                    <th>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="hastaIsim" name="hastaIsmi" placeholder="Hasta ismi giriniz">
+                        </div>
+                    </th>
+                    <th>
+                            <button type="submit" name="hasta_Goruntule" class="btn btn-info">Hasta Görüntüle</button>
+                    </th>
+                </tr>
+            </table>
+        </form>
 
     </main>
 </asp:Content>

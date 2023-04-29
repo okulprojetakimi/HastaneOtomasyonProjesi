@@ -21,9 +21,7 @@ namespace HastaneOtomasyonProjesi
                 Response.Redirect("/giris.aspx");
             }
 
-            /* Arama için post işlemi yapılırsa */
-            string hastaIsim = Request.Form["hastaIsmi"];
-            string hastaSoyismi = Request.Form["hastaSoyismi"];
+            
 
             if (!IsPostBack)
             {
@@ -36,6 +34,31 @@ namespace HastaneOtomasyonProjesi
                     dataAdapter.Fill(dataTable);
                     enYeniOnHasta.DataSource = dataTable;
                     enYeniOnHasta.DataBind();
+                }
+            }
+            else if (Request.HttpMethod == "POST")
+            {
+                if (Request.Form["hasta_Filtrele"] != null)
+                {
+                    /* Arama için post işlemi yapılırsa */
+                    string hastaIsim = Request.Form["hastaIsmi"];
+                    string hastaSoyismi = Request.Form["hastaSoyismi"];
+
+                    /* Filtreleme işlemi yapılır ve tabloya akktarılır */
+
+                    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
+                        string query = "SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar WHERE hasta_Adi = @hastaIsmiPost AND hasta_Soyadi = @hastaSoyadiPost";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@hastaIsmiPost", hastaIsim);
+                        command.Parameters.AddWithValue("@hastaSoyadiPost", hastaSoyismi);
+
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+                        enYeniOnHasta.DataSource = dataTable;
+                        enYeniOnHasta.DataBind();
+                    }
                 }
             }
 
