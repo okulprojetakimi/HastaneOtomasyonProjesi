@@ -25,24 +25,13 @@ namespace HastaneOtomasyonProjesi
 
                     using (SqlCommand hastaEkleme = new SqlCommand("INSERT INTO hasta_kayitlar (hasta_Adi, hasta_Soyadi) VALUES (@hasta_Adi, @hasta_Soyadi)", sqlBaglantisi))
                     {
-                        hastaEkleme.Parameters.AddWithValue("@hasta_Adi", Request.Form["hasta_Adi"]);
-                        hastaEkleme.Parameters.AddWithValue("@hasta_Soyadi", Request.Form["hasta_Soyadi"]);
-                        hastaEkleme.ExecuteNonQuery();
-                        /*
-                         * 
-                         * Devamkeeeeeeeeeeeeee
-                         * 
-                         */
-                        sqlBaglantisi.Close();
-                        /* İşlemler tamamlanırsa başarılı uyarısı çalışacak */
-                        Response.Write("<script> alert('Hasta başarıyla eklendi!') </script>");
+                        hastaEkleme.Parameters.AddWithValue("@hasta_Adi", Request.Form["hasta_Tc"]);
                     }
                 }
             }
-           
             catch (Exception)
             {
-                Response.Write("<script> alert('Hata mevcut lütfen sistem yöneticisi ile konuşun!') </script>");
+                Response.Write("<script> alert('eklendi') </script>");
             }
         }
     }

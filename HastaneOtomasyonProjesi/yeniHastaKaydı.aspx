@@ -25,27 +25,27 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Tc">Hasta TC</label>
-                            <input type="number" class="form-control" id="hasta_Tc" name="hasta_Tc" aria-describedby="hasta_Tc" placeholder="Hasta TC Numarası">
+                            <input type="number" class="form-control" id="hasta_Tc" aria-describedby="hasta_Tc" placeholder="Hasta TC Numarası">
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_Adres">Hasta Adres</label>
-                            <textarea id="hasta_Adres" name="hasta_Adres" class="form-control" aria-describedby="hasta_Adres" placeholder="Hasta Adres"></textarea>
+                            <textarea id="hasta_Adres" class="form-control" aria-describedby="hasta_Adres" placeholder="Hasta Adres"></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_YakinAdi">Hasta Yakin Adi</label>
-                            <input type="text" class="form-control" id="hasta_YakinAdi" name="hasta_YakinAdi" aria-describedby="hasta_YakinAdi" placeholder="Hasta Yakin Adi">
+                            <label for="hasta_YakinAdi">Hasta Yakın Adı</label>
+                            <input type="text" class="form-control" id="hasta_YakinAdi" aria-describedby="hasta_YakinAdi" placeholder="Hasta Yakın Adı">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_Adi">Hasta Adi</label>
-                            <input type="text" class="form-control" id="hasta_Adi" name="hasta_Adi" aria-describedby="hasta_Adi" placeholder="Hastanin adi">
+                            <label for="hasta_Adi">Hasta Adı</label>
+                            <input type="text" class="form-control" id="hasta_Adi" name="hasta_Adi" aria-describedby="hasta_Adi" placeholder="Hastanın adı">
                         </div>
                     </td>
                     <td>
@@ -57,27 +57,27 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_yakinlikDerecesi">Hasta Yakınlık Derecesi</label>
-                            <input type="text" class="form-control" id="hasta_yakinlikDerecesi" name="hasta_yakinlikDerecesi" aria-describedby="hasta_yakinlikDerecesi" placeholder="Hasta Yakinlik Derecesi">
+                            <input type="text" class="form-control" id="hasta_yakinlikDerecesi" aria-describedby="hasta_yakinlikDerecesi" placeholder="Hasta Yakınlık Derecesi">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_Soyadi">Hasta Soyadi</label>
-                            <input type="text" class="form-control" id="hasta_Soyadi" name="hasta_Soyadi" aria-describedby="hasta_Soyadi" placeholder="Hastanin Soyadi">
+                            <label for="hasta_Soyadi">Hasta Soyadı</label>
+                            <input type="text" class="form-control" id="hasta_Soyadi" aria-describedby="hasta_Soyadi" placeholder="Hastanın Soyadı">
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_faxNo">Hasta Fax No</label>
-                            <input type="number" class="form-control" id="hasta_faxNo" name="hasta_faxNo" aria-describedby="hasta_faxNo" placeholder="Hasta Fax No">
+                            <input type="number" class="form-control" id="hasta_faxNo" aria-describedby="hasta_faxNo" placeholder="Hasta Fax No">
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_tedaviDurumu">Tedavi Durumu</label>
-                            <input type="text" class="form-control" id="hasta_tedaviDurumu" name="hasta_tedaviDurumu" aria-describedby="hasta_tedaviDurumu" placeholder="Hasta Tedavi Durumu">
+                            <input type="text" class="form-control" id="hasta_tedaviDurumu" aria-describedby="hasta_tedaviDurumu" placeholder="Hasta Tedavi Durumu">
                         </div>
                     </td>
                 </tr>
@@ -100,7 +100,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_evTelefonu">Hasta Ev Telefonu</label>
-                            <input type="number" class="form-control" id="hasta_evTelefonu" name="hasta_evTelefonu" aria-describedby="hasta_evTelefonu" placeholder="Hasta Ev Telefonu">
+                            <input type="number" class="form-control" id="hasta_evTelefonu" aria-describedby="hasta_evTelefonu" placeholder="Hasta Ev Telefonu">
                         </div>
                     </td>
                     <td>
@@ -113,20 +113,20 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_Soyadi">Hasta Baba Adi</label>
-                            <input type="text" class="form-control" id="hasta_BabaAdi" name="hasta_BabaAdi" aria-describedby="hasta_BabaAdi" placeholder="Hastanın Baba Adı">
+                            <label for="hasta_Soyadi">Hasta Baba Adı</label>
+                            <input type="text" class="form-control" id="hasta_BabaAdi" aria-describedby="hasta_BabaAdi" placeholder="Hastanın Baba Adı">
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_cepTelefonu">Hasta Cep Telefonu</label>
-                            <input type="number" class="form-control" id="hasta_cepTelefonu" name="hasta_cepTelefonu" aria-describedby="hasta_cepTelefonu" placeholder="Hasta Cep Telefonu">
+                            <input type="number" class="form-control" id="hasta_cepTelefonu" aria-describedby="hasta_cepTelefonu" placeholder="Hasta Cep Telefonu">
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_OdemeDurumu">Hasta Ödeme Durumu</label>
-                            <input type="text" class="form-control" id="hasta_OdemeDurumu" name="hasta_OdemeDurumu"  aria-describedby="hasta_OdemeDurumu" placeholder="Hasta Ödeme Durumu">
+                            <input type="text" class="form-control" id="hasta_OdemeDurumu" aria-describedby="hasta_OdemeDurumu" placeholder="Hasta Ödeme Durumu">
                         </div>
                     </td>
 
@@ -134,25 +134,29 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_AnneAdi">Hasta Anne Adi</label>
-                            <input type="text" class="form-control" id="hasta_AnneAdi" aria-describedby="hasta_AnneAdi" placeholder="Hastanın Anne Adi">
+                            <label for="hasta_Soyadi">Hasta Anne Adı</label>
+                            <input type="text" class="form-control" id="hasta_AnneAdi" aria-describedby="hasta_AnneAdi" placeholder="Hastanın Anne Adı">
                         </div>
                     </td>
 
                     <th>Hasta Acente</th>
-                    
+                    <td>
+                        <input type="submit" onclick="Button31_Click31" id="Button31_Click31" name="Button31_Click31" value="Gönder">
+                        <input type="reset" onclick="Button31_Click31" id="btnT" name="btnT" value="Temizle"></td>
+                    <%-- burda--%>
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-group">
                             <label for="hasta_Soyadi">Hasta Doğum Yeri</label>
-                            <input type="text" class="form-control" id="hasta_DogumYeri" name="hasta_DogumYeri" aria-describedby="hasta_DogumYeri" placeholder="Hastanın Doğum Yeri">
+                            <input type="text" class="form-control" id="hasta_DogumYeri" aria-describedby="hasta_DogumYeri" placeholder="Hastanın Doğum Yeri">
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_sigortaTuru">Hasta Sigorta Türü</label>
-                            <input type="text" id="hasta_sigortaTuru" name="hasta_sigortaTuru" class="form-control" aria-describedby="hasta_sigortaTuru" placeholder="Hasta Sigorta">
+                            <input type="text" id="hasta_sigortaTuru" class="form-control" aria-describedby="hasta_sigortaTuru" placeholder="Hasta Sigorta">
                         </div>
                     </td>
 
@@ -190,8 +194,6 @@
                 </tr>
 
             </table>
-             <input type="submit" onclick="Button31_Click31" id="Button31_Click31" name="Button31_Click31" value="Gönder">
-             <input type="reset" onclick="Button31_Click31" id="btnT" name="btnT" value="Temizle">
             <style>
                 table {
                     width: 100%;
