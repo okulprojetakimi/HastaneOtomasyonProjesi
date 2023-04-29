@@ -5,7 +5,8 @@
     <main>
 
 
-        <h1 style="color: white;"><i class="fa-solid fa-user-plus"></i>Yeni Hasta Ekleme</h1>
+        <h1 style="color: white;"><i class="fa-solid fa-user-plus"></i>Yeni Hasta Ekleme<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    </h1>
         <hr style="width: 256px;" />
         <!-- Hasta ekleme formu -->
         <form action="" method="post">
@@ -22,10 +23,22 @@
                 </tr>
 
                 <tr>
+                    <%
+                        Random idGenerator = new Random();
+                        int randId = idGenerator.Next(111111,999999);
+                    %>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_Tc">Hasta ID</label>
+                            <input type="number" value="<% = randId %>" class="form-control" id="hasta_Id" name="hasta_Id" aria-describedby="hasta_Id" placeholder="Hasta ID">
+                            <span><label>ID Numarası sistem tarafından otomatik oluşturulmaktadır.</label></span>
+                        </div>
+                    </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_Tc">Hasta TC</label>
-                            <input type="number" class="form-control" id="hasta_Tc" name="hasta_Tc" aria-describedby="hasta_Tc" placeholder="Hasta TC Numarası">
+                            <asp:TextBox ID="hasta_Tc" CssClass="form-control" runat="server" />
+                            <!-- <input type="number" class="form-control" id="hasta_Tc" name="hasta_Tc" aria-describedby="hasta_Tc" placeholder="Hasta TC Numarası"> -->
                         </div>
                     </td>
                     <td>
@@ -84,8 +97,8 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="kanGrubuSecimi">Kan Grubu</label>
-                            <select class="form-control" id="kanGrubuSecimi">
+                            <label for="hasta_kanGrubu">Kan Grubu</label>
+                            <select class="form-control" id="hasta_kanGrubu" name="hasta_kanGrubu">
                                 <option value="1">A RH+</option>
                                 <option value="2">A RH-</option>
                                 <option value="3">0 RH+</option>
@@ -175,7 +188,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Cinsiyet">Hasta Cinsiyet</label>
-                            <select class="form-control" id="hasta_Cinsiyet">
+                            <select class="form-control" id="hasta_Cinsiyet" name="hasta_Cinsiyet">
                                 <option value="e">Erkek</option>
                                 <option value="k">Kadın</option>
                             </select>
