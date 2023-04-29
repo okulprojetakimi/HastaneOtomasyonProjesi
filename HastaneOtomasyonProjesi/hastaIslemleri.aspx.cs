@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -21,32 +22,10 @@ namespace HastaneOtomasyonProjesi
             }
 
             /* Arama için post işlemi yapılırsa */
-            if (IsPostBack)
-            {
-                string hastaIsim = Request.Form["hastaIsmi"];
-                string hastaSoyismi = Request.Form["hastaSoyismi"];
-                using (SqlConnection vtBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-                {
-                    vtBagla.Open();
-                    using (SqlCommand hastaCek = new SqlCommand("SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_YakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar WHERE hasta_Adi = @hastaIsimVerisi AND hasta_Soyadi = @hastaSoyisimVerisi", vtBagla))
-                    {
-                        hastaCek.Parameters.AddWithValue("@hastaIsimVerisi", hastaIsim);
-                        hastaCek.Parameters.AddWithValue("@hastaSoyisimVerisi", hastaSoyismi);
+            string hastaIsim = Request.Form["hastaIsmi"];
+            string hastaSoyismi = Request.Form["hastaSoyismi"];
 
-                        using (SqlDataReader veriOkuyucu = hastaCek.ExecuteReader())
-                        {
-                            /* Veri Tablosuna Ekleme */
-                            DataTable hastaTablosu = new DataTable();
-                            hastaTablosu.Load(veriOkuyucu);
-                            ornGridView.DataSource = veriOkuyucu;
-                            ornGridView.DataBind();
-                        }
-                        hastaCek.Dispose();
-                        vtBagla.Close();
-
-                    }
-                }
-            }
+            
         }
     }
 }
