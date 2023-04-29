@@ -39,6 +39,11 @@ namespace HastaneOtomasyonProjesi
 
         }
 
+        protected void hasta_Goruntule_Click1(object sender, EventArgs e)
+        {
+
+        }
+
         protected void hasta_Ara_Click(object sender, EventArgs e)
         {
             /* Arama için post işlemi yapılırsa */
@@ -60,9 +65,6 @@ namespace HastaneOtomasyonProjesi
 
         }
 
-        protected void hasta_Goruntule_Click(object sender, EventArgs e)
-        {
-            deneme_Label.Text = "HI GUYS!";
-        }
+       
     }
 }
