@@ -62,7 +62,7 @@ namespace HastaneOtomasyonProjesi
 
         protected void hasta_Goruntule_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/hastaGoruntule.aspx?hastaTc=" + Request.Form["hasta_Goruntuleme_Tc"]);
+            deneme_Label.Text = "HI GUYS!";
         }
     }
 }

@@ -90,8 +90,9 @@
                     </th>
                 </tr>
             </table>
-            <asp:Button ID="hasta_Goruntule" Text="Hasta Görüntüle" CssClass="btn btn-primary" name="hasta_Goruntule" runat="server" />
+            <asp:Button ID="hasta_Goruntule"  Text="Hasta Görüntüle" CssClass="btn btn-primary" name="hasta_Goruntule" runat="server" OnClick="hasta_Goruntule_Click" />
             <!-- <button type="submit" name="hasta_Goruntule" class="btn btn-info">Hasta Görüntüle</button> -->
+            <asp:Label Text="..." ID="deneme_Label" runat="server" />
         </form>
 
     </main>
