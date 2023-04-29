@@ -84,8 +84,8 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="kanGrubuSecimi">Kan Grubu</label>
-                            <select class="form-control" id="kanGrubuSecimi">
+                            <label for="hasta_kanGrubu">Kan Grubu</label>
+                            <select class="form-control" id="hasta_kanGrubu" name="hasta_kanGrubu">
                                 <option value="1">A RH+</option>
                                 <option value="2">A RH-</option>
                                 <option value="3">0 RH+</option>
@@ -175,7 +175,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Cinsiyet">Hasta Cinsiyet</label>
-                            <select class="form-control" id="hasta_Cinsiyet">
+                            <select class="form-control" id="hasta_Cinsiyet" name="hasta_Cinsiyet">
                                 <option value="e">Erkek</option>
                                 <option value="k">Kadın</option>
                             </select>
