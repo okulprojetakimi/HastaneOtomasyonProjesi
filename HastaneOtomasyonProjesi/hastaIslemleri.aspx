@@ -21,7 +21,8 @@
                     </td>
                     <!-- -->
                     <td>
-                        <button type="submit" name="hasta_Filtrele" class="btn btn-primary">Hasta ara</button>
+                        <asp:Button ID="hasta_Ara" Text="Hasta Ara" name="hasta_Ara" CssClass="btn btn-primary" runat="server" OnClick="hasta_Ara_Click"/>
+                        <!-- <button type="submit" name="hasta_Filtrele" class="btn btn-primary">Hasta ara</button> -->
                     </td>
                 </tr>
             </table>
@@ -83,14 +84,14 @@
                 <tr>
                     <th>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="hastaIsim" name="hastaIsmi" placeholder="Hasta ismi giriniz">
+                            <input maxlength="11" type="text" class="form-control" id="hasta_Goruntuleme_Tc" name="hasta_Goruntuleme_Tc" placeholder="Hasta TCKN">
+                            <label style="color: white;"><span>Görüntülemek istediğiniz hastanın tc sini giriniz.</span></label>
                         </div>
-                    </th>
-                    <th>
-                            <button type="submit" name="hasta_Goruntule" class="btn btn-info">Hasta Görüntüle</button>
                     </th>
                 </tr>
             </table>
+            <asp:Button ID="hasta_Goruntule" Text="Hasta Görüntüle" CssClass="btn btn-primary" name="hasta_Goruntule" runat="server" />
+            <!-- <button type="submit" name="hasta_Goruntule" class="btn btn-info">Hasta Görüntüle</button> -->
         </form>
 
     </main>

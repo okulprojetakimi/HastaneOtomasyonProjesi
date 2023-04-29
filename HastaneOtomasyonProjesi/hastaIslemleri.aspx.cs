@@ -22,7 +22,6 @@ namespace HastaneOtomasyonProjesi
             }
 
             
-
             if (!IsPostBack)
             {
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -36,33 +35,34 @@ namespace HastaneOtomasyonProjesi
                     enYeniOnHasta.DataBind();
                 }
             }
-            else if (Request.HttpMethod == "POST")
+
+
+        }
+
+        protected void hasta_Ara_Click(object sender, EventArgs e)
+        {
+            /* Arama için post işlemi yapılırsa */
+            string hastaIsim = Request.Form["hastaIsmi"];
+            string hastaSoyismi = Request.Form["hastaSoyismi"];
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
-                if (Request.Form["hasta_Filtrele"] != null)
-                {
-                    /* Arama için post işlemi yapılırsa */
-                    string hastaIsim = Request.Form["hastaIsmi"];
-                    string hastaSoyismi = Request.Form["hastaSoyismi"];
-
-                    /* Filtreleme işlemi yapılır ve tabloya akktarılır */
-
-                    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-                    {
-                        string query = "SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar WHERE hasta_Adi = @hastaIsmiPost AND hasta_Soyadi = @hastaSoyadiPost";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@hastaIsmiPost", hastaIsim);
-                        command.Parameters.AddWithValue("@hastaSoyadiPost", hastaSoyismi);
-
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
-                        dataAdapter.Fill(dataTable);
-                        enYeniOnHasta.DataSource = dataTable;
-                        enYeniOnHasta.DataBind();
-                    }
-                }
+                string query = "SELECT TOP 5 hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar WHERE hasta_Adi = @hastaAd AND hasta_Soyadi = @hastaSoyad ORDER BY hasta_Tc DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@hastaAd", hastaIsim);
+                command.Parameters.AddWithValue("@hastaSoyad", hastaSoyismi);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                enYeniOnHasta.DataSource = dataTable;
+                enYeniOnHasta.DataBind();
             }
 
+        }
 
+        protected void hasta_Goruntule_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/hastaGoruntule.aspx?hastaTc=" + Request.Form["hasta_Goruntuleme_Tc"]);
         }
     }
 }
