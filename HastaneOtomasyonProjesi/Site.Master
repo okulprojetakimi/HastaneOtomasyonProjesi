@@ -51,7 +51,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Super HBYS</p>
+                <p style="color: white;">&copy; <%: DateTime.Now.Year %> - Super HBYS</p>
             </footer>
         </div>
     </form>
