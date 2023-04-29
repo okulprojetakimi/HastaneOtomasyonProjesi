@@ -58,10 +58,14 @@ namespace HastaneOtomasyonProjesi
 
         }
 
-        protected void hasta_Goruntule_Click1(object sender, EventArgs e)
+        protected void yeniHastaEkle_Click(object sender, EventArgs e)
         {
-            string redirect_Tc = hasta_Tc_Numara.Text;
-            Response.Redirect("/hastaGoruntule.aspx?hasta=" + redirect_Tc);
+            Response.Redirect("yeniHastaKaydi.aspx");
+        }
+
+        protected void hastaGoruntule_Buton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("hastaGoruntule.aspx?hasta=" + hasta_Tc_Numara.Text);
         }
     }
 }

@@ -3,6 +3,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="maincontent" runat="server">
     <main>
         <!-- Hasta Işlemleri ( Hasta arama filtreleme) -->
+        <asp:Button CssClass="btn btn-info" Text="+ Yeni Hasta Ekle" runat="server" ID="yeniHastaEkle" OnClick="yeniHastaEkle_Click" />
+        <br />
+        <br />
         <form action="hastaIslemleri.aspx" method="post">
             <h2 style="color: white;">Hasta Filtreleme</h2>
             <table cellpadding="15">
@@ -21,7 +24,7 @@
                     </td>
                     <!-- -->
                     <td>
-                        <asp:Button ID="hasta_Ara" Text="Hasta Ara" name="hasta_Ara" CssClass="btn btn-primary" runat="server" OnClick="hasta_Ara_Click"/>
+                        <asp:Button ID="hasta_Ara" Text="Hasta Ara" name="hasta_Ara" CssClass="btn btn-primary" runat="server" OnClick="hasta_Ara_Click" />
                         <!-- <button type="submit" name="hasta_Filtrele" class="btn btn-primary">Hasta ara</button> -->
                     </td>
                 </tr>
@@ -58,9 +61,9 @@
                     background-color: #fff;
                 }
 
-                .table tr:nth-child(even) {
+                    .table tr:nth-child(even) {
                         background-color: #f2f2f2;
-                }
+                    }
         </style>
         <div>
             <asp:GridView ID="enYeniOnHasta" runat="server" AutoGenerateColumns="false" CssClass="table">
@@ -77,24 +80,14 @@
         <!-- Hasta Listesi Bitişi -->
         <br />
         <!-- Hasta Görüntüleme Formu -->
-        <form action="" method="post">
-            <h2 style="color: white;">Hasta Görüntüleme</h2>
+        <h2 style="color: white;">Hasta Görüntüleme</h2>
+        <br />
+        <div class="form-group">
+            <asp:TextBox CssClass="form-control" ID="hasta_Tc_Numara" runat="server" />
+            <!-- <input maxlength="11" type="text" class="form-control" id="hasta_Goruntuleme_Tc" name="hasta_Goruntuleme_Tc" placeholder="Hasta TCKN"> -->
+            <label style="color: white;"><span>Görüntülemek istediğiniz hastanın tc sini giriniz.</span></label>
             <br />
-            <table cellpading="10">
-                <tr>
-                    <th>
-                        <div class="form-group">
-                            <asp:TextBox CssClass="form-control" id="hasta_Tc_Numara" runat="server" />
-                            <!-- <input maxlength="11" type="text" class="form-control" id="hasta_Goruntuleme_Tc" name="hasta_Goruntuleme_Tc" placeholder="Hasta TCKN"> -->
-                            <label style="color: white;"><span>Görüntülemek istediğiniz hastanın tc sini giriniz.</span></label>
-                        </div>
-                    </th>
-                </tr>
-            </table>
-            <asp:Button ID="hasta_Goruntule" Text="Hasta Görüntüle" name="hasta_Goruntule" CssClass="btn btn-primary" runat="server" OnClick="hasta_Goruntule_Click1"/>
-
-            <!-- <button type="submit" name="hasta_Goruntule" class="btn btn-info">Hasta Görüntüle</button> -->
-            
-        </form>
+        </div>
+        <asp:Button Text="Hasta Görüntüle" ID="hastaGoruntule_Buton" CssClass="btn btn-info" runat="server" OnClick="hastaGoruntule_Buton_Click" />
     </main>
 </asp:Content>

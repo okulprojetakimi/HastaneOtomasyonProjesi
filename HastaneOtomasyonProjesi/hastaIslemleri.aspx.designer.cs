@@ -15,6 +15,15 @@ namespace HastaneOtomasyonProjesi
     {
 
         /// <summary>
+        /// yeniHastaEkle denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button yeniHastaEkle;
+
+        /// <summary>
         /// hasta_Ara denetimi.
         /// </summary>
         /// <remarks>
@@ -42,12 +51,12 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.TextBox hasta_Tc_Numara;
 
         /// <summary>
-        /// hasta_Goruntule denetimi.
+        /// hastaGoruntule_Buton denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button hasta_Goruntule;
+        protected global::System.Web.UI.WebControls.Button hastaGoruntule_Buton;
     }
 }
