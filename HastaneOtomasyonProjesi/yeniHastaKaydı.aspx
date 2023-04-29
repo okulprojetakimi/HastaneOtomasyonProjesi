@@ -16,17 +16,12 @@
             </style>
             <table cellpadding="15">
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <%
-                                Random rastgeleSayi = new Random();
-                                int hastaNumarasi = rastgeleSayi.Next(1111111, 9999999);
-                            %>
-                            <label for="hasta_Id">Hasta Numarası</label>
-                            <input type="number" value="<% =hastaNumarasi %>" disabled class="form-control" id="hasta_Tc" aria-describedby="hasta_Tc" placeholder="HASTA NUMARASI">
-                            <small id="emailHelp" class="form-text text-muted">Bu sistem tarafından otomatik olarak üretilmektedir.</small>
-                        </div>
-                    </td>
+                    <th>Hasta Genel Bilgileri</th>
+                    <th>Hastas İletişim Bilgileri</th>
+                    <th>Hasta Yakın Bilgileri</th>
+                </tr>
+
+                <tr>
                     <td>
                         <div class="form-group">
                             <label for="hasta_Tc">Hasta TC</label>
@@ -35,14 +30,54 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_Adi">Hasta Adı</label>
-                            <input type="text" class="form-control" id="hasta_Adi" aria-describedby="hasta_Adi" placeholder="Hastanın adı">
+                            <label for="hasta_Adres">Hasta Adres</label>
+                            <textarea id="hasta_Adres" class="form-control" aria-describedby="hasta_Adres" placeholder="Hasta Adres"></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
+                            <label for="hasta_YakinAdi">Hasta Yakın Adı</label>
+                            <input type="text" class="form-control" id="hasta_YakinAdi" aria-describedby="hasta_YakinAdi" placeholder="Hasta Yakın Adı">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_Adi">Hasta Adı</label>
+                            <input type="text" class="form-control" id="hasta_Adi" name="hasta_Adi" aria-describedby="hasta_Adi" placeholder="Hastanın adı">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_Eposta">Hasta Eposta </label>
+                            <input type="email" class="form-control" id="hasta_Eposta" aria-describedby="hasta_Eposta" placeholder="Hasta Eposta">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_yakinlikDerecesi">Hasta Yakınlık Derecesi</label>
+                            <input type="text" class="form-control" id="hasta_yakinlikDerecesi" aria-describedby="hasta_yakinlikDerecesi" placeholder="Hasta Yakınlık Derecesi">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
                             <label for="hasta_Soyadi">Hasta Soyadı</label>
                             <input type="text" class="form-control" id="hasta_Soyadi" aria-describedby="hasta_Soyadi" placeholder="Hastanın Soyadı">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_faxNo">Hasta Fax No</label>
+                            <input type="number" class="form-control" id="hasta_faxNo" aria-describedby="hasta_faxNo" placeholder="Hasta Fax No">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_tedaviDurumu">Tedavi Durumu</label>
+                            <input type="text" class="form-control" id="hasta_tedaviDurumu" aria-describedby="hasta_tedaviDurumu" placeholder="Hasta Tedavi Durumu">
                         </div>
                     </td>
                 </tr>
@@ -62,24 +97,71 @@
                             </select>
                         </div>
                     </td>
-                     <td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_evTelefonu">Hasta Ev Telefonu</label>
+                            <input type="number" class="form-control" id="hasta_evTelefonu" aria-describedby="hasta_evTelefonu" placeholder="Hasta Ev Telefonu">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_tedaviTuru">Hasta Tedavi Türü</label>
+                            <input type="text" class="form-control" id="hasta_tedaviTuru" aria-describedby="hasta_tedaviTuru" placeholder="Hasta Tedavi Türü">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <div class="form-group">
                             <label for="hasta_Soyadi">Hasta Baba Adı</label>
                             <input type="text" class="form-control" id="hasta_BabaAdi" aria-describedby="hasta_BabaAdi" placeholder="Hastanın Baba Adı">
                         </div>
                     </td>
-                     <td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_cepTelefonu">Hasta Cep Telefonu</label>
+                            <input type="number" class="form-control" id="hasta_cepTelefonu" aria-describedby="hasta_cepTelefonu" placeholder="Hasta Cep Telefonu">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_OdemeDurumu">Hasta Ödeme Durumu</label>
+                            <input type="text" class="form-control" id="hasta_OdemeDurumu" aria-describedby="hasta_OdemeDurumu" placeholder="Hasta Ödeme Durumu">
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
                         <div class="form-group">
                             <label for="hasta_Soyadi">Hasta Anne Adı</label>
                             <input type="text" class="form-control" id="hasta_AnneAdi" aria-describedby="hasta_AnneAdi" placeholder="Hastanın Anne Adı">
                         </div>
                     </td>
-                     <td>
+
+                    <th>Hasta Acente</th>
+                    <td>
+                        <input type="submit" onclick="Button31_Click31" id="Button31_Click31" name="Button31_Click31" value="Gönder">
+                        <input type="reset" onclick="Button31_Click31" id="btnT" name="btnT" value="Temizle">
+                    </td>
+                    <%-- burda--%> 
+                    <!-- Ordamı :D -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <div class="form-group">
                             <label for="hasta_Soyadi">Hasta Doğum Yeri</label>
                             <input type="text" class="form-control" id="hasta_DogumYeri" aria-describedby="hasta_DogumYeri" placeholder="Hastanın Doğum Yeri">
                         </div>
                     </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_sigortaTuru">Hasta Sigorta Türü</label>
+                            <input type="text" id="hasta_sigortaTuru" class="form-control" aria-describedby="hasta_sigortaTuru" placeholder="Hasta Sigorta">
+                        </div>
+                    </td>
+
                 </tr>
                 <tr>
                     <td>
@@ -90,17 +172,53 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <label for="kanGrubuSecimi">Kan Grubu</label>
-                            <select class="form-control" id="kanGrubuSecimi">
+                            <label for="hasta_karneNo">Hasta Karne No</label>
+                            <input type="text" class="form-control" id="hasta_karneNo" aria-describedby="hasta_karneNo" placeholder="Hasta Karne No">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="hasta_Cinsiyet">Hasta Cinsiyet</label>
+                            <select class="form-control" id="hasta_Cinsiyet">
                                 <option value="e">Erkek</option>
                                 <option value="k">Kadın</option>
                             </select>
                         </div>
                     </td>
                     <td>
-
+                        <div class="form-group">
+                            <label for="hasta_sicilNo">Hasta Sicil No</label>
+                            <input type="text" class="form-control" id="hasta_sicilNo" aria-describedby="hasta_sicilNo" placeholder="Hasta Sicil No">
+                        </div>
                     </td>
                 </tr>
+
+            </table>
+            <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                    table th {
+                        text-align: center;
+                        background-color: #2196F3;
+                        color: white;
+                    }
+
+                    table th, td {
+                        border: 1px solid blue;
+                        padding: 6px;
+                    }
+
+
+
+                    table tr:hover {
+                        background-color: #ddd;
+                    }
+            </style>
             </table>
             <!-- hasta_Id, hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_kanGrubu, hasta_BabaAdi, hasta_AnneAdi, hasta_DogumYeri, hasta_DogumTarihi, hasta_Cinsiyet, 
             hasta_Adres, hasta_Eposta, hasta_faxNo, hasta_evTelefonu, hasta_cepTelefonu, hasta_sigortaTuru, hasta_karneNo, hasta_sicilNo, hasta_YakinAdi, hasat_yakinlikDerecesi, hasta_tedaviDurumu,
