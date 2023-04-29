@@ -25,7 +25,21 @@ namespace HastaneOtomasyonProjesi
             string hastaIsim = Request.Form["hastaIsmi"];
             string hastaSoyismi = Request.Form["hastaSoyismi"];
 
-            
+            if (!IsPostBack)
+            {
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                {
+                    string query = "SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    enYeniOnHasta.DataSource = dataTable;
+                    enYeniOnHasta.DataBind();
+                }
+            }
+
+
         }
     }
 }

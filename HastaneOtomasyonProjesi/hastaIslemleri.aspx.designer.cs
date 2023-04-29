@@ -15,21 +15,12 @@ namespace HastaneOtomasyonProjesi
     {
 
         /// <summary>
-        /// Label1 denetimi.
+        /// enYeniOnHasta denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// ornGridView denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ornGridView;
+        protected global::System.Web.UI.WebControls.GridView enYeniOnHasta;
     }
 }
