@@ -58,15 +58,18 @@ namespace HastaneOtomasyonProjesi
             try
             {
                 string notId = new Random().Next(11111, 99999).ToString();
+                Response.Write("Not ID: " + notId + "\nHasta Notu: " + hastaNotu.Text + "\n Not Tarihi: " + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString() + "\n Hasta ID: " +  hastaId);
+
                 using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
                     vtBaglan.Open();
-                    using (SqlCommand notEklemeKomutu = new SqlCommand("INSERT INTO hasta_Notlari (hasta_NotId, hasta_Not, hasta_notTarih, hasta_Id) VALUES (@hastaIdNumarasi, @hastaNotYazisi, @hastaNotTarihi, @hastaId)", vtBaglan))
+                    using (SqlCommand notEklemeKomutu = new SqlCommand("INSERT INTO hasta_Notlari (hasta_NotId, hasta_Not, hasta_notTarihi, hasta_Id) VALUES (@hastaIdNumarasi, @hastaNotYazisi, @hastaNotTarihi, @hastaId)", vtBaglan))
                     {
                         notEklemeKomutu.Parameters.AddWithValue("@hastaIdNumarasi", notId);
                         notEklemeKomutu.Parameters.AddWithValue("@hastaNotYazisi", hastaNotu.Text);
-                        notEklemeKomutu.Parameters.AddWithValue("@hastaNotTarihi", DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString());
+                        notEklemeKomutu.Parameters.AddWithValue("@hastaNotTarihi", DateTime.Parse(DateTime.Now.ToLongDateString()));
                         notEklemeKomutu.Parameters.AddWithValue("@hastaId", hastaId);
+                        notEklemeKomutu.ExecuteNonQuery();
                         notEklemeKomutu.Dispose();
                         vtBaglan.Close();
                     }
@@ -74,7 +77,6 @@ namespace HastaneOtomasyonProjesi
             }
             catch (Exception)
             {
-
                 throw;
             }
             Response.Write("<script>alert('OKEY!')</script>");
