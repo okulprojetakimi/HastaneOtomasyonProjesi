@@ -15,22 +15,13 @@ namespace HastaneOtomasyonProjesi
     {
 
         /// <summary>
-        /// Label1 denetimi.
+        /// hasta_Id denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// hasta_Tc denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hasta_Tc;
+        protected global::System.Web.UI.WebControls.TextBox hasta_Id;
 
         /// <summary>
         /// Button31_Click31 denetimi.
