@@ -15,11 +15,10 @@ namespace HastaneOtomasyonProjesi
         {
 
         }
-        protected void Button31_Click31(object sender, EventArgs e)
+
+        protected void hastaEkleButon_click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Label1.Text = hasta_Tc.Text;
-=======
             try
             {
                 using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -52,25 +51,17 @@ namespace HastaneOtomasyonProjesi
                         hastaEkleme.Parameters.AddWithValue("@hasta_tedaviTuru", Request.Form["hasta_tedaviTuru"]);
                         hastaEkleme.Parameters.AddWithValue("@hasta_OdemeDurumu", Request.Form["hasta_OdemeDurumu"]);
 
-
-
-                        int a = hastaEkleme.ExecuteNonQuery();
-                        if (a > 0)
-                        {
-                            Response.Write("<script> alert('eklendi') </script>");
-                        }
-                        
-
-                        
+                        hastaEkleme.ExecuteNonQuery();
+                        Response.Write("Swal.fire(\r\n  'Başarılı!',\r\n  'Hasta başarıyla eklendi!',\r\n  'success'\r\n)");
+                        hastaEkleme.Dispose();
+                        sqlBaglantisi.Close();
                     }
                 }
             }
-           
-            catch (Exception)
+            catch (Exception damnError)
             {
-                Response.Write("<script> alert('eklendi') </script>");
+                Response.Write("Swal.fire(\r\n  'Warning!',\r\n  "+ damnError.Message +",\r\n  'warning'\r\n)");
             }
->>>>>>> ea9283558c858b6e201318c7f589c22ed1dc1c1b
         }
     }
 }

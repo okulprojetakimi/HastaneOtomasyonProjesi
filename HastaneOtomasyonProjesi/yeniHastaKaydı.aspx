@@ -37,7 +37,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Tc">Hasta TC</label>
-                            <asp:TextBox ID="hasta_Tc" CssClass="form-control" runat="server" />
+                            <asp:TextBox ID="hasta_Tc" name="hasta_Tc" CssClass="form-control" runat="server" />
                             <!-- <input type="number" class="form-control" id="hasta_Tc" name="hasta_Tc" aria-describedby="hasta_Tc" placeholder="Hasta TC Numarası"> -->
                         </div>
                     </td>
@@ -203,8 +203,9 @@
                 </tr>
 
             </table>
-             <input type="submit" onclick="Button31_Click31" id="Button31_Click31" name="Button31_Click31" value="Gönder">
-             <input type="reset" onclick="Button31_Click31" id="btnT" name="btnT" value="Temizle">
+            <br />
+             <asp:button CssClass="btn btn-success" text="+ Hasta Ekle" id="Button31_Click31" runat="server" OnClick="hastaEkleButon_click" />
+             <!-- <input type="reset" onclick="Button31_Click31" id="btnT" name="btnT" value="Temizle"> -->
             <style>
                 table {
                     width: 100%;
