@@ -34,7 +34,9 @@
                     <div class="not_EklemeDiv">
                         <div class="form-group">
                             <label style="color: white;" for="exampleFormControlTextarea1">Not</label>
-                            <asp:TextBox style="width: 241px;" TextMode="MultiLine" ID="hastaNotu" CssClass="form-control" runat="server" />
+                            <asp:TextBox ReadOnly="true" style="width: 241px;" TextMode="MultiLine" ID="eski_Veri" CssClass="form-control" runat="server" />
+                            <br />
+                            <asp:TextBox Text="Yeni notu giriniz....." style="width: 241px;" TextMode="MultiLine" ID="hastaNotu" CssClass="form-control" runat="server" />
                         </div>
                         <asp:Button CssClass="btn btn-info" Text="Not Düzenle" runat="server" ID="hastaNot_Duzenle" OnClick="hastaNot_Duzenle_Click" />
                     </div>

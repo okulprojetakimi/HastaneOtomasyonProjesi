@@ -63,27 +63,32 @@ namespace HastaneOtomasyonProjesi
                 }
                 hasta_TcLabel.Text = hastaTcNumarasi;
                 hasta_IsimSoyisim.Text = hastaAdi + " " + hastaSoyadi;
-                hastaNotu.Text = hastaNotVerisi;
+                eski_Veri.Text = hastaNotVerisi;
             }
         }
         /* Not güncelle buton */
         protected void hastaNot_Duzenle_Click(object sender, EventArgs e)
         {
-            string sonHali = hastaNotu.Text;
-            using (SqlConnection sqlBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            try
             {
-                sqlBaglanti.Open();
-                using (SqlCommand notDuzenleme = new SqlCommand("UPDATE hasta_Notlari SET hasta_Not = @hastaNotInput WHERE hasta_NotId = @hNotId", sqlBaglanti))
+                string sonHali = hastaNotu.Text;
+                using (SqlConnection sqlBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
-                    notDuzenleme.Parameters.AddWithValue("@hastaNotInput", sonHali);
-                    notDuzenleme.Parameters.AddWithValue("@hNotId", notIdNumarasi);
-                    notDuzenleme.ExecuteNonQuery();
-                    notDuzenleme.Dispose();
-                    sqlBaglanti.Close();
+                    sqlBaglanti.Open();
+                    using (SqlCommand notDuzenleme = new SqlCommand("UPDATE hasta_Notlari SET hasta_Not = @hastaNotInput WHERE hasta_NotId = @hNotId", sqlBaglanti))
+                    {
+                        notDuzenleme.Parameters.AddWithValue("@hastaNotInput", sonHali);
+                        notDuzenleme.Parameters.AddWithValue("@hNotId", notIdNumarasi);
+                        notDuzenleme.ExecuteNonQuery();
+                        notDuzenleme.Dispose();
+                        sqlBaglanti.Close();
+                    }
                 }
             }
-            Response.Write(sonHali);
-            Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla güncellendi.',  'success')</script>");
+            catch (Exception damnError)
+            {
+                Response.Write(damnError.Message);
+            }
         }
     }
 }
