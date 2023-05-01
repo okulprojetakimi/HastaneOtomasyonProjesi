@@ -41,14 +41,21 @@ namespace HastaneOtomasyonProjesi
                     {
                         hastaIdGetir.Parameters.AddWithValue("@hNId", notIdNumarasi);
                         SqlDataReader idOku = hastaIdGetir.ExecuteReader();
-                        while (idOku.Read())
+                        if (!idOku.HasRows)
                         {
-                            hastaNotVerisi = idOku.GetString(0);
-                            hastaIdNumarasi = idOku.GetInt32(1);
-                            hastaNotTarih = idOku.GetDateTime(2);
-                            hastaAdi = idOku.GetString(3);
-                            hastaSoyadi = idOku.GetString(4);
-                            hastaTcNumarasi = idOku.GetString(5);
+                            Response.Redirect("/panel.aspx");
+                        }
+                        else
+                        {
+                            while (idOku.Read())
+                            {
+                                hastaNotVerisi = idOku.GetString(0);
+                                hastaIdNumarasi = idOku.GetInt32(1);
+                                hastaNotTarih = idOku.GetDateTime(2);
+                                hastaAdi = idOku.GetString(3);
+                                hastaSoyadi = idOku.GetString(4);
+                                hastaTcNumarasi = idOku.GetString(5);
+                            }
                         }
                         idOku.Close();
                         hastaIdGetir.Dispose();
@@ -59,30 +66,24 @@ namespace HastaneOtomasyonProjesi
                 hastaNotu.Text = hastaNotVerisi;
             }
         }
-
         /* Not güncelle buton */
         protected void hastaNot_Duzenle_Click(object sender, EventArgs e)
         {
-            try
+            string sonHali = hastaNotu.Text;
+            using (SqlConnection sqlBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
-                using (SqlConnection sqlBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                sqlBaglanti.Open();
+                using (SqlCommand notDuzenleme = new SqlCommand("UPDATE hasta_Notlari SET hasta_Not = @hastaNotInput WHERE hasta_NotId = @hNotId", sqlBaglanti))
                 {
-                    sqlBaglanti.Open();
-                    using (SqlCommand notDuzenleme = new SqlCommand("UPDATE hasta_notlari SET hasta_Not = @hastaNotInput WHERE hasta_NotId = @hNotId", sqlBaglanti))
-                    {
-                        notDuzenleme.Parameters.AddWithValue("@hastaNotInput", hastaNotu.Text);
-                        notDuzenleme.Parameters.AddWithValue("@hNotId", notIdNumarasi);
-                        notDuzenleme.ExecuteNonQuery();
-                        notDuzenleme.Dispose();
-                        sqlBaglanti.Close();
-                    }
-                    Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla güncellendi.',  'success')</script>");
+                    notDuzenleme.Parameters.AddWithValue("@hastaNotInput", hastaNotu.Text);
+                    notDuzenleme.Parameters.AddWithValue("@hNotId", notIdNumarasi);
+                    notDuzenleme.ExecuteNonQuery();
+                    notDuzenleme.Dispose();
+                    sqlBaglanti.Close();
                 }
             }
-            catch (Exception damnError)
-            {
-                Response.Write("<script>Swal.fire('Hata!', '"+damnError.Message+"',  'danger')</script>");
-            }
+            Response.Write(hastaNotu.Text);
+            Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla güncellendi.',  'success')</script>");
         }
     }
 }

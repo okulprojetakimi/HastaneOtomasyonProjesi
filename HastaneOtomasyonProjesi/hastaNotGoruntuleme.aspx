@@ -28,7 +28,6 @@
                         </tr>
                         
                     </table>
-
                 </td>
                 <td>
                     <h1 style="color: white;"><i class="fa-light fa-square-pen"></i>Not Formu</h1>
