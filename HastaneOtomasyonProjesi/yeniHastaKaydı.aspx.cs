@@ -13,6 +13,11 @@ namespace HastaneOtomasyonProjesi
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie != null)
+            {
+                Response.Redirect("/panel.aspx");
+            }
 
         }
 
@@ -22,9 +27,17 @@ namespace HastaneOtomasyonProjesi
             {
                 sqlBaglantisi.Open();
 
+                byte[] randomBytes = new byte[4];
+                using (var rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+                {
+                    rng.GetBytes(randomBytes);
+                }
+                int randomNumber = BitConverter.ToInt32(randomBytes, 0);
+
+
                 using (SqlCommand hastaEkleme = new SqlCommand("INSERT INTO hasta_kayitlar (hasta_Id, hasta_Tc,hasta_Adi, hasta_Soyadi,hasta_kanGrubu,hasta_BabaAdi,hasta_AnneAdi,hasta_DogumYeri,hasta_DogumTarihi,hasta_Cinsiyet,hasta_Adres,hasta_Eposta,hasta_faxNo,hasta_evTelefonu,hasta_cepTelefonu,hasta_sigortaTuru,hasta_karneNo,hasta_sicilNo,hasta_YakinAdi,hasta_yakinlikDerecesi,hasta_tedaviDurumu,hasta_tedaviTuru,hasta_OdemeDurumu) VALUES (@hasta_Id, @hasta_Tc,@hasta_Adi, @hasta_Soyadi,@hasta_kanGrubu,@hasta_BabaAdi,@hasta_AnneAdi,@hasta_DogumYeri,@hasta_DogumTarihi,@hasta_Cinsiyet,@hasta_Adres,@hasta_Eposta,@hasta_faxNo,@hasta_evTelefonu,@hasta_cepTelefonu,@hasta_sigortaTuru,@hasta_karneNo,@hasta_sicilNo,@hasta_YakinAdi,@hasta_yakinlikDerecesi,@hasta_tedaviDurumu,@hasta_tedaviTuru,@hasta_OdemeDurumu)", sqlBaglantisi))
                 {
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Id", Request.Form["hasta_Id"]);
+                    hastaEkleme.Parameters.AddWithValue("@hasta_Id", randomNumber);
                     hastaEkleme.Parameters.AddWithValue("@hasta_Tc", Request.Form["hasta_Tc"]);
                     hastaEkleme.Parameters.AddWithValue("@hasta_Adi", Request.Form["hasta_Adi"]);
                     hastaEkleme.Parameters.AddWithValue("@hasta_Soyadi", Request.Form["hasta_Soyadi"]);
@@ -62,6 +75,7 @@ namespace HastaneOtomasyonProjesi
             //{
             //    Response.Write("<script>Swal.fire('Warning!', " + damnError.Message + ",'warning')</script>");
             //}
+
         }
     }
 }
