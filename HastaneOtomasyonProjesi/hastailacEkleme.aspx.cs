@@ -12,12 +12,21 @@ namespace HastaneOtomasyonProjesi
 {
     public partial class hastailacEkleme : System.Web.UI.Page
     {
+        public string hastaTcNum;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie == null)
+            {
+                Response.Redirect("/panel.aspx");
+            }
+            else
+            {
+                hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
+            }
         }
+
+        /* Hastaya ilaç ekleme butonu */
         protected void hastaIlac_Ekle_Click(object sender, EventArgs e)
         {
             using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -25,13 +34,7 @@ namespace HastaneOtomasyonProjesi
                 sqlBaglantisi.Open();
                 using (SqlCommand hastaIlacEkleme = new SqlCommand("insert into hastaIlac_tablosu (hastailac_Id,hastailac_hastaId,hastailac_ilacId,hastailac_verilmeTarih) values (@hastailac_Id,@hastailac_hastaId,@hastailac_ilacId,@hastailac_verilmeTarih)", sqlBaglantisi))
                 {
-                    //hastaIlacEkleme.Parameters.AddWithValue("hastailac_Id",);
-                    //hastaIlacEkleme.Parameters.AddWithValue("hastailac_hastaId",);
-                    //hastaIlacEkleme.Parameters.AddWithValue("hastailac_ilacId",);
-                    hastaIlacEkleme.Parameters.AddWithValue("hastailac_verilmeTarih", DateTime.Parse(DateTime.Now.ToLongDateString()));
-                    hastaIlacEkleme.ExecuteNonQuery();
-                    hastaIlacEkleme.Dispose();
-                    sqlBaglantisi.Close();
+                    
                 }
             }
         }

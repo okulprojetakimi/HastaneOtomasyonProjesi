@@ -2,18 +2,22 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
+        <style>
+            .labels {
+                color: white;
+                font-weight: bolder;
+            }
+        </style>
         <table cellpadding="50">
             <tr>
                 <td>
-                    <h1 style="color: white;"><i class="fa-solid fa-user-plus"></i> Hasta Ilac Ekleme</h1>
+                    <h1 style="color: white;"><i class="fa-solid fa-user-plus"></i>Hasta Ilac Ekleme</h1>
                     <table>
-                        <style>
-                            .labels {
-                                color: white;
-                                font-weight: bolder;
-                            }
-                        </style>
-                  
+                        <tr>
+                            <td>
+
+                                &nbsp;</td>
+                        </tr>
                     </table>
                 </td>
             </tr>
