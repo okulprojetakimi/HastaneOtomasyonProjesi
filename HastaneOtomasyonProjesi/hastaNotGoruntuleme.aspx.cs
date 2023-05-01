@@ -75,14 +75,14 @@ namespace HastaneOtomasyonProjesi
                 sqlBaglanti.Open();
                 using (SqlCommand notDuzenleme = new SqlCommand("UPDATE hasta_Notlari SET hasta_Not = @hastaNotInput WHERE hasta_NotId = @hNotId", sqlBaglanti))
                 {
-                    notDuzenleme.Parameters.AddWithValue("@hastaNotInput", hastaNotu.Text);
+                    notDuzenleme.Parameters.AddWithValue("@hastaNotInput", sonHali);
                     notDuzenleme.Parameters.AddWithValue("@hNotId", notIdNumarasi);
                     notDuzenleme.ExecuteNonQuery();
                     notDuzenleme.Dispose();
                     sqlBaglanti.Close();
                 }
             }
-            Response.Write(hastaNotu.Text);
+            Response.Write(sonHali);
             Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla güncellendi.',  'success')</script>");
         }
     }
