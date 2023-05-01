@@ -36,7 +36,7 @@ namespace HastaneOtomasyonProjesi
 
         protected void hastaIlacEkleme_Click(object sender, EventArgs e)
         {
-            Response.Redirect("hastayaIlacEkleme.aspx?hasta="+mainTckn);
+            Response.Redirect("hastailacEkleme.aspx?hasta="+mainTckn);
         }
 
         protected void hastaNotEkleme_Click(object sender, EventArgs e)
