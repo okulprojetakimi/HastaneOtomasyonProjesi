@@ -77,7 +77,7 @@ namespace HastaneOtomasyonProjesi
             {
                 throw;
             }
-            Response.Write("<script>alert('OKEY!')</script>");
+            Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla eklendi.',  'success')</script>");
         }
     }
 }
