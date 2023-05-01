@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi
 {
 
 
-    public partial class yeniHastaKaydi
+    public partial class yeniHastaKaydı
     {
 
         /// <summary>
