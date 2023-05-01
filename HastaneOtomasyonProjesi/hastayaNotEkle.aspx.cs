@@ -58,8 +58,6 @@ namespace HastaneOtomasyonProjesi
             try
             {
                 string notId = new Random().Next(11111, 99999).ToString();
-                Response.Write("Not ID: " + notId + "\nHasta Notu: " + hastaNotu.Text + "\n Not Tarihi: " + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString() + "\n Hasta ID: " +  hastaId);
-
                 using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
                     vtBaglan.Open();
