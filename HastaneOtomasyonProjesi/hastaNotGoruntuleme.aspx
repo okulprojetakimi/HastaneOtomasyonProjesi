@@ -37,7 +37,7 @@
                             <label style="color: white;" for="exampleFormControlTextarea1">Not</label>
                             <asp:TextBox style="width: 241px;" TextMode="MultiLine" ID="hastaNotu" CssClass="form-control" runat="server" />
                         </div>
-                        <asp:Button CssClass="btn btn-success" Text="Not Düzenle" runat="server" ID="hastaNot_Duzenle" OnClick="hastaNot_Duzenle_Click" />
+                        <asp:Button CssClass="btn btn-info" Text="Not Düzenle" runat="server" ID="hastaNot_Duzenle" OnClick="hastaNot_Duzenle_Click" />
                     </div>
                 </td>
             </tr>

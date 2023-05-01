@@ -21,8 +21,8 @@
                     <th>Hasta Yakın Bilgileri</th>
                 </tr>
 
-                <tr>
-                    <%
+              <tr>
+                  <%--  <%
                         Random idGenerator = new Random();
                         int randId = idGenerator.Next(111111,999999);
                     %>
@@ -33,7 +33,7 @@
                            <!--  <input type="number" value="<% = randId %>" class="form-control" id="hasta_Id" name="hasta_Id" aria-describedby="hasta_Id" placeholder="Hasta ID"> -->
                             <span><label>ID Numarası sistem tarafından otomatik oluşturulmaktadır.</label></span>
                         </div>
-                    </td>
+                    </td>--%>
                     <td>
                         <div class="form-group">
                             <label for="hasta_Tc">Hasta TC</label>
@@ -63,7 +63,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Eposta">Hasta Eposta </label>
-                            <input type="email" class="form-control" id="hasta_Eposta" aria-describedby="hasta_Eposta" placeholder="Hasta Eposta">
+                            <input type="email" class="form-control" id="hasta_Eposta" name="hasta_Eposta" aria-describedby="hasta_Eposta" placeholder="Hasta Eposta">
                         </div>
                     </td>
                     <td>
@@ -118,7 +118,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_tedaviTuru">Hasta Tedavi Türü</label>
-                            <input type="text" class="form-control" id="hasta_tedaviTuru" aria-describedby="hasta_tedaviTuru" placeholder="Hasta Tedavi Türü">
+                            <input type="text" class="form-control" id="hasta_tedaviTuru" name="hasta_tedaviTuru" aria-describedby="hasta_tedaviTuru" placeholder="Hasta Tedavi Türü">
                         </div>
                     </td>
                 </tr>
@@ -147,7 +147,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_AnneAdi">Hasta Anne Adi</label>
-                            <input type="text" class="form-control" id="hasta_AnneAdi" aria-describedby="hasta_AnneAdi" placeholder="Hastanın Anne Adi">
+                            <input type="text" class="form-control" id="hasta_AnneAdi" name="hasta_AnneAdi" aria-describedby="hasta_AnneAdi" placeholder="Hastanın Anne Adi">
                         </div>
                     </td>
 
@@ -179,7 +179,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_karneNo">Hasta Karne No</label>
-                            <input type="text" class="form-control" id="hasta_karneNo" aria-describedby="hasta_karneNo" placeholder="Hasta Karne No">
+                            <input type="number" class="form-control" id="hasta_karneNo" name="hasta_karneNo" aria-describedby="hasta_karneNo" placeholder="Hasta Karne No">
                         </div>
                     </td>
                 </tr>
@@ -196,14 +196,14 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_sicilNo">Hasta Sicil No</label>
-                            <input type="text" class="form-control" id="hasta_sicilNo" aria-describedby="hasta_sicilNo" placeholder="Hasta Sicil No">
+                            <input type="number" class="form-control" id="hasta_sicilNo" name="hasta_sicilNo" aria-describedby="hasta_sicilNo" placeholder="Hasta Sicil No">
                         </div>
                     </td>
                 </tr>
 
             </table>
             <br />
-             <asp:button CssClass="btn btn-success" text="+ Hasta Ekle" id="Button31_Click31" runat="server" OnClick="hastaEkleButon_click" />
+            
              <!-- <input type="reset" onclick="Button31_Click31" id="btnT" name="btnT" value="Temizle"> -->
             <style>
                 table {
@@ -236,5 +236,5 @@
 
         </form>
     </main>
-
+    <asp:button CssClass="btn btn-success" text="+ Hasta Ekle" id="Button31_Click31" runat="server" OnClick="hastaEkleButon_click" />
 </asp:Content>
