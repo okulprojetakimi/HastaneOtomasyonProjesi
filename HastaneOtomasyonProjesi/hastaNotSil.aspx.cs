@@ -31,11 +31,11 @@ namespace HastaneOtomasyonProjesi
                     using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
                         sqlBaglantisi.Open();
-                        using (SqlCommand notSilmeKomutu = new SqlCommand("DELETE FROM hasta_Notlari WHERE hasta_NotId = @notNumarasi"))
+                        using (SqlCommand notSilmeKomutu = new SqlCommand("DELETE FROM hasta_Notlari WHERE hasta_NotId = @notNumarasi", sqlBaglantisi))
                         {
                             notSilmeKomutu.Parameters.AddWithValue("@notNumarasi", notNumarasi);
                             notSilmeKomutu.ExecuteNonQuery();
-                            Response.Redirect(Request.UrlReferrer.ToString());
+                            Response.Redirect("hastaIslemleri.aspx");
                             notSilmeKomutu.Dispose();
                             sqlBaglantisi.Close();
                         }

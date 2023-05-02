@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hastaNotSil.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaNotSil" %>
+﻿<%@ Page Language="C#" Title="Not siliniyor...." MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaNotSil.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaNotSil" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="maincontent" runat="server">
     <main>
