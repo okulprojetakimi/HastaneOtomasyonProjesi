@@ -36,6 +36,8 @@ namespace HastaneOtomasyonProjesi
                             notSilmeKomutu.Parameters.AddWithValue("@notNumarasi", notNumarasi);
                             notSilmeKomutu.ExecuteNonQuery();
                             Response.Redirect(Request.UrlReferrer.ToString());
+                            notSilmeKomutu.Dispose();
+                            sqlBaglantisi.Close();
                         }
                     }
                 }
