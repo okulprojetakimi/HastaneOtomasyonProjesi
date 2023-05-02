@@ -123,11 +123,11 @@
     <Content Include="giris.aspx" />
     <Content Include="hastaGoruntule.aspx" />
     <Content Include="hastailacEkleme.aspx" />
+    <Content Include="hastaIlacGoruntuleme.aspx" />
     <Content Include="hastaIslemleri.aspx" />
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
-    <Content Include="ilacarama.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -225,6 +225,13 @@
     <Compile Include="hastailacEkleme.aspx.designer.cs">
       <DependentUpon>hastailacEkleme.aspx</DependentUpon>
     </Compile>
+    <Compile Include="hastaIlacGoruntuleme.aspx.cs">
+      <DependentUpon>hastaIlacGoruntuleme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hastaIlacGoruntuleme.aspx.designer.cs">
+      <DependentUpon>hastaIlacGoruntuleme.aspx</DependentUpon>
+    </Compile>
     <Compile Include="hastaIslemleri.aspx.cs">
       <DependentUpon>hastaIslemleri.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,13 +259,6 @@
     </Compile>
     <Compile Include="hastayaNotEkle.aspx.designer.cs">
       <DependentUpon>hastayaNotEkle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ilacarama.aspx.cs">
-      <DependentUpon>ilacarama.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ilacarama.aspx.designer.cs">
-      <DependentUpon>ilacarama.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>

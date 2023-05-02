@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi
 {
 
 
-    public partial class ilacarama
+    public partial class hastaIlacGoruntuleme
     {
 
         /// <summary>

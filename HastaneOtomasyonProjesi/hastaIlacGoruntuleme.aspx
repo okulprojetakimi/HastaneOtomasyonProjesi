@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ilacarama.aspx.cs" Inherits="HastaneOtomasyonProjesi.ilacarama" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hastaIlacGoruntuleme.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaIlacGoruntuleme" %>
 
 <!DOCTYPE html>
 
