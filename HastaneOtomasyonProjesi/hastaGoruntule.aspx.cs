@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,22 @@ namespace HastaneOtomasyonProjesi
     public partial class hastaGoruntule : System.Web.UI.Page
     {
         public string mainTckn = "";
+
+        private void notListesiGetir()
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                string query = "SELECT hasta_NotId, hasta_Not, hasta_notTarihi FROM hasta_Notlari";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                hastaNotListesi.DataSource = dataTable;
+                hastaNotListesi.DataBind();
+                command.Dispose();
+                connection.Close();
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
          {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
@@ -27,6 +44,7 @@ namespace HastaneOtomasyonProjesi
                 }
                 else
                 {
+                    notListesiGetir();
                     mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
                     using (SqlConnection sqlCom = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
@@ -63,6 +81,11 @@ namespace HastaneOtomasyonProjesi
         protected void hastaNotEkleme_Click(object sender, EventArgs e)
         {
             Response.Redirect("hastayaNotEkle.aspx?hasta="+mainTckn);
+        }
+
+        protected void notGoruntuleButonu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("hastaNotGoruntuleme.aspx?notIdNum="+ not_Id.Text);
         }
     }
 }
