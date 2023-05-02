@@ -31,6 +31,7 @@ namespace HastaneOtomasyonProjesi
                 }
                 else
                 {
+                    
                     hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
                     using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
@@ -44,6 +45,8 @@ namespace HastaneOtomasyonProjesi
                             ilacListesiTablo.DataBind();
                             tabloGuncelleKomutu.Dispose();
                             sqlBagla.Close();
+                            ilacListesiTablo.UseAccessibleHeader = true;
+                            ilacListesiTablo.HeaderRow.TableSection = TableRowSection.TableHeader;
                         }
                     }
                 }
@@ -73,14 +76,7 @@ namespace HastaneOtomasyonProjesi
         /* Hastaya ilaç ekleme butonu */
         protected void hastaIlac_Ekle_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-            {
-                sqlBaglantisi.Open();
-                using (SqlCommand hastaIlacEkleme = new SqlCommand("insert into hastaIlac_tablosu (hastailac_Id,hastailac_hastaId,hastailac_ilacId,hastailac_verilmeTarih) values (@hastailac_Id,@hastailac_hastaId,@hastailac_ilacId,@hastailac_verilmeTarih)", sqlBaglantisi))
-                {
-
-                }
-            }
+            
         }
     }
 }

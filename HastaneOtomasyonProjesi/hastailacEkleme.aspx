@@ -44,9 +44,13 @@
         <div class="ilac_aramaFormu">
             <table cellpadding="15">
                 <tr>
-                    <td><label style="color: white; font-weight: bolder;">Aranacak ilacın ismi: </label></td>
-                    <td><asp:TextBox CssClass="form-control" ID="ilacIsmi" runat="server" /></td>
-                    <td><asp:Button ID="ilacIsmiAraButonu" CssClass="btn btn-info" Text="İlaç ara" runat="server" OnClick="ilacIsmiAraButonu_Click" /></td>
+                    <td>
+                        <label style="color: white; font-weight: bolder;">Aranacak ilacın ismi: </label>
+                    </td>
+                    <td>
+                        <asp:TextBox CssClass="form-control" ID="ilacIsmi" runat="server" /></td>
+                    <td>
+                        <asp:Button ID="ilacIsmiAraButonu" CssClass="btn btn-info" Text="İlaç ara" runat="server" OnClick="ilacIsmiAraButonu_Click" /></td>
                 </tr>
             </table>
         </div>
@@ -61,7 +65,18 @@
                 </Columns>
             </asp:GridView>
         </div>
-        
+        <script type="text/javascript">
+            $(function () {
+                $("[id*=ilacListesiTablo]").DataTable(
+                    {
+                        bLengthChange: true,
+                        lengthMenu: [[5, 10, -1], [5, 10, "All"]],
+                        bFilter: true,
+                        bSort: true,
+                        bPaginate: true
+                    });
+            });
+        </script>
     </main>
     <asp:Button CssClass="btn btn-success" Text="+ Ilac ekle" runat="server" ID="hastaIlac_Ekle" OnClick="hastaIlac_Ekle_Click" />
 </asp:Content>
