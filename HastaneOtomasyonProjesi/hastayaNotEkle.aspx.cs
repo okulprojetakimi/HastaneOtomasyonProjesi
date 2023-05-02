@@ -68,6 +68,7 @@ namespace HastaneOtomasyonProjesi
                         notEklemeKomutu.Parameters.AddWithValue("@hastaNotTarihi", DateTime.Parse(DateTime.Now.ToLongDateString()));
                         notEklemeKomutu.Parameters.AddWithValue("@hastaId", hastaId);
                         notEklemeKomutu.ExecuteNonQuery();
+                        Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla eklendi.',  'success')</script>");
                         notEklemeKomutu.Dispose();
                         vtBaglan.Close();
                     }
@@ -77,7 +78,7 @@ namespace HastaneOtomasyonProjesi
             {
                 throw;
             }
-            Response.Write("<script>Swal.fire('İşlem başarılı!', 'Hasta notu başarıyla eklendi.',  'success')</script>");
+           
         }
     }
 }
