@@ -65,18 +65,6 @@
                 </Columns>
             </asp:GridView>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $("[id*=ilacListesiTablo]").DataTable(
-                    {
-                        bLengthChange: true,
-                        lengthMenu: [[5, 10, -1], [5, 10, "All"]],
-                        bFilter: true,
-                        bSort: true,
-                        bPaginate: true
-                    });
-            });
-        </script>
     </main>
     <asp:Button CssClass="btn btn-success" Text="+ Ilac ekle" runat="server" ID="hastaIlac_Ekle" OnClick="hastaIlac_Ekle_Click" />
 </asp:Content>
