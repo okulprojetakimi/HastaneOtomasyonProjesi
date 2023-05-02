@@ -33,22 +33,6 @@ namespace HastaneOtomasyonProjesi
                 {
                     
                     hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
-                    using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-                    {
-                        sqlBagla.Open();
-                        using (SqlCommand tabloGuncelleKomutu = new SqlCommand("SELECT ilacId, ilacIsmi, ilacreceteTuru, ilacFiyat FROM ilaclar_tablosu ORDER BY ilacId DESC", sqlBagla))
-                        {
-                            SqlDataAdapter veriKaynagi = new SqlDataAdapter(tabloGuncelleKomutu);
-                            DataTable veriTablosu = new DataTable();
-                            veriKaynagi.Fill(veriTablosu);
-                            ilacListesiTablo.DataSource = veriTablosu;
-                            ilacListesiTablo.DataBind();
-                            tabloGuncelleKomutu.Dispose();
-                            sqlBagla.Close();
-                            ilacListesiTablo.UseAccessibleHeader = true;
-                            ilacListesiTablo.HeaderRow.TableSection = TableRowSection.TableHeader;
-                        }
-                    }
                 }
             }
         }
@@ -56,21 +40,7 @@ namespace HastaneOtomasyonProjesi
         /* İlaç arama / listeleme butonu */
         protected void ilacIsmiAraButonu_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-            {
-                sqlBagla.Open();
-                using (SqlCommand tabloGuncelleKomutu = new SqlCommand("SELECT ilacId, ilacIsmi, ilacreceteTuru, ilacFiyat FROM ilaclar_tablosu WHERE ilacIsmi = LIKE '%@ilacIsmiArama%'", sqlBagla))
-                {
-                    tabloGuncelleKomutu.Parameters.AddWithValue("@ilacIsmiArama", ilacIsmi);
-                    SqlDataAdapter veriKaynagi = new SqlDataAdapter(tabloGuncelleKomutu);
-                    DataTable veriTablosu = new DataTable();
-                    veriKaynagi.Fill(veriTablosu);
-                    ilacListesiTablo.DataSource = veriTablosu;
-                    ilacListesiTablo.DataBind();
-                    tabloGuncelleKomutu.Dispose();
-                    sqlBagla.Close();
-                }
-            }
+            
         }
 
         /* Hastaya ilaç ekleme butonu */

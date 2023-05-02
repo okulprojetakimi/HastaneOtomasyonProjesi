@@ -127,6 +127,7 @@
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
+    <Content Include="ilacarama.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -251,6 +252,13 @@
     </Compile>
     <Compile Include="hastayaNotEkle.aspx.designer.cs">
       <DependentUpon>hastayaNotEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ilacarama.aspx.cs">
+      <DependentUpon>ilacarama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ilacarama.aspx.designer.cs">
+      <DependentUpon>ilacarama.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>

@@ -15,33 +15,6 @@ namespace HastaneOtomasyonProjesi
     {
 
         /// <summary>
-        /// ilacIsmi denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ilacIsmi;
-
-        /// <summary>
-        /// ilacIsmiAraButonu denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ilacIsmiAraButonu;
-
-        /// <summary>
-        /// ilacListesiTablo denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ilacListesiTablo;
-
-        /// <summary>
         /// hastaIlac_Ekle denetimi.
         /// </summary>
         /// <remarks>
