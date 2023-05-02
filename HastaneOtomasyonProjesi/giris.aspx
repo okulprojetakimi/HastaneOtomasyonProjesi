@@ -27,7 +27,7 @@
                 <asp:TextBox ID="kullaniciSifre" runat="server" TextMode="Password"></asp:TextBox>
             </p>
             <p>
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Giriş yap" />
+                <asp:Button CssClass="btn btn-success" ID="Button1" runat="server" OnClick="Button1_Click1" Text="Giriş yap" />
             </p>
             <p>
                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
