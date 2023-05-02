@@ -90,5 +90,10 @@ namespace HastaneOtomasyonProjesi
                 Response.Write(damnError.Message);
             }
         }
+
+        protected void hasta_NotSil_butonu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("hastaNotSil.aspx?notIdNum="+notIdNumarasi);
+        }
     }
 }

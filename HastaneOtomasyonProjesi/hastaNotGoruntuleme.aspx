@@ -38,7 +38,12 @@
                             <br />
                             <asp:TextBox Text="Yeni notu giriniz....." style="width: 241px;" TextMode="MultiLine" ID="hastaNotu" CssClass="form-control" runat="server" />
                         </div>
-                        <asp:Button CssClass="btn btn-info" Text="Not Düzenle" runat="server" ID="hastaNot_Duzenle" OnClick="hastaNot_Duzenle_Click" />
+                        <table cellpadding="15">
+                            <tr>
+                                <td><asp:Button CssClass="btn btn-info" Text="Not Düzenle" runat="server" ID="hastaNot_Duzenle" OnClick="hastaNot_Duzenle_Click" /></td>
+                                <td><asp:Button CssClass="btn btn-danger" Text="Not Sil" runat="server" ID="hasta_NotSil_butonu" OnClick="hasta_NotSil_butonu_Click" /></td>
+                            </tr>
+                        </table>
                     </div>
                 </td>
             </tr>

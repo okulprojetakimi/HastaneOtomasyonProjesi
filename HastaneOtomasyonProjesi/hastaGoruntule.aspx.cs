@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,6 +28,25 @@ namespace HastaneOtomasyonProjesi
                 else
                 {
                     mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
+                    using (SqlConnection sqlCom = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
+                        sqlCom.Open();
+                        using (SqlCommand hastaKontrol = new SqlCommand("SELECT * FROM hasta_kayitlar WHERE hasta_Tc = @hastaTckn", sqlCom))
+                        {
+                            hastaKontrol.Parameters.AddWithValue("@hastaTckn", mainTckn);
+                            SqlDataReader veriOkuyucu = hastaKontrol.ExecuteReader();
+                            veriOkuyucu.Read();
+                            
+
+                            if (!veriOkuyucu.HasRows)
+                            {
+                                veriOkuyucu.Close();
+                                sqlCom.Close();
+                                Response.Redirect("hastaIslemleri.aspx");  
+                            }
+
+                        }
+                    }
                 }
             }
             catch (Exception damnError)

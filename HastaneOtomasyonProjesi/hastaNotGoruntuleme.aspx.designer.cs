@@ -76,5 +76,14 @@ namespace HastaneOtomasyonProjesi
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button hastaNot_Duzenle;
+
+        /// <summary>
+        /// hasta_NotSil_butonu denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button hasta_NotSil_butonu;
     }
 }
