@@ -9,13 +9,26 @@
                     <asp:Button runat="server" ID="hastaNotEkleme" CssClass="btn btn-success" Text="+ Hastaya Not Ekle" OnClick="hastaNotEkleme_Click" /></td>
                 <td>
                     <asp:Button runat="server" ID="hastaIlacEkleme" CssClass="btn btn-info" Text="+ Hastaya İlaç Ekle" OnClick="hastaIlacEkleme_Click" /></td>
-                <td> <button type="button" class="btn btn-success" id="hastaNotFormAc">Hasta Not İşlemleri</button></td>
+                <td> <button type="button" class="btn btn-info" id="hastaNotFormAc"><i class="fa-sharp fa-solid fa-notes-medical"></i> Hasta Not İşlemleri</button></td>
+                <td> <button type="button" class="btn btn-info" id="ilacFormDialogButton"><i class="fa-solid fa-pills"></i> Hasta İlaç İşlemleri</button></td>
             </tr>
         </table>
 
         <!-- Hasta notları   -->
         <style>
             #hasta_NotlariKutusu {
+                display: none;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                padding: 20px;
+                border: 1px solid #ccc;
+                z-index: 9999;
+                width: 1024px;
+            }
+            #ilacFormDialog {
                 display: none;
                 position: absolute;
                 top: 30%;
@@ -51,6 +64,30 @@
             
         </div>
 
+        <div id="ilacFormDialog">
+            <table>
+                <tr>
+                    <td><button type="button" id="ilacFormDialogButtonKapatma" class="btn btn-danger">X</button></td>
+                    <td><h2>Hasta İlaç İşlemleri</h2></td>
+                </tr>
+            </table>
+            <br />
+            <!-- Hasta notları listesi -->
+            <asp:GridView ID="hasta_IlacListesi" runat="server" AutoGenerateColumns="false" CssClass="table">
+                <Columns>
+                    <asp:BoundField DataField="hasta_NotId" HeaderText="Hasta Not Numarası" />
+                    <asp:BoundField DataField="hasta_Not" HeaderText="Hasta Notu" />
+                    <asp:BoundField DataField="hasta_notTarihi" HeaderText="Hasta Not Tarihi" />
+                </Columns>
+            </asp:GridView>
+            <br />
+            Hasta İlaç Id: <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" />
+            <br />
+            <asp:Button runat="server" ID="Button1" CssClass="btn btn-info" Text="Hasta Not Görüntüle" OnClick="notGoruntuleButonu_Click" /></td>
+            
+        </div>
+
+
         <script>
             <!-- Hasta Not İşlem Formu eventleri -->
             var formKutusu = document.getElementById("hasta_NotlariKutusu");
@@ -68,6 +105,24 @@
                     formKutusu.style.display = "block";
                 } else {
                     formKutusu.style.display = "none";
+                }
+            }
+
+            var ilacFormDialog = document.getElementById("ilacFormDialog");
+            var ilacFormDialogButton = document.getElementById("ilacFormDialogButton");
+
+            ilacFormDialogButton.onclick = function () {
+                if (ilacFormDialog.style.display === "none") {
+                    ilacFormDialog.style.display = "block";
+                } else {
+                    ilacFormDialog.style.display = "none";
+                }
+            }
+            ilacFormDialogButtonKapatma.onclick = function () {
+                if (ilacFormDialog.style.display === "none") {
+                    ilacFormDialog.style.display = "block";
+                } else {
+                    ilacFormDialog.style.display = "none";
                 }
             }
         </script>
