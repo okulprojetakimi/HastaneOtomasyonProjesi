@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-        <h1 style="color: white;"><i class="fa-solid fa-user"></i>Hasta Görüntüleme</h1>
+        <h1 style="color: white;"><i class="fa-solid fa-user"></i>Hasta Bilgi Görüntüleme</h1>
         <table cellpadding="15">
             <tr>
                 <td>
@@ -126,8 +126,5 @@
                 }
             }
         </script>
-
-
-
     </main>
 </asp:Content>
