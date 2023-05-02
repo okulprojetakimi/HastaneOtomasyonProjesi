@@ -252,6 +252,7 @@
     <Compile Include="hastayaNotEkle.aspx.designer.cs">
       <DependentUpon>hastayaNotEkle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="oturumKontrolu.cs" />
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

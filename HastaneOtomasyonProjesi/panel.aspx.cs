@@ -11,8 +11,7 @@ namespace HastaneOtomasyonProjesi
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolEt = Request.Cookies["erisimCookie"];
-            if (kontrolEt == null)
+            if (new oturumKontrolu().oturumKontroluYap(Response.Cookies["erisimCookie"]) != "yes")
             {
                 Response.Redirect("/giris.aspx");
             }
