@@ -308,6 +308,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ameliyathaneModulu\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

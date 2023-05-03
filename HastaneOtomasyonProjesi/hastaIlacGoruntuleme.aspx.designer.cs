@@ -13,5 +13,14 @@ namespace HastaneOtomasyonProjesi
 
     public partial class hastaIlacGoruntuleme
     {
+
+        /// <summary>
+        /// hasta_IlacDuzenle denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button hasta_IlacDuzenle;
     }
 }
