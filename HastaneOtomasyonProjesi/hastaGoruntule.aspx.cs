@@ -14,17 +14,35 @@ namespace HastaneOtomasyonProjesi
     {
         public string mainTckn = "";
 
-        private void notListesiGetir()
+        private void notListesiGetir(int hastaIdDegeri)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
-                string query = "SELECT hasta_NotId, hasta_Not, hasta_notTarihi FROM hasta_Notlari";
+                string query = "SELECT hasta_NotId, hasta_Not, hasta_notTarihi FROM hasta_Notlari WHERE hasta_Id = @hastaNumarasi";
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@hastaNumarasi", hastaIdDegeri);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 hastaNotListesi.DataSource = dataTable;
                 hastaNotListesi.DataBind();
+                command.Dispose();
+                connection.Close();
+            }
+        }
+
+        private void tetkikCek(int hastaIdDegeri)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                string query = "SELECT tetkik_Id, tetkik_istekTarih, tetkik_isteyenDoktorID, tetkik_sonucTarih FROM laboratuvar_modul WHERE hasta_IdNumarasi = @hastaNumarasi";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@hastaNumarasi", hastaIdDegeri);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                hasta_laboratuvarSonuclari.DataSource = dataTable;
+                hasta_laboratuvarSonuclari.DataBind();
                 command.Dispose();
                 connection.Close();
             }
@@ -44,24 +62,33 @@ namespace HastaneOtomasyonProjesi
                 }
                 else
                 {
-                    notListesiGetir();
+                    
                     mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
                     using (SqlConnection sqlCom = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
                         sqlCom.Open();
-                        using (SqlCommand hastaKontrol = new SqlCommand("SELECT * FROM hasta_kayitlar WHERE hasta_Tc = @hastaTckn", sqlCom))
+                        using (SqlCommand hastaKontrol = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar WHERE hasta_Tc = @hastaTckn", sqlCom))
                         {
                             hastaKontrol.Parameters.AddWithValue("@hastaTckn", mainTckn);
                             SqlDataReader veriOkuyucu = hastaKontrol.ExecuteReader();
-                            veriOkuyucu.Read();
-                            
-
                             if (!veriOkuyucu.HasRows)
                             {
-                                veriOkuyucu.Close();
                                 sqlCom.Close();
                                 Response.Redirect("hastaIslemleri.aspx");  
                             }
+                            else
+                            {
+                                while (veriOkuyucu.Read())
+                                {
+                                    int hastaIdNum = veriOkuyucu.GetInt32(0);
+                                    notListesiGetir(hastaIdNum);
+                                    tetkikCek(hastaIdNum);
+                                   
+                                }
+                                veriOkuyucu.Close();
+                                sqlCom.Close();
+                            }
+                            
 
                         }
                     }

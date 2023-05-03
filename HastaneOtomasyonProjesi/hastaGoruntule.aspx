@@ -10,8 +10,10 @@
                 <td>
                     <asp:Button runat="server" ID="hastaIlacEkleme" CssClass="btn btn-info" Text="+ Hastaya İlaç Ekle" OnClick="hastaIlacEkleme_Click" /></td>
                 <td> <button type="button" class="btn btn-info" id="hastaNotFormAc"><i class="fa-sharp fa-solid fa-notes-medical"></i> Hasta Not İşlemleri</button></td>
-                <td> <button type="button" class="btn btn-info" id="ilacFormDialogButton"><i class="fa-solid fa-pills"></i> Hasta İlaç İşlemleri</button></td>
-            </tr>
+                <td> <button type="button" class="btn btn-info" id="ilacFormDialogButton"><i class="fa-solid fa-pills"></i> Hasta İlaç Verileri</button></td>
+                <td> <button type="button" class="btn btn-info" id="laboratuvarTetkikListesiAc"><i class="fa-solid fa-vials"></i> Hasta Laboratuvar Verileri</button></td>
+
+           </tr>
         </table>
 
         <!-- Hasta notları   -->
@@ -30,6 +32,18 @@
             }
             #ilacFormDialog {
                 display: none;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                padding: 20px;
+                border: 1px solid #ccc;
+                z-index: 9999;
+                width: 1024px;
+            }
+            #tetkikDialog{
+                 display: none;
                 position: absolute;
                 top: 30%;
                 left: 50%;
@@ -87,6 +101,29 @@
             
         </div>
 
+        <div id="tetkikDialog">
+            <table>
+                <tr>
+                    <td><button type="button" id="tetkikDialogFormKapatma" class="btn btn-danger">X</button></td>
+                    <td><h2>    Hasta Laboratuvar Sonuçları</h2></td>
+                </tr>
+            </table>
+            <br />
+            <!-- Hasta laboratuvar verileri -->
+            <asp:GridView ID="hasta_laboratuvarSonuclari" runat="server" AutoGenerateColumns="false" CssClass="table">
+                <Columns>
+                    <asp:BoundField DataField="tetkik_Id" HeaderText="Hasta Not Numarası" />
+                    <asp:BoundField DataField="tetkik_istekTarih" HeaderText="Hasta Notu" />
+                    <asp:BoundField DataField="tetkik_isteyenDoktorId" HeaderText="Hasta Not Tarihi" />
+                    <asp:BoundField DataField="tetkik_sonucTarih" HeaderText="Hasta Not Tarihi" />
+                </Columns>
+            </asp:GridView>
+            <br />
+            Hasta Tetkik Numarası: <asp:TextBox ID="hasta_TetkikDetayID" CssClass="form-control" runat="server" />
+            <br />
+            <asp:Button runat="server" ID="tetkikDetayButonu" CssClass="btn btn-info" Text="Hasta Tetkik Detay Aç" /></td>
+            
+        </div>
 
         <script>
             <!-- Hasta Not İşlem Formu eventleri -->
@@ -123,6 +160,24 @@
                     ilacFormDialog.style.display = "block";
                 } else {
                     ilacFormDialog.style.display = "none";
+                }
+            }
+
+            var tetkikDetayDialog = document.getElementById("tetkikDialog");
+            var tetkikDetayDialogButonu = document.getElementById("tetkikDialogFormKapatma");
+
+            laboratuvarTetkikListesiAc.onclick = function () {
+                if (tetkikDetayDialog.style.display === "none") {
+                    tetkikDetayDialog.style.display = "block";
+                } else {
+                    tetkikDetayDialog.style.display = "none";
+                }
+            }
+            tetkikDialogFormKapatma.onclick = function () {
+                if (tetkikDetayDialog.style.display === "none") {
+                    tetkikDetayDialog.style.display = "block";
+                } else {
+                    tetkikDetayDialog.style.display = "none";
                 }
             }
         </script>
