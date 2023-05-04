@@ -22,15 +22,16 @@
     </asp:GridView> -->
     <!-- İlaç Listesi -->
     <main>
-        <h1 style="color: white;"><i class="fa-solid fa-pills"></i> Hastaya İlaç Ekleme</h1>
+        <h1 style="color: white;"><i class="fa-solid fa-pills"></i>Hastaya İlaç Ekleme</h1>
         <br />
         <style>
-            .labels{
+            .labels {
                 color: white;
             }
         </style>
         <asp:Label CssClass="labels" Text="İlaç eklenecek hasta: " ID="ilac_Hasta" runat="server" /><br />
         <asp:Label CssClass="labels" Text="İlaç eklenecek hasta tc: " ID="ilac_HastaTc" runat="server" />
+        <input type="number" class="form-control" id="hasta_IlacDevamDurumu" name="hasta_IlacDevamDurumu" aria-describedby="hasta_IlacDevamDurumu" placeholder=" Hasta Ilac Devam Durumu ">
         <br />
         <br />
         <br />
@@ -39,8 +40,12 @@
             <asp:Button CssClass="btn btn-info" ID="ilac_AramaButonu" Text="İlaç Ara" runat="server" OnClick="ilac_AramaButonu_Click" /> -->
             <table>
                 <tr>
-                    <td><label>Aranacak İlaç Ismi: </label></td>
-                    <td><input class="form-control" name="ilac_AramaInput" id="ilac_AramaInput" /><br /></td>
+                    <td>
+                        <label>Aranacak İlaç Ismi: </label>
+                    </td>
+                    <td>
+                        <input class="form-control" name="ilac_AramaInput" id="ilac_AramaInput" /><br />
+                    </td>
                 </tr>
             </table>
         </div>
@@ -73,7 +78,7 @@
                             // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
                             var html = "";
                             $.each(data, function (key, value) {
-                                html += "<tr><td>" + value.ilacId + "</td><td>" + value.ilacIsmi + "</td><td>" + value.ilacreceteTuru+ "</td>" + "<td>" + value.ilacFiyat + "</td>" + "</tr>";
+                                html += "<tr><td>" + value.ilacId + "</td><td>" + value.ilacIsmi + "</td><td>" + value.ilacreceteTuru + "</td>" + "<td>" + value.ilacFiyat + "</td>" + "</tr>";
                             });
                             $("#myGrid tbody").html(html);
                         },
@@ -86,7 +91,7 @@
 
         </script>
 
-        
+
 
         <asp:Button CssClass="btn btn-success" Text="+ Ilac ekle" runat="server" ID="hastaIlac_Ekle" OnClick="hastaIlac_Ekle_Click" />
     </main>
