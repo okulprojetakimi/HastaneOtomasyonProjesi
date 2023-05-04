@@ -123,7 +123,7 @@
     <Content Include="giris.aspx" />
     <Content Include="hastaGoruntule.aspx" />
     <Content Include="hastailacEkleme.aspx" />
-    <Content Include="hastaIlacGoruntuleme.aspx" />
+    <Content Include="hastaIlacGoruntule.aspx" />
     <Content Include="hastaIslemleri.aspx" />
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
@@ -226,12 +226,12 @@
     <Compile Include="hastailacEkleme.aspx.designer.cs">
       <DependentUpon>hastailacEkleme.aspx</DependentUpon>
     </Compile>
-    <Compile Include="hastaIlacGoruntuleme.aspx.cs">
-      <DependentUpon>hastaIlacGoruntuleme.aspx</DependentUpon>
+    <Compile Include="hastaIlacGoruntule.aspx.cs">
+      <DependentUpon>hastaIlacGoruntule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="hastaIlacGoruntuleme.aspx.designer.cs">
-      <DependentUpon>hastaIlacGoruntuleme.aspx</DependentUpon>
+    <Compile Include="hastaIlacGoruntule.aspx.designer.cs">
+      <DependentUpon>hastaIlacGoruntule.aspx</DependentUpon>
     </Compile>
     <Compile Include="hastaIslemleri.aspx.cs">
       <DependentUpon>hastaIslemleri.aspx</DependentUpon>
