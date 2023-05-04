@@ -12,7 +12,7 @@ namespace HastaneOtomasyonProjesi
     public partial class hastaIlacGoruntuleme : System.Web.UI.Page
     {
         public string gelenKayitId = "";
-        public int durum;
+        public string durum = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolEt = Request.Cookies["erisimCookie"];
@@ -31,20 +31,21 @@ namespace HastaneOtomasyonProjesi
                     gelenKayitId = HttpContext.Current.Request.QueryString["vIlacId"];
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        using (SqlCommand vCek = new SqlCommand("SELECT hasta_IlacDevamDurumu FROM hastaIlac_tablosu WHERE hastailac_Id = @hId"))
+                        con.Open();
+                        using (SqlCommand vCek = new SqlCommand("SELECT hasta_IlacDevamDurumu FROM hastaIlac_tablosu WHERE hastailac_Id = @hId", con))
                         {
                             vCek.Parameters.AddWithValue("@hId", gelenKayitId);
                             SqlDataReader oku = vCek.ExecuteReader();
                             while (oku.Read())
                             {
-                                durum = oku.GetInt32(0);
+                                durum = oku.GetString(0);
                             }
                             oku.Close();
                             vCek.Dispose();
                             con.Close();
                         }
                     }
-                    if (durum == 1)
+                    if (durum == "1")
                     {
                         devamDurumu.Checked = true;
                     }
