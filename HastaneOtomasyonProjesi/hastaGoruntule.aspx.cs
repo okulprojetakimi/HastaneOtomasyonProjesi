@@ -135,7 +135,7 @@ namespace HastaneOtomasyonProjesi
 
         protected void hastaIlacForm_yonlendir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("hastaIlacGoruntule.aspx"+ hastaIlac_ID.Text);
+            Response.Redirect("hastaIlacGoruntule.aspx?vIlacId"+ hastaIlac_ID.Text);
         }
     }
 }
