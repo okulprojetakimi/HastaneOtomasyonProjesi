@@ -12,7 +12,7 @@ namespace HastaneOtomasyonProjesi
     public partial class hastaIlacGoruntuleme : System.Web.UI.Page
     {
         public string gelenKayitId = "";
-        public string durum = "";
+        public bool durum;
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolEt = Request.Cookies["erisimCookie"];
@@ -38,21 +38,14 @@ namespace HastaneOtomasyonProjesi
                             SqlDataReader oku = vCek.ExecuteReader();
                             while (oku.Read())
                             {
-                                durum = oku.GetString(0);
+                                durum = oku.GetBoolean(0);
                             }
                             oku.Close();
                             vCek.Dispose();
                             con.Close();
                         }
                     }
-                    if (durum == "1")
-                    {
-                        devamDurumu.Checked = true;
-                    }
-                    else
-                    {
-                        devamDurumu.Checked = false;
-                    }
+
                 }
                 
             }
@@ -63,23 +56,16 @@ namespace HastaneOtomasyonProjesi
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
                 con.Open();
-                using (SqlCommand ilacKaydiDuzenle = new SqlCommand("UPDATE hastaIlac_tablosu SET hasta_IlacDevamDurumu = 1 WHERE hastailac_Id = @IDparametre"))
+                using (SqlCommand ilacKaydiDuzenle = new SqlCommand("UPDATE hastaIlac_tablosu SET hasta_IlacDevamDurumu = @deger WHERE hastailac_Id = @IDparametre", con))
                 {
-                    if (devamDurumu.Checked)
-                    {
-                        ilacKaydiDuzenle.Parameters.AddWithValue("@IDparametre", 1);
-                    }
-                    else
-                    {
-                        ilacKaydiDuzenle.Parameters.AddWithValue("@IDparametre", 0);
-                    }
+                    ilacKaydiDuzenle.Parameters.AddWithValue("@deger", ilacDurum.SelectedValue.ToString());
+                    ilacKaydiDuzenle.Parameters.AddWithValue("@IDparametre", gelenKayitId);
                     ilacKaydiDuzenle.ExecuteNonQuery();
                     ilacKaydiDuzenle.Dispose();
                     con.Close();
                 }
 
             }
-            
         }
     }
 }

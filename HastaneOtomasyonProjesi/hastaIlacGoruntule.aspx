@@ -4,8 +4,12 @@
     <main>
         <!-- Kutu -->
         <div class="hasta_IlacGoruntuleme_Kutusu">
-            <h2>İlaç kaydı görüntüleme</h2>
-            <asp:CheckBox ID="devamDurumu" Text="İlaca devam ediliyormu?" runat="server" />
+            <h2>İlaca devam edilecekmi?</h2>
+            <asp:DropDownList ID="ilacDurum" runat="server">
+                <asp:ListItem Text="İlaca Devam" Value="1"></asp:ListItem>
+                <asp:ListItem Text="İlaç Kesildi" Value="0"></asp:ListItem>
+            </asp:DropDownList>
+
             <br />
             <asp:Button CssClass="btn btn-info" Text="İlaç Kaydını Düzenle" ID="hasta_IlacDuzenle" runat="server" OnClick="hasta_IlacDuzenle_Click" />
         </div>
