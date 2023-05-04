@@ -14,29 +14,38 @@ namespace HastaneOtomasyonProjesi
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["ilacIsmi"] == null)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie == null)
             {
-                Response.Redirect("/panel.aspx");
+                Response.Redirect("/giris.aspx");
             }
             else
             {
-                string ilacIsmi = HttpContext.Current.Request.QueryString["ilacIsmi"];
-                using (SqlConnection veritabaniBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                if (HttpContext.Current.Request.QueryString["ilacIsmi"] == null)
                 {
-                    veritabaniBaglanti.Open();
-                    using (SqlCommand veriCek = new SqlCommand("SELECT * FROM ilaclar_tablosu WHERE ilacIsmi LIKE @parametre", veritabaniBaglanti))
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    string ilacIsmi = HttpContext.Current.Request.QueryString["ilacIsmi"];
+                    using (SqlConnection veritabaniBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        veriCek.Parameters.AddWithValue("@parametre", "%" + ilacIsmi + "%");
-                        SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
-                        DataTable tablo = new DataTable();
-                        tablo.Load(veriOkuyucu);
-                        string json = JsonConvert.SerializeObject(tablo, Formatting.Indented);
-                        veriOkuyucu.Close();
-                        veritabaniBaglanti.Close();
-                        Response.Write(json);
+                        veritabaniBaglanti.Open();
+                        using (SqlCommand veriCek = new SqlCommand("SELECT * FROM ilaclar_tablosu WHERE ilacIsmi LIKE @parametre", veritabaniBaglanti))
+                        {
+                            veriCek.Parameters.AddWithValue("@parametre", "%" + ilacIsmi + "%");
+                            SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
+                            DataTable tablo = new DataTable();
+                            tablo.Load(veriOkuyucu);
+                            string json = JsonConvert.SerializeObject(tablo, Formatting.Indented);
+                            veriOkuyucu.Close();
+                            veritabaniBaglanti.Close();
+                            Response.Write(json);
+                        }
                     }
                 }
             }
+           
             
         }
     }
