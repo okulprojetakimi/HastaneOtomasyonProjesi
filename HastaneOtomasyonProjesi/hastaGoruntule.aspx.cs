@@ -137,5 +137,10 @@ namespace HastaneOtomasyonProjesi
         {
             Response.Redirect("hastaIlacGoruntule.aspx?vIlacId="+ hastaIlac_ID.Text);
         }
+
+        protected void tetkikDetayButonu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("hastaTetkikDetay.aspx?tetkikId=" + hasta_TetkikDetayID.Text);
+        }
     }
 }

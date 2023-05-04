@@ -127,6 +127,7 @@
     <Content Include="hastaIslemleri.aspx" />
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
+    <Content Include="hastaTetkikDetay.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
     <Content Include="ilacArama.aspx" />
     <Content Include="panel.aspx" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="hastaNotSil.aspx.designer.cs">
       <DependentUpon>hastaNotSil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hastaTetkikDetay.aspx.cs">
+      <DependentUpon>hastaTetkikDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hastaTetkikDetay.aspx.designer.cs">
+      <DependentUpon>hastaTetkikDetay.aspx</DependentUpon>
     </Compile>
     <Compile Include="hastayaNotEkle.aspx.cs">
       <DependentUpon>hastayaNotEkle.aspx</DependentUpon>

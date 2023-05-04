@@ -124,7 +124,7 @@
             <br />
             Hasta Tetkik Numarası: <asp:TextBox ID="hasta_TetkikDetayID" CssClass="form-control" runat="server" />
             <br />
-            <asp:Button runat="server" ID="tetkikDetayButonu" CssClass="btn btn-info" Text="Hasta Tetkik Detay Aç" /></td>
+            <asp:Button runat="server" ID="tetkikDetayButonu" CssClass="btn btn-info" Text="Hasta Tetkik Detay Aç" OnClick="tetkikDetayButonu_Click" /></td>
             
         </div>
 
