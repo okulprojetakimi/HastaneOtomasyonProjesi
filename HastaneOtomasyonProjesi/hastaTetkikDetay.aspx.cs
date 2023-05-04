@@ -9,9 +9,26 @@ namespace HastaneOtomasyonProjesi
 {
     public partial class hastaTetkikDetay : System.Web.UI.Page
     {
+        public string tetkikDetayId;
         protected void Page_Load(object sender, EventArgs e)
         {
-            // GET tetkikId
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie == null)
+            {
+                Response.Redirect("/panel.aspx");
+            }
+            else
+            {
+                if (HttpContext.Current.Request.QueryString["tetkikId"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    tetkikDetayId = HttpContext.Current.Request.QueryString["tetkikId"].ToString();
+
+                }
+            }
         }
     }
 }

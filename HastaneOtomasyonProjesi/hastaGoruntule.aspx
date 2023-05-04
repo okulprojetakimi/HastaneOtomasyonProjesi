@@ -115,10 +115,11 @@
             <!-- Hasta laboratuvar verileri -->
             <asp:GridView ID="hasta_laboratuvarSonuclari" runat="server" AutoGenerateColumns="false" CssClass="table">
                 <Columns>
-                    <asp:BoundField DataField="tetkik_Id" HeaderText="Hasta Not Numarası" />
-                    <asp:BoundField DataField="tetkik_istekTarih" HeaderText="Hasta Notu" />
-                    <asp:BoundField DataField="tetkik_isteyenDoktorId" HeaderText="Hasta Not Tarihi" />
-                    <asp:BoundField DataField="tetkik_sonucTarih" HeaderText="Hasta Not Tarihi" />
+                    <asp:BoundField DataField="tetkik_Id" HeaderText="Tetkik Numarası" />
+                    <asp:BoundField DataField="tetkik_istekTarih" HeaderText="Tetkik İstek Tarihi" />
+                    <asp:BoundField DataField="tetkik_isteyenDoktorId" HeaderText="Tetkik İsteyen Doktor" />
+                    <asp:BoundField DataField="tetkik_sonucTarih" HeaderText="Tetkik Sonuç Tarihi" />
+                    <asp:BoundField DataField="tetkik_durum" HeaderText="Tetkik Durumu" />
                 </Columns>
             </asp:GridView>
             <br />

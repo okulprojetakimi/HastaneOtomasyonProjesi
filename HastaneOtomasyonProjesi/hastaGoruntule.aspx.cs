@@ -35,7 +35,7 @@ namespace HastaneOtomasyonProjesi
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
-                string query = "SELECT tetkik_Id, tetkik_istekTarih, tetkik_isteyenDoktorID, tetkik_sonucTarih FROM laboratuvar_modul WHERE hasta_IdNumarasi = @hastaNumarasi";
+                string query = "SELECT tetkik_Id, tetkik_istekTarih, tetkik_isteyenDoktorID, tetkik_sonucTarih, tetkik_durum FROM laboratuvar_modul WHERE hasta_IdNumarasi = @hastaNumarasi";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@hastaNumarasi", hastaIdDegeri);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
