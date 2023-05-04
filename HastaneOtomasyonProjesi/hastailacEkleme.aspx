@@ -31,13 +31,11 @@
         </style>
         <asp:Label CssClass="labels" Text="İlaç eklenecek hasta: " ID="ilac_Hasta" runat="server" /><br />
         <asp:Label CssClass="labels" Text="İlaç eklenecek hasta tc: " ID="ilac_HastaTc" runat="server" />
-        <input type="number" class="form-control" id="hasta_IlacDevamDurumu" name="hasta_IlacDevamDurumu" aria-describedby="hasta_IlacDevamDurumu" placeholder=" Hasta Ilac Devam Durumu ">
-        <br />
+        &nbsp;<br />
         <br />
         <br />
         <div class="ilacArama_Kutusu">
-            <!-- <asp:TextBox CssClass="form-control" ID="aranacak_Ilac" runat="server" />
-            <asp:Button CssClass="btn btn-info" ID="ilac_AramaButonu" Text="İlaç Ara" runat="server" OnClick="ilac_AramaButonu_Click" /> -->
+
             <table>
                 <tr>
                     <td>
@@ -91,8 +89,9 @@
 
         </script>
 
-
-
+        <div>
+            <asp:TextBox CssClass="form-control" ID="ilacIdNum" runat="server" />  
+        </div>
         <asp:Button CssClass="btn btn-success" Text="+ Ilac ekle" runat="server" ID="hastaIlac_Ekle" OnClick="hastaIlac_Ekle_Click" />
     </main>
 </asp:Content>

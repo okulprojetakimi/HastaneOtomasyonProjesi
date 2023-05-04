@@ -42,22 +42,13 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.Label ilac_HastaTc;
 
         /// <summary>
-        /// aranacak_Ilac denetimi.
+        /// ilacIdNum denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox aranacak_Ilac;
-
-        /// <summary>
-        /// ilac_AramaButonu denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ilac_AramaButonu;
+        protected global::System.Web.UI.WebControls.TextBox ilacIdNum;
 
         /// <summary>
         /// hastaIlac_Ekle denetimi.

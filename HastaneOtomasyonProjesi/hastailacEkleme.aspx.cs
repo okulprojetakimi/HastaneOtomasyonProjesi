@@ -51,16 +51,6 @@ namespace HastaneOtomasyonProjesi
                             }
 
                         }
-                        using (SqlCommand komut = new SqlCommand("SELECT ilacId FROM hastaIlac_tablosu WHERE hasta_Tc = @hastaTC", sqlBaglan))
-                        {
-                            komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
-                            SqlDataReader veriOkuyucu = komut.ExecuteReader();
-                            while (veriOkuyucu.Read())
-                            {
-                                ilacId = veriOkuyucu.GetInt32(0);
-                            }
-
-                        }
 
                     }
                 }
@@ -80,13 +70,14 @@ namespace HastaneOtomasyonProjesi
             using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
                 vtBaglan.Open();
-                using (SqlCommand ilacEkleme = new SqlCommand("insert into hastaIlac_tablosu (hastailac_Id,hastailac_hastaId,hastailac_ilacId,hastailac_verilmeTarih,hasta_IlacDevamDurumu) values (@hastailac_Id,@hastailac_hastaId,@hastailac_ilacId,@hastailac_verilmeTarih,@hasta_IlacDevamDurumu)", vtBaglan))
+                using (SqlCommand ilacEkleme = new SqlCommand("INSERT INTO hastaIlac_tablosu (hastailac_Id,hastailac_hastaId,hastailac_ilacId,hastailac_verilmeTarih,hasta_IlacDevamDurumu) values (@hastailac_Id,@hastailac_hastaId,@hastailac_ilacId,@hastailac_verilmeTarih,@hasta_IlacDevamDurumu)", vtBaglan))
                 {
                     ilacEkleme.Parameters.AddWithValue("@hastailac_Id", random);
                     ilacEkleme.Parameters.AddWithValue("@hastailac_hastaId", hastaId);
-                    ilacEkleme.Parameters.AddWithValue("hastailac_ilacId", ilacId);
+                    ilacEkleme.Parameters.AddWithValue("hastailac_ilacId", ilacIdNum.Text);
                     ilacEkleme.Parameters.AddWithValue("@hastailac_verilmeTarih",DateTime.Parse(DateTime.Now.ToLongDateString()));
-                    ilacEkleme.Parameters.AddWithValue("@hasta_IlacDevamDurumu", Request.Form["hasta_IlacDevamDurumu"]);
+                    ilacEkleme.Parameters.AddWithValue("@hasta_IlacDevamDurumu", 1);
+                    ilacEkleme.ExecuteNonQuery();
                     ilacEkleme.Dispose();
                     vtBaglan.Close();
 
@@ -94,27 +85,5 @@ namespace HastaneOtomasyonProjesi
             }
         }
 
-        protected void ilac_AramaButonu_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection veritabaniBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-            {
-                veritabaniBaglanti.Open();
-                using (SqlCommand veriCek = new SqlCommand("SELECT * FROM ilaclar_tablosu WHERE ilacIsmi LIKE @parametre", veritabaniBaglanti))
-                {
-                    veriCek.Parameters.AddWithValue("@parametre", "%" + aranacak_Ilac.Text + "%");
-                    SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
-                    if (!veriOkuyucu.HasRows)
-                    {
-                        Response.Write("İlaç bulunamadı!");
-                    }
-                    // Verileri GridView'e bağlıyoruz
-                    ilacListesi.DataSource = veriOkuyucu;
-                    ilacListesi.DataBind();
-                    veriOkuyucu.Close();
-                    veriCek.Dispose();
-                    veritabaniBaglanti.Close();
-                }
-            }
-        }
     }
 }
