@@ -31,8 +31,8 @@ namespace HastaneOtomasyonProjesi
                 }
                 else
                 {
-                    
                     hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
+                    
                 }
             }
         }
@@ -47,6 +47,29 @@ namespace HastaneOtomasyonProjesi
         protected void hastaIlac_Ekle_Click(object sender, EventArgs e)
         {
             
+        }
+
+        protected void ilac_AramaButonu_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection veritabaniBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                veritabaniBaglanti.Open();
+                using (SqlCommand veriCek = new SqlCommand("SELECT * FROM ilaclar_tablosu WHERE ilacIsmi LIKE @parametre", veritabaniBaglanti))
+                {
+                    veriCek.Parameters.AddWithValue("@parametre", "%" + aranacak_Ilac.Text + "%");
+                    SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
+                    if (!veriOkuyucu.HasRows)
+                    {
+                        Response.Write("İlaç bulunamadı!");
+                    }
+                    // Verileri GridView'e bağlıyoruz
+                    ilacListesi.DataSource = veriOkuyucu;
+                    ilacListesi.DataBind();
+                    veriOkuyucu.Close();
+                    veriCek.Dispose();
+                    veritabaniBaglanti.Close();
+                }
+            }
         }
     }
 }

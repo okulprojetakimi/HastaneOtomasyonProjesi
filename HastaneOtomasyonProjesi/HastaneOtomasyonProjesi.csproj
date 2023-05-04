@@ -18,8 +18,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -128,6 +128,7 @@
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
+    <Content Include="ilacArama.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -259,6 +260,13 @@
     </Compile>
     <Compile Include="hastayaNotEkle.aspx.designer.cs">
       <DependentUpon>hastayaNotEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ilacArama.aspx.cs">
+      <DependentUpon>ilacArama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ilacArama.aspx.designer.cs">
+      <DependentUpon>ilacArama.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>
