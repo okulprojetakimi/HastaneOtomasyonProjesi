@@ -5,6 +5,8 @@
         <div>
             <h1 style="color: white;"><i class="fa-solid fa-vials"></i> Laboratuvar Sonuç Detay Görüntüleme</h1>
 
+            <!-- -->
+
         </div>
     </main>
 </asp:Content>

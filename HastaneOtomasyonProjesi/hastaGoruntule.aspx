@@ -117,7 +117,7 @@
                 <Columns>
                     <asp:BoundField DataField="tetkik_Id" HeaderText="Tetkik Numarası" />
                     <asp:BoundField DataField="tetkik_istekTarih" HeaderText="Tetkik İstek Tarihi" />
-                    <asp:BoundField DataField="tetkik_isteyenDoktorId" HeaderText="Tetkik İsteyen Doktor" />
+                    <asp:BoundField DataField="personel_Isim" HeaderText="Tetkik İsteyen Doktor" />
                     <asp:BoundField DataField="tetkik_sonucTarih" HeaderText="Tetkik Sonuç Tarihi" />
                     <asp:BoundField DataField="tetkik_durum" HeaderText="Tetkik Durumu" />
                 </Columns>
