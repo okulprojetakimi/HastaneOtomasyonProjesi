@@ -47,6 +47,23 @@ namespace HastaneOtomasyonProjesi
                 connection.Close();
             }
         }
+
+        private void ilacVerisiCek(int hastaIdDegeri)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                string sorgu = "SELECT hastaIlac_tablosu.hastailac_Id, hastaIlac_tablosu.hastailac_ilacId, hastaIlac_tablosu.hastailac_verilmeTarih, hastaIlac_tablosu.hasta_IlacDevamDurumu, ilaclar_tablosu.ilacId, ilaclar_tablosu.ilacIsmi FROM hastaIlac_tablosu,ilaclar_tablosu WHERE hastaIlac_tablosu.hastailac_ilacId = ilaclar_tablosu.ilacId AND hastailac_hastaId = @hastaIdNUm";
+                SqlCommand command = new SqlCommand(sorgu, connection);
+                command.Parameters.AddWithValue("@hastaIdNUm", hastaIdDegeri);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                hasta_IlacListesi.DataSource = dataTable;
+                hasta_IlacListesi.DataBind();
+                command.Dispose();
+                connection.Close();
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
          {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
@@ -83,6 +100,7 @@ namespace HastaneOtomasyonProjesi
                                     int hastaIdNum = veriOkuyucu.GetInt32(0);
                                     notListesiGetir(hastaIdNum);
                                     tetkikCek(hastaIdNum);
+                                    ilacVerisiCek(hastaIdNum);
                                    
                                 }
                                 veriOkuyucu.Close();

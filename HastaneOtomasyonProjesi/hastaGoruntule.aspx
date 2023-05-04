@@ -89,15 +89,18 @@
             <!-- Hasta notları listesi -->
             <asp:GridView ID="hasta_IlacListesi" runat="server" AutoGenerateColumns="false" CssClass="table">
                 <Columns>
-                    <asp:BoundField DataField="hasta_NotId" HeaderText="Hasta Not Numarası" />
-                    <asp:BoundField DataField="hasta_Not" HeaderText="Hasta Notu" />
-                    <asp:BoundField DataField="hasta_notTarihi" HeaderText="Hasta Not Tarihi" />
+                    <asp:BoundField DataField="hastailac_Id" HeaderText="Hasta İlaç Kayıt Numarası" />
+                    <asp:BoundField DataField="hastailac_ilacId" HeaderText="İlaç Numarası" />
+                    <asp:BoundField DataField="hastailac_verilmeTarih" HeaderText="İlaç Verilme Tarihi" />
+                    <asp:BoundField DataField="hasta_IlacDevamDurumu" HeaderText="İlaç Devam Durumu" />
+                    <asp:BoundField DataField="ilacId" HeaderText="İlaç Numarası" />
+                    <asp:BoundField DataField="ilacIsmi" HeaderText="İlaç İsmi" />
                 </Columns>
             </asp:GridView>
             <br />
             Hasta İlaç Id: <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" />
             <br />
-            <asp:Button runat="server" ID="Button1" CssClass="btn btn-info" Text="Hasta Not Görüntüle" OnClick="notGoruntuleButonu_Click" /></td>
+            <asp:Button runat="server" ID="Button1" CssClass="btn btn-info" Text="Hasta İlaç Görüntüle" OnClick="notGoruntuleButonu_Click" /></td>
             
         </div>
 
