@@ -36,48 +36,32 @@ namespace HastaneOtomasyonProjesi
                     using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
                         sqlBaglan.Open();
-                        //using (SqlCommand komut = new SqlCommand("SELECT hasta_Id,hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastaTC", sqlBaglan))
-                        //{
-                        //    komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
-                        //    SqlDataReader veriOkuyucu = komut.ExecuteReader();
-                        //    while (veriOkuyucu.Read())
-                        //    {
-                        //        hastaId = veriOkuyucu.GetInt32(0);
-                        //        string hastaIsim = veriOkuyucu.GetString(1);
-                        //        string hastaSoyIsim = veriOkuyucu.GetString(2);
+                        using (SqlCommand komut = new SqlCommand("SELECT hasta_Id,hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastaTC", sqlBaglan))
+                        {
+                            komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
+                            SqlDataReader veriOkuyucu = komut.ExecuteReader();
+                            while (veriOkuyucu.Read())
+                            {
+                                hastaId = veriOkuyucu.GetInt32(0);
+                                string hastaIsim = veriOkuyucu.GetString(1);
+                                string hastaSoyIsim = veriOkuyucu.GetString(2);
 
-                        //        ilac_Hasta.Text = "İlaç eklenecek hasta: " + hastaIsim + " " + hastaSoyIsim;
-                        //        ilac_HastaTc.Text = "İlaç eklenecek hastanın TCKN: " + hastaTcNum;
-                        //    }
+                                ilac_Hasta.Text = "İlaç eklenecek hasta: " + hastaIsim + " " + hastaSoyIsim;
+                                ilac_HastaTc.Text = "İlaç eklenecek hastanın TCKN: " + hastaTcNum;
+                            }
 
-                        //}
-                        //using (SqlCommand komut = new SqlCommand("SELECT ilacId FROM hastaIlac_tablosu WHERE hasta_Tc = @hastaTC", sqlBaglan))
-                        //{
-                        //    komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
-                        //    SqlDataReader veriOkuyucu = komut.ExecuteReader();
-                        //    while (veriOkuyucu.Read())
-                        //    {
-                        //        ilacId = veriOkuyucu.GetInt32(0);
-                        //    }
-
-                        //}
-                        using (SqlCommand komut = new SqlCommand("SELECT A.hasta_Id,A.hasta_Adi,A.hasta_Soyadi,B.ilacId from hasta_kayitlar A inner join hastaIlac_tablosu B ON A.hasta_Id=B.hastailac_hastaId  WHERE hasta_Tc = @hastaTC", sqlBaglan))
+                        }
+                        using (SqlCommand komut = new SqlCommand("SELECT ilacId FROM hastaIlac_tablosu WHERE hasta_Tc = @hastaTC", sqlBaglan))
                         {
                             komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
                             SqlDataReader veriOkuyucu = komut.ExecuteReader();
                             while (veriOkuyucu.Read())
                             {
                                 ilacId = veriOkuyucu.GetInt32(0);
-                                hastaId = veriOkuyucu.GetInt32(1);
-                                string hastaIsim = veriOkuyucu.GetString(2);
-                                string hastaSoyIsim = veriOkuyucu.GetString(3);
-                                ilac_Hasta.Text = "İlaç eklenecek hasta: " + hastaIsim + " " + hastaSoyIsim;
-                                ilac_HastaTc.Text = "İlaç eklenecek hastanın TCKN: " + hastaTcNum;
-
-                                veriOkuyucu.Close();
-                                sqlBaglan.Close();
                             }
+
                         }
+
                     }
                 }
             }
