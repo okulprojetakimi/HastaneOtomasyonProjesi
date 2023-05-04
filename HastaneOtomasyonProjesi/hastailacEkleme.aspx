@@ -22,6 +22,18 @@
     </asp:GridView> -->
     <!-- İlaç Listesi -->
     <main>
+        <h1 style="color: white;"><i class="fa-solid fa-pills"></i> Hastaya İlaç Ekleme</h1>
+        <br />
+        <style>
+            .labels{
+                color: white;
+            }
+        </style>
+        <asp:Label CssClass="labels" Text="İlaç eklenecek hasta: " ID="ilac_Hasta" runat="server" /><br />
+        <asp:Label CssClass="labels" Text="İlaç eklenecek hasta tc: " ID="ilac_HastaTc" runat="server" />
+        <br />
+        <br />
+        <br />
         <div class="ilacArama_Kutusu">
             <!-- <asp:TextBox CssClass="form-control" ID="aranacak_Ilac" runat="server" />
             <asp:Button CssClass="btn btn-info" ID="ilac_AramaButonu" Text="İlaç Ara" runat="server" OnClick="ilac_AramaButonu_Click" /> -->
@@ -31,8 +43,6 @@
                     <td><input class="form-control" name="ilac_AramaInput" id="ilac_AramaInput" /><br /></td>
                 </tr>
             </table>
-            
-            
         </div>
         <div>
             <table class="table table-striped" id="myGrid" border="1">

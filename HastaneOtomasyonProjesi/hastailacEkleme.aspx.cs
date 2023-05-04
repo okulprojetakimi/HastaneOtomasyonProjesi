@@ -32,6 +32,25 @@ namespace HastaneOtomasyonProjesi
                 else
                 {
                     hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
+                    using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
+                        sqlBaglan.Open();
+                        using (SqlCommand komut = new SqlCommand("SELECT hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastaTC", sqlBaglan))
+                        {
+                            komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
+                            SqlDataReader veriOkuyucu = komut.ExecuteReader();
+                            while (veriOkuyucu.Read())
+                            {
+                                string hastaIsim = veriOkuyucu.GetString(0);
+                                string hastaSoyIsim = veriOkuyucu.GetString(1);
+                                ilac_Hasta.Text = "İlaç eklenecek hasta: " + hastaIsim + " "+ hastaSoyIsim;
+                                ilac_HastaTc.Text = "İlaç eklenecek hastanın TCKN: " + hastaTcNum;
+                            }
+                            komut.Dispose();
+                            sqlBaglan.Close();
+                        }
+                        
+                    }
                     
                 }
             }
