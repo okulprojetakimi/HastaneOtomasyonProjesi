@@ -98,9 +98,9 @@
                 </Columns>
             </asp:GridView>
             <br />
-            Hasta İlaç Id: <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" />
+            Hasta İlaç Id: <asp:TextBox ID="hastaIlac_ID" CssClass="form-control" runat="server" />
             <br />
-            <asp:Button runat="server" ID="Button1" CssClass="btn btn-info" Text="Hasta İlaç Görüntüle" OnClick="notGoruntuleButonu_Click" /></td>
+            <asp:Button runat="server" ID="hastaIlacForm_yonlendir" CssClass="btn btn-info" Text="Hasta İlaç Görüntüle" OnClick="hastaIlacForm_yonlendir_Click" /></td>
             
         </div>
 

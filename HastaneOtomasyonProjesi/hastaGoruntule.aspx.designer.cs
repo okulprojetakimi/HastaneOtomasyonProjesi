@@ -69,22 +69,22 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.GridView hasta_IlacListesi;
 
         /// <summary>
-        /// TextBox1 denetimi.
+        /// hastaIlac_ID denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox hastaIlac_ID;
 
         /// <summary>
-        /// Button1 denetimi.
+        /// hastaIlacForm_yonlendir denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button hastaIlacForm_yonlendir;
 
         /// <summary>
         /// hasta_laboratuvarSonuclari denetimi.

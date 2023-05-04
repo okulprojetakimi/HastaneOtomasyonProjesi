@@ -132,5 +132,10 @@ namespace HastaneOtomasyonProjesi
         {
             Response.Redirect("hastaNotGoruntuleme.aspx?notIdNum="+ not_Id.Text);
         }
+
+        protected void hastaIlacForm_yonlendir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("hastaIlacGoruntule.aspx"+ hastaIlac_ID.Text);
+        }
     }
 }
