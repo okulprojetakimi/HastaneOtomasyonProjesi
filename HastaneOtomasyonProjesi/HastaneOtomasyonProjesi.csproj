@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ameliyathaneModulu\ameliyatAra.aspx" />
+    <Content Include="ameliyathaneModulu\ameliyatDetayGoruntule.aspx" />
     <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="ameliyathaneModulu\ameliyatAra.aspx.designer.cs">
       <DependentUpon>ameliyatAra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ameliyathaneModulu\ameliyatDetayGoruntule.aspx.cs">
+      <DependentUpon>ameliyatDetayGoruntule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ameliyathaneModulu\ameliyatDetayGoruntule.aspx.designer.cs">
+      <DependentUpon>ameliyatDetayGoruntule.aspx</DependentUpon>
     </Compile>
     <Compile Include="ameliyathaneModulu\anasayfa.aspx.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
