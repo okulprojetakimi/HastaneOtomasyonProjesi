@@ -47,5 +47,10 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 
             
         }
+
+        protected void detayButon_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ameliyatDetayGoruntule.aspx?ameliyatNumarasi=" + ameliyat_Numarasi.Text);
+        }
     }
 }

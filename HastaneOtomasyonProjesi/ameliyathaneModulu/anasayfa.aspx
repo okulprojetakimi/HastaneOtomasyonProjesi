@@ -132,6 +132,15 @@
 
         </div>
         <br />
-        <h3>Ameliyat Detay Görüntüleme</h3>
+        <h3 style="color: white;">Ameliyat Detay Görüntüleme</h3>
+        <table cellpadding="15">
+            <tr>
+                <td><label style="color: white;">Ameliyat Numarası: </label></td>
+                <td>
+                    <asp:TextBox CssClass="form-control" ID="ameliyat_Numarasi" runat="server" /></td>
+                <td>
+                    <asp:Button CssClass="btn btn-success" Text="Ameliyat Detay Görüntüle" ID="detayButon" runat="server" OnClick="detayButon_Click" /></td>
+            </tr>
+        </table>
     </main>
 </asp:Content>
