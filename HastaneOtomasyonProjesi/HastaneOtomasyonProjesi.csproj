@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -131,7 +132,7 @@
     <Content Include="hastayaNotEkle.aspx" />
     <Content Include="ilacArama.aspx" />
     <Content Include="panel.aspx" />
-    <Content Include="favicon.ico" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -197,6 +198,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ameliyathaneModulu\anasayfa.aspx.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ameliyathaneModulu\anasayfa.aspx.designer.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="cikis.aspx.cs">
@@ -324,7 +332,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ameliyathaneModulu\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
