@@ -187,5 +187,7 @@
         </script>
 
         <!-- Buradan itibaren yazmaya başla -->
+
+        <asp:Button Text="Kaydet" CssClass="btn btn-success" ID="bilgiKaydet_Butonu" runat="server" />
     </main>
 </asp:Content>
