@@ -85,6 +85,7 @@
         <div class="form-group">
             <asp:TextBox CssClass="form-control" ID="hasta_Tc_Numara" runat="server" />
             <!-- <input maxlength="11" type="text" class="form-control" id="hasta_Goruntuleme_Tc" name="hasta_Goruntuleme_Tc" placeholder="Hasta TCKN"> -->
+
             <label style="color: white;"><span>Görüntülemek istediğiniz hastanın tc sini giriniz.</span></label>
             <br />
         </div>
