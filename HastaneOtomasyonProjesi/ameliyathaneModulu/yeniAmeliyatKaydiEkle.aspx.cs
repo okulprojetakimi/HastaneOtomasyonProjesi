@@ -28,9 +28,7 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
             if (kontrolCookie == null)
             {
-                 Response.Redirect("/panel.aspx");
-
-                  Response.Redirect("/panel.aspx");
+                 Response.Redirect("/panel.aspx");               
             }
             else
             {
@@ -40,24 +38,11 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                 }
                 else
                 {
-                    hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
+                    
+              
                     using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
                         sqlBaglan.Open();
-                        using (SqlCommand komut = new SqlCommand("SELECT hasta_Id, hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastatcnum", sqlBaglan))
-                        {
-                            komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
-                            SqlDataReader veriOkuyucu = komut.ExecuteReader();
-                            while (veriOkuyucu.Read())
-                            {
-                                hastaId = veriOkuyucu.GetInt32(0);                              
-                            }
-                            veriOkuyucu.Close();
-                            sqlBaglan.Close();
-                        }
-                      
-                    }
-              
                         string query2 = "SELECT hasta_Id FROM hasta_kayitlar";
                         SqlCommand oku = new SqlCommand(query2, sqlBaglan);
                         using (SqlDataReader reader = oku.ExecuteReader())
@@ -69,7 +54,24 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                             reader.Close();
                             sqlBaglan.Close();
                         }
-                       
+                    }
+                    using (SqlConnection sqlBaglan3 = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString)) using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
+                        sqlBaglan.Open();
+                        string query1 = "SELECT personel_Id FROM personel_tablo";
+                        SqlCommand command1 = new SqlCommand(query1, sqlBaglan);
+                        using (SqlDataReader reader = command1.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                personelId = reader.GetInt32(0);
+                            }
+                            reader.Close();
+                            sqlBaglan.Close();
+                        }
+                    }
+                    using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
                         sqlBaglan.Open();
                         string query = "SELECT ilacId FROM ilaclar_tablosu";
                         SqlCommand command = new SqlCommand(query, sqlBaglan);
@@ -82,28 +84,13 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                             reader.Close();
                             sqlBaglan.Close();
                         }
-
-                        sqlBaglan.Open();
-                        string query1 = "SELECT personel_Id FROM personel_tablo";
-                        SqlCommand command1 = new SqlCommand(query1, sqlBaglan);
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                personelId = reader.GetInt32(0);
-                            }
-                            reader.Close();
-                            sqlBaglan.Close();
-                        }
-                        
                     }
+     
                 }
             }
         }
 
         protected void AmeliyatKaydıButon_click(object sender, EventArgs e)
-        {
-            string random = new Random().Next(11111, 99999).ToString();
         {
             string random = new Random().Next(1, 9).ToString();
             using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -115,13 +102,6 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatGirisTarihi", Request.Form["ameliyatGirisTarihi"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatCikisTarihi", Request.Form["ameliyatCikisTarihi"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatNotu", Request.Form["ameliyatNotu"]);
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", 1);               
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", Request.Form["ameliyatIlacId"]);
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
-
-                    AmeliyatKaydıEkleme.ExecuteNonQuery();                   
-
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", personelId);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", ilacId);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
