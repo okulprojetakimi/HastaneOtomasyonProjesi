@@ -1,16 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ameliyatDetayGoruntule.aspx.cs" Inherits="HastaneOtomasyonProjesi.ameliyathaneModulu.ameliyatDetayGoruntule" %>
+﻿<%@ Page Language="C#" Title="Ameliyat Detay Görüntüleme" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ameliyatDetayGoruntule.aspx.cs" Inherits="HastaneOtomasyonProjesi.ameliyathaneModulu.ameliyatDetayGoruntule" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <main>
+        <style>
+            .labels{
+                color: white;
+            }
+        </style>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
+        <h1 style="color: white;">Ameliyat Detayları</h1>
+        <label class="labels">Ameliyat Giriş Tarihi: </label>
+        <input type="date" id="ameliyatGirisTarihi" />
+        <br />
+        <br />
+        <asp:Label Text="Ameliyat Çıkış Tarihi: " runat="server" />
+        <input type="date" id="ameliyatCikisTarihi" />
+        <br />
+        <br />
+        <label class="labels">Anestezi Türü: </label>
+        <asp:TextBox CssClass="form-control" ID="ameliyatAnesteziTuru" runat="server" />
+
+    </main>
+</asp:Content>
