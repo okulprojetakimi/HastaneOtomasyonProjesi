@@ -15,12 +15,21 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
 
         /// <summary>
-        /// Button61_Click61 denetimi.
+        /// ameliyatPersonelSecimi denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button61_Click61;
+        protected global::System.Web.UI.WebControls.DropDownList ameliyatPersonelSecimi;
+
+        /// <summary>
+        /// ameliyatEkle_Buton denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ameliyatEkle_Buton;
     }
 }
