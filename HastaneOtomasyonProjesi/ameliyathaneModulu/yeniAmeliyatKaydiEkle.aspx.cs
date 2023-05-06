@@ -1,8 +1,7 @@
 ﻿using System;
-<<<<<<< HEAD
-=======
+
 using System.Collections;
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
+
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
