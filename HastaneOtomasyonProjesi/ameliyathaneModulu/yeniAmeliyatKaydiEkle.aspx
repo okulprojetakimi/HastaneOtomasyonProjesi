@@ -17,19 +17,19 @@
                     <input type="datetime" class="form-control" id="ameliyatCikisTarihi" name="ameliyatCikisTarihi" aria-describedby="ameliyatCikisTarihi" placeholder="Ameliyat Cikis Tarihi">
                 </div>
             </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-grop">
+                        <label for="ameliyatAnesteziTuru">Ameliyat Anestezi Turu:</label>
+                        <input type="text" class="form-control" id="ameliyatAnesteziTuru" name="ameliyatAnesteziTuru" aria-describedby="ameliyatAnesteziTuru" placeholder="Ameliyat Anestezi Turu" />
+                    </div>
+                    
+                </td>
+                <td>Ameliyata Girecek Doktor: <asp:DropDownList ID="ameliyatPersonelSecimi" runat="server">
+                    </asp:DropDownList></td>
 
-                <td>
-                    <div class="form-grop">
-                        <label for="ameliyatGirisTarihi">Ameliyat Giris Tarihi:</label>
-                        <input type="datetime" class="form-control" id="ameliyatGirisTarihi" name="ameliyatGirisTarihi" aria-describedby="ameliyatGirisTarihi" placeholder="Ameliyat Giris Tarihi">
-                    </div>
-                </td>
-                <td>
-                    <div class="form-grop">
-                        <label for="ameliyatCikisTarihi">Ameliyat Cikis Tarihi:</label>
-                        <input type="datetime" class="form-control" id="ameliyatCikisTarihi" name="ameliyatCikisTarihi" aria-describedby="ameliyatCikisTarihi" placeholder="Ameliyat Cikis Tarihi">
-                    </div>
-                </td>
+                
             </tr>
             <tr>
                 <td>
@@ -39,30 +39,9 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-
-           <%-- <tr>
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
-                <td>
-                    <div class="form-grop">
-                        <label for="ameliyatNotu">Ameliyat Ilac Id:</label>
-                        <input type="number" class="form-control" id="ameliyatIlacId" name="ameliyatIlacId" aria-describedby="ameliyatIlacId" placeholder="Ameliyat Ilac Id" />
-                    </div>
-                </td>
-<<<<<<< HEAD
-            </tr>
-=======
-            </tr>--%>
-            <tr>
-                <td>
-                    <div class="form-grop">
-                        <label for="ameliyatAnesteziTuru">Ameliyat Anestezi Turu:</label>
-                        <input type="text" class="form-control" id="ameliyatAnesteziTuru" name="ameliyatAnesteziTuru" aria-describedby="ameliyatAnesteziTuru" placeholder="Ameliyat Anestezi Turu" />
-                    </div>
-                </td>
-            </tr> 
+             
 
         </table>
     </main>
-    <asp:Button CssClass="btn btn-success" Text="+ Hasta Ekle" ID="Button61_Click61" runat="server" OnClick="AmeliyatKaydıButon_click" />
+    <asp:Button CssClass="btn btn-success" Text="Yeni Ameliyat Ekle" ID="ameliyatEkle_Buton" runat="server" OnClick="kayitEkleme_Butonu"/>
 </asp:Content>
