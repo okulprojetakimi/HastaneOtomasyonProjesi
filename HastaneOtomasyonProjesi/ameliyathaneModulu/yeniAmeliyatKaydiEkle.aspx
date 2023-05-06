@@ -39,21 +39,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-
-           <%-- <tr>
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
-                <td>
-                    <div class="form-grop">
-                        <label for="ameliyatNotu">Ameliyat Ilac Id:</label>
-                        <input type="number" class="form-control" id="ameliyatIlacId" name="ameliyatIlacId" aria-describedby="ameliyatIlacId" placeholder="Ameliyat Ilac Id" />
-                    </div>
-                </td>
-<<<<<<< HEAD
-            </tr>
-=======
-            </tr>--%>
-            <tr>
+         
                 <td>
                     <div class="form-grop">
                         <label for="ameliyatAnesteziTuru">Ameliyat Anestezi Turu:</label>
