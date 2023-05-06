@@ -12,21 +12,69 @@ using System.Web.UI.WebControls;
 
 namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 {
+    /*
+     * BAŞLAMADAN ÖNCE OKUMAN GEREKLİ ;D
+     1-) Lütfen veri eklemeden önce seçilen doktorun seçilen tarih için daha önceden ameliyat randevusu varmı yok mu onu kontrol eden fonksiyon da yaz.
+     */
     public partial class yeniAmeliyatKaydiEkle : System.Web.UI.Page
     {
         public string hastaTcNum;
         public int hastaId;
-
         public int ilacId;
         public int personelId;
+
+        /* Bu fonksiyon DropDown list in içine tüm doktorların listesini atar. 
+         DataGridView i dolduruken text doktor isim + soyisim, value de doktorun id si olacak. Böylece datagridview selected value ile 
+        direk olarak seçilen id yi veritabanına ekleyebileceğiz.
+         */
+        private void personelListeDoldur(SqlConnection sqlBaglanti)
+        {
+            using (SqlCommand veriCekmeKomut = new SqlCommand("SELECT personel_Id, personel_Isim, personel_Soyisim FROM personel_tablo"))
+            {
+                /* Buradan devam et!*/
+            }
+        }
+
+        /* Bu fonksiyon kayıt ekleme butonuun OnClick özelliğine bağlıdır. Tıklandığında bu fonksiyon çalışır. */
+        private void kayitEkleButon()
+        {
+            //string random = new Random().Next(11111, 99999).ToString();
+
+            //string random = new Random().Next(1, 9).ToString();
+            //using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            //{
+            //    vtBaglan.Open();
+            //    using (SqlCommand AmeliyatKaydıEkleme = new SqlCommand("INSERT INTO ameliyathane_Tablo(ameliyatId,ameliyatGirisTarihi,ameliyatCikisTarihi,ameliyatNotu,ameliyatPersonelId,ameliyatIlacId,ameliyatAnesteziTuru,ameliyatHastaId) VALUES (@ameliyatId,@ameliyatGirisTarihi,@ameliyatCikisTarihi,@ameliyatNotu,@ameliyatPersonelId,@ameliyatIlacId,@ameliyatAnesteziTuru,@ameliyatHastaId)", vtBaglan))
+            //    {
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatId", random);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatGirisTarihi", Request.Form["ameliyatGirisTarihi"]);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatCikisTarihi", Request.Form["ameliyatCikisTarihi"]);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatNotu", Request.Form["ameliyatNotu"]);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", 1);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", Request.Form["ameliyatIlacId"]);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
+
+            //        AmeliyatKaydıEkleme.ExecuteNonQuery();
+
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", personelId);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", ilacId);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
+            //        AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
+
+            //        AmeliyatKaydıEkleme.ExecuteNonQuery();
+            //        AmeliyatKaydıEkleme.Dispose();
+            //        vtBaglan.Close();
+            //    }
+            //}
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
             if (kontrolCookie == null)
             {
                  Response.Redirect("/panel.aspx");
-
-                  Response.Redirect("/panel.aspx");
             }
             else
             {
@@ -90,44 +138,10 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                         }
 
                     }
-              
-                        
-                        
+ 
                     }
                 }
             }
         }
 
-        //protected void AmeliyatKaydıButon_click(object sender, EventArgs e)
-        //{
-        //    string random = new Random().Next(11111, 99999).ToString();
-
-        //    string random = new Random().Next(1, 9).ToString();
-        //    using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-        //    {
-        //        vtBaglan.Open();
-        //        using (SqlCommand AmeliyatKaydıEkleme = new SqlCommand("INSERT INTO ameliyathane_Tablo(ameliyatId,ameliyatGirisTarihi,ameliyatCikisTarihi,ameliyatNotu,ameliyatPersonelId,ameliyatIlacId,ameliyatAnesteziTuru,ameliyatHastaId) VALUES (@ameliyatId,@ameliyatGirisTarihi,@ameliyatCikisTarihi,@ameliyatNotu,@ameliyatPersonelId,@ameliyatIlacId,@ameliyatAnesteziTuru,@ameliyatHastaId)", vtBaglan))
-        //        {
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatId", random);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatGirisTarihi", Request.Form["ameliyatGirisTarihi"]);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatCikisTarihi", Request.Form["ameliyatCikisTarihi"]);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatNotu", Request.Form["ameliyatNotu"]);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", 1);               
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", Request.Form["ameliyatIlacId"]);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
-
-        //            AmeliyatKaydıEkleme.ExecuteNonQuery();                   
-
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", personelId);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", ilacId);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
-        //            AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
-
-        //            AmeliyatKaydıEkleme.ExecuteNonQuery();
-        //            AmeliyatKaydıEkleme.Dispose();
-        //            vtBaglan.Close();
-        //        }
-        //    }
-        //}
-    }
+}
