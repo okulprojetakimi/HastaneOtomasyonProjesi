@@ -5,7 +5,6 @@
         <table>
             <th>Yeni Ameliyat Kaydi Ekle</th>
             <tr>
-<<<<<<< HEAD
             <td>
                 <div class="form-grop">
                     <label for="ameliyatGirisTarihi">Ameliyat Giris Tarihi:</label>
@@ -18,7 +17,7 @@
                     <input type="datetime" class="form-control" id="ameliyatCikisTarihi" name="ameliyatCikisTarihi" aria-describedby="ameliyatCikisTarihi" placeholder="Ameliyat Cikis Tarihi">
                 </div>
             </td>
-=======
+
                 <td>
                     <div class="form-grop">
                         <label for="ameliyatGirisTarihi">Ameliyat Giris Tarihi:</label>
@@ -31,7 +30,6 @@
                         <input type="datetime" class="form-control" id="ameliyatCikisTarihi" name="ameliyatCikisTarihi" aria-describedby="ameliyatCikisTarihi" placeholder="Ameliyat Cikis Tarihi">
                     </div>
                 </td>
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
             </tr>
             <tr>
                 <td>
@@ -41,9 +39,8 @@
                     </div>
                 </td>
             </tr>
-<<<<<<< HEAD
             <tr>
-=======
+
            <%-- <tr>
 >>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
                 <td>
@@ -56,7 +53,6 @@
             </tr>
 =======
             </tr>--%>
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
             <tr>
                 <td>
                     <div class="form-grop">
@@ -64,12 +60,7 @@
                         <input type="text" class="form-control" id="ameliyatAnesteziTuru" name="ameliyatAnesteziTuru" aria-describedby="ameliyatAnesteziTuru" placeholder="Ameliyat Anestezi Turu" />
                     </div>
                 </td>
-            </tr>
-<<<<<<< HEAD
-
-=======
-           
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
+            </tr> 
 
         </table>
     </main>

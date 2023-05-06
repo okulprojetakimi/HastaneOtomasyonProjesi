@@ -7,10 +7,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-<<<<<<< HEAD
-=======
+
 using System.Runtime.Remoting.Messaging;
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
 using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
@@ -22,33 +20,23 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
         public string hastaTcNum;
         public int hastaId;
-<<<<<<< HEAD
-       
-       
-=======
+
         public int ilacId;
         public int personelId;
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
             if (kontrolCookie == null)
             {
-<<<<<<< HEAD
                  Response.Redirect("/panel.aspx");
-=======
+
                   Response.Redirect("/panel.aspx");
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
             }
             else
             {
                 if (HttpContext.Current.Request.QueryString["hasta"] == null)
                 {
-<<<<<<< HEAD
                       Response.Redirect("/panel.aspx");
-=======
-                    Response.Redirect("/panel.aspx");
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
                 }
                 else
                 {
@@ -56,7 +44,6 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                     using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
                         sqlBaglan.Open();
-<<<<<<< HEAD
                         using (SqlCommand komut = new SqlCommand("SELECT hasta_Id, hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastatcnum", sqlBaglan))
                         {
                             komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
@@ -70,8 +57,7 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                         }
                       
                     }
-               
-=======
+              
                         string query2 = "SELECT hasta_Id FROM hasta_kayitlar";
                         SqlCommand oku = new SqlCommand(query2, sqlBaglan);
                         using (SqlDataReader reader = oku.ExecuteReader())
@@ -111,20 +97,15 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                         }
                         
                     }
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
                 }
             }
         }
 
         protected void AmeliyatKaydıButon_click(object sender, EventArgs e)
-<<<<<<< HEAD
         {
             string random = new Random().Next(11111, 99999).ToString();
-=======
-
         {
             string random = new Random().Next(1, 9).ToString();
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
             using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
                 vtBaglan.Open();
@@ -134,21 +115,19 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatGirisTarihi", Request.Form["ameliyatGirisTarihi"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatCikisTarihi", Request.Form["ameliyatCikisTarihi"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatNotu", Request.Form["ameliyatNotu"]);
-<<<<<<< HEAD
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", 1);               
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", Request.Form["ameliyatIlacId"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
 
                     AmeliyatKaydıEkleme.ExecuteNonQuery();                   
-=======
+
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", personelId);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatIlacId", ilacId);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", Request.Form["ameliyatAnesteziTuru"]);
                     AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
 
                     AmeliyatKaydıEkleme.ExecuteNonQuery();
->>>>>>> 13b87a07e176f99892cdcf99b750531096c13293
                     AmeliyatKaydıEkleme.Dispose();
                     vtBaglan.Close();
                 }
