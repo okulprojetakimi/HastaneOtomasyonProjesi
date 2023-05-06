@@ -47,38 +47,64 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                 // ameliyatNumarasi
                 if (HttpContext.Current.Request.QueryString["ameliyatNumarasi"] != null)
                 {
-                    string ameliyatNumarasi = HttpContext.Current.Request.QueryString["ameliyatNumarasi"];
-                    using (SqlConnection getDb = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    try
                     {
-                        getDb.Open();
-                        using (SqlCommand veriCek = new SqlCommand("SELECT personel_Tablo.personel_Isim, ameliyathane_Tablo.ameliyatGirisTarihi,ameliyathane_Tablo.ameliyatCikisTarihi,ameliyathane_Tablo.ameliyatNotu, ameliyathane_Tablo.ameliyatAnesteziTuru FROM ameliyathane_Tablo,personel_tablo WHERE ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id AND ameliyatId = @aParam", getDb))
+                        string ameliyatNumarasi = HttpContext.Current.Request.QueryString["ameliyatNumarasi"];
+                        using (SqlConnection getDb = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
-                            veriCek.Parameters.AddWithValue("@aParam", ameliyatNumarasi);
-                            SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
-                            while (veriOkuyucu.Read())
+                            getDb.Open();
+                            using (SqlCommand veriCek = new SqlCommand("SELECT personel_Tablo.personel_Isim, ameliyathane_Tablo.ameliyatGirisTarihi,ameliyathane_Tablo.ameliyatCikisTarihi,ameliyathane_Tablo.ameliyatNotu, ameliyathane_Tablo.ameliyatAnesteziTuru FROM ameliyathane_Tablo,personel_tablo WHERE ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id AND ameliyatId = @aParam", getDb))
                             {
-                                girenDoktor = veriOkuyucu.GetString(0);
-                                gTarih = veriOkuyucu.GetDateTime(1);
-                                cTarih = veriOkuyucu.GetDateTime(2);
-                                ameliyatNotu = veriOkuyucu.GetString(3);
-                                anesteziTuru = veriOkuyucu.GetString(4);
-                                ameliyatAnesteziTuru.Text = anesteziTuru;
-                                ameliyat_Doktor.Text = girenDoktor;
-                                ameliyat_Not.Text = ameliyatNotu;
-                                ameliyat_GirisT.Text = gTarih.ToString();
-                                ameliyat_CikisT.Text = cTarih.ToString();
+                                veriCek.Parameters.AddWithValue("@aParam", ameliyatNumarasi);
+                                SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
+                                while (veriOkuyucu.Read())
+                                {
+                                    girenDoktor = veriOkuyucu.GetString(0);
+                                    gTarih = veriOkuyucu.GetDateTime(1);
+                                    cTarih = veriOkuyucu.GetDateTime(2);
+                                    ameliyatNotu = veriOkuyucu.GetString(3);
+                                    anesteziTuru = veriOkuyucu.GetString(4);
+                                    ameliyatAnesteziTuru.Text = anesteziTuru;
+                                    ameliyat_Doktor.Text = girenDoktor;
+                                    ameliyat_Not.Text = ameliyatNotu;
+                                    ameliyat_GirisT.Text = gTarih.ToString();
+                                    ameliyat_CikisT.Text = cTarih.ToString();
 
+                                }
+
+                                veriOkuyucu.Close();
+                                veriCek.Dispose();
                             }
-                            
-                            veriOkuyucu.Close();
-                            veriCek.Dispose();
+                            kullanilanCek(getDb, ameliyatNumarasi);
                         }
-                        kullanilanCek(getDb, ameliyatNumarasi);
+                    }
+                    catch (Exception damnError)
+                    {
+                        Response.Write("<script>alert("+ damnError.Message+ ")</script>");
                     }
                 }
                 else
                 {
                     Response.Redirect("anasayfa.aspx");
+                }
+            }
+        }
+
+        protected void hastaIlac_Ekle_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection sqlBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                sqlBaglanti.Open();
+                int generateId = new Random().Next(1111,9999);
+                using (SqlCommand sqlKomutu = new SqlCommand("INSERT INTO ameliyathane_kullanilanIlaclar (k_IlacId, k_IlacBilgi, k_IlacAmeliyatId) VALUES (@ilacNumarasi, @lacBilgiNumarasi,@ilacAmeliyat)",sqlBaglanti))
+                {
+                    sqlKomutu.Parameters.AddWithValue("@ilacNumarasi", generateId);
+                    sqlKomutu.Parameters.AddWithValue("@lacBilgiNumarasi", ilacIdNum.Text);
+                    sqlKomutu.Parameters.AddWithValue("@ilacAmeliyat", HttpContext.Current.Request.QueryString["ameliyatNumarasi"]);
+                    sqlKomutu.ExecuteNonQuery();
+                    sqlKomutu.Dispose();
+                    sqlBaglanti.Close();
+                    Response.Redirect("/ameliyathaneModulu/ameliyatDetayGoruntule.aspx?ameliyatNumarasi="+ HttpContext.Current.Request.QueryString["ameliyatNumarasi"]);
                 }
             }
         }

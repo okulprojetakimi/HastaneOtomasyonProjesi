@@ -15,6 +15,24 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
 
         /// <summary>
+        /// ilacIdNum denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ilacIdNum;
+
+        /// <summary>
+        /// hastaIlac_Ekle denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button hastaIlac_Ekle;
+
+        /// <summary>
         /// ameliyat_GirisT denetimi.
         /// </summary>
         /// <remarks>
