@@ -14,6 +14,28 @@ namespace HastaneOtomasyonProjesi
     {
         public string mainTckn = "";
 
+        private void inputDoldur()
+        {
+            using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                sqlBaglan.Open();
+                using (SqlCommand sqlKomutu = new SqlCommand("SELECT * FROM hasta_kayitlar WHERE hasta_Tc = @hastaNum", sqlBaglan))
+                {
+                    sqlKomutu.Parameters.AddWithValue("@hastaNum", HttpContext.Current.Request.QueryString["hasta"].ToString());
+                    SqlDataReader veriOkuyucu = sqlKomutu.ExecuteReader();
+                    while (veriOkuyucu.Read())
+                    {
+                        hasta_Tc.Text = veriOkuyucu.GetString(1);
+                        hasta_Adi.Text = veriOkuyucu.GetString(2);
+                        hasta_Soyadi.Text = veriOkuyucu.GetString(3);
+                    }
+                    veriOkuyucu.Close();
+                    sqlBaglan.Close();
+                }
+            }
+        }
+
+
         private void notListesiGetir(int hastaIdDegeri)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -81,10 +103,11 @@ namespace HastaneOtomasyonProjesi
                 {
                     
                     mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
+
                     using (SqlConnection sqlCom = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
                         sqlCom.Open();
-                        using (SqlCommand hastaKontrol = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar WHERE hasta_Tc = @hastaTckn", sqlCom))
+                        using (SqlCommand hastaKontrol = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar WHERE hasta_Tc = @hastaTckn", sqlCom)) 
                         {
                             hastaKontrol.Parameters.AddWithValue("@hastaTckn", mainTckn);
                             SqlDataReader veriOkuyucu = hastaKontrol.ExecuteReader();
@@ -95,21 +118,25 @@ namespace HastaneOtomasyonProjesi
                             }
                             else
                             {
+                                int hastaIdNum = 0;
                                 while (veriOkuyucu.Read())
                                 {
-                                    int hastaIdNum = veriOkuyucu.GetInt32(0);
+                                    hastaIdNum = veriOkuyucu.GetInt32(0);
                                     notListesiGetir(hastaIdNum);
                                     tetkikCek(hastaIdNum);
                                     ilacVerisiCek(hastaIdNum);
-                                   
                                 }
+                                
+                                
                                 veriOkuyucu.Close();
+                                
                                 sqlCom.Close();
                             }
                             
 
                         }
                     }
+                    inputDoldur();
                 }
             }
             catch (Exception damnError)
@@ -141,6 +168,13 @@ namespace HastaneOtomasyonProjesi
         protected void tetkikDetayButonu_Click(object sender, EventArgs e)
         {
             Response.Redirect("hastaTetkikDetay.aspx?tetkikId=" + hasta_TetkikDetayID.Text);
+        }
+
+        protected void kaydet_Button_Click(object sender, EventArgs e)
+        {
+            Response.Write("Hasta adı: " + hasta_Adi.Text);
+            string hastaIsim = hasta_Adi.Text;
+            Response.Write("Yeni: " + hastaIsim);
         }
     }
 }

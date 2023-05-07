@@ -114,12 +114,48 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.Button tetkikDetayButonu;
 
         /// <summary>
-        /// bilgiKaydet_Butonu denetimi.
+        /// hasta_Tc denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bilgiKaydet_Butonu;
+        protected global::System.Web.UI.WebControls.TextBox hasta_Tc;
+
+        /// <summary>
+        /// hasta_Adres denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hasta_Adres;
+
+        /// <summary>
+        /// hasta_Adi denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hasta_Adi;
+
+        /// <summary>
+        /// hasta_Soyadi denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hasta_Soyadi;
+
+        /// <summary>
+        /// kaydet_Button denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button kaydet_Button;
     }
 }
