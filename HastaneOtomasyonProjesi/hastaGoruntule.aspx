@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Hasta Görüntüle" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaGoruntule.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaGoruntule" %>
+﻿<%@ Page Language="C#" Title="Hasta Görüntüle" EnableViewState="false" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaGoruntule.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaGoruntule" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
@@ -225,7 +225,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Adres">Hasta Adres</label>
-                            <asp:textbox runat ="server" ID="hasta_Adres" CssClass="form-control" Text="hasta_Adres"></asp:textbox>
+                            <asp:textbox runat="server" ID="hasta_Adres" CssClass="form-control" Text="hasta_Adres"></asp:textbox>
                         </div>
                     </td>
                     <td>
@@ -323,7 +323,6 @@
                             <input type="text" class="form-control" id="hasta_OdemeDurumu" name="hasta_OdemeDurumu"  aria-describedby="hasta_OdemeDurumu" placeholder="Hasta Ödeme Durumu">
                         </div>
                     </td>
-
                 </tr>
                 <tr>
                     <td>
@@ -387,4 +386,5 @@
             <br />
             <asp:Button Text="Kaydet" ID="kaydet_Button" OnClick="kaydet_Button_Click" CssClass="btn btn-success" runat="server" />
             </main>
+</form>
 </asp:Content>

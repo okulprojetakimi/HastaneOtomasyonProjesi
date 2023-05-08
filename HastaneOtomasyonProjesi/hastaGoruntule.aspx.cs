@@ -101,7 +101,6 @@ namespace HastaneOtomasyonProjesi
                 }
                 else
                 {
-                    
                     mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
 
                     using (SqlConnection sqlCom = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
