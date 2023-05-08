@@ -15,6 +15,24 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
 
         /// <summary>
+        /// ameliyatGirisTarihi denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ameliyatGirisTarihi;
+
+        /// <summary>
+        /// ameliyatAnesteziTuru denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ameliyatAnesteziTuru;
+
+        /// <summary>
         /// ameliyatPersonelSecimi denetimi.
         /// </summary>
         /// <remarks>
@@ -24,12 +42,21 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
         protected global::System.Web.UI.WebControls.DropDownList ameliyatPersonelSecimi;
 
         /// <summary>
-        /// ameliyatEkle_Buton denetimi.
+        /// ameliyatNotu denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ameliyatEkle_Buton;
+        protected global::System.Web.UI.WebControls.TextBox ameliyatNotu;
+
+        /// <summary>
+        /// ameliyatEkle denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ameliyatEkle;
     }
 }
