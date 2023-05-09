@@ -134,6 +134,7 @@
     <Content Include="hastaTetkikDetay.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
     <Content Include="ilacArama.aspx" />
+    <Content Include="laboratuvarModulu\anasayfa.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Global.asax" />
@@ -307,6 +308,13 @@
     </Compile>
     <Compile Include="ilacArama.aspx.designer.cs">
       <DependentUpon>ilacArama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="laboratuvarModulu\anasayfa.aspx.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="laboratuvarModulu\anasayfa.aspx.designer.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>
