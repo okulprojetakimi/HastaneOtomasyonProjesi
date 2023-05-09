@@ -15,10 +15,10 @@ namespace HastaneOtomasyonProjesi
         public bool durum;
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolEt = Request.Cookies["erisimCookie"];
-            if (kontrolEt == null)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
             {
-                Response.Redirect("/giris.aspx");
+                Response.Redirect("/cikis.aspx");
             }
             else
             {
