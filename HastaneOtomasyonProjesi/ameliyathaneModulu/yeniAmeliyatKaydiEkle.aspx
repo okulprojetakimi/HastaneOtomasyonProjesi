@@ -1,10 +1,16 @@
-﻿<%@ Page Title="Yeni ameliyat ekleme" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="yeniAmeliyatKaydiEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.ameliyathaneModulu.yeniAmeliyatKaydiEkle" %>
+<%@ Page Title="Yeni Ameliyat Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="yeniAmeliyatKaydiEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.ameliyathaneModulu.yeniAmeliyatKaydiEkle" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
         <table>
-            <th>Yeni Ameliyat Kaydi Ekle</th>
+            <th><h1 style="color: white;">Yeni Ameliyat Kaydi Ekle</h1></th>
             <tr>
+                <td>
+                <div class="form-grop">
+                    <label for="ameliyatTckn">Hasta TCKN: </label>
+                    <asp:TextBox CssClass="form-control" ID="ameliyatTckn" runat="server" />
+                </div>
+            </td>
             <td>
                 <div class="form-grop">
                     <label for="ameliyatGirisTarihi">Ameliyat Giris Tarihi:</label>
@@ -12,29 +18,29 @@
                 </div>
             </td>
             </tr>
+
             <tr>
                 <td>
                     <div class="form-grop">
                         <label for="ameliyatAnesteziTuru">Ameliyat Anestezi Turu:</label>
-                        <asp:TextBox CssClass="form-control" ID="ameliyatAnesteziTuru" runat="server" />
+                        <asp:TextBox ID="ameliyatAnesteziTuru" CssClass="form-control" runat="server" />
                     </div>
                     
                 </td>
-                <td>Ameliyata Girecek Doktor: <asp:DropDownList ID="ameliyatPersonelSecimi" runat="server">
-                    </asp:DropDownList></td>
+                <td>Ameliyata Girecek Doktor: <asp:DropDownList CssClass="btn btn-primary dropdown-toggle" ID="ameliyatPersonelSecimi" runat="server">
+                    </asp:DropDownList></td>             
             </tr>
             <tr>
                 <td>
                     <div class="form-grop">
                         <label for="ameliyatNotu">Ameliyat Notu:</label>
-                        <asp:TextBox CssClass="form-control" TextMode="MultiLine" ID="ameliyatNotu" runat="server" />
+                        <asp:TextBox CssClass="form-control" ID="ameliyatNotu" TextMode="MultiLine" runat="server" />
                     </div>
                 </td>
             </tr>
-            <asp:Button Text="+ Yeni ameliyat ekle" CssClass="btn btn-success" ID="ameliyatEkle" runat="server" />
-
         </table>
+        <br />
+         <asp:Button CssClass="btn btn-success" Text="Yeni Ameliyat Ekle" ID="ameliyatEkle_Buton" runat="server" OnClick="ameliyatEkle_Buton_Click"/>
     </main>
-    
-    
+   
 </asp:Content>
