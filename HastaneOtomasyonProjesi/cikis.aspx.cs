@@ -18,6 +18,10 @@ namespace HastaneOtomasyonProjesi
                 Response.Cookies.Add(cerezim);
                 Response.Redirect("/giris.aspx");
             }
+            else
+            {
+                Response.Redirect("/giris.aspx");
+            }
         }
     }
 }
