@@ -4,7 +4,7 @@
     <main>
         <table cellpadding="15">
             <tr>
-                <td><asp:Button CssClass="btn btn-success" ID="yeniKayit_ekle" Text="+ Yeni ameliyat kaydı ekle" runat="server" /></td>
+                <td><a href="yeniAmeliyatKaydiEkle.aspx"><button class="btn btn-success">+ Yeni ameliyat ekle</button></a></td>
                 <td> <button type="button" class="btn btn-success" id="diyalogButon">Ameliyat Arama</button></td>
             </tr>
         </table>

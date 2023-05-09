@@ -15,15 +15,6 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
 
         /// <summary>
-        /// yeniKayit_ekle denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button yeniKayit_ekle;
-
-        /// <summary>
         /// bugunku_ameliyatlarListesi denetimi.
         /// </summary>
         /// <remarks>
