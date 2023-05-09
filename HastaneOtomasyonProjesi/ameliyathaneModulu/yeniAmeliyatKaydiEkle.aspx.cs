@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,93 +12,122 @@ using System.Web.UI.WebControls;
 
 namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 {
-    /*
-     * BAŞLAMADAN ÖNCE OKUMAN GEREKLİ ;D
-     1-) Lütfen veri eklemeden önce seçilen doktorun seçilen tarih için daha önceden ameliyat randevusu varmı yok mu onu kontrol eden fonksiyon da yaz.
-     */
+
     public partial class yeniAmeliyatKaydiEkle : System.Web.UI.Page
     {
-        public string hastaTcNum;
+        public string tcNum;
         public int hastaId;
-        public int ilacId;
-        public int personelId;
 
-        /* Bu fonksiyon DropDown list in içine tüm doktorların listesini atar. 
-         DataGridView i dolduruken text doktor isim + soyisim, value de doktorun id si olacak. Böylece datagridview selected value ile 
-        direk olarak seçilen id yi veritabanına ekleyebileceğiz.
-         */
-        private void personelListeDoldur(SqlConnection sqlBaglanti)
+        /* Doktor tarih kontrolü */
+        private bool doktorKontrol(SqlConnection sqlcn, DateTime gelenTarih)
         {
-            using (SqlCommand veriCekmeKomut = new SqlCommand("SELECT personel_Id, personel_Isim, personel_Soyisim FROM personel_tablo WHERE personel_Turu = 'Doktor'"))
+            using (SqlCommand doktorKontrolEt = new SqlCommand("SELECT ameliyatGirisTarihi FROM ameliyathane_Tablo WHERE ameliyatPersonelId = @personelNumarasi AND ameliyatGirisTarihi = @aGiris", sqlcn))
             {
-                /* Buradan devam et!*/
-                SqlDataReader veriOkuyucu = veriCekmeKomut.ExecuteReader();
+                doktorKontrolEt.Parameters.AddWithValue("@personelNumarasi" ,ameliyatPersonelSecimi.SelectedValue);
+                doktorKontrolEt.Parameters.AddWithValue("@aGiris", gelenTarih);
+                SqlDataReader veriOkuyucu= doktorKontrolEt.ExecuteReader();
+                if (veriOkuyucu.HasRows)
+                {
+                    veriOkuyucu.Close();
+                    return true;
+                }
+                else
+                {
+                    veriOkuyucu.Close();
+                    return false;
+                }
+                
+            }
+        }
+
+        /* Ameliyat Ekleme Fonksiyonu */
+        private void ameliyatEkle(SqlConnection sqlbg)
+        {
+            using (SqlCommand sqlCom = new SqlCommand("INSERT INTO ameliyathane_Tablo (ameliyatId, ameliyatGirisTarihi, ameliyatNotu, ameliyatPersonelId, ameliyatAnesteziTuru, ameliyatHastaId) VALUES (@aId, @aGirisT, @aNot, @aPId, @aAnesteziTuru, @aHastaId)", sqlbg))
+            {
+                /*(@aId, @aGirisT, @aNot, @aPId, @aAnesteziTuru, @aHastaId*/
+                sqlCom.Parameters.AddWithValue("@aId", new Random().Next(11111,32767));
+                sqlCom.Parameters.AddWithValue("@aGirisT", DateTime.Parse(ameliyatGirisTarihi.Text));
+                sqlCom.Parameters.AddWithValue("@aNot", ameliyatNotu.Text);
+                sqlCom.Parameters.AddWithValue("@aPId", ameliyatPersonelSecimi.SelectedValue);
+                sqlCom.Parameters.AddWithValue("@aAnesteziTuru", ameliyatAnesteziTuru.Text);
+                sqlCom.Parameters.AddWithValue("@aHastaId", hastaId);
+
+                sqlCom.ExecuteNonQuery();
+            }
+        }
+
+        /* Hasta Tc den ID alma */
+        private void tcToId(SqlConnection baglanti, string tcNum)
+        {
+            using (SqlCommand komut = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar WHERE hasta_Tc = @hastatcnum", baglanti))
+            {
+                komut.Parameters.AddWithValue("@hastatcnum", ameliyatTckn.Text);
+                SqlDataReader veriOkuyucu = komut.ExecuteReader();
                 while (veriOkuyucu.Read())
                 {
-                    ameliyatPersonelSecimi.Items.Add(new ListItem(veriOkuyucu.GetString(1) + " " + veriOkuyucu.GetString(2), veriOkuyucu.GetInt32(0).ToString()));
+                    hastaId = veriOkuyucu.GetInt32(0);
                 }
+                veriOkuyucu.Close();
             }
         }
 
-        /* Bu fonksiyon kayıt ekleme butonuun OnClick özelliğine bağlıdır. Tıklandığında bu fonksiyon çalışır. */
-        private void kayitEkleButon(object sender, EventArgs e)
+        /* Personel listesi çek */
+        private void personelCek(SqlConnection baglanti)
         {
-            using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            baglanti.Open();
+            using (SqlCommand veriGetir = new SqlCommand("SELECT personel_Id, personel_Isim, personel_Soyisim FROM personel_Tablo WHERE personel_Turu = 'Doktor'", baglanti))
             {
-                vtBaglan.Open();
-                using (SqlCommand AmeliyatKaydıEkleme = new SqlCommand("INSERT INTO ameliyathane_Tablo(ameliyatId,ameliyatGirisTarihi,ameliyatNotu,ameliyatPersonelId,ameliyatAnesteziTuru,ameliyatHastaId) VALUES (@ameliyatId,@ameliyatGirisTarihi,@ameliyatNotu,@ameliyatPersonelId,@ameliyatAnesteziTuru,@ameliyatHastaId)", vtBaglan))
+                SqlDataReader veriOkuyucu = veriGetir.ExecuteReader();
+                while (veriOkuyucu.Read())
                 {
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatId", new Random().Next(11111, 32676));
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatGirisTarihi", DateTime.Parse(ameliyatGirisTarihi.Text));
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatNotu", ameliyatNotu.Text);
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatPersonelId", ameliyatPersonelSecimi.SelectedValue);
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatAnesteziTuru", ameliyatAnesteziTuru.Text);
-                    AmeliyatKaydıEkleme.Parameters.AddWithValue("@ameliyatHastaId", hastaId);
-
-                    AmeliyatKaydıEkleme.ExecuteNonQuery();
-                    AmeliyatKaydıEkleme.Dispose();
-                    vtBaglan.Close();
+                    ListItem yeniItem = new ListItem();
+                    yeniItem.Text = veriOkuyucu.GetString(1) + veriOkuyucu.GetString(2);
+                    yeniItem.Value = veriOkuyucu.GetInt32(0).ToString();
+                    ameliyatPersonelSecimi.Items.Add(yeniItem);
                 }
+                veriOkuyucu.Close();
             }
+            baglanti.Close();
         }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
             if (kontrolCookie == null)
             {
-                 Response.Redirect("/panel.aspx");
+                Response.Redirect("/panel.aspx");
             }
             else
             {
-                if (HttpContext.Current.Request.QueryString["hasta"] == null)
+                using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
-                      Response.Redirect("/panel.aspx");
-                }
-                else
-                {
-                    hastaTcNum = HttpContext.Current.Request.QueryString["hasta"];
-                    using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-                    {
-                        personelListeDoldur(sqlBaglan);
-                        sqlBaglan.Open();
-                        using (SqlCommand komut = new SqlCommand("SELECT hasta_Id, hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastatcnum", sqlBaglan))
-                        {
-                            komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
-                            SqlDataReader veriOkuyucu = komut.ExecuteReader();
-                            while (veriOkuyucu.Read())
-                            {
-                                hastaId = veriOkuyucu.GetInt32(0);                              
-                            }
-                            veriOkuyucu.Close();
-                            sqlBaglan.Close();
-                        }
-
-                    }
- 
-                    }
+                    /* DropDownList e doktor listesini getirme */
+                    personelCek(sqlBaglan);
                 }
             }
         }
+
+        protected void ameliyatEkle_Buton_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection sqlIslemBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            {
+                sqlIslemBaglanti.Open();
+                if (doktorKontrol(sqlIslemBaglanti, DateTime.Parse(ameliyatGirisTarihi.Text)))
+                {
+                    Response.Write("<h1 style='color: red;'>Seçilen personelin seçilen tarihte ameliyatı mevcut.</h1>");
+                }
+                else
+                {
+                    /* Tc Den ID Alma işlemi */
+                    tcToId(sqlIslemBaglanti, ameliyatTckn.Text);
+                    ameliyatEkle(sqlIslemBaglanti);
+                    sqlIslemBaglanti.Close();
+                    Response.Redirect("/ameliyathaneModulu/anasayfa.aspx");
+                }
+            }
+        }
+    }
 
 }

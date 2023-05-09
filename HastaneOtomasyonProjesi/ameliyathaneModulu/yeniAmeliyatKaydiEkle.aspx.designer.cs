@@ -15,6 +15,15 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
 
         /// <summary>
+        /// ameliyatTckn denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ameliyatTckn;
+
+        /// <summary>
         /// ameliyatGirisTarihi denetimi.
         /// </summary>
         /// <remarks>
@@ -51,12 +60,12 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
         protected global::System.Web.UI.WebControls.TextBox ameliyatNotu;
 
         /// <summary>
-        /// ameliyatEkle denetimi.
+        /// ameliyatEkle_Buton denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ameliyatEkle;
+        protected global::System.Web.UI.WebControls.Button ameliyatEkle_Buton;
     }
 }
