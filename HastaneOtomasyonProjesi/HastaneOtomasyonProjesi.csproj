@@ -18,8 +18,10 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -136,6 +138,7 @@
     <Content Include="ilacArama.aspx" />
     <Content Include="laboratuvarModulu\anasayfa.aspx" />
     <Content Include="laboratuvarModulu\hastaArama.aspx" />
+    <Content Include="laboratuvarModulu\laboratuvarModulEkle.aspx" />
     <Content Include="panel.aspx" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Global.asax" />
@@ -323,6 +326,13 @@
     </Compile>
     <Compile Include="laboratuvarModulu\hastaArama.aspx.designer.cs">
       <DependentUpon>hastaArama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="laboratuvarModulu\laboratuvarModulEkle.aspx.cs">
+      <DependentUpon>laboratuvarModulEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="laboratuvarModulu\laboratuvarModulEkle.aspx.designer.cs">
+      <DependentUpon>laboratuvarModulEkle.aspx</DependentUpon>
     </Compile>
     <Compile Include="panel.aspx.cs">
       <DependentUpon>panel.aspx</DependentUpon>
