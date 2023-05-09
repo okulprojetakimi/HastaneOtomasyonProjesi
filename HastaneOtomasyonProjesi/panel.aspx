@@ -9,7 +9,7 @@
 					<tr>
 						<td><a href="hastaIslemleri.aspx"><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t1.png"></button></a></td>
 						<td><a href="ameliyathaneModulu/anasayfa.aspx"><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t2.png"></button></a></td>
-						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t3.png"></button></td>
+						<td><a href="laboratuvarModulu/anasayfa.aspx"><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t3.png"></button></a></td>
 						<td><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t4.png"></button></td>
 					</tr>
 				    <tr class="td_2">
