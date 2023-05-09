@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
 {
 
 
-    public partial class anasayfa
+    public partial class hastaArama
     {
     }
 }
