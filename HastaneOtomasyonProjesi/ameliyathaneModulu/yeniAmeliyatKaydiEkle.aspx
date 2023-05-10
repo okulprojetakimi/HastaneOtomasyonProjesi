@@ -27,8 +27,10 @@
                     </div>
                     
                 </td>
-                <td>Ameliyata Girecek Doktor: <asp:DropDownList CssClass="btn btn-primary dropdown-toggle" ID="ameliyatPersonelSecimi" runat="server">
-                    </asp:DropDownList></td>             
+                <td>Ameliyata Girecek Doktor: <asp:DropDownList DataValueField="personel_Id" DataTextField="Personel Isim Soyisim" DataSourceID="doktor_Cek" CssClass="btn btn-primary dropdown-toggle" ID="ameliyatPersonelSecimi" runat="server">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="doktor_Cek" runat="server" ConnectionString="<%$ConnectionStrings:veritabaniBilgi %>" SelectCommand="SELECT personel_Id, personel_Isim + ' ' +  personel_Soyisim AS [Personel Isim Soyisim] FROM personel_Tablo WHERE personel_Turu = 'Doktor'"></asp:SqlDataSource>
+                </td>             
             </tr>
             <tr>
                 <td>

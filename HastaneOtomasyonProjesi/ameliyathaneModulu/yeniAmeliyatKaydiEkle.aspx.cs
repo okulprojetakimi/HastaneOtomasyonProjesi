@@ -104,7 +104,7 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                 using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
                     /* DropDownList e doktor listesini getirme */
-                    personelCek(sqlBaglan);
+                    //personelCek(sqlBaglan);
                 }
             }
         }
