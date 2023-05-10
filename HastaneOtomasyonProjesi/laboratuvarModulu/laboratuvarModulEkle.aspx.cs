@@ -47,7 +47,7 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
                             Baglan.Close();
                             komut.Dispose();
                             okuyucu.Close();
-
+                           
                         }
                     }
                 }
@@ -71,6 +71,7 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
 
                     LabEkle.Dispose();
                     vtBaglan.Close();
+                    Response.Redirect("tetkikDetayEkleme.aspx?tetkikId="+random);
                 } 
             }
         }
