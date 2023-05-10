@@ -11,49 +11,49 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
 {
     public partial class laboratuvarModulEkle : System.Web.UI.Page
     {
-        public int hastaId;
+        public string hastaId;
         public int personelId;
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
             {
-                personelCek(sqlBaglan);
+                Response.Redirect("/cikis.aspx");
             }
-
-            using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            else
             {
-                sqlBaglan.Open();
-                using (SqlCommand komut = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar", sqlBaglan))
+                if (HttpContext.Current.Request.QueryString["hasta"] == null)
                 {
-                    SqlDataReader okuyucu = komut.ExecuteReader();
-                    while (okuyucu.Read())
-                    {
-                        hastaId = okuyucu.GetInt32(0);
-                    }
-                    okuyucu.Close();
-                    komut.Dispose();
-                    sqlBaglan.Close();
+                    Response.Redirect("/panel.aspx");
                 }
-
-            }
-
-            using (SqlConnection Baglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-            {
-                Baglan.Open();
-                using (SqlCommand komut = new SqlCommand("SELECT personel_Id FROM personel_tablo", Baglan))
+                else
                 {
-                    SqlDataReader okuyucu = komut.ExecuteReader();
-                    while (okuyucu.Read())
+                    hastaId = HttpContext.Current.Request.QueryString["hastaNumara"];
+                    using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        personelId = okuyucu.GetInt32(0);
+                        personelCek(sqlBaglan);
                     }
-                    Baglan.Close();
-                    komut.Dispose();
-                    okuyucu.Close();
 
+                    using (SqlConnection Baglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
+                        Baglan.Open();
+                        using (SqlCommand komut = new SqlCommand("SELECT personel_Id FROM personel_tablo", Baglan))
+                        {
+                            SqlDataReader okuyucu = komut.ExecuteReader();
+                            while (okuyucu.Read())
+                            {
+                                personelId = okuyucu.GetInt32(0);
+                            }
+                            Baglan.Close();
+                            komut.Dispose();
+                            okuyucu.Close();
+
+                        }
+                    }
                 }
             }
-        }
+            }
+            
         protected void labEkleButon_click(object sender, EventArgs e)
         {
             using (SqlConnection vtBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -63,9 +63,9 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
                 using (SqlCommand LabEkle = new SqlCommand("INSERT INTO laboratuvar_modul (tetkik_Id,tetkik_istekTarih,tetkik_isteyenDoktorID,tetkik_durum,hasta_IdNumarasi)  VALUES (@tetkik_Id,@tetkik_istekTarih,@tetkik_isteyenDoktorID,@tetkik_durum,@hasta_IdNumarasi)", vtBaglan))
                 {
                     LabEkle.Parameters.AddWithValue("@tetkik_Id", random);
-                    LabEkle.Parameters.AddWithValue("@tetkik_istekTarih", Request.Form["tetkik_istekTarih"]);
+                    LabEkle.Parameters.AddWithValue("@tetkik_istekTarih", DateTime.Parse(tetkik_istekTarih.Text));
                     LabEkle.Parameters.AddWithValue("@tetkik_isteyenDoktorID", labPersonelSecimi.SelectedValue);
-                    LabEkle.Parameters.AddWithValue("@tetkik_durum", Request.Form["tetkik_durum"]);
+                    LabEkle.Parameters.AddWithValue("@tetkik_durum", tetkik_durum.SelectedValue);
                     LabEkle.Parameters.AddWithValue("@hasta_IdNumarasi", hastaId);
                     LabEkle.ExecuteNonQuery();
 

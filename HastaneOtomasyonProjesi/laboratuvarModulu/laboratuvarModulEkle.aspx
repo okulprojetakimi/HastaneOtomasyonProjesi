@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="laboratuvarModulEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.laboratuvarModulu.laboratuvarModulEkle" %>
+﻿<%@ Page Title="Tetkik Ekleme" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="laboratuvarModulEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.laboratuvarModulu.laboratuvarModulEkle" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
@@ -10,7 +10,8 @@
                 <td>
                     <div class="form-grop">
                         <label for="tetkik_istekTarih">Tetkik Giris Tarihi:</label>
-                        <input type="date" class="form-control" id="tetkik_istekTarih" name="tetkik_istekTarih" aria-describedby="tetkik_istekTarih" placeholder="Tetkik İstek Tarih ">
+                        <asp:TextBox TextMode="DateTimeLocal" ID="tetkik_istekTarih" CssClass="form-control" runat="server" />
+                        <input type="date" class="form-control" id="" name="tetkik_istekTarih" aria-describedby="tetkik_istekTarih" placeholder="Tetkik İstek Tarih ">
                     </div>
                 </td>
             </tr>
@@ -18,7 +19,10 @@
                 <td>
                     <div class="form-grop">
                         <label for="tetkik_durum">Tetkik Durumu:</label>
-                        <input type="number" class="form-control" id="tetkik_durum" name="tetkik_durum" aria-describedby="tetkik_durum" placeholder="Tetkik Durum ">
+                        <asp:DropDownList CssClass="btn btn-primary dropdown-toggle" ID="tetkik_durum" runat="server">
+                            <asp:ListItem Value="1" Text="Tamamlandı" />
+                            <asp:ListItem Value="0" Text="Tamamlanmadı" />
+                        </asp:DropDownList>
                     </div>
 
                 </td>

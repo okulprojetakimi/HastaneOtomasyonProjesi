@@ -44,7 +44,7 @@
                         success: function (data) {
                             var html = "";
                             $.each(data, function (key, value) {
-                                html += "<tr><td>" + value.hasta_Id + "</td><td>" + value.hasta_Tc + "</td><td>" + value.hasta_Adi + "</td>" + "<td>" + value.hasta_Soyadi + "</td>" + "<td> <a href='laboratuvarModulEkle.aspx?hastaNumara=" + value.hasta_Id + "'><button class='btn btn-success'>Tetkik İşlemi</button></a></td>" + "</tr>";
+                                html += "<tr><td>" + value.hasta_Id + "</td><td>" + value.hasta_Tc + "</td><td>" + value.hasta_Adi + "</td>" + "<td>" + value.hasta_Soyadi + "</td>" + "<td> <a href='laboratuvarModulEkle.aspx?hastaNumara=" + value.hasta_Id + "'><button type='button' class='btn btn-success'>Tetkik İşlemi</button></a></td>" + "</tr>";
                             });
                             $("#myGrid tbody").html(html);
                         },

@@ -15,6 +15,24 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
     {
 
         /// <summary>
+        /// tetkik_istekTarih denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tetkik_istekTarih;
+
+        /// <summary>
+        /// tetkik_durum denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList tetkik_durum;
+
+        /// <summary>
         /// labPersonelSecimi denetimi.
         /// </summary>
         /// <remarks>
