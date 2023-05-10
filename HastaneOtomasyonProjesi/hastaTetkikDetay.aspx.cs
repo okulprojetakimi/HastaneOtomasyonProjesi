@@ -35,7 +35,7 @@ namespace HastaneOtomasyonProjesi
                         conn.Open();
 
                         // Veritabanından veri çekme
-                        SqlCommand cmd = new SqlCommand("SELECT * FROM tetkik_DetayTablo WHERE tetkik_Id = @tId", conn);
+                        SqlCommand cmd = new SqlCommand("SELECT tetkik_Tanimlari.tanim_tahlilIsmi AS [Tahlil Değer İsmi], tetkik_Tanimlari.tanim_SonucBirim AS [Tahlil Değer Birimi], tetkik_Tanimlari.tanim_referansAralik AS [Referans Aralığı], tetkik_DetayTablo.tetkik_Sonuc AS [Hasta Sonuç Değeri], personel_tablo.personel_Isim AS [Sorumlu Personel İsmi], personel_tablo.personel_Soyisim AS [Sorumlu Personel Soyismi] FROM tetkik_Tanimlari, tetkik_DetayTablo, personel_tablo WHERE tetkik_DetayTablo.tetkik_TanimId = tetkik_Tanimlari.tanim_Id AND personel_tablo.personel_Id = tetkik_DetayTablo.tetkik_calisanLab AND tetkik_Id = @tId;", conn);
                         cmd.Parameters.AddWithValue("@tId", tetkikDetayId);
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
