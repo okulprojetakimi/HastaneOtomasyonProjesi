@@ -22,7 +22,7 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
             }
             else
             {
-                if (HttpContext.Current.Request.QueryString["hasta"] == null)
+                if (HttpContext.Current.Request.QueryString["hastaNumara"] == null)
                 {
                     Response.Redirect("/panel.aspx");
                 }
