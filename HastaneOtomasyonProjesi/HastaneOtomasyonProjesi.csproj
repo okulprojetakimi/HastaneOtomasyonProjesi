@@ -141,6 +141,7 @@
     <Content Include="Content\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="randevuModulu\anasayfa.aspx" />
+    <Content Include="randevuModulu\hastaRandevuEkle.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -351,6 +352,13 @@
     </Compile>
     <Compile Include="randevuModulu\anasayfa.aspx.designer.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="randevuModulu\hastaRandevuEkle.aspx.cs">
+      <DependentUpon>hastaRandevuEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="randevuModulu\hastaRandevuEkle.aspx.designer.cs">
+      <DependentUpon>hastaRandevuEkle.aspx</DependentUpon>
     </Compile>
     <Compile Include="secilenHasta.aspx.cs">
       <DependentUpon>secilenHasta.aspx</DependentUpon>
