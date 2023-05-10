@@ -122,12 +122,12 @@
                     <label class="labels">Ameliyat Giriş Tarihi: </label>
                 </td>
                 <td>
-                    <asp:TextBox CssClass="form-control" runat="server" ID="ameliyat_GirisT" Text="" ReadOnly="True" /></td>
+                    <asp:TextBox CssClass="form-control" runat="server" ID="ameliyat_GirisT" ReadOnly="True" /></td>
                 <td>
                     <label class="labels">Ameliyat Çıkış Tarihi: </label>
                 </td>
                 <td>
-                    <asp:TextBox CssClass="form-control" ID="ameliyat_CikisT" runat="server" Text="" ReadOnly="True" /></td>
+                    <asp:TextBox CssClass="form-control" ID="ameliyat_CikisT" runat="server" ReadOnly="True" /></td>
             </tr>
             <tr>
                 <td>

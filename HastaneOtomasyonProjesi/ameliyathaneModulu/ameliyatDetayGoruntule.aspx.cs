@@ -53,7 +53,7 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
                         using (SqlConnection getDb = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
                             getDb.Open();
-                            using (SqlCommand veriCek = new SqlCommand("SELECT personel_Tablo.personel_Isim, ameliyathane_Tablo.ameliyatGirisTarihi,ameliyathane_Tablo.ameliyatCikisTarihi,ameliyathane_Tablo.ameliyatNotu, ameliyathane_Tablo.ameliyatAnesteziTuru FROM ameliyathane_Tablo,personel_tablo WHERE ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id AND ameliyatId = @aParam", getDb))
+                            using (SqlCommand veriCek = new SqlCommand("SELECT personel_Tablo.personel_Isim + ' ' + personel_Tablo.personel_Soyisim, ameliyathane_Tablo.ameliyatGirisTarihi,ameliyathane_Tablo.ameliyatCikisTarihi,ameliyathane_Tablo.ameliyatNotu, ameliyathane_Tablo.ameliyatAnesteziTuru FROM ameliyathane_Tablo,personel_tablo WHERE ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id AND ameliyatId = @aParam", getDb))
                             {
                                 veriCek.Parameters.AddWithValue("@aParam", ameliyatNumarasi);
                                 SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
