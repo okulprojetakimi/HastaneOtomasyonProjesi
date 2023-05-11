@@ -225,13 +225,13 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Adres">Hasta Adres</label>
-                            <asp:textbox runat="server" ID="hasta_Adres" CssClass="form-control" Text="hasta_Adres"></asp:textbox>
+                            <asp:textbox TextMode="SingleLine" placeholder=""  runat="server" ID="hasta_Adres" CssClass="form-control" Text="hasta_Adres"></asp:textbox>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_YakinAdi">Hasta Yakin Adi</label>
-                            <input type="text" class="form-control" id="hasta_YakinAdi" name="hasta_YakinAdi" aria-describedby="hasta_YakinAdi" placeholder="Hasta Yakin Adi">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_YakinAdi" />
                         </div>
                     </td>
                 </tr>
@@ -245,13 +245,13 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Eposta">Hasta Eposta </label>
-                            <input type="email" class="form-control" id="hasta_Eposta" name="hasta_Eposta" aria-describedby="hasta_Eposta" placeholder="Hasta Eposta">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_Eposta"  />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_yakinlikDerecesi">Hasta Yakınlık Derecesi</label>
-                            <input type="text" class="form-control" id="hasta_yakinlikDerecesi" name="hasta_yakinlikDerecesi" aria-describedby="hasta_yakinlikDerecesi" placeholder="Hasta Yakinlik Derecesi">
+                         <asp:TextBox runat="server" CssClass="form-control" ID="hasta_yakinlikDerecesi"  />
                         </div>
                     </td>
                 </tr>
@@ -265,13 +265,13 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_faxNo">Hasta Fax No</label>
-                            <input type="number" class="form-control" id="hasta_faxNo" name="hasta_faxNo" aria-describedby="hasta_faxNo" placeholder="Hasta Fax No">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_faxNo" />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_tedaviDurumu">Tedavi Durumu</label>
-                            <input type="text" class="form-control" id="hasta_tedaviDurumu" name="hasta_tedaviDurumu" aria-describedby="hasta_tedaviDurumu" placeholder="Hasta Tedavi Durumu">
+                             <asp:TextBox runat="server" CssClass="form-control" ID="hasta_tedaviDurumu" />
                         </div>
                     </td>
                 </tr>
@@ -279,48 +279,49 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_kanGrubu">Kan Grubu</label>
-                            <select class="form-control" id="hasta_kanGrubu" name="hasta_kanGrubu">
-                                <option value="1">A RH+</option>
-                                <option value="2">A RH-</option>
-                                <option value="3">0 RH+</option>
-                                <option value="4">0 RH-</option>
-                                <option value="5">B+</option>
-                                <option value="6">B-</option>
-                                <option value="7">AB-</option>
-                                <option value="8">AB+</option>
-                            </select>
+                            <asp:DropDownList ID="hasta_kanGrubu" CssClass="form-control" runat="server">
+                                <asp:ListItem Value="1" Text="A RH+" />
+                                <asp:ListItem Value="2" Text="A RH-" />
+                                <asp:ListItem Value="3" Text="0 RH+" />
+                                <asp:ListItem Value="4" Text="0 RH-" />
+                                <asp:ListItem Value="5" Text="B+" />
+                                <asp:ListItem Value="6" Text="B-" />
+                                <asp:ListItem Value="7" Text="AB-" />
+                                <asp:ListItem Value="8" Text="AB+" />
+                                
+                            </asp:DropDownList>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_evTelefonu">Hasta Ev Telefonu</label>
-                            <input type="number" class="form-control" id="hasta_evTelefonu" name="hasta_evTelefonu" aria-describedby="hasta_evTelefonu" placeholder="Hasta Ev Telefonu">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_evTelefonu" />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_tedaviTuru">Hasta Tedavi Türü</label>
-                            <input type="text" class="form-control" id="hasta_tedaviTuru" name="hasta_tedaviTuru" aria-describedby="hasta_tedaviTuru" placeholder="Hasta Tedavi Türü">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_tedaviTuru" />
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="hasta_Soyadi">Hasta Baba Adi</label>
-                            <input type="text" class="form-control" id="hasta_BabaAdi" name="hasta_BabaAdi" aria-describedby="hasta_BabaAdi" placeholder="Hastanın Baba Adı">
+                            <label for="hasta_BabaAdi">Hasta Baba Adi</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_babaAd" />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_cepTelefonu">Hasta Cep Telefonu</label>
-                            <input type="number" class="form-control" id="hasta_cepTelefonu" name="hasta_cepTelefonu" aria-describedby="hasta_cepTelefonu" placeholder="Hasta Cep Telefonu">
+                             <asp:TextBox runat="server" CssClass="form-control" ID="hasta_cepTelefonu" />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_OdemeDurumu">Hasta Ödeme Durumu</label>
-                            <input type="text" class="form-control" id="hasta_OdemeDurumu" name="hasta_OdemeDurumu"  aria-describedby="hasta_OdemeDurumu" placeholder="Hasta Ödeme Durumu">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_OdemeDurumu" />
                         </div>
                     </td>
                 </tr>
@@ -328,7 +329,7 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_AnneAdi">Hasta Anne Adi</label>
-                            <input type="text" class="form-control" id="hasta_AnneAdi" name="hasta_AnneAdi" aria-describedby="hasta_AnneAdi" placeholder="Hastanın Anne Adi">
+                             <asp:TextBox runat="server" CssClass="form-control" ID="hasta_AnneAd" />
                         </div>
                     </td>
 
@@ -339,13 +340,13 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Soyadi">Hasta Doğum Yeri</label>
-                            <input type="text" class="form-control" id="hasta_DogumYeri" name="hasta_DogumYeri" aria-describedby="hasta_DogumYeri" placeholder="Hastanın Doğum Yeri">
+                             <asp:TextBox runat="server" CssClass="form-control" ID="hasta_DogumYer" />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_sigortaTuru">Hasta Sigorta Türü</label>
-                            <input type="text" id="hasta_sigortaTuru" name="hasta_sigortaTuru" class="form-control" aria-describedby="hasta_sigortaTuru" placeholder="Hasta Sigorta">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_sigortaTuru" />
                         </div>
                     </td>
 
@@ -354,13 +355,13 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_DogumTarihi">Hasta Doğum Tarihi</label>
-                            <input type="date" id="hasta_DogumTarihi" name="hasta_DogumTarihi">
+                             <asp:TextBox TextMode="DateTime"  runat="server" CssClass="form-control" ID="hasta_DogumTarihi" />
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_karneNo">Hasta Karne No</label>
-                            <input type="number" class="form-control" id="hasta_karneNo" name="hasta_karneNo" aria-describedby="hasta_karneNo" placeholder="Hasta Karne No">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_karneNo" />
                         </div>
                     </td>
                 </tr>
@@ -368,16 +369,16 @@
                     <td>
                         <div class="form-group">
                             <label for="hasta_Cinsiyet">Hasta Cinsiyet</label>
-                            <select class="form-control" id="hasta_Cinsiyet" name="hasta_Cinsiyet">
-                                <option value="e">Erkek</option>
-                                <option value="k">Kadın</option>
-                            </select>
+                            <asp:DropDownList ID="hasta_Cinsiyet" CssClass="form-control" runat="server">
+                                  <asp:ListItem Value="1" Text="ERKEK" />
+                                  <asp:ListItem Value="2" Text="KADIN" />
+                         </asp:DropDownList>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="hasta_sicilNo">Hasta Sicil No</label>
-                            <input type="number" class="form-control" id="hasta_sicilNo" name="hasta_sicilNo" aria-describedby="hasta_sicilNo" placeholder="Hasta Sicil No">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_sicilNo" />
                         </div>
                     </td>
                 </tr>
