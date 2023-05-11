@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,6 +29,34 @@ namespace HastaneOtomasyonProjesi
                         hasta_Tc.Text = veriOkuyucu.GetString(1);
                         hasta_Adi.Text = veriOkuyucu.GetString(2);
                         hasta_Soyadi.Text = veriOkuyucu.GetString(3);
+                        hasta_kanGrubu.SelectedItem.Value = veriOkuyucu.GetInt32(4).ToString();
+                        hasta_babaAd.Text = veriOkuyucu.GetString(5).ToString();
+                        hasta_AnneAd.Text = veriOkuyucu.GetString(6).ToString();
+                        hasta_DogumYer.Text = veriOkuyucu.GetString(7).ToString();
+                        hasta_DogumTarihi.Text = veriOkuyucu.GetDateTime(8).ToString();
+                        hasta_Cinsiyet.Text = veriOkuyucu.GetString(9).ToString();
+                        hasta_Adres.Text = veriOkuyucu.GetString(10);
+                        hasta_Eposta.Text = veriOkuyucu.GetString(11);
+                        hasta_faxNo.Text = veriOkuyucu.GetString(12);
+                        hasta_evTelefonu.Text = veriOkuyucu.GetString(13);
+                        hasta_cepTelefonu.Text = veriOkuyucu.GetString(14);
+                        hasta_sigortaTuru.Text = veriOkuyucu.GetString(15);
+                        hasta_karneNo.Text = veriOkuyucu.GetString(16);
+                        hasta_sicilNo.Text = veriOkuyucu.GetString(17);
+                        hasta_YakinAdi.Text = veriOkuyucu.GetString(18);
+                        hasta_yakinlikDerecesi.Text = veriOkuyucu.GetString(19);
+                        hasta_tedaviDurumu.Text = veriOkuyucu.GetString(20);
+                        hasta_tedaviTuru.Text = veriOkuyucu.GetString(21);
+                        if (veriOkuyucu.GetBoolean(22))
+                        {
+                            hasta_OdemeDurumu.Text = "Ödeme Yapıldı";
+                        }
+                        else
+                        {
+                            hasta_OdemeDurumu.Text = "Ödeme Yapılmadı";
+                        }
+                        
+                       
                     }
                     veriOkuyucu.Close();
                     sqlBaglan.Close();
@@ -134,14 +163,17 @@ namespace HastaneOtomasyonProjesi
                             
 
                         }
+                        
                     }
-                    inputDoldur();
+                    
                 }
             }
             catch (Exception damnError)
             {
                 Response.Write(damnError.Message);
             }
+            inputDoldur();
+
         }
 
         protected void hastaIlacEkleme_Click(object sender, EventArgs e)
