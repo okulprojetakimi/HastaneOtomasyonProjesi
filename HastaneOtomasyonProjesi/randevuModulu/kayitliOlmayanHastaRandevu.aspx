@@ -29,6 +29,24 @@
             <tr>
                 <td>
                     <div>
+
+                        <label for="kRandevu_poliklinik">Randevu Polikliniği: </label>
+                        <asp:DropDownList  DataValueField="pId" DataTextField="pIsim" DataSourceID="kRandevu_poliklinikSource"  CssClass="btn btn-info dropdown-toggle" ID="kRandevu_poliklinik" runat="server"></asp:DropDownList>
+                        <asp:SqlDataSource ID="kRandevu_poliklinikSource" runat="server" ConnectionString="<%$ConnectionStrings:veritabaniBilgi %>" SelectCommand="SELECT pId, pIsim FROM poliklinik_Tablo"></asp:SqlDataSource>
+
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label for="kRandevu_Doktor">Randevu Doktoru Seç: </label>
+                        <asp:DropDownList CssClass="btn btn-info dropdown-toggle" ID="kRandevu_Doktor" runat="server"></asp:DropDownList>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
                         <label for="kRandevu_Tarih">Hasta Randevu Tarihi: </label>
                         <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />
                     </div>
@@ -48,20 +66,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div>
-                        <label for="kRandevu_poliklinik">Randevu Polikliniği: </label>
-                        <asp:DropDownList CssClass="btn btn-info dropdown-toggle" ID="kRandevu_poliklinik" runat="server"></asp:DropDownList>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label for="kRandevu_Doktor">Randevu Doktoru Seç: </label>
-                        <asp:DropDownList CssClass="btn btn-info dropdown-toggle" ID="kRandevu_Doktor" runat="server"></asp:DropDownList>
-                    </div>
-                </td>
-            </tr>
+            
         </table>
         <asp:Button Text="+ Randevu Ekle" ID="randevuEkle_Buton" CssClass="btn btn-success" runat="server" OnClick="randevuEkle_Buton_Click" />
 

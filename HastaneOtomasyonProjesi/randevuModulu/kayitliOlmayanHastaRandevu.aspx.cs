@@ -11,11 +11,6 @@ namespace HastaneOtomasyonProjesi.randevuModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void randevuEkle_Buton_Click(object sender, EventArgs e)
-        {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
             if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
             {
@@ -25,6 +20,11 @@ namespace HastaneOtomasyonProjesi.randevuModulu
             {
 
             }
+        }
+
+        protected void randevuEkle_Buton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

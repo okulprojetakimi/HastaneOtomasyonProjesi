@@ -42,6 +42,33 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         protected global::System.Web.UI.WebControls.TextBox kRandevu_Soyisim;
 
         /// <summary>
+        /// kRandevu_poliklinik denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList kRandevu_poliklinik;
+
+        /// <summary>
+        /// kRandevu_poliklinikSource denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource kRandevu_poliklinikSource;
+
+        /// <summary>
+        /// kRandevu_Doktor denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList kRandevu_Doktor;
+
+        /// <summary>
         /// kRandevu_Tarih denetimi.
         /// </summary>
         /// <remarks>
@@ -67,24 +94,6 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox kRandevu_randevuNot;
-
-        /// <summary>
-        /// kRandevu_poliklinik denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList kRandevu_poliklinik;
-
-        /// <summary>
-        /// kRandevu_Doktor denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList kRandevu_Doktor;
 
         /// <summary>
         /// randevuEkle_Buton denetimi.
