@@ -42,6 +42,15 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
         protected global::System.Web.UI.WebControls.DropDownList labPersonelSecimi;
 
         /// <summary>
+        /// doktor_Cek denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource doktor_Cek;
+
+        /// <summary>
         /// Button_Click09 denetimi.
         /// </summary>
         /// <remarks>

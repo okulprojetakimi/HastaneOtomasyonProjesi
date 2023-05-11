@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace HastaneOtomasyonProjesi.randevuModulu
 {
-    public partial class anasayfa : System.Web.UI.Page
+    public partial class kayitliOlmayanHastaRandevu : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,5 +22,9 @@ namespace HastaneOtomasyonProjesi.randevuModulu
             }
         }
 
+        protected void randevuEkle_Buton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -4,18 +4,15 @@
     <main>
         <table>
             <th>
-                <h1>Laboratuvar Tetkik Ekle</h1>
+                <h1 style="color:white;">Laboratuvar Tetkik Ekle</h1>
             </th>
             <tr>
                 <td>
                     <div class="form-grop">
                         <label for="tetkik_istekTarih">Tetkik Giris Tarihi:</label>
                         <asp:TextBox TextMode="DateTimeLocal" ID="tetkik_istekTarih" CssClass="form-control" runat="server" />
-                        <input type="date" class="form-control" id="" name="tetkik_istekTarih" aria-describedby="tetkik_istekTarih" placeholder="Tetkik İstek Tarih ">
                     </div>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <div class="form-grop">
                         <label for="tetkik_durum">Tetkik Durumu:</label>
@@ -26,16 +23,15 @@
                     </div>
 
                 </td>
-            </tr>
-            <tr>
-                <br />
-                <br />
-                <td> Doktor: <asp:DropDownList CssClass="btn btn-primary dropdown-toggle" ID="labPersonelSecimi" runat="server">
-                    </asp:DropDownList></td> 
-                 <br />
+                <td> Doktor: <asp:DropDownList DataValueField="personel_Id" DataTextField="Personel Isim Soyisim" DataSourceID="doktor_Cek" CssClass="btn btn-primary dropdown-toggle" ID="labPersonelSecimi" runat="server">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="doktor_Cek" runat="server" ConnectionString="<%$ConnectionStrings:veritabaniBilgi %>" SelectCommand="SELECT personel_Id, personel_Isim + ' ' +  personel_Soyisim AS [Personel Isim Soyisim] FROM personel_Tablo WHERE personel_Turu = 'Doktor'"></asp:SqlDataSource>
+                </td> 
+
             </tr>
         </table>
-    </main>
+        <br />
     <asp:Button CssClass="btn btn-success" Text="+ Laboratuvar Tetkik Ekle" ID="Button_Click09" runat="server" OnClick="labEkleButon_click" />
      
+    </main>
 </asp:Content>
