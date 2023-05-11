@@ -16,7 +16,15 @@ namespace HastaneOtomasyonProjesi.randevuModulu
 
         protected void randevuEkle_Buton_Click(object sender, EventArgs e)
         {
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            {
+                Response.Redirect("/cikis.aspx");
+            }
+            else
+            {
 
+            }
         }
     }
 }
