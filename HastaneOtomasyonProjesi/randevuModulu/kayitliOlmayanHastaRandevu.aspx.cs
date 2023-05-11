@@ -13,5 +13,10 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         {
 
         }
+
+        protected void randevuEkle_Buton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
