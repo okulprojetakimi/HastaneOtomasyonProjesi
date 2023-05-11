@@ -24,6 +24,24 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.TextBox tetkik_Sonuc;
 
         /// <summary>
+        /// PersonelSecimi denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList PersonelSecimi;
+
+        /// <summary>
+        /// doktor_Cek denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource doktor_Cek;
+
+        /// <summary>
         /// tetkikdetay_Durum denetimi.
         /// </summary>
         /// <remarks>
@@ -33,22 +51,22 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.DropDownList tetkikdetay_Durum;
 
         /// <summary>
-        /// secim denetimi.
+        /// labTetkikAdı denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList secim;
+        protected global::System.Web.UI.WebControls.DropDownList labTetkikAdı;
 
         /// <summary>
-        /// labTetkikAdi denetimi.
+        /// tahlilTanim denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList labTetkikAdi;
+        protected global::System.Web.UI.WebControls.SqlDataSource tahlilTanim;
 
         /// <summary>
         /// Button_Click109 denetimi.
