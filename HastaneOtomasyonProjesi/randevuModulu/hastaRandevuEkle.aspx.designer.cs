@@ -13,5 +13,14 @@ namespace HastaneOtomasyonProjesi.randevuModulu
 
     public partial class hastaRandevuEkle
     {
+
+        /// <summary>
+        /// randevuDoktor denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList randevuDoktor;
     }
 }
