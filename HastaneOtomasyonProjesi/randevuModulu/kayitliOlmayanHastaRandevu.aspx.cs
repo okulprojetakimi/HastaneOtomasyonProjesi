@@ -26,5 +26,7 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         {
             
         }
+
+
     }
 }
