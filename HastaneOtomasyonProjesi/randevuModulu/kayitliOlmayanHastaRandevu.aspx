@@ -1,11 +1,26 @@
 ﻿<%@ Page Language="C#" Title="Hasta Randevu Ekleme" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="kayitliOlmayanHastaRandevu.aspx.cs" Inherits="HastaneOtomasyonProjesi.randevuModulu.kayitliOlmayanHastaRandevu" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="maincontent" runat="server">
-    <h1 style="color: white;"><i class="fa-solid fa-calendar-plus"></i> Yeni Hasta Randevusu</h1>
+    <h1 style="color: white;"><i class="fa-solid fa-calendar-plus"></i>Yeni Hasta Randevusu</h1>
     <p style="color: white;">Bu sayfada daha önce hasta kaydı olmayan yeni hastalar için randevu oluşturukabilir.</p>
-
+    <style>
+        input[type="date"] {
+            display: block;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            width: 250px;
+        }
+        label{
+            color: white;
+        }
+    </style>
     <main>
         <asp:HiddenField ID="saatVerisi" runat="server" />
+        <asp:HiddenField ID="secilenDoktor" runat="server" />
+        <asp:HiddenField ID="secilenPoliklinik" runat="server" />
         <table cellpadding="5">
             <tr>
                 <td>
@@ -34,14 +49,12 @@
                         <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />
                     </div>
                 </td>
-            </tr>
-            <tr>
-                <td>
+                 <td>
                     <div>
 
                         <label for="kRandevu_poliklinik">Randevu Polikliniği: </label>
 
-                        <select id="kRandevu_poliklinik"  class="btn btn-info dropdown-toggle">
+                        <select id="kRandevu_poliklinik" class="btn btn-info dropdown-toggle">
                             <option>Bir poliklinik seçiniz.</option>
                             <%
                                 using (System.Data.SqlClient.SqlConnection sa = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -69,6 +82,9 @@
                     </div>
 
                 </td>
+            </tr>
+            <tr>
+               
 
                 <%--<td>
                     <div>
@@ -92,11 +108,11 @@
                         </table>
 
                     </div>
-                   
+
                 </td>
                 <td>
                     <div>
-                        <table style="position: absolute; top: 175px; left: 75%; width:275px;" class="table table-striped" id="saatTablo" border="1">
+                        <table style="position: absolute; top: 175px; left: 75%; width: 275px;" class="table table-striped" id="saatTablo" border="1">
                             <thead>
                                 <tr>
                                     <th>Saat Aralıkları</th>
@@ -111,6 +127,7 @@
                     $(document).ready(function () {
                         // input alanına her veri girildiğinde
                         $("#kRandevu_poliklinik").change(function () {
+                            document.getElementById('<%= secilenPoliklinik.ClientID %>').value = document.getElementById("kRandevu_poliklinik").value;
                             // AJAX çağrısı gönderiyoruz
                             $.ajax({
                                 type: "GET",
@@ -134,6 +151,7 @@
                     });
 
                     function doktorSaatGetir(doktorId) {
+                        document.getElementById('<%= secilenDoktor.ClientID %>').value = doktorId;
                         var randevuTarihi = document.getElementById("<%= kRandevu_Tarih.ClientID %>").value;
                         $.ajax({
                             type: "GET",
@@ -146,7 +164,7 @@
                                 var listem = "";
                                 // `veri` dizisindeki her bir öğeyi `option` olarak seçim kutusuna ekleyelim
                                 for (var i = 0; i < veri.length; i++) {
-                                    listem += "<tr><td>" + veri[i] + "</td><td><button type='button' class='btn btn-success' id='saatSecme' onclick='saatSecimiGerceklestir(" + '"' +  veri[i] + '"' +  ")'>Saat Seç</button></td></tr>";
+                                    listem += "<tr><td>" + veri[i] + "</td><td><button type='button' class='btn btn-success' id='saatSecme' onclick='saatSecimiGerceklestir(" + '"' + veri[i] + '"' + ")'>Saat Seç</button></td></tr>";
                                 }
                                 $("#saatTablo tbody").html(listem);
                             },
@@ -161,7 +179,7 @@
 
                 </script>
             </tr>
-            
+
             <tr>
                 <td>
                     <div>

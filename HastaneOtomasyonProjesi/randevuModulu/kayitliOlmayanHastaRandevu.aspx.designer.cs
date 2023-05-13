@@ -24,6 +24,24 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         protected global::System.Web.UI.WebControls.HiddenField saatVerisi;
 
         /// <summary>
+        /// secilenDoktor denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField secilenDoktor;
+
+        /// <summary>
+        /// secilenPoliklinik denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField secilenPoliklinik;
+
+        /// <summary>
         /// kRandevu_Tc denetimi.
         /// </summary>
         /// <remarks>
