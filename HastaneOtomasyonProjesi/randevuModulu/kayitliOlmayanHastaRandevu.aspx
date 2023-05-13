@@ -48,6 +48,7 @@
                         <label for="kRandevu_poliklinik">Randevu Polikliniği: </label>
 
                         <select id="kRandevu_poliklinik"  class="btn btn-info dropdown-toggle">
+                            <option>Bir poliklinik seçiniz.</option>
                             <%
                                 using (System.Data.SqlClient.SqlConnection sa = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                                 {
@@ -73,6 +74,9 @@
                         <asp:SqlDataSource ID="kRandevu_poliklinikSource" runat="server" ConnectionString="<%$ConnectionStrings:veritabaniBilgi %>" SelectCommand="SELECT pId, pIsim FROM poliklinik_Tablo"></asp:SqlDataSource>--%>
                     </div>
 
+                </td>
+                <td>
+                    <h3 id="secilenDoktor_Text">Seçilen doktor: XXX</h3>
                 </td>
 
                 <%--<td>
@@ -129,7 +133,7 @@
                     // Doktor ID si gelecek
                     function doktorKontrolEt(doktorId)
                     {
-                        alert(doktorId);
+                        document.getElementById("secilenDoktor_Text").innerHTML = "Seçilen Doktor: " + doktorId;
                     }
                 </script>
             </tr>
