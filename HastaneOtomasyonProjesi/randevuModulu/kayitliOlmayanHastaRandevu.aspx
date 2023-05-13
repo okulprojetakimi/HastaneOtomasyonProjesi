@@ -21,7 +21,7 @@
                 </td>
                 <td>
                     <div>
-                        <label for="kRandevu_">Hasta Soyismi</label>
+                        <label for="kRandevu_Soyisim">Hasta Soyismi</label>
                         <asp:TextBox CssClass="form-control" runat="server" ID="kRandevu_Soyisim" />
                     </div>
                 </td>
@@ -118,7 +118,7 @@
                                         // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
                                         var html = "";
                                         $.each(data, function (key, value) {
-                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button id='kontrolButon' class='btn btn-info' type='button' onclick='doktorKontrolEt(" + value.personel_Id +")'>Doktoru Seç</button></td>" + "</tr>";
+                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button id='kontrolButon' class='btn btn-info' onclick='doktorSaatGetir("+value.personel_Id+")' type='button'>Doktoru Seç</button></td>" + "</tr>";
                                         });
                                         $("#myGrid tbody").html(html);
                                     },
@@ -129,13 +129,35 @@
                             });
                         });
 
+                        function doktorSaatGetir(doktorId)
+                        {
+                            $.ajax({
+                                
+                                type: "GET",
+                                url: "randevuKontrol.aspx",
+                                data: { personelNumarasi: doktorId, randevuTarihi: '13.05.2023' },
+                                dataType: "json",
+                                success: function (veri) {
+                                    var liste = "";
+                                    // `veri` dizisindeki her bir öğeyi `option` olarak seçim kutusuna ekleyelim
+                                    for (var i = 0; i < veri.length; i++) {
+                                        liste += "<option value='" + veri[i] + "'>" + veri[i] + "</option>";
+                                        $("#secimKutusu").html();
+                                        console.log(veri[i]);
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    // AJAX isteği başarısız olduğunda yapılacak işlemler
+                                }
+                            });
+
+
+                        }
+
                     </script>
                 </td>
                 <script>
-                    // Doktor ID si gelecek
-                    function doktorKontrolEt(doktorId) {
-                        
-                    }
+                    
 
                 </script>
             </tr>
