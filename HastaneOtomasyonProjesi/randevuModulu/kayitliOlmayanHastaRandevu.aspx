@@ -5,7 +5,7 @@
     <p style="color: white;">Bu sayfada daha önce hasta kaydı olmayan yeni hastalar için randevu oluşturukabilir.</p>
 
     <main>
-        <asp:TextBox ID="randevu_Saati" runat="server" />
+        <asp:HiddenField ID="saatVerisi" runat="server" />
         <table cellpadding="5">
             <tr>
                 <td>
@@ -156,7 +156,7 @@
                         });
                     }
                     function saatSecimiGerceklestir(veriAl) {
-                        var doc = document.getElementById("veriAl").value = veriAl;
+                        document.getElementById('<%= saatVerisi.ClientID %>').value = veriAl;
                     }
 
                 </script>

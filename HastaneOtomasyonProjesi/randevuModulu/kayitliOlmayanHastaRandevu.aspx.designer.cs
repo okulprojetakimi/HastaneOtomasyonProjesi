@@ -15,13 +15,13 @@ namespace HastaneOtomasyonProjesi.randevuModulu
     {
 
         /// <summary>
-        /// randevu_Saati denetimi.
+        /// saatVerisi denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox randevu_Saati;
+        protected global::System.Web.UI.WebControls.HiddenField saatVerisi;
 
         /// <summary>
         /// kRandevu_Tc denetimi.
