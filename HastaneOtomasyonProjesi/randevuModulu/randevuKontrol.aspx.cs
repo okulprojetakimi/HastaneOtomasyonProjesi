@@ -50,9 +50,17 @@ namespace HastaneOtomasyonProjesi.randevuModulu
             }
             else
             {
-                string pNum = HttpContext.Current.Request.QueryString["personelNumarasi"];
-                string rTarih = HttpContext.Current.Request.QueryString["randevuTarihi"];
-                Response.Write(randevuKontrolu(pNum, rTarih));
+                if (HttpContext.Current.Request.QueryString["personelNumarasi"] == null || HttpContext.Current.Request.QueryString["randevuTarihi"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    string pNum = HttpContext.Current.Request.QueryString["personelNumarasi"];
+                    string rTarih = HttpContext.Current.Request.QueryString["randevuTarihi"];
+                    Response.Write(randevuKontrolu(pNum, rTarih));
+                }
+                
             }
         }
     }
