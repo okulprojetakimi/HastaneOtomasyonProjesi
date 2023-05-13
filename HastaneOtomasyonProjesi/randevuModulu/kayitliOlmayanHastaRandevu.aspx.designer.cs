@@ -57,7 +57,7 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox kRandevu_Saat;
+        protected global::System.Web.UI.WebControls.DropDownList kRandevu_Saat;
 
         /// <summary>
         /// kRandevu_randevuNot denetimi.

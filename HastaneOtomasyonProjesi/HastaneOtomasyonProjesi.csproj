@@ -143,6 +143,7 @@
     <Content Include="randevuModulu\anasayfa.aspx" />
     <Content Include="randevuModulu\hastaRandevuEkle.aspx" />
     <Content Include="randevuModulu\kayitliOlmayanHastaRandevu.aspx" />
+    <Content Include="randevuModulu\randevuKontrol.aspx" />
     <Content Include="randevuModulu\veriIslem.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -368,6 +369,13 @@
     </Compile>
     <Compile Include="randevuModulu\kayitliOlmayanHastaRandevu.aspx.designer.cs">
       <DependentUpon>kayitliOlmayanHastaRandevu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="randevuModulu\randevuKontrol.aspx.cs">
+      <DependentUpon>randevuKontrol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="randevuModulu\randevuKontrol.aspx.designer.cs">
+      <DependentUpon>randevuKontrol.aspx</DependentUpon>
     </Compile>
     <Compile Include="randevuModulu\veriIslem.aspx.cs">
       <DependentUpon>veriIslem.aspx</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" Title="Hasta Randevu Ekleme" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="kayitliOlmayanHastaRandevu.aspx.cs" Inherits="HastaneOtomasyonProjesi.randevuModulu.kayitliOlmayanHastaRandevu" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="maincontent" runat="server">
-    <h1 style="color: white;"><i class="fa-solid fa-calendar-plus"></i>Yeni Hasta Randevusu</h1>
+    <h1 style="color: white;"><i class="fa-solid fa-calendar-plus"></i> Yeni Hasta Randevusu</h1>
     <p style="color: white;">Bu sayfada daha önce hasta kaydı olmayan yeni hastalar için randevu oluşturukabilir.</p>
 
     <main>
@@ -29,10 +29,25 @@
             <tr>
                 <td>
                     <div>
+                        <label for="kRandevu_Tarih">Hasta Randevu Tarihi: </label>
+                        <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label for="kRandevu_Saat">Hasta Randevu Saat: </label>
+                        <asp:DropDownList runat="server" ID="kRandevu_Saat" CssClass="btn btn-success dropdown-toggle"></asp:DropDownList>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
 
                         <label for="kRandevu_poliklinik">Randevu Polikliniği: </label>
 
-                        <select id="kRandevu_poliklinik" class="btn btn-info dropdown-toggle">
+                        <select id="kRandevu_poliklinik"  class="btn btn-info dropdown-toggle">
                             <%
                                 using (System.Data.SqlClient.SqlConnection sa = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                                 {
@@ -97,7 +112,7 @@
                                         // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
                                         var html = "";
                                         $.each(data, function (key, value) {
-                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim+ "</td>" + "</tr>";
+                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button class='btn btn-info' type='button' onclick='doktorKontrolEt(" + value.personel_Id +")'>Doktoru Seç</button></td>" + "</tr>";
                                         });
                                         $("#myGrid tbody").html(html);
                                     },
@@ -110,21 +125,15 @@
 
                     </script>
                 </td>
+                <script>
+                    // Doktor ID si gelecek
+                    function doktorKontrolEt(doktorId)
+                    {
+                        alert(doktorId);
+                    }
+                </script>
             </tr>
-            <tr>
-                <td>
-                    <div>
-                        <label for="kRandevu_Tarih">Hasta Randevu Tarihi: </label>
-                        <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label for="kRandevu_Saat">Hasta Randevu Saat: </label>
-                        <asp:TextBox runat="server" ID="kRandevu_Saat" TextMode="Time" />
-                    </div>
-                </td>
-            </tr>
+            
             <tr>
                 <td>
                     <div>
