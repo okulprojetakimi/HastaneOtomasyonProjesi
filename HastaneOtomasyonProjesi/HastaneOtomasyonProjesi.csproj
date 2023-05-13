@@ -142,6 +142,7 @@
     <Content Include="Global.asax" />
     <Content Include="randevuModulu\anasayfa.aspx" />
     <Content Include="randevuModulu\hastaRandevuEkle.aspx" />
+    <Content Include="randevuModulu\hastaRandevuGoruntule.aspx" />
     <Content Include="randevuModulu\kayitliOlmayanHastaRandevu.aspx" />
     <Content Include="randevuModulu\randevuKontrol.aspx" />
     <Content Include="randevuModulu\veriIslem.aspx" />
@@ -362,6 +363,13 @@
     </Compile>
     <Compile Include="randevuModulu\hastaRandevuEkle.aspx.designer.cs">
       <DependentUpon>hastaRandevuEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="randevuModulu\hastaRandevuGoruntule.aspx.cs">
+      <DependentUpon>hastaRandevuGoruntule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="randevuModulu\hastaRandevuGoruntule.aspx.designer.cs">
+      <DependentUpon>hastaRandevuGoruntule.aspx</DependentUpon>
     </Compile>
     <Compile Include="randevuModulu\kayitliOlmayanHastaRandevu.aspx.cs">
       <DependentUpon>kayitliOlmayanHastaRandevu.aspx</DependentUpon>
