@@ -15,6 +15,15 @@ namespace HastaneOtomasyonProjesi.randevuModulu
     {
 
         /// <summary>
+        /// randevu_Saati denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox randevu_Saati;
+
+        /// <summary>
         /// kRandevu_Tc denetimi.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox kRandevu_Soyisim;
+
+        /// <summary>
+        /// kRandevu_Tarih denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox kRandevu_Tarih;
 
         /// <summary>
         /// kRandevu_randevuNot denetimi.

@@ -5,7 +5,8 @@
     <p style="color: white;">Bu sayfada daha önce hasta kaydı olmayan yeni hastalar için randevu oluşturukabilir.</p>
 
     <main>
-        <table cellpadding="10">
+        <asp:TextBox ID="randevu_Saati" runat="server" />
+        <table cellpadding="5">
             <tr>
                 <td>
                     <div>
@@ -30,17 +31,7 @@
                 <td>
                     <div>
                         <label for="kRandevu_Tarih">Hasta Randevu Tarihi: </label>
-<%--                        <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />--%>
-                        <input id="kRandevu_Tarih" class="form-group" type="date" />
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label for="kRandevu_Saat">Hasta Randevu Saat: </label>
-<%--                        <asp:DropDownList runat="server" ID="kRandevu_Saat" CssClass="btn btn-success dropdown-toggle"></asp:DropDownList>--%>
-                        <select id="saatSecimi" class="btn btn-success dropdown-toggle" name="saatSecimi">
-
-                        </select>
+                        <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />
                     </div>
                 </td>
             </tr>
@@ -78,9 +69,6 @@
                     </div>
 
                 </td>
-                <td>
-                    <h3 id="secilenDoktor_Text">Seçilen doktor: XXX</h3>
-                </td>
 
                 <%--<td>
                     <div>
@@ -104,61 +92,72 @@
                         </table>
 
                     </div>
-                    <script>
-                        $(document).ready(function () {
-                            // input alanına her veri girildiğinde
-                            $("#kRandevu_poliklinik").change(function () {
-                                // AJAX çağrısı gönderiyoruz
-                                $.ajax({
-                                    type: "GET",
-                                    url: "veriIslem.aspx",
-                                    data: { bolumId: $(kRandevu_poliklinik).val() },
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (data) {
-                                        // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
-                                        var html = "";
-                                        $.each(data, function (key, value) {
-                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button id='kontrolButon' class='btn btn-info' onclick='doktorSaatGetir("+value.personel_Id+")' type='button'>Doktoru Seç</button></td>" + "</tr>";
-                                        });
-                                        $("#myGrid tbody").html(html);
-                                    },
-                                    error: function (jqXHR, textStatus, errorThrown) {
-                                        console.log(textStatus, errorThrown);
-                                    }
-                                });
-                            });
-                        });
+                   
+                </td>
+                <td>
+                    <div>
+                        <table style="position: absolute; top: 175px; left: 75%; width:275px;" class="table table-striped" id="saatTablo" border="1">
+                            <thead>
+                                <tr>
+                                    <th>Saat Aralıkları</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
 
-                        function doktorSaatGetir(doktorId)
-                        {
-                            $.ajax({
-                                type: "GET",
-                                url: "randevuKontrol.aspx",
-                                data: { personelNumarasi: doktorId, randevuTarihi: document.getElementById("kRandevu_Tarih").value },
-                                dataType: "json",
-                                success: function (veri) {
-                                    var liste = "";
-                                    // `veri` dizisindeki her bir öğeyi `option` olarak seçim kutusuna ekleyelim
-                                    for (var i = 0; i < veri.length; i++) {
-                                        liste += "<option value='" + veri[i] + "'>" + veri[i] + "</option>";
-                                        console.log(veri[i]);
-                                    }
-                                    $("#secimKutusu").append(liste);
-                                },
-                                error: function (xhr, status, error) {
-                                    // AJAX isteği başarısız olduğunda yapılacak işlemler
-                                }
-                            });
-
-
-
-                        }
-
-                    </script>
+                    </div>
                 </td>
                 <script>
-                    
+                    $(document).ready(function () {
+                        // input alanına her veri girildiğinde
+                        $("#kRandevu_poliklinik").change(function () {
+                            // AJAX çağrısı gönderiyoruz
+                            $.ajax({
+                                type: "GET",
+                                url: "veriIslem.aspx",
+                                data: { bolumId: $(kRandevu_poliklinik).val() },
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
+                                    var html = "";
+                                    $.each(data, function (key, value) {
+                                        html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button id='kontrolButon' class='btn btn-info' onclick='doktorSaatGetir(" + value.personel_Id + ")' type='button'>Doktoru Seç</button></td>" + "</tr>";
+                                    });
+                                    $("#myGrid tbody").html(html);
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.log(textStatus, errorThrown);
+                                }
+                            });
+                        });
+                    });
+
+                    function doktorSaatGetir(doktorId) {
+                        var randevuTarihi = document.getElementById("<%= kRandevu_Tarih.ClientID %>").value;
+                        $.ajax({
+                            type: "GET",
+                            url: "randevuKontrol.aspx",
+                            data: { personelNumarasi: doktorId, randevuTarihi: randevuTarihi },
+                            dataType: "json",
+                            success: function (veri) {
+                                // DropdownList'i temizleyelim
+                                $("#ddlSaatler").empty();
+                                var listem = "";
+                                // `veri` dizisindeki her bir öğeyi `option` olarak seçim kutusuna ekleyelim
+                                for (var i = 0; i < veri.length; i++) {
+                                    listem += "<tr><td>" + veri[i] + "</td><td><button type='button' class='btn btn-success' id='saatSecme' onclick='saatSecimiGerceklestir(" + '"' +  veri[i] + '"' +  ")'>Saat Seç</button></td></tr>";
+                                }
+                                $("#saatTablo tbody").html(listem);
+                            },
+                            error: function (xhr, status, error) {
+                                console.log(status, error);
+                            }
+                        });
+                    }
+                    function saatSecimiGerceklestir(veriAl) {
+                        var doc = document.getElementById("veriAl").value = veriAl;
+                    }
 
                 </script>
             </tr>
