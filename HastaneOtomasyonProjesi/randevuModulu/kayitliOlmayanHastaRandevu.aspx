@@ -30,7 +30,8 @@
                 <td>
                     <div>
                         <label for="kRandevu_Tarih">Hasta Randevu Tarihi: </label>
-                        <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />
+<%--                        <asp:TextBox runat="server" ID="kRandevu_Tarih" TextMode="Date" />--%>
+                        <input id="kRandevu_Tarih" class="form-group" type="date" />
                     </div>
                 </td>
                 <td>
@@ -132,24 +133,24 @@
                         function doktorSaatGetir(doktorId)
                         {
                             $.ajax({
-                                
                                 type: "GET",
                                 url: "randevuKontrol.aspx",
-                                data: { personelNumarasi: doktorId, randevuTarihi: '13.05.2023' },
+                                data: { personelNumarasi: doktorId, randevuTarihi: document.getElementById("kRandevu_Tarih").value },
                                 dataType: "json",
                                 success: function (veri) {
                                     var liste = "";
                                     // `veri` dizisindeki her bir öğeyi `option` olarak seçim kutusuna ekleyelim
                                     for (var i = 0; i < veri.length; i++) {
                                         liste += "<option value='" + veri[i] + "'>" + veri[i] + "</option>";
-                                        $("#secimKutusu").html();
                                         console.log(veri[i]);
                                     }
+                                    $("#secimKutusu").append(liste);
                                 },
                                 error: function (xhr, status, error) {
                                     // AJAX isteği başarısız olduğunda yapılacak işlemler
                                 }
                             });
+
 
 
                         }
