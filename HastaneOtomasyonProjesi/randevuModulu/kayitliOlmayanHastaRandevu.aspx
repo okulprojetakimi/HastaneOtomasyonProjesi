@@ -36,8 +36,10 @@
                 <td>
                     <div>
                         <label for="kRandevu_Saat">Hasta Randevu Saat: </label>
-                        <asp:DropDownList runat="server" ID="kRandevu_Saat" CssClass="btn btn-success dropdown-toggle"></asp:DropDownList>
+<%--                        <asp:DropDownList runat="server" ID="kRandevu_Saat" CssClass="btn btn-success dropdown-toggle"></asp:DropDownList>--%>
+                        <select id="saatSecimi" class="btn btn-success dropdown-toggle" name="saatSecimi">
 
+                        </select>
                     </div>
                 </td>
             </tr>
@@ -116,7 +118,7 @@
                                         // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
                                         var html = "";
                                         $.each(data, function (key, value) {
-                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button class='btn btn-info' type='button' onclick='doktorKontrolEt(" + value.personel_Id +")'>Doktoru Seç</button></td>" + "</tr>";
+                                            html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><button id='kontrolButon' class='btn btn-info' type='button' onclick='doktorKontrolEt(" + value.personel_Id +")'>Doktoru Seç</button></td>" + "</tr>";
                                         });
                                         $("#myGrid tbody").html(html);
                                     },
@@ -131,10 +133,10 @@
                 </td>
                 <script>
                     // Doktor ID si gelecek
-                    function doktorKontrolEt(doktorId)
-                    {
-                        document.getElementById("secilenDoktor_Text").innerHTML = "Seçilen Doktor: " + doktorId;
+                    function doktorKontrolEt(doktorId) {
+                        
                     }
+
                 </script>
             </tr>
             
