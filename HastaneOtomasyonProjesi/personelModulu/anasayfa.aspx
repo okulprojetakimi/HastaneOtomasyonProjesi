@@ -42,7 +42,7 @@
                         success: function (data) {
                             var html = "";
                             $.each(data, function (key, value) {
-                                html += "<tr><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><a href='personelDetay.aspx?personelTc=" + value.personel_Tc + "'><button class='btn btn-success'>Personel Detay</button></a></td>" + "</tr>";
+                                html += "<tr><td>" + value.personel_Isim + "</td><td>" + value.personel_Soyisim + "</td>" + "<td><a href='personelDetay.aspx?personelTc=" + value.personel_Tc + "'><button type='button' class='btn btn-success'>Personel Detay</button></a></td>" + "</tr>";
                             });
                             $("#myGrid tbody").html(html);
                         },
