@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="personelData.aspx.cs" Inherits="HastaneOtomasyonProjesi.personelModulu.personelData" %>

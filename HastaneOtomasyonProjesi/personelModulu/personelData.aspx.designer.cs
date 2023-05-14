@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi.personelModulu
 {
 
 
-    public partial class anasayfa
+    public partial class personelData
     {
     }
 }
