@@ -14,18 +14,8 @@ namespace HastaneOtomasyonProjesi
         protected void btnSearch_Click(object sender, EventArgs e)
         {
 
-          
-            {
-           
-                SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["ConnectionStringName"].ConnectionString);
-                con.Open();
-
-                // SQL sorgusu oluştur
-                string sql = "SELECT Hasta.Ad, Hasta.Soyad, Hasta.TCKimlikNo, Hasta.DogumTarihi FROM Hasta INNER JOIN Randevu ON Hasta.HastaID = Randevu.HastaID WHERE Hasta.Ad LIKE @search OR Hasta.Soyad LIKE @search OR Hasta.TCKimlikNo LIKE @search";
-    
-
 
 
         }
-        }
+    }
 }
