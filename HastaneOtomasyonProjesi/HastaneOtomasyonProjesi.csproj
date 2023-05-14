@@ -18,10 +18,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -133,6 +131,7 @@
     <Content Include="hastaIslemleri.aspx" />
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
+    <Content Include="personelModulu\anasayfa.aspx" />
     <Content Include="randevuModulu\hastaRandevuAra.aspx" />
     <Content Include="hastaTetkikDetay.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
@@ -299,6 +298,13 @@
     </Compile>
     <Compile Include="hastaNotSil.aspx.designer.cs">
       <DependentUpon>hastaNotSil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="personelModulu\anasayfa.aspx.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="personelModulu\anasayfa.aspx.designer.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
     </Compile>
     <Compile Include="randevuModulu\hastaRandevuAra.aspx.cs">
       <DependentUpon>hastaRandevuAra.aspx</DependentUpon>

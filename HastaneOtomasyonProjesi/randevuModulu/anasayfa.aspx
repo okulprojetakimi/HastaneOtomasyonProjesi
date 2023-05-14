@@ -8,7 +8,7 @@
         <table cellpadding="12">
             <tr>
                 <td><a href="hastaRandevuEkle.aspx"><button type="button" id="randevu_EkleButon" class="btn btn-success">+ Yeni Randevu Ekle</button></a></td>
-                <td><button type="button" id="randevu_Ara" class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Randevu Ara</button></td>
+                <td><a href="hastaRandevuAra.aspx"><button type="button" id="randevu_Ara" class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Randevu Ara</button></a></td>
 
             </tr>
         </table>
