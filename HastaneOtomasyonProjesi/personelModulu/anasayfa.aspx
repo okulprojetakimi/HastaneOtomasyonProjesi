@@ -9,7 +9,8 @@
 
         <!-- Persnel tablo -->
         <div class="personel_Tablosu">
-
+            <asp:TextBox ID="hasta_Tc" CssClass="form-control" runat="server" />
+            <asp:Button Text="Arama Yap" ID="arama_Yap" CssClass="btn btn-success" runat="server" />
         </div>
     </main>
 

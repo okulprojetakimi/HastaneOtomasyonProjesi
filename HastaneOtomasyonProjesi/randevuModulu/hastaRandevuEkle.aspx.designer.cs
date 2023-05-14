@@ -15,48 +15,66 @@ namespace HastaneOtomasyonProjesi.randevuModulu
     {
 
         /// <summary>
-        /// kRandevu_Tc denetimi.
+        /// saatVerisi denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox kRandevu_Tc;
+        protected global::System.Web.UI.WebControls.HiddenField saatVerisi;
 
         /// <summary>
-        /// kRandevu_Isim denetimi.
+        /// secilenDoktor denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox kRandevu_Isim;
+        protected global::System.Web.UI.WebControls.HiddenField secilenDoktor;
 
         /// <summary>
-        /// kRandevu_Soyisim denetimi.
+        /// secilenPoliklinik denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox kRandevu_Soyisim;
+        protected global::System.Web.UI.WebControls.HiddenField secilenPoliklinik;
 
         /// <summary>
-        /// kRandevu_Tarih denetimi.
+        /// tcNumara denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox kRandevu_Tarih;
+        protected global::System.Web.UI.WebControls.TextBox tcNumara;
 
         /// <summary>
-        /// Randevu_randevuNot denetimi.
+        /// randevuTarih denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Randevu_randevuNot;
+        protected global::System.Web.UI.WebControls.TextBox randevuTarih;
+
+        /// <summary>
+        /// randevuNot denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox randevuNot;
+
+        /// <summary>
+        /// randevuEkle_Buton denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button randevuEkle_Buton;
     }
 }
