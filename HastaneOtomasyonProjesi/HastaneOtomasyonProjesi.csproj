@@ -133,6 +133,7 @@
     <Content Include="hastaNotSil.aspx" />
     <Content Include="personelModulu\anasayfa.aspx" />
     <Content Include="personelModulu\personelData.aspx" />
+    <Content Include="personelModulu\personelDetay.aspx" />
     <Content Include="randevuModulu\hastaRandevuAra.aspx" />
     <Content Include="hastaTetkikDetay.aspx" />
     <Content Include="hastayaNotEkle.aspx" />
@@ -313,6 +314,13 @@
     </Compile>
     <Compile Include="personelModulu\personelData.aspx.designer.cs">
       <DependentUpon>personelData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="personelModulu\personelDetay.aspx.cs">
+      <DependentUpon>personelDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="personelModulu\personelDetay.aspx.designer.cs">
+      <DependentUpon>personelDetay.aspx</DependentUpon>
     </Compile>
     <Compile Include="randevuModulu\hastaRandevuAra.aspx.cs">
       <DependentUpon>hastaRandevuAra.aspx</DependentUpon>
