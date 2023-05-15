@@ -24,7 +24,7 @@ namespace HastaneOtomasyonProjesi.personelModulu
         protected void personelEkleButon_click(object sender, EventArgs e)
         {
             using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-            {
+            { 
                 sqlBaglantisi.Open();
                 int random = new Random().Next(1111, 9999);
                 using (SqlCommand personelEkleme = new SqlCommand("INSERT INTO personel_tablo (personel_Id,personel_Isim,personel_Soyisim,personel_Telefon,personel_Eposta,personel_SicilNo,personel_Bolum,personel_SozlesmeTipi,personel_kanGrubu,personel_ikametAdres,personel_Turu,personel_IzinDurum,personel_Tc) VALUES (@personel_Id,@personel_Isim,@personel_Soyisim,@personel_Telefon,@personel_Eposta,@personel_SicilNo,@personel_Bolum,@personel_SozlesmeTipi,@personel_kanGrubu,@personel_ikametAdres,@personel_Turu,@personel_IzinDurum,@personel_Tc)", sqlBaglantisi))

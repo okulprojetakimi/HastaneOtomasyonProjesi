@@ -15,7 +15,7 @@
                         <asp:TextBox ID="personel_Tc" CssClass="form-control" runat="server" />
                     </div>
                 </td>
-                <td>
+                <td> 
                     <div>
                         <label for="personel_Telefon">Personel Telefon No:</label>
                         <asp:TextBox ID="personel_Telefon" CssClass="form-control" runat="server" />
