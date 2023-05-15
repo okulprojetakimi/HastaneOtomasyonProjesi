@@ -18,10 +18,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -134,6 +132,7 @@
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
     <Content Include="personelModulu\anasayfa.aspx" />
+    <Content Include="personelModulu\personelDetay.aspx" />
     <Content Include="personelModulu\personelEkleme.aspx" />
     <Content Include="randevuModulu\hastaRandevuAra.aspx" />
     <Content Include="hastaTetkikDetay.aspx" />
@@ -308,6 +307,13 @@
     </Compile>
     <Compile Include="personelModulu\anasayfa.aspx.designer.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="personelModulu\personelDetay.aspx.cs">
+      <DependentUpon>personelDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="personelModulu\personelDetay.aspx.designer.cs">
+      <DependentUpon>personelDetay.aspx</DependentUpon>
     </Compile>
     <Compile Include="personelModulu\personelEkleme.aspx.cs">
       <DependentUpon>personelEkleme.aspx</DependentUpon>
