@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" Title="Personel Detay" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="personelDetay.aspx.cs" Inherits="HastaneOtomasyonProjesi.personelModulu.personelDetay" %>
+﻿<%@ Page Language="C#" Title="Personel Detay" EnableViewState="false" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="personelDetay.aspx.cs" Inherits="HastaneOtomasyonProjesi.personelModulu.personelDetay" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-        <h1 style="color: white;"><i class="fa-solid fa-person"></i> Personel Detay Görüntüleme</h1>
+        <h1 style="color: white;"><i class="fa-solid fa-person"></i>Personel Detay Görüntüleme</h1>
         <p style="color: white;">Bu sayfada personel verilerini görüntüleyebilir, düzenlemeler yapabilirsin.</p>
         <br />
         <div class="personel_Info">
@@ -42,8 +42,12 @@
                     </td>
                     <td>
                         <label for="personel_Bolum">Personel Bölüm</label>
-                        <asp:TextBox CssClass="form-control" runat="server" ID="personel_Bolum" />
-                    </td>
+                        <asp:DropDownList DataValueField="pBolumID" DataTextField="pBolumIsmi" DataSourceID="bolum_Cek" ID="personel_Bolum" runat="server" CssClass="btn btn-primary dropdown-toggle">
+                            <asp:ListItem Text="Seçim Yap" Value="0" />
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="bolum_Cek" runat="server" ConnectionString="<%$ConnectionStrings:veritabaniBilgi %>" SelectCommand="SELECT pBolumID, pBolumIsmi FROM personelBolum_tablo"></asp:SqlDataSource>
+
+                    </td> 
                     <td>
                         <label for="personel_SozlesmeTipi">Personel Sözleşme Tipi</label>
                         <asp:TextBox CssClass="form-control" runat="server" ID="personel_SozlesmeTipi" />
@@ -53,7 +57,18 @@
                 <tr>
                     <td>
                         <label for="personel_kanGrubu">Personel Kan Grubu: </label>
-                        <asp:TextBox CssClass="form-control" runat="server" ID="personel_kanGrubu" />
+                        <asp:DropDownList ID="personel_kanGrubu" runat="server" CssClass="btn btn-primary dropdown-toggle">
+                            <asp:ListItem Text="Seçim yap" Value="0" />
+                            <asp:ListItem Text="A RH+" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="A RH-" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="0 RH+" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="0 RH-" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="B+" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="B-" Value="6"></asp:ListItem>
+                            <asp:ListItem Text="AB-" Value="7"></asp:ListItem>
+                            <asp:ListItem Text="AB+" Value="8"></asp:ListItem>
+                        </asp:DropDownList>
+
                     </td>
                     <td>
                         <label for="personel_ikametAdres">İkamet Adres: </label>
@@ -65,7 +80,10 @@
                     </td>
                     <td>
                         <label for="personel_izinDurum">Personel İzin Durumu: </label>
-                        <asp:TextBox CssClass="form-control" runat="server" ID="personel_izinDurum" />
+                        <asp:DropDownList ID="personel_izinDurum" runat="server" CssClass="btn btn-primary dropdown-toggle">
+                            <asp:ListItem Text="Personel İzinde" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Personel İzinde Değil" Value="0" />
+                        </asp:DropDownList>
                     </td>
                 </tr>
             </table>

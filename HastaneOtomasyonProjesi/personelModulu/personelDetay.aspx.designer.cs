@@ -75,7 +75,16 @@ namespace HastaneOtomasyonProjesi.personelModulu
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox personel_Bolum;
+        protected global::System.Web.UI.WebControls.DropDownList personel_Bolum;
+
+        /// <summary>
+        /// bolum_Cek denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource bolum_Cek;
 
         /// <summary>
         /// personel_SozlesmeTipi denetimi.
@@ -93,7 +102,7 @@ namespace HastaneOtomasyonProjesi.personelModulu
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox personel_kanGrubu;
+        protected global::System.Web.UI.WebControls.DropDownList personel_kanGrubu;
 
         /// <summary>
         /// personel_ikametAdres denetimi.
@@ -120,7 +129,7 @@ namespace HastaneOtomasyonProjesi.personelModulu
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox personel_izinDurum;
+        protected global::System.Web.UI.WebControls.DropDownList personel_izinDurum;
 
         /// <summary>
         /// personel_Guncelle denetimi.
