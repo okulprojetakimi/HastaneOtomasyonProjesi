@@ -95,14 +95,14 @@
             <tr>
                 <td>
                     <div>
-                        <label for="personel_Bolum">Randevu Polikliniği: </label>
+                        <label for="personel_Bolum">Personel Bölüm: </label>
                         <select id="personel_Bolum" class="btn btn-info dropdown-toggle">
-                            <option>Poliklinik seçiniz.</option>
+                            <option>Bölüm seçiniz.</option>
                             <%
                                 using (System.Data.SqlClient.SqlConnection pol = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                                 {
                                     pol.Open();
-                                    using (System.Data.SqlClient.SqlCommand sqlCom = new System.Data.SqlClient.SqlCommand("SELECT pId, pIsim FROM poliklinik_Tablo", pol))
+                                    using (System.Data.SqlClient.SqlCommand sqlCom = new System.Data.SqlClient.SqlCommand("SELECT pBolumID, pBolumIsmi FROM personelBolum_tablo", pol))
                                     {
                                         System.Data.SqlClient.SqlDataReader reader = sqlCom.ExecuteReader();
                                         while (reader.Read())
