@@ -135,12 +135,6 @@
                             <input type="number" class="form-control" id="hasta_cepTelefonu" name="hasta_cepTelefonu" aria-describedby="hasta_cepTelefonu" placeholder="Hasta Cep Telefonu">
                         </div>
                     </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="hasta_OdemeDurumu">Hasta Ödeme Durumu</label>
-                            <input type="text" class="form-control" id="hasta_OdemeDurumu" name="hasta_OdemeDurumu"  aria-describedby="hasta_OdemeDurumu" placeholder="Hasta Ödeme Durumu">
-                        </div>
-                    </td>
 
                 </tr>
                 <tr>
