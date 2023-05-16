@@ -15,15 +15,6 @@ namespace HastaneOtomasyonProjesi.personelModulu
     {
 
         /// <summary>
-        /// personelData_Source denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource personelData_Source;
-
-        /// <summary>
         /// personel_Tc denetimi.
         /// </summary>
         /// <remarks>
@@ -130,5 +121,14 @@ namespace HastaneOtomasyonProjesi.personelModulu
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox personel_izinDurum;
+
+        /// <summary>
+        /// personel_Guncelle denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button personel_Guncelle;
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace HastaneOtomasyonProjesi.personelModulu
 {
@@ -26,9 +29,34 @@ namespace HastaneOtomasyonProjesi.personelModulu
                 else
                 {
                     // Devam
+                    using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    {
+                        sqlcon.Open();
+                        using (SqlCommand sqlKomut = new SqlCommand("SELECT * FROM personel_tablo WHERE personel_Tc = @pTc", sqlcon))
+                        {
+                            sqlKomut.Parameters.AddWithValue("@pTc", HttpContext.Current.Request.QueryString["personelTc"]);
+                            SqlDataReader veriOkuyucu = sqlKomut.ExecuteReader();
+                            while (veriOkuyucu.Read())
+                            {
+                                personel_Tc.Text = veriOkuyucu.GetString(12);
+                                personel_Isim.Text = veriOkuyucu.GetString(1);
+                                personel_Soyisim.Text = veriOkuyucu.GetString(2);
 
+                            }
+
+                        }
+                        sqlcon.Close();
+                    }
                 }
             }
+        }
+
+        protected void personel_Guncelle_Click(object sender, EventArgs e)
+        {
+            Response.Write(personel_Tc.Text);
+            Response.Write(personel_Isim.Text);
+            Response.Write(personel_Soyisim.Text);
+            Response.Write(personel_Telefon.Text);
         }
     }
 }
