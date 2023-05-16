@@ -9,16 +9,8 @@
 
         <!-- Persnel tablo -->
         <div class="personel_Tablosu">
-            
-            <table cellpadding="15">
-                <tr>
-                    <td><label for="personel_Isim">Personel Isim: </label></td>
-                    <td><asp:TextBox ID="personel_Isim" CssClass="form-control" runat="server" /></td>
-                    <td><label for="personel_Soyisim">Personel Soyisim: </label></td>
-                    <td><asp:TextBox ID="personel_Soyisim" CssClass="form-control" runat="server" /></td>
-                    <td><asp:Button Text="Arama Yap" ID="arama_Yap" CssClass="btn btn-success" runat="server" /></td>
-                </tr>
-            </table>
+            <asp:TextBox ID="hasta_Tc" CssClass="form-control" runat="server" />
+            <asp:Button Text="Arama Yap" ID="arama_Yap" CssClass="btn btn-success" runat="server" />
         </div>
     </main>
 

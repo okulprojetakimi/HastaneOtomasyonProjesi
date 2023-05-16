@@ -15,22 +15,13 @@ namespace HastaneOtomasyonProjesi.personelModulu
     {
 
         /// <summary>
-        /// personel_Isim denetimi.
+        /// hasta_Tc denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox personel_Isim;
-
-        /// <summary>
-        /// personel_Soyisim denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox personel_Soyisim;
+        protected global::System.Web.UI.WebControls.TextBox hasta_Tc;
 
         /// <summary>
         /// arama_Yap denetimi.
