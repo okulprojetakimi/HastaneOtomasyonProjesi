@@ -10,6 +10,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            
+            <label for="Ad">Ad:</label>
+            <asp:TextBox ID="Ad" runat="server"></asp:TextBox>
+
+            <label for="Soyad">Soyad:</label>
+            <asp:TextBox ID="Soyad" runat="server"></asp:TextBox>
+
+            <asp:Button ID="btnAra" runat="server" Text="Ara" OnClick="btnSearch_Click" />
         </div>
     </form>
 </body>

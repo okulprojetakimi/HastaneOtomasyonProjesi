@@ -13,7 +13,22 @@ namespace HastaneOtomasyonProjesi.randevuModulu
 
     public partial class hastaRandevuEkle
     {
-
+        /// <summary>
+        /// Ad denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Ad;
+        /// <summary>
+        /// Soyad denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Soyad;
         /// <summary>
         /// saatVerisi denetimi.
         /// </summary>
