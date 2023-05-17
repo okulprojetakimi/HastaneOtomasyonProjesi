@@ -5,7 +5,7 @@
     <main>
         <h1 style="color: white;">Personel Modülü</h1>
         <p style="color:white;">Bu modül ile personel ekleme, arama, görüntüleme işlemlerini gerçekleştirebilirsiniz.</p>
-        <a href="personelEkleme.aspx"><button class="btn btn-success">+ Personel Ekleme</button></a>
+        <a href="personelEkleme.aspx"><button type="button" class="btn btn-success">+ Personel Ekleme</button></a>
 
         <!-- Persnel tablo -->
         <div class="personel_Tablosu">
