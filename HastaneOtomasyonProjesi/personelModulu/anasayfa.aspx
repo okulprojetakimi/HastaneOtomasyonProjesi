@@ -24,6 +24,47 @@
                     </td>
                 </tr>
             </table>
+            <!-- -->
+            <table class="table table-striped" id="myGrid" border="1">
+                <thead>
+                    <tr>
+                        <th>Personel TC</th>
+                        <th>Personel Isim</th>
+                        <th>Personel Soyisim</th
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        <br />
+        <div class="hasta_Listesi">
+
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#personel_Arama").click(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "personelApi.aspx",
+                        data: {
+                            isim: document.getElementById('personel_Isim').value,
+                            soyisim: document.getElementById('personel_Soyisim').value
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            var html = "";
+                            $.each(data, function (key, value) {
+                                html += "<tr><td>" + value.personel_Tc + "</td><td>" + value.personel_Isim+ "</td><td>" + value.personel_Soyisim+ "</td>" + "<td> <a href='personelDetay.aspx?personelTc=" + value.personel_Tc + "'><button type='button' class='btn btn-success'>Personel Detay</button></a></td>" + "</tr>";
+                            });
+                            $("#myGrid tbody").html(html);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
+                });
+            });
+        </script>
             
         </div>
     </main>
