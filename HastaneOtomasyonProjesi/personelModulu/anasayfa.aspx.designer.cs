@@ -13,23 +13,5 @@ namespace HastaneOtomasyonProjesi.personelModulu
 
     public partial class anasayfa
     {
-
-        /// <summary>
-        /// hasta_Tc denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hasta_Tc;
-
-        /// <summary>
-        /// arama_Yap denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button arama_Yap;
     }
 }

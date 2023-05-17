@@ -9,8 +9,22 @@
 
         <!-- Persnel tablo -->
         <div class="personel_Tablosu">
-            <asp:TextBox ID="hasta_Tc" CssClass="form-control" runat="server" />
-            <asp:Button Text="Arama Yap" ID="arama_Yap" CssClass="btn btn-success" runat="server" />
+            <table style="color: white;" cellpadding="15">
+                <tr>
+                    <td>
+                        <label>Personel İsim: </label>
+                        <input type="text" id="personel_Isim" class="form-control" name="personel_Isim" />
+                    </td>
+                    <td>
+                        <label>Personel Soyisim: </label>
+                        <input type="text" id="personel_Soyisim" class="form-control" name="personel_Soyisim" />
+                    </td>
+                    <td>
+                        <input type="button" value="Personel Ara" class="btn btn-success" name="personel_Arama" id="personel_Arama"/>
+                    </td>
+                </tr>
+            </table>
+            
         </div>
     </main>
 
