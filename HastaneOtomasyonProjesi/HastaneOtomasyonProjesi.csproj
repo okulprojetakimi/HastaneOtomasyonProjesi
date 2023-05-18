@@ -121,10 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminModulu\anasayfa.aspx" />
+    <Content Include="adminModulu\bakimModuAyar.aspx" />
     <Content Include="ameliyathaneModulu\ameliyatAra.aspx" />
     <Content Include="ameliyathaneModulu\ameliyatDetayGoruntule.aspx" />
     <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="ameliyathaneModulu\yeniAmeliyatKaydiEkle.aspx" />
+    <Content Include="bakim.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -200,6 +202,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="laboratuvarModulu\tetkikDetayEkleme.aspx" />
     <Content Include="yeniHastaKaydi.aspx" />
+    <Content Include="adminModulu\adminTema.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -241,6 +244,20 @@
     <Compile Include="adminModulu\anasayfa.aspx.designer.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="adminModulu\bakimModuAyar.aspx.cs">
+      <DependentUpon>bakimModuAyar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\bakimModuAyar.aspx.designer.cs">
+      <DependentUpon>bakimModuAyar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\adminTema.Master.cs">
+      <DependentUpon>adminTema.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\adminTema.Master.designer.cs">
+      <DependentUpon>adminTema.Master</DependentUpon>
+    </Compile>
     <Compile Include="ameliyathaneModulu\ameliyatAra.aspx.cs">
       <DependentUpon>ameliyatAra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -271,6 +288,13 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="bakim.aspx.cs">
+      <DependentUpon>bakim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bakim.aspx.designer.cs">
+      <DependentUpon>bakim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cikis.aspx.cs">
       <DependentUpon>cikis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

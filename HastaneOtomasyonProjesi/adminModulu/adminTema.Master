@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HastaneOtomasyonProjesi.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="adminTema.Master.cs" Inherits="HastaneOtomasyonProjesi.adminModulu.Site1" %>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -7,27 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Super HBYS</title>
-    <%
-        using (System.Data.SqlClient.SqlConnection sqlcon = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-        {
-            sqlcon.Open();
-            using (System.Data.SqlClient.SqlCommand com = new System.Data.SqlClient.SqlCommand("SELECT ayar_BakimModu FROM sistem_Tablo WHERE ayar_Id = 1", sqlcon))
-            {
-                System.Data.SqlClient.SqlDataReader readData = com.ExecuteReader();
-                while (readData.Read())
-                {
-                    if (readData.GetBoolean(0))
-                    {
-                        Response.Redirect("/bakim.aspx");
-                    }
-                }
 
-                sqlcon.Close();
-                readData.Close();
-            }
-        }
-
-    %>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
