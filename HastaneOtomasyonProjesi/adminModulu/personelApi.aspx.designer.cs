@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi.adminModulu
 {
 
 
-    public partial class personelHesapIslemleri
+    public partial class personelApi
     {
     }
 }
