@@ -156,6 +156,7 @@
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
     <Content Include="personelModulu\anasayfa.aspx" />
+    <Content Include="personelModulu\istatistikSayfasi.aspx" />
     <Content Include="personelModulu\personelApi.aspx" />
     <Content Include="personelModulu\personelDetay.aspx" />
     <Content Include="personelModulu\personelEkleme.aspx" />
@@ -381,6 +382,13 @@
     </Compile>
     <Compile Include="personelModulu\anasayfa.aspx.designer.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="personelModulu\istatistikSayfasi.aspx.cs">
+      <DependentUpon>istatistikSayfasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="personelModulu\istatistikSayfasi.aspx.designer.cs">
+      <DependentUpon>istatistikSayfasi.aspx</DependentUpon>
     </Compile>
     <Compile Include="personelModulu\personelApi.aspx.cs">
       <DependentUpon>personelApi.aspx</DependentUpon>
