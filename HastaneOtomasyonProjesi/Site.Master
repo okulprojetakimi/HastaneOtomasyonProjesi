@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Super HBYS</title>
     <%
+        Response.ContentEncoding = System.Text.Encoding.UTF8;
+        %>
+    <%
         using (System.Data.SqlClient.SqlConnection sqlcon = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
         {
             sqlcon.Open();
