@@ -51,7 +51,7 @@
                         success: function (data) {
                             var html = "";
                             $.each(data, function (key, value) {
-                                html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Tc + "</td><td>" + value.personel_Isim + "</td>" + "<td>" + value.personel_Soyisim + "</td>" + "<td>" + value.personel_Turu + "</td>" + "<td> <a href='hesapIslem.aspx.aspx?personelNumarasi=" + value.personel_Id + "'><button type='button' class='btn btn-success'>Personel İşlem</button></a></td>" + "</tr>";
+                                html += "<tr><td>" + value.personel_Id + "</td><td>" + value.personel_Tc + "</td><td>" + value.personel_Isim + "</td>" + "<td>" + value.personel_Soyisim + "</td>" + "<td>" + value.personel_Turu + "</td>" + "<td> <a href='hesapIslem.aspx?personelNumarasi=" + value.personel_Id + "'><button type='button' class='btn btn-success'>Personel İşlem</button></a></td>" + "</tr>";
                             });
                             $("#myGrid tbody").html(html);
                         },

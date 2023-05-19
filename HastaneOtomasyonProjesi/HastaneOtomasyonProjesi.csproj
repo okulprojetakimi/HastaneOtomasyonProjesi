@@ -122,6 +122,7 @@
   <ItemGroup>
     <Content Include="adminModulu\anasayfa.aspx" />
     <Content Include="adminModulu\bakimModuAyar.aspx" />
+    <Content Include="adminModulu\hesapIslem.aspx" />
     <Content Include="adminModulu\personelApi.aspx" />
     <Content Include="adminModulu\personelHesapIslemleri.aspx" />
     <Content Include="ameliyathaneModulu\ameliyatAra.aspx" />
@@ -259,6 +260,13 @@
     </Compile>
     <Compile Include="adminModulu\adminTema.Master.designer.cs">
       <DependentUpon>adminTema.Master</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\hesapIslem.aspx.cs">
+      <DependentUpon>hesapIslem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\hesapIslem.aspx.designer.cs">
+      <DependentUpon>hesapIslem.aspx</DependentUpon>
     </Compile>
     <Compile Include="adminModulu\personelApi.aspx.cs">
       <DependentUpon>personelApi.aspx</DependentUpon>
