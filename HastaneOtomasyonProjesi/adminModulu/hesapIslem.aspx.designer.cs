@@ -15,6 +15,15 @@ namespace HastaneOtomasyonProjesi.adminModulu
     {
 
         /// <summary>
+        /// durum_deger denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField durum_deger;
+
+        /// <summary>
         /// personelKullaniciAdi denetimi.
         /// </summary>
         /// <remarks>

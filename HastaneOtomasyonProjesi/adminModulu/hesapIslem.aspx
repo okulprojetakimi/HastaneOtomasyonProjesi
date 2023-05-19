@@ -2,8 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
+        <asp:HiddenField ID="durum_deger" runat="server"/>
         <h1 style="color: white;"><i class="fa-solid fa-users"></i> Personel Detay İşlemi</h1>
-        <p style="color: white;">Bu sayfada seçilen personelin hesap işlemlerini gerçekleştirebilirsiniz.</p>
+        <p style="color: white;">Bu sayfada seçilen personelin hesap işlemlerini gerçekleştirebilirsiniz. Eğer personelin hesabı yoksa direkt olarak inputlara veri girişi sağlayıp kaydet butonuna tıklayabilirsiniz. GÜncelleme yapmak için de aynı şey geçerlidir.</p>
         <br />
         <style>
             label{
@@ -23,13 +24,13 @@
                     </th>
                     <th>
                         <label>Personel Hesap Oluşturma Tarihi: </label>
-                        <asp:TextBox TextMode="DateTime" ID="personelHOlusturmaTarihi" CssClass="form-control" runat="server" />
+                        <asp:TextBox TextMode="DateTime" ID="personelHOlusturmaTarihi" CssClass="form-control" runat="server" ReadOnly="True" />
                     </th>
                 </tr>
                 <tr>
                     <th>
                         <label>Personel Hesap Son Erişim Tarihi: </label>
-                        <asp:TextBox runat="server" TextMode="DateTime" ID="personelSonErisim" CssClass="form-control"/>
+                        <asp:TextBox runat="server" TextMode="DateTime" ID="personelSonErisim" CssClass="form-control" ReadOnly="True" />
                     </th>
                     <th>
                         <label>Personel Özel Oturum Kodu: </label>
@@ -54,7 +55,7 @@
                 </tr>
             </table>
 
-            <asp:Button CssClass="btn btn-warning" ID="kaydet_Buton" Text="Kaydet" runat="server" />
+            <asp:Button CssClass="btn btn-warning" ID="kaydet_Buton" Text="Kaydet" runat="server" OnClick="kaydet_Buton_Click" />
         </div>
     </main>
 </asp:Content>
