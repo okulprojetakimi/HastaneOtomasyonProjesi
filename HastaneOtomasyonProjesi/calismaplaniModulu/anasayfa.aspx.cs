@@ -11,7 +11,10 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                
+            }
         }
     }
 }
