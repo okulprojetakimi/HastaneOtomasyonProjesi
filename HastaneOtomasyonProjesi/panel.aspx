@@ -14,8 +14,8 @@
 					</tr>
 				    <tr class="td_2">
 						<td><a href="personelModulu/anasayfa.aspx"><button type="button" class="fix_Button"><img style="width:90px; height: 90px;" src="assets/img/t5.png"></button></a></td>
-						<td><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t7.png"></button></td>
-						<td><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t8.png"></button></td>
+						<td><a href="calismaplaniModulu/anasayfa.aspx"><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t7.png"></button></a></td>
+						<td><a href="adminModulu/anasayfa.aspx"><button type="button" class="fix_Button"><img	style="width:90px; height: 90px;" src="assets/img/t8.png"></button></a></td>
 					</tr>
 				</table>
 				

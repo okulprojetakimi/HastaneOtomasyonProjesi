@@ -45,12 +45,33 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -77,9 +98,6 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -102,10 +120,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminModulu\anasayfa.aspx" />
+    <Content Include="adminModulu\bakimModuAyar.aspx" />
+    <Content Include="adminModulu\hesapIslem.aspx" />
+    <Content Include="adminModulu\personelApi.aspx" />
+    <Content Include="adminModulu\personelHesapIslemleri.aspx" />
     <Content Include="ameliyathaneModulu\ameliyatAra.aspx" />
     <Content Include="ameliyathaneModulu\ameliyatDetayGoruntule.aspx" />
     <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="ameliyathaneModulu\yeniAmeliyatKaydiEkle.aspx" />
+    <Content Include="bakim.aspx" />
+    <Content Include="calismaplaniModulu\anasayfa.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -132,6 +157,8 @@
     <Content Include="hastaNotGoruntuleme.aspx" />
     <Content Include="hastaNotSil.aspx" />
     <Content Include="personelModulu\anasayfa.aspx" />
+    <Content Include="adminModulu\istatistikSayfasi.aspx" />
+    <Content Include="personelModulu\personelApi.aspx" />
     <Content Include="personelModulu\personelDetay.aspx" />
     <Content Include="personelModulu\personelEkleme.aspx" />
     <Content Include="randevuModulu\hastaRandevuAra.aspx" />
@@ -180,6 +207,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="laboratuvarModulu\tetkikDetayEkleme.aspx" />
     <Content Include="yeniHastaKaydi.aspx" />
+    <Content Include="adminModulu\adminTema.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -214,6 +242,48 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminModulu\anasayfa.aspx.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\anasayfa.aspx.designer.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\bakimModuAyar.aspx.cs">
+      <DependentUpon>bakimModuAyar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\bakimModuAyar.aspx.designer.cs">
+      <DependentUpon>bakimModuAyar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\adminTema.Master.cs">
+      <DependentUpon>adminTema.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\adminTema.Master.designer.cs">
+      <DependentUpon>adminTema.Master</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\hesapIslem.aspx.cs">
+      <DependentUpon>hesapIslem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\hesapIslem.aspx.designer.cs">
+      <DependentUpon>hesapIslem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\personelApi.aspx.cs">
+      <DependentUpon>personelApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\personelApi.aspx.designer.cs">
+      <DependentUpon>personelApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\personelHesapIslemleri.aspx.cs">
+      <DependentUpon>personelHesapIslemleri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\personelHesapIslemleri.aspx.designer.cs">
+      <DependentUpon>personelHesapIslemleri.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ameliyathaneModulu\ameliyatAra.aspx.cs">
       <DependentUpon>ameliyatAra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,6 +314,20 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="bakim.aspx.cs">
+      <DependentUpon>bakim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bakim.aspx.designer.cs">
+      <DependentUpon>bakim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calismaplaniModulu\anasayfa.aspx.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\anasayfa.aspx.designer.cs">
+      <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cikis.aspx.cs">
       <DependentUpon>cikis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +390,20 @@
     </Compile>
     <Compile Include="personelModulu\anasayfa.aspx.designer.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminModulu\istatistikSayfasi.aspx.cs">
+      <DependentUpon>istatistikSayfasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminModulu\istatistikSayfasi.aspx.designer.cs">
+      <DependentUpon>istatistikSayfasi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="personelModulu\personelApi.aspx.cs">
+      <DependentUpon>personelApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="personelModulu\personelApi.aspx.designer.cs">
+      <DependentUpon>personelApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="personelModulu\personelDetay.aspx.cs">
       <DependentUpon>personelDetay.aspx</DependentUpon>
