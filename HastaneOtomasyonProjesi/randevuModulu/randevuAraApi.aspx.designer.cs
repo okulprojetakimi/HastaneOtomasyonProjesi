@@ -7,11 +7,11 @@
 // </otomatik olarak oluşturulmuş>
 //------------------------------------------------------------------------------
 
-namespace HastaneOtomasyonProjesi
+namespace HastaneOtomasyonProjesi.randevuModulu
 {
 
 
-    public partial class hastaRandevuAra
+    public partial class randevuAraApi
     {
     }
 }
