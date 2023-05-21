@@ -185,7 +185,7 @@
     <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="ameliyathaneModulu\yeniAmeliyatKaydiEkle.aspx" />
     <Content Include="bakim.aspx" />
-    <Content Include="calismaplaniModulu\anasayfa.aspx" />
+    <Content Include="calismaplaniModulu\personelPlanEkle.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -376,12 +376,12 @@
     <Compile Include="bakim.aspx.designer.cs">
       <DependentUpon>bakim.aspx</DependentUpon>
     </Compile>
-    <Compile Include="calismaplaniModulu\anasayfa.aspx.cs">
-      <DependentUpon>anasayfa.aspx</DependentUpon>
+    <Compile Include="calismaplaniModulu\personelPlanEkle.aspx.cs">
+      <DependentUpon>personelPlanEkle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="calismaplaniModulu\anasayfa.aspx.designer.cs">
-      <DependentUpon>anasayfa.aspx</DependentUpon>
+    <Compile Include="calismaplaniModulu\personelPlanEkle.aspx.designer.cs">
+      <DependentUpon>personelPlanEkle.aspx</DependentUpon>
     </Compile>
     <Compile Include="cikis.aspx.cs">
       <DependentUpon>cikis.aspx</DependentUpon>

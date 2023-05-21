@@ -9,12 +9,19 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
 {
     public partial class anasayfa : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                
+
             }
+        }
+
+        protected void plan_Kaydet_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

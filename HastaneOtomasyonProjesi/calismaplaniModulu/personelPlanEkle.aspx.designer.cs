@@ -24,21 +24,12 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
         protected global::System.Web.UI.WebControls.TextBox plan_Tarih;
 
         /// <summary>
-        /// inputContainer denetimi.
+        /// gunInputKutusu denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel inputContainer;
-
-        /// <summary>
-        /// plan_Kaydet denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button plan_Kaydet;
+        protected global::System.Web.UI.WebControls.PlaceHolder gunInputKutusu;
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" Title="Çalışma Planı Modülü" CodeBehind="anasayfa.aspx.cs" Inherits="HastaneOtomasyonProjesi.calismaplaniModulu.anasayfa" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" Title="Çalışma Planı Modülü" CodeBehind="personelPlanEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.calismaplaniModulu.anasayfa" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
@@ -28,21 +28,35 @@
         </div>
         <br />
         <hr />
-        <asp:Panel ID="inputContainer" runat="server">
+        <asp:PlaceHolder ID="gunInputKutusu" runat="server">
             <%
-                for (int x = 1; x <= 31; x++)
+                for (int i = 1; i <= 31; i++)
                 {
-                    Response.Write("&nbsp;");
-                    Response.Write("<label>Gün " + x.ToString() + " </label>");
-                    Response.Write("&nbsp;<input type='time' id='gunDyn_" + x.ToString() + "' >");
-                    if (x % 7 == 0)
+                    Response.Write("<label>Gün " + i + ": </label>");
+                    Response.Write("<input type='time' id='gunInput_"+i.ToString()+"' class='form-control'>");
+                    if (i % 7 == 0)
                     {
-                        Response.Write("<br/><br/>");
+                        Response.Write("<br />");
                     }
                 }
             %>
-        </asp:Panel>
+        </asp:PlaceHolder>
+        </div>
         <br />
-        <asp:Button Text="Çalışma Planını Kaydet" CssClass="btn btn-success" ID="plan_Kaydet" runat="server" />
+        <button type="button" class="btn btn-warning" id="kaydet_Buton" name="kaydet_Buton">Planı Kaydet</button>
+        <script>
+            // Butona tıklandığında tüm inputları tek tek alacak.
+
+            $(document).ready(function () {
+                $("#kaydet_Buton").click(function () {
+                    var tArray = "[";
+                    for (var ix = 1; ix <= 5; ix++) {
+                        tArray += document.getElementById('gunInput_' + ix).value + ", ";
+                    }
+                    tArray += "]";
+                    alert(tArray);
+                });
+            });
+        </script>
     </main>
 </asp:Content>
