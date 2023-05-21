@@ -7,11 +7,11 @@
 // </otomatik olarak oluşturulmuş>
 //------------------------------------------------------------------------------
 
-namespace HastaneOtomasyonProjesi.calismaplaniModulu
+namespace HastaneOtomasyonProjesi.randevuModulu
 {
 
 
-    public partial class anasayfa1
+    public partial class doktorListe
     {
     }
 }
