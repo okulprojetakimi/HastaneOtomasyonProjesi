@@ -7,89 +7,65 @@
 // </otomatik olarak oluşturulmuş>
 //------------------------------------------------------------------------------
 
-namespace HastaneOtomasyonProjesi.randevuModulu
+namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 {
 
 
-    public partial class hastaRandevuEkle
+    public partial class ameliyatAra
     {
-        /// <summary>
-        /// Ad denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Ad;
-        /// <summary>
-        /// Soyad denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Soyad;
-        /// <summary>
-        /// saatVerisi denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField saatVerisi;
 
         /// <summary>
-        /// secilenDoktor denetimi.
+        /// txtAd denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField secilenDoktor;
+        protected global::System.Web.UI.WebControls.TextBox txtAd;
 
         /// <summary>
-        /// secilenPoliklinik denetimi.
+        /// txtSoyad denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField secilenPoliklinik;
+        protected global::System.Web.UI.WebControls.TextBox txtSoyad;
 
         /// <summary>
-        /// tcNumara denetimi.
+        /// btnAdAra denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tcNumara;
+        protected global::System.Web.UI.WebControls.Button btnAdAra;
 
         /// <summary>
-        /// randevuTarih denetimi.
+        /// btnSoyadAra denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox randevuTarih;
+        protected global::System.Web.UI.WebControls.Button btnSoyadAra;
 
         /// <summary>
-        /// randevuNot denetimi.
+        /// gridViewHastaBilgileri denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox randevuNot;
+        protected global::System.Web.UI.WebControls.GridView gridViewHastaBilgileri;
 
         /// <summary>
-        /// randevuEkle_Buton denetimi.
+        /// gridView1 denetimi.
         /// </summary>
         /// <remarks>
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button randevuEkle_Buton;
+        protected global::System.Web.UI.WebControls.GridView gridView1;
     }
 }
