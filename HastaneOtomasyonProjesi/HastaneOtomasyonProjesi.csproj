@@ -18,10 +18,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -190,6 +188,7 @@
     <Content Include="calismaplaniModulu\anasayfa.aspx" />
     <Content Include="calismaplaniModulu\api.aspx" />
     <Content Include="calismaplaniModulu\personelPlanEkle.aspx" />
+    <Content Include="calismaplaniModulu\personelPlanGoruntule.aspx" />
     <Content Include="calismaplaniModulu\personelPlanIslemi.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -403,6 +402,13 @@
     </Compile>
     <Compile Include="calismaplaniModulu\personelPlanEkle.aspx.designer.cs">
       <DependentUpon>personelPlanEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calismaplaniModulu\personelPlanGoruntule.aspx.cs">
+      <DependentUpon>personelPlanGoruntule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\personelPlanGoruntule.aspx.designer.cs">
+      <DependentUpon>personelPlanGoruntule.aspx</DependentUpon>
     </Compile>
     <Compile Include="calismaplaniModulu\personelPlanIslemi.aspx.cs">
       <DependentUpon>personelPlanIslemi.aspx</DependentUpon>
