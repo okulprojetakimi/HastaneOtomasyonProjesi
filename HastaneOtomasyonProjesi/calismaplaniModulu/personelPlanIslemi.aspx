@@ -2,14 +2,72 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-        <h1 style="color: white;"><i class="fa-solid fa-calendar-days"></i> Personel Çalışma Plan İşlemleri</h1>
+        <asp:HiddenField ID="personelNu" runat="server" />
+        <style>
+            label {
+                color: white;
+            }
+        </style>
+        <h1 style="color: white;"><i class="fa-solid fa-calendar-days"></i>Personel Çalışma Plan İşlemleri</h1>
         <p style="color: white;">Bu sayfada personel için aylık planlama yapabilir, daha önce yapılmış planlar görüntülenebilir ve düzenlenebilir. Ayrıca pdf şeklinde de dışarı aktarım işlemi gerçekleştirebilirsiniz.</p>
         <br />
-        <table cellpadding="12">
+        <a href="personelPlanEkle.aspx">
+            <button type="button" class="btn btn-success" id="planEkle">+ Plan Ekleme</button></a>
+        <!-- -->
+        <br />
+        <table cellpadding="15">
             <tr>
-                <td><a href="personelPlanEkle.aspx"><button type="button" class="btn btn-success" id="planEkle">+ Plan Ekleme</button></a></td>
-                <td><a href="personelPlanGoruntuleme.aspx"><button type="button" class="btn btn-success" id="planGoruntule"><i class="fa-solid fa-list"></i> Plan Görüntüleme / Güncelleme</button></a></td>
+                <th>
+                    <label>Aranacak Tarih: </label>
+                </th>
+                <th>
+                    <input type="month" class="form-control" name="aranacak_Tarih" id="aranacak_Tarih" /></th>
+                <th>
+                    <button type="button" class="btn btn-success" id="ara_Buton" name="ara_Buton">Plan Ara</button></th>
             </tr>
         </table>
+
+        <!-- -->
+        <table id="myGrid" class="table table-striped" border="1">
+            <thead>
+                <tr>
+                    <td>Plan Numarası</td>
+                    <td>Plan Personel Numarası</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+            $(document).ready(function () {
+                $("#ara_Buton").click(function () {
+                    var planTarih = $("#aranacak_Tarih").val();
+
+                    // AJAX çağrısı gönderiyoruz
+                    $.ajax({
+                        type: "GET",
+                        url: "plandArama.aspx?personel_Numara=" + <%= personelNu.ClientID; %>,
+                        data: {
+                            plan_Tarih: planTarih
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
+                            var html = "";
+                            $.each(data, function (key, value) {
+                                html += "<tr><td>" + value.calismaPlaniListeId + "</td>" + "<td>" + value.calismaPlaniPersonelId + "</td><td><a href='personelPlanGoruntule.aspx?personelNumara=" + value.calismaPlaniPersonelId + "'><button type='button' class='btn btn-success'>Personel Plan işlem</button></a></td>" + "</tr>";
+                            });
+                            $("#myGrid tbody").html(html);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
+                });
+            });
+
+
+
+        </script>
     </main>
 </asp:Content>

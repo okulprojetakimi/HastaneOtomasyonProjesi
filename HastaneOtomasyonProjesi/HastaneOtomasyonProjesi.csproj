@@ -190,6 +190,7 @@
     <Content Include="calismaplaniModulu\personelPlanEkle.aspx" />
     <Content Include="calismaplaniModulu\personelPlanGoruntule.aspx" />
     <Content Include="calismaplaniModulu\personelPlanIslemi.aspx" />
+    <Content Include="calismaplaniModulu\planArama.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -416,6 +417,13 @@
     </Compile>
     <Compile Include="calismaplaniModulu\personelPlanIslemi.aspx.designer.cs">
       <DependentUpon>personelPlanIslemi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calismaplaniModulu\planArama.aspx.cs">
+      <DependentUpon>planArama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\planArama.aspx.designer.cs">
+      <DependentUpon>planArama.aspx</DependentUpon>
     </Compile>
     <Compile Include="cikis.aspx.cs">
       <DependentUpon>cikis.aspx</DependentUpon>
