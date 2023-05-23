@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-        <asp:HiddenField ID="personelNu" runat="server" />
+        <input type="hidden" id="gizliId" />
         <style>
             label {
                 color: white;
@@ -41,12 +41,15 @@
             $(document).ready(function () {
                 $("#ara_Buton").click(function () {
                     var planTarih = $("#aranacak_Tarih").val();
+                    var params = new URLSearchParams(window.location.search);
+                    var personelNumara = params.get("pId");
 
                     // AJAX çağrısı gönderiyoruz
                     $.ajax({
                         type: "GET",
-                        url: "plandArama.aspx?personel_Numara=" + <%= personelNu.ClientID; %>,
+                        url: "planArama.aspx",
                         data: {
+                            personel_Numara: personelNumara,
                             plan_Tarih: planTarih
                         },
                         contentType: "application/json; charset=utf-8",
@@ -55,7 +58,7 @@
                             // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
                             var html = "";
                             $.each(data, function (key, value) {
-                                html += "<tr><td>" + value.calismaPlaniListeId + "</td>" + "<td>" + value.calismaPlaniPersonelId + "</td><td><a href='personelPlanGoruntule.aspx?personelNumara=" + value.calismaPlaniPersonelId + "'><button type='button' class='btn btn-success'>Personel Plan işlem</button></a></td>" + "</tr>";
+                                html += "<tr><td>" + value.calismaPlaniListeId + "</td>" + "<td>" + value.calismaPlaniPersonelId + "</td><td><a href='personelPlanGoruntule.aspx?personelNumara=" + value.calismaPlaniListeId + "'><button type='button' class='btn btn-success'>Personel Plan işlem</button></a></td>" + "</tr>";
                             });
                             $("#myGrid tbody").html(html);
                         },
@@ -65,9 +68,7 @@
                     });
                 });
             });
-
-
-
         </script>
+
     </main>
 </asp:Content>

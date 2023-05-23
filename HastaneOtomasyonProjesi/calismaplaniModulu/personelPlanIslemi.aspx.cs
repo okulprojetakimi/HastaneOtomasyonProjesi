@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            personelNu.Value = HttpContext.Current.Request.QueryString["pId"];
+            
         }
     }
 }
