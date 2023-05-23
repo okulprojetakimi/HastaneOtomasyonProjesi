@@ -5,7 +5,7 @@
     <h1 style="color: white;">Personel Çalışma Planı</h1>
     <p style="color: white;">Bu sayfada seçilen personelin belirtilen tarihteki çalışma planını görüntüleyebilir ve silebilirsiniz.</p>
     <br />
-
+    <button>Listeyi Dışa Aktar</button>
     <div class="planListe_Div">
 
     </div>

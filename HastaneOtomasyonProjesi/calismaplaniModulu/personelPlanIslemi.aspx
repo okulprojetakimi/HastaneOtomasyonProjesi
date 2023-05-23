@@ -18,12 +18,17 @@
         <table cellpadding="15">
             <tr>
                 <th>
-                    <label>Aranacak Tarih: </label>
+                    <label>Aranacak Tarih Aralığı: </label>
                 </th>
                 <th>
-                    <input type="month" class="form-control" name="aranacak_Tarih" id="aranacak_Tarih" /></th>
+                    <input type="month" class="form-control" name="aranacak_Tarih" id="aranacak_Tarih" />
+                </th>
                 <th>
-                    <button type="button" class="btn btn-success" id="ara_Buton" name="ara_Buton">Plan Ara</button></th>
+                    <input type="month" class="form-control" name="aranacak_Tarih" id="sonT" /></th>
+                </th>
+                    <th>
+                        <button type="button" class="btn btn-success" id="ara_Buton" name="ara_Buton">Plan Ara</button
+                    </th>
             </tr>
         </table>
 
@@ -41,6 +46,7 @@
             $(document).ready(function () {
                 $("#ara_Buton").click(function () {
                     var planTarih = $("#aranacak_Tarih").val();
+                    var sonTarih = $("#sonT").val();
                     var params = new URLSearchParams(window.location.search);
                     var personelNumara = params.get("pId");
 
@@ -50,7 +56,8 @@
                         url: "planArama.aspx",
                         data: {
                             personel_Numara: personelNumara,
-                            plan_Tarih: planTarih
+                            plan_Tarih: planTarih,
+                            plan_SonTarih: sonTarih
                         },
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",

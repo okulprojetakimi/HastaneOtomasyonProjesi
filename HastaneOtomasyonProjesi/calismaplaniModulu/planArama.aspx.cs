@@ -19,10 +19,11 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
             using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
                 sqlcon.Open();
-                using (SqlCommand com = new SqlCommand("SELECT calismaPlaniListeId, calismaPlaniPersonelId FROM calismaPlaniTablosu WHERE calismaPlaniPersonelId = @pId AND calismaPlaniTarih = @pTarih", sqlcon))
+                using (SqlCommand com = new SqlCommand("SELECT calismaPlaniListeId, calismaPlaniPersonelId FROM calismaPlaniTablosu WHERE calismaPlaniPersonelId = @pId AND calismaPlaniTarih >= @pTarih AND calismaPlaniTarih <= @pTr", sqlcon))
                 {
                     com.Parameters.AddWithValue("@pId", HttpContext.Current.Request.QueryString["personel_Numara"]);
                     com.Parameters.AddWithValue("@pTarih", DateTime.Parse(HttpContext.Current.Request.QueryString["plan_Tarih"]).Date);
+                    com.Parameters.AddWithValue("@pTr", DateTime.Parse(HttpContext.Current.Request.QueryString["plan_SonTarih"]).Date);
                     SqlDataReader veriOkuyucu = com.ExecuteReader();
                     DataTable tablo = new DataTable();
                     tablo.Load(veriOkuyucu);
