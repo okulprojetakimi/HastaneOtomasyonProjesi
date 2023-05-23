@@ -65,7 +65,7 @@
                             // AJAX çağrısı başarılı olduysa, gridview'i güncelliyoruz
                             var html = "";
                             $.each(data, function (key, value) {
-                                html += "<tr><td>" + value.calismaPlaniListeId + "</td>" + "<td>" + value.calismaPlaniPersonelId + "</td><td><a href='personelPlanGoruntule.aspx?personelNumara=" + value.calismaPlaniListeId + "'><button type='button' class='btn btn-success'>Personel Plan işlem</button></a></td>" + "</tr>";
+                                html += "<tr><td>" + value.calismaPlaniListeId + "</td>" + "<td>" + value.calismaPlaniPersonelId + "</td><td><a href='personelPlanGoruntule.aspx?listeId=" + value.calismaPlaniListeId + "'><button type='button' class='btn btn-success'>Personel Plan işlem</button></a></td>" + "</tr>";
                             });
                             $("#myGrid tbody").html(html);
                         },
