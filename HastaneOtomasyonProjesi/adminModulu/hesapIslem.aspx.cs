@@ -29,13 +29,12 @@ namespace HastaneOtomasyonProjesi.adminModulu
                 }
                 else
                 {
-                    /* İşleme devam */
                     if (!IsPostBack)
                     {
                         using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
                             sqlcon.Open();
-                            using (SqlCommand veriCekme = new SqlCommand("SELECT * FROM personel_kullaniciHesap WHERE personelKId = @pId", sqlcon))
+                            using (SqlCommand veriCekme = new SqlCommand("SELECT * FROM personel_kullaniciHesap WHERE personelId = @pId", sqlcon))
                             {
                                 veriCekme.Parameters.AddWithValue("@pId", HttpContext.Current.Request.QueryString["personelNumarasi"]);
                                 SqlDataReader veriOkuyucu = veriCekme.ExecuteReader();
@@ -69,7 +68,6 @@ namespace HastaneOtomasyonProjesi.adminModulu
                             }
                             sqlcon.Close();
                         }
-
                     }
                 }
             }
@@ -86,8 +84,9 @@ namespace HastaneOtomasyonProjesi.adminModulu
                     {
                         if (durum_deger.Value == "ok")
                         {
+                            Response.Write(personel_ErisimKodu.Text);
                             guncelleme.Connection = sqlconnect;
-                            guncelleme.CommandText = "UPDATE personel_kullaniciHesap SET personelKullaniciAdi = @kullaniciAdi, personelKullaniciSifre = @sifre, personel_ErisimDuzey = @erisimDuzey, personel_ErisimKodu = @erisimKodu, personel_HesapAktiflik = @hesapAktiflik WHERE personelKId = @pId";
+                            guncelleme.CommandText = "UPDATE personel_kullaniciHesap SET personelKullaniciAdi = @kullaniciAdi, personelKullaniciSifre = @sifre, personel_ErisimDuzey = @erisimDuzey, personel_ErisimKodu = @erisimKodu, personel_HesapAktiflik = @hesapAktiflik WHERE personelId = @pId";
                             guncelleme.Parameters.AddWithValue("@kullaniciAdi", personelKullaniciAdi.Text);
                             guncelleme.Parameters.AddWithValue("@sifre", personelKullaniciSifre.Text);
                             guncelleme.Parameters.AddWithValue("@erisimDuzey", personel_ErisimDuzey.SelectedIndex);
