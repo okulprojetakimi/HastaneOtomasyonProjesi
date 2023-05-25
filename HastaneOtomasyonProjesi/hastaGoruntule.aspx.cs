@@ -47,16 +47,6 @@ namespace HastaneOtomasyonProjesi
                         hasta_yakinlikDerecesi.Text = veriOkuyucu.GetString(19);
                         hasta_tedaviDurumu.Text = veriOkuyucu.GetString(20);
                         hasta_tedaviTuru.Text = veriOkuyucu.GetString(21);
-                        if (veriOkuyucu.GetBoolean(22))
-                        {
-                            hasta_OdemeDurumu.Text = "Ödeme Yapıldı";
-                        }
-                        else
-                        {
-                            hasta_OdemeDurumu.Text = "Ödeme Yapılmadı";
-                        }
-                        
-                       
                     }
                     veriOkuyucu.Close();
                     sqlBaglan.Close();
@@ -117,11 +107,6 @@ namespace HastaneOtomasyonProjesi
         }
         protected void Page_Load(object sender, EventArgs e)
          {
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
-            {
-                Response.Redirect("/cikis.aspx");
-            }
             try
             {
                 if (HttpContext.Current.Request.QueryString["hasta"] == null)
