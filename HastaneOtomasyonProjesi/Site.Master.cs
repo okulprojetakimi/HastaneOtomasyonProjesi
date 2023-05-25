@@ -22,53 +22,59 @@ namespace HastaneOtomasyonProjesi
             }
             else
             {
-                /* Kontrol İşlemleri Başlar */
-                using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                try
                 {
-                    sqlCon.Open();
-                    /* Bakım Kontrolü */
-                    using (SqlCommand bakimKontrol = new SqlCommand("SELECT ayar_BakimModu FROM sistem_tablo WHERE ayar_Id = 1 ", sqlCon))
+                    /* Kontrol İşlemleri Başlar */
+                    using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        if ((Boolean)bakimKontrol.ExecuteScalar())
+                        sqlCon.Open();
+                        /* Bakım Kontrolü */
+                        using (SqlCommand bakimKontrol = new SqlCommand("SELECT ayar_BakimModu FROM sistem_tablo WHERE ayar_Id = 1 ", sqlCon))
                         {
-                            sqlCon.Close();
-                            Response.Redirect("/bakim.aspx");
-                        }
-                        else
-                        {
-                            /* Oturum kodu ve hesap aktiflik kontrolü */
-                            using (SqlCommand HesapKontrol = new SqlCommand("SELECT personel_ErisimKodu, personel_HesapAktiflik FROM personel_kullaniciHesap WHERE personel_ErisimKodu = @pKod", sqlCon))
+                            if ((Boolean)bakimKontrol.ExecuteScalar())
                             {
-                                HesapKontrol.Parameters.AddWithValue("@pKod", kontrolCookie.Value);
-                                using (SqlDataReader veriOkuyucu = HesapKontrol.ExecuteReader())
+                                sqlCon.Close();
+                                Response.Redirect("/bakim.aspx");
+                            }
+                            else
+                            {
+                                /* Oturum kodu ve hesap aktiflik kontrolü */
+                                using (SqlCommand HesapKontrol = new SqlCommand("SELECT personel_ErisimKodu, personel_HesapAktiflik FROM personel_kullaniciHesap WHERE personel_ErisimKodu = @pKod", sqlCon))
                                 {
-                                    if (veriOkuyucu.HasRows)
+                                    HesapKontrol.Parameters.AddWithValue("@pKod", kontrolCookie.Value);
+                                    using (SqlDataReader veriOkuyucu = HesapKontrol.ExecuteReader())
                                     {
-                                        while (veriOkuyucu.Read())
+                                        if (veriOkuyucu.HasRows)
                                         {
-                                            if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
+                                            while (veriOkuyucu.Read())
                                             {
-                                                sqlCon.Close();
-                                                Response.Redirect("/giris.aspx");
-                                            }
-                                            else
-                                            {
-                                                if (!veriOkuyucu.GetBoolean(1))
+                                                if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
                                                 {
                                                     sqlCon.Close();
-                                                    Response.Redirect("/bloklandi.html");
+                                                    Response.Redirect("/giris.aspx");
+                                                }
+                                                else
+                                                {
+                                                    if (!veriOkuyucu.GetBoolean(1))
+                                                    {
+                                                        sqlCon.Close();
+                                                        Response.Redirect("/bloklandi.html");
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
-                                    else
-                                    {
-                                        Response.Redirect("/cikis.aspx");
+                                        else
+                                        {
+                                            Response.Redirect("/cikis.aspx");
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                }
+                catch (Exception)
+                {
                 }
             }
         }
