@@ -32,7 +32,7 @@
                 <td>
                     <div>
                         <label for="personel_Eposta">Personel E-posta:</label>
-                        <asp:TextBox ID="personel_Eposta" CssClass="form-control" runat="server" />
+                        <asp:TextBox TextMode="Email" ID="personel_Eposta" CssClass="form-control" runat="server" />
                     </div>
                 </td>
             </tr>
