@@ -11,7 +11,10 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            personel_Id.Value = Request.QueryString["pId"];
+            if (HttpContext.Current.Request.QueryString["pId"] == null)
+            {
+                Response.Redirect("/panel.aspx");
+            }
         }
     }
 }
