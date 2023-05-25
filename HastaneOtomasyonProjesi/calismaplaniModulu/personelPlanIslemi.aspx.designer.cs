@@ -13,5 +13,14 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
 
     public partial class personelPlanIslemi
     {
+
+        /// <summary>
+        /// personel_Id denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField personel_Id;
     }
 }

@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
-        <input type="hidden" id="gizliId" />
+        <asp:HiddenField ID="personel_Id" runat="server" />
         <style>
             label {
                 color: white;
@@ -12,7 +12,7 @@
         <p style="color: white;">Bu sayfada personel için aylık planlama yapabilir, daha önce yapılmış planlar görüntülenebilir ve düzenlenebilir. Ayrıca pdf şeklinde de dışarı aktarım işlemi gerçekleştirebilirsiniz.</p>
         <br />
         <a href="personelPlanEkle.aspx">
-            <button type="button" class="btn btn-success" id="planEkle">+ Plan Ekleme</button></a>
+            <a id="ekleme_Yonlendir" href="personelPlanEkle.aspx?personelNumara="><button type="button" class="btn btn-success" id="planEkle">+ Plan Ekleme</button></a></a>
         <!-- -->
         <br />
         <table cellpadding="15">
@@ -44,6 +44,8 @@
         </table>
         <script>
             $(document).ready(function () {
+                var ss = new URLSearchParams(window.location.search);
+                $("#ekleme_Yonlendir").attr("href", "personelPlanEkle.aspx?personelNumara=" + ss.get("pId"));
                 $("#ara_Buton").click(function () {
                     var planTarih = $("#aranacak_Tarih").val();
                     var sonTarih = $("#sonT").val();
