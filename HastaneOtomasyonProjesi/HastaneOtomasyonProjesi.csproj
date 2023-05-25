@@ -18,10 +18,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -186,6 +184,7 @@
     <Content Include="ameliyathaneModulu\ameliyatDetayGoruntule.aspx" />
     <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="ameliyathaneModulu\yeniAmeliyatKaydiEkle.aspx" />
+    <Content Include="calismaplaniModulu\api.aspx" />
     <Content Include="bakim.aspx" />
     <Content Include="bloklandi.html" />
     <Content Include="calismaplaniModulu\anasayfa.aspx" />
@@ -221,6 +220,9 @@
     <Content Include="personelModulu\personelApi.aspx" />
     <Content Include="personelModulu\personelDetay.aspx" />
     <Content Include="personelModulu\personelEkleme.aspx" />
+    <Content Include="calismaplaniModulu\personelPlanGoruntule.aspx" />
+    <Content Include="calismaplaniModulu\personelPlanIslemi.aspx" />
+    <Content Include="calismaplaniModulu\planArama.aspx" />
     <Content Include="randevuModulu\doktorListe.aspx" />
     <Content Include="randevuModulu\hastaRandevuAra.aspx" />
     <Content Include="hastaTetkikDetay.aspx" />
@@ -374,6 +376,13 @@
     <Compile Include="ameliyathaneModulu\yeniAmeliyatKaydiEkle.aspx.designer.cs">
       <DependentUpon>yeniAmeliyatKaydiEkle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="calismaplaniModulu\api.aspx.cs">
+      <DependentUpon>api.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\api.aspx.designer.cs">
+      <DependentUpon>api.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="bakim.aspx.cs">
@@ -501,6 +510,27 @@
     </Compile>
     <Compile Include="personelModulu\personelEkleme.aspx.designer.cs">
       <DependentUpon>personelEkleme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calismaplaniModulu\personelPlanGoruntule.aspx.cs">
+      <DependentUpon>personelPlanGoruntule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\personelPlanGoruntule.aspx.designer.cs">
+      <DependentUpon>personelPlanGoruntule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calismaplaniModulu\personelPlanIslemi.aspx.cs">
+      <DependentUpon>personelPlanIslemi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\personelPlanIslemi.aspx.designer.cs">
+      <DependentUpon>personelPlanIslemi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calismaplaniModulu\planArama.aspx.cs">
+      <DependentUpon>planArama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calismaplaniModulu\planArama.aspx.designer.cs">
+      <DependentUpon>planArama.aspx</DependentUpon>
     </Compile>
     <Compile Include="randevuModulu\doktorListe.aspx.cs">
       <DependentUpon>doktorListe.aspx</DependentUpon>
