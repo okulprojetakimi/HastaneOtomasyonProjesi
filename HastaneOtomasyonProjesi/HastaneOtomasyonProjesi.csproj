@@ -185,6 +185,7 @@
     <Content Include="ameliyathaneModulu\anasayfa.aspx" />
     <Content Include="ameliyathaneModulu\yeniAmeliyatKaydiEkle.aspx" />
     <Content Include="bakim.aspx" />
+    <Content Include="bloklandi.html" />
     <Content Include="calismaplaniModulu\anasayfa.aspx" />
     <Content Include="calismaplaniModulu\api.aspx" />
     <Content Include="calismaplaniModulu\personelPlanEkle.aspx" />
@@ -270,6 +271,7 @@
     <Content Include="laboratuvarModulu\tetkikDetayEkleme.aspx" />
     <Content Include="yeniHastaKaydi.aspx" />
     <Content Include="adminModulu\adminTema.Master" />
+    <Content Include="giris.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -438,6 +440,13 @@
     </Compile>
     <Compile Include="giris.aspx.designer.cs">
       <DependentUpon>giris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="giris.Master.cs">
+      <DependentUpon>giris.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="giris.Master.designer.cs">
+      <DependentUpon>giris.Master</DependentUpon>
     </Compile>
     <Compile Include="hastaGoruntule.aspx.cs">
       <DependentUpon>hastaGoruntule.aspx</DependentUpon>

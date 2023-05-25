@@ -112,6 +112,7 @@ namespace HastaneOtomasyonProjesi
                     }
                     else
                     {
+                        
                         Response.Write("<h1 style='color: Red;'>Lütfen Captcha Doğrulamasını Tamamlayınız.</h1>");
                     }
                 }
@@ -120,9 +121,10 @@ namespace HastaneOtomasyonProjesi
 
                 }
             }
-            catch (Exception)
+            catch (Exception damnError)
             {
                 Label1.Text = "Teknik bir hata var Lütfen sistem yöneticisi ile görüşün!";
+                Label1.Text += "<br>" + damnError.Message;
             }
         }
     }
