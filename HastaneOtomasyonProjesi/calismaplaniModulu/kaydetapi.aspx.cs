@@ -55,18 +55,28 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
                     {
                         string gValue = string.Empty;
 
+                        //if (calismaPlanlari.Length > i && !string.IsNullOrEmpty(calismaPlanlari[i]))
+                        //{
+                        //    string[] saatler = calismaPlanlari[i].Split(',');
+                        //    if (saatler.Length == 2)
+                        //    {
+                        //        string baslangicSaat = saatler[0].Trim().TrimStart('\"').TrimEnd('\"');
+                        //        string bitisSaat = saatler[1].Trim().TrimStart('\"').TrimEnd('\"');
+                        //        gValue = baslangicSaat + "," + bitisSaat;
+                        //    }
+                        //}
+
                         if (calismaPlanlari.Length > i && !string.IsNullOrEmpty(calismaPlanlari[i]))
                         {
-                            string[] saatler = calismaPlanlari[i].Split(',');
+                            string saatlerString = calismaPlanlari[i].Trim().TrimStart('[').TrimEnd(']');
+                            string[] saatler = saatlerString.Split(',');
                             if (saatler.Length == 2)
                             {
                                 string baslangicSaat = saatler[0].Trim().TrimStart('\"').TrimEnd('\"');
                                 string bitisSaat = saatler[1].Trim().TrimStart('\"').TrimEnd('\"');
-                                gValue = "[" + JsonConvert.SerializeObject(baslangicSaat) + "," + JsonConvert.SerializeObject(bitisSaat) + "]";
-                                gValue = JsonConvert.SerializeObject(new[] { baslangicSaat, bitisSaat });
+                                gValue = baslangicSaat + "," + bitisSaat;
                             }
                         }
-
                         command.Parameters.AddWithValue("@g" + (i + 1), gValue);
                     }
 
@@ -77,6 +87,7 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
                     Response.Write("<script>alert('Eklendi');</script>");
                 }
             }
+
 
 
 
