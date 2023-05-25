@@ -21,7 +21,6 @@
 				
 			</center>
 		<a style="position: absolute; left: 90%; top: 90%; right: 0%;" href="cikis.aspx"><img src="assets/img/logout.png"></a>
-		
     </main>
 
 </asp:Content>
