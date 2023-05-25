@@ -15,6 +15,15 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
     {
 
         /// <summary>
+        /// personelid denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField personelid;
+
+        /// <summary>
         /// plan_Tarih denetimi.
         /// </summary>
         /// <remarks>

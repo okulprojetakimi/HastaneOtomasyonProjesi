@@ -18,8 +18,10 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -187,11 +189,8 @@
     <Content Include="bakim.aspx" />
     <Content Include="bloklandi.html" />
     <Content Include="calismaplaniModulu\anasayfa.aspx" />
-    <Content Include="calismaplaniModulu\api.aspx" />
+    <Content Include="calismaplaniModulu\kaydetapi.aspx" />
     <Content Include="calismaplaniModulu\personelPlanEkle.aspx" />
-    <Content Include="calismaplaniModulu\personelPlanGoruntule.aspx" />
-    <Content Include="calismaplaniModulu\personelPlanIslemi.aspx" />
-    <Content Include="calismaplaniModulu\planArama.aspx" />
     <Content Include="cikis.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -237,7 +236,6 @@
     <Content Include="randevuModulu\hastaRandevuEkle.aspx" />
     <Content Include="randevuModulu\hastaRandevuGoruntule.aspx" />
     <Content Include="randevuModulu\kayitliOlmayanHastaRandevu.aspx" />
-    <Content Include="randevuModulu\randevuAraApi.aspx" />
     <Content Include="randevuModulu\randevuKontrol.aspx" />
     <Content Include="randevuModulu\veriIslem.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -392,12 +390,12 @@
     <Compile Include="calismaplaniModulu\anasayfa.aspx.designer.cs">
       <DependentUpon>anasayfa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="calismaplaniModulu\api.aspx.cs">
-      <DependentUpon>api.aspx</DependentUpon>
+    <Compile Include="calismaplaniModulu\kaydetapi.aspx.cs">
+      <DependentUpon>kaydetapi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="calismaplaniModulu\api.aspx.designer.cs">
-      <DependentUpon>api.aspx</DependentUpon>
+    <Compile Include="calismaplaniModulu\kaydetapi.aspx.designer.cs">
+      <DependentUpon>kaydetapi.aspx</DependentUpon>
     </Compile>
     <Compile Include="calismaplaniModulu\personelPlanEkle.aspx.cs">
       <DependentUpon>personelPlanEkle.aspx</DependentUpon>
@@ -405,27 +403,6 @@
     </Compile>
     <Compile Include="calismaplaniModulu\personelPlanEkle.aspx.designer.cs">
       <DependentUpon>personelPlanEkle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="calismaplaniModulu\personelPlanGoruntule.aspx.cs">
-      <DependentUpon>personelPlanGoruntule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="calismaplaniModulu\personelPlanGoruntule.aspx.designer.cs">
-      <DependentUpon>personelPlanGoruntule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="calismaplaniModulu\personelPlanIslemi.aspx.cs">
-      <DependentUpon>personelPlanIslemi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="calismaplaniModulu\personelPlanIslemi.aspx.designer.cs">
-      <DependentUpon>personelPlanIslemi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="calismaplaniModulu\planArama.aspx.cs">
-      <DependentUpon>planArama.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="calismaplaniModulu\planArama.aspx.designer.cs">
-      <DependentUpon>planArama.aspx</DependentUpon>
     </Compile>
     <Compile Include="cikis.aspx.cs">
       <DependentUpon>cikis.aspx</DependentUpon>
@@ -619,13 +596,6 @@
     </Compile>
     <Compile Include="randevuModulu\kayitliOlmayanHastaRandevu.aspx.designer.cs">
       <DependentUpon>kayitliOlmayanHastaRandevu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="randevuModulu\randevuAraApi.aspx.cs">
-      <DependentUpon>randevuAraApi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="randevuModulu\randevuAraApi.aspx.designer.cs">
-      <DependentUpon>randevuAraApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="randevuModulu\randevuKontrol.aspx.cs">
       <DependentUpon>randevuKontrol.aspx</DependentUpon>

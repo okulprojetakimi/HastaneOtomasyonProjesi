@@ -1,1 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="randevuAraApi.aspx.cs" Inherits="HastaneOtomasyonProjesi.randevuModulu.randevuAraApi" %>

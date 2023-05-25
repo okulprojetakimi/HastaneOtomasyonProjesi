@@ -36,6 +36,9 @@
                 <tbody></tbody>
             </table>
         <br />
+        <div class="hasta_Listesi">
+
+        </div>
         <script>
             $(document).ready(function () {
                 $("#personel_Arama").click(function () {

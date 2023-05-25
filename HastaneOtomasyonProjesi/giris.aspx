@@ -5,7 +5,7 @@
         <style type="text/css">
             .div_giris_Kutusu {
                 width: 541px;
-                height: 350px;
+                height: 300px;
                 background-color: #2E2E2E;
                 color: White;
                 border-radius: 5px;
@@ -21,10 +21,10 @@
                 <h3>Giriş Yap<asp:Label ID="Label2" runat="server" Text=""></asp:Label>
                 </h3>
                 <p>
-                    <asp:TextBox Placeholder="Personel Kullanıcı Adı" ID="kullaniciAdi" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="kullaniciAdi" runat="server"></asp:TextBox>
                 </p>
                 <p>
-                    <asp:TextBox Placeholder="Personel Kullanıcı Şifresi" ID="kullaniciSifre" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="kullaniciSifre" runat="server" TextMode="Password"></asp:TextBox>
                 </p>
                 <p>
                     <!-- reCAPTCHA kontrolünü ekleyin -->

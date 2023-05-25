@@ -1,11 +1,11 @@
-<%@ Page Language="C#" Title="Randevu Olustur" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaRandevuEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.randevuModulu.hastaRandevuEkle" %>
+<%@ Page Language="C#" Title="Randevu Oluştur" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaRandevuEkle.aspx.cs" Inherits="HastaneOtomasyonProjesi.randevuModulu.hastaRandevuEkle" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
         <asp:HiddenField ID="saatVerisi" runat="server" />
         <asp:HiddenField ID="secilenDoktor" runat="server" />
         <asp:HiddenField ID="secilenPoliklinik" runat="server" />
-        <h1 style="color: white;"><i class="fa-solid fa-calendar-plus"></i>Hasta Randevu Olusturma</h1>
+        <h1 style="color: white;"><i class="fa-solid fa-calendar-plus"></i>Hasta Randevu Oluşturma</h1>
         <table>
             <tr>
                 <td>
@@ -26,9 +26,9 @@
             <tr>
                 <td>
                     <div>
-                        <label for="randevuPoliklinik">Randevu Poliklinigi: </label>
+                        <label for="randevuPoliklinik">Randevu Polikliniği: </label>
                         <select id="randevuPoliklinik" class="btn btn-info dropdown-toggle">
-                            <option>Poliklinik seciniz.</option>
+                            <option>Poliklinik seçiniz.</option>
                             <%
                                 using (System.Data.SqlClient.SqlConnection pol = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                                 {
@@ -58,8 +58,8 @@
                         <table class="table table-striped" id="Grid" border="1">
                             <thead>
                                 <tr>
-                                    <th>Doktor Numarasi</th>
-                                    <th>Doktor Ismi</th>
+                                    <th>Doktor Numarası</th>
+                                    <th>Doktor İsmi</th>
                                     <th>Doktor Soyismi</th>
                                 </tr>
                             </thead>
@@ -72,7 +72,7 @@
                         <table style="position: absolute; top: 175px; left: 75%; width: 275px;" class="table table-striped" id="saatTablo" border="1">
                             <thead>
                                 <tr>
-                                    <th>Saat Araliklari</th>
+                                    <th>Saat Aralıkları</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>

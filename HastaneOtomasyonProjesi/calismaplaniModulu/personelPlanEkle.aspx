@@ -10,6 +10,8 @@
                 color: white;
             }
         </style>
+
+        <asp:HiddenField ID="personelid" runat="server" />
         <div>
 
             <table cellpadding="15">
@@ -18,7 +20,7 @@
                         <label for="<%= plan_Tarih.ClientID %>">Çalışma Planı Yapılacak Ay ve Yıl: </label>
                     </td>
                     <td>
-                        <asp:TextBox ID="plan_Tarih" CssClass="form-control" runat="server" TextMode="Date" />
+                        <asp:TextBox ID="plan_Tarih" ClientIDMode="Static" CssClass="form-control" runat="server" TextMode="Date" />
                     </td>
                     <td>
                         <asp:Button Text="Personel Çalışma Planı Araması" CssClass="btn btn-warning" runat="server" />
@@ -27,36 +29,78 @@
             </table>
         </div>
         <br />
-        <hr />
-        <asp:PlaceHolder ID="gunInputKutusu" runat="server">
-            <%
-                for (int i = 1; i <= 31; i++)
-                {
-                    Response.Write("<label>Gün " + i + ": </label>");
-                    Response.Write("<input type='time' id='gunInput_"+i.ToString()+"' class='form-control'>");
-                    if (i % 7 == 0)
+        <br />
+        <div>
+            <asp:PlaceHolder ID="gunInputKutusu" runat="server">
+                <%
+                    for (int i = 1; i <= 31; i++)
                     {
+                        Response.Write("<div style='display: inline-block; margin-right: 100px;'>");
+                        Response.Write("<label>Gün " + i + ":</label><br />");
+                        Response.Write("<div style='display: flex; flex-direction: column;'>");
+                        Response.Write("<input type='time' id='gunBaslangicInput_" + i.ToString() + "' class='form-control'>");
                         Response.Write("<br />");
+                        Response.Write("<input type='time' id='gunBitisInput_" + i.ToString() + "' class='form-control'>");
+                        Response.Write("</div>");
+                        Response.Write("</div>");
+
+                        if (i % 5 == 0)
+                        {
+                            Response.Write("<br />");
+                        }
                     }
-                }
-            %>
-        </asp:PlaceHolder>
+                %>            
+            </asp:PlaceHolder>
         </div>
         <br />
         <button type="button" class="btn btn-warning" id="kaydet_Buton" name="kaydet_Buton">Planı Kaydet</button>
-        <script>
-            // Butona tıklandığında tüm inputları tek tek alacak.
 
+        <script>
             $(document).ready(function () {
                 $("#kaydet_Buton").click(function () {
-                    var tArray = "[";
-                    for (var ix = 1; ix <= 5; ix++) {
-                        tArray += document.getElementById('gunInput_' + ix).value + ", ";
+                    var calismaPlanlari = [];
+                    for (var i = 1; i <= 31; i++) {
+                        var baslangicSaat = $("#gunBaslangicInput_" + i).val();
+                        var bitisSaat = $("#gunBitisInput_" + i).val();
+                        calismaPlanlari.push([baslangicSaat, bitisSaat]);
                     }
-                    tArray += "]";
-                    alert(tArray);
+
+                    var calismaPlanlariString = JSON.stringify(calismaPlanlari);
+                    console.log(calismaPlanlariString);
+
+                    var random = Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111;
+                    console.log(random);
+
+                    var personelId = $("#<%= personelid.ClientID %>").val();
+                    console.log(personelId);
+
+                    var personelCalismaTarih = $("#plan_Tarih").val();
+                    console.log(personelCalismaTarih);
+
+                    var data = {
+                        calismaListeId: random,
+                        personelCalismaTarih: personelCalismaTarih,
+                        personelid: personelId,
+                        calismaPlanlari: calismaPlanlariString
+                    };
+
+                    $.ajax({
+                        type: "GET",
+                        url: "kaydetapi.aspx",
+                        data: data,
+                        success: function (response) {
+                            console.log(response);
+                            alert("Plan başarıyla kaydedildi.");
+                        },
+                        error: function (response) {
+                            console.log(response);
+                            alert("Plan kaydedilirken bir hata oluştu.");
+                        }
+                    });
                 });
             });
         </script>
+
+
     </main>
 </asp:Content>

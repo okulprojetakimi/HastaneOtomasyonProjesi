@@ -11,7 +11,7 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
 {
 
 
-    public partial class personelPlanIslemi
+    public partial class kaydetapi
     {
     }
 }

@@ -1,1 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="planArama.aspx.cs" Inherits="HastaneOtomasyonProjesi.calismaplaniModulu.planArama" %>
