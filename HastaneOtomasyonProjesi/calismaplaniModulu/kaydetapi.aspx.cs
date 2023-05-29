@@ -82,15 +82,28 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
 
                     command.ExecuteNonQuery();
 
+
+                    SqlCommand command2 = new SqlCommand("INSERT INTO calismaPlaniTablosu (calismaPlaniListeId, calismaPlaniPersonelId, calismaPlaniTarih) " +
+                        "VALUES (@calismaPlaniListeId, @calismaPlaniPersonelId, @calismaPlaniTarih)", connection);
+
+                    command2.Parameters.AddWithValue("@calismaPlaniListeId", calismaListeId);
+                    command2.Parameters.AddWithValue("@calismaPlaniPersonelId", personelId);
+                    command2.Parameters.AddWithValue("@calismaPlaniTarih", personelCalismaTarih);
+
+                    command2.ExecuteNonQuery();
+
                     connection.Close();
 
                     Response.Write("<script>alert('Eklendi');</script>");
+
+
+
+                    connection.Close();
+
+
                 }
             }
-
-
-
-
+           
 
 
         }
