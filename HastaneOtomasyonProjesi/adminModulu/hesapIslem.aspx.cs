@@ -15,62 +15,53 @@ namespace HastaneOtomasyonProjesi.adminModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // GET => personelNumarasi
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            if (HttpContext.Current.Request.QueryString["personelNumarasi"] == null)
             {
-                Response.Redirect("/cikis.aspx");
+                Response.Redirect("/panel.aspx");
             }
             else
             {
-                if (HttpContext.Current.Request.QueryString["personelNumarasi"] == null)
+                /* İşleme devam */
+                if (!IsPostBack)
                 {
-                    Response.Redirect("/panel.aspx");
-                }
-                else
-                {
-                    /* İşleme devam */
-                    if (!IsPostBack)
+                    using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                        sqlcon.Open();
+                        using (SqlCommand veriCekme = new SqlCommand("SELECT * FROM personel_kullaniciHesap WHERE personelId = @pId", sqlcon))
                         {
-                            sqlcon.Open();
-                            using (SqlCommand veriCekme = new SqlCommand("SELECT * FROM personel_kullaniciHesap WHERE personelId = @pId", sqlcon))
-                            {
-                                veriCekme.Parameters.AddWithValue("@pId", HttpContext.Current.Request.QueryString["personelNumarasi"]);
-                                SqlDataReader veriOkuyucu = veriCekme.ExecuteReader();
+                            veriCekme.Parameters.AddWithValue("@pId", HttpContext.Current.Request.QueryString["personelNumarasi"]);
+                            SqlDataReader veriOkuyucu = veriCekme.ExecuteReader();
 
-                                while (veriOkuyucu.Read())
+                            while (veriOkuyucu.Read())
+                            {
+                                if (veriOkuyucu.HasRows)
                                 {
-                                    if (veriOkuyucu.HasRows)
+                                    durum_deger.Value = "ok";
+                                    personelKullaniciAdi.Text = veriOkuyucu.GetString(1);
+                                    personelKullaniciSifre.Text = veriOkuyucu.GetString(2);
+                                    personelHOlusturmaTarihi.Text = veriOkuyucu.GetDateTime(3).ToString();
+                                    personelSonErisim.Text = veriOkuyucu.GetDateTime(4).ToString();
+                                    personel_ErisimDuzey.SelectedIndex = veriOkuyucu.GetInt32(6);
+                                    personel_ErisimKodu.Text = veriOkuyucu.GetString(7);
+                                    if (veriOkuyucu.GetBoolean(8))
                                     {
-                                        durum_deger.Value = "ok";
-                                        personelKullaniciAdi.Text = veriOkuyucu.GetString(1);
-                                        personelKullaniciSifre.Text = veriOkuyucu.GetString(2);
-                                        personelHOlusturmaTarihi.Text = veriOkuyucu.GetDateTime(3).ToString();
-                                        personelSonErisim.Text = veriOkuyucu.GetDateTime(4).ToString();
-                                        personel_ErisimDuzey.SelectedIndex = veriOkuyucu.GetInt32(6);
-                                        personel_ErisimKodu.Text = veriOkuyucu.GetString(7);
-                                        if (veriOkuyucu.GetBoolean(8))
-                                        {
-                                            personel_HesapAktiflik.SelectedIndex = 1;
-                                        }
-                                        else
-                                        {
-                                            personel_HesapAktiflik.SelectedIndex = 0;
-                                        }
+                                        personel_HesapAktiflik.SelectedIndex = 1;
                                     }
                                     else
                                     {
-                                        durum_deger.Value = "no";
+                                        personel_HesapAktiflik.SelectedIndex = 0;
                                     }
                                 }
-                                veriOkuyucu.Close();
+                                else
+                                {
+                                    durum_deger.Value = "no";
+                                }
                             }
-                            sqlcon.Close();
+                            veriOkuyucu.Close();
                         }
-
+                        sqlcon.Close();
                     }
+
                 }
             }
         }

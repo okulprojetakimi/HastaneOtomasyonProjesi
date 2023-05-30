@@ -13,42 +13,32 @@ namespace HastaneOtomasyonProjesi.adminModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
-                Response.Redirect("/cikis.aspx");
-            }
-            else
-            {
-                using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                sqlcon.Open(); // Bağlantı açılır.
+
+                if (!IsPostBack)
                 {
-                    sqlcon.Open(); // Bağlantı açılır.
-
-                    if (!IsPostBack)
+                    using (SqlCommand veriCek = new SqlCommand("SELECT * FROM sistem_Tablo", sqlcon))
                     {
-                        using (SqlCommand veriCek = new SqlCommand("SELECT * FROM sistem_Tablo", sqlcon))
+                        SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
+                        if (veriOkuyucu.Read())
                         {
-                            SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
-                            if (veriOkuyucu.Read())
+                            ayar_BakimMesaji.Text = veriOkuyucu.GetString(2);
+                            ayar_Title.Text = veriOkuyucu.GetString(3);
+                            if (veriOkuyucu.GetBoolean(1))
                             {
-                                ayar_BakimMesaji.Text = veriOkuyucu.GetString(2);
-                                ayar_Title.Text = veriOkuyucu.GetString(3);
-                                if (veriOkuyucu.GetBoolean(1))
-                                {
-                                    bakimDurum.SelectedIndex = 1;
-                                }
-                                else
-                                {
-                                    bakimDurum.SelectedIndex = 0;
-                                }
+                                bakimDurum.SelectedIndex = 1;
                             }
-                            veriOkuyucu.Close();
+                            else
+                            {
+                                bakimDurum.SelectedIndex = 0;
+                            }
                         }
+                        veriOkuyucu.Close();
                     }
-                    sqlcon.Close();
                 }
-
-
+                sqlcon.Close();
             }
         }
 

@@ -22,60 +22,38 @@ namespace HastaneOtomasyonProjesi
             }
             else
             {
-                try
+                /* Kontrol İşlemleri Başlar */
+                using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
-                    /* Kontrol İşlemleri Başlar */
-                    using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    sqlCon.Open();
+                    using (SqlCommand veriCek = new SqlCommand("SELECT personel_kullaniciHesap.personel_ErisimKodu, personel_kullaniciHesap.personel_HesapAktiflik, sistem_Tablo.ayar_BakimModu FROM personel_kullaniciHesap, sistem_Tablo WHERE personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu", sqlCon))
                     {
-                        sqlCon.Open();
-                        /* Bakım Kontrolü */
-                        using (SqlCommand bakimKontrol = new SqlCommand("SELECT ayar_BakimModu FROM sistem_tablo WHERE ayar_Id = 1 ", sqlCon))
+                        veriCek.Parameters.AddWithValue("@erisimKodu", kontrolCookie.Value);
+                        using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
                         {
-                            if ((Boolean)bakimKontrol.ExecuteScalar())
+                            if (veriOkuyucu.Read())
                             {
-                                sqlCon.Close();
-                                Response.Redirect("/bakim.aspx");
+                                if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
+                                {
+                                    Response.Redirect("/cikis.aspx");
+                                }
+                                else if (!veriOkuyucu.GetBoolean(1))
+                                {
+                                    Response.Redirect("/bloklandi.html");
+                                }
+                                else if (veriOkuyucu.GetBoolean(2))
+                                {
+                                    Response.Redirect("/bakim.aspx");
+                                }
                             }
                             else
                             {
-                                /* Oturum kodu ve hesap aktiflik kontrolü */
-                                using (SqlCommand HesapKontrol = new SqlCommand("SELECT personel_ErisimKodu, personel_HesapAktiflik FROM personel_kullaniciHesap WHERE personel_ErisimKodu = @pKod", sqlCon))
-                                {
-                                    HesapKontrol.Parameters.AddWithValue("@pKod", kontrolCookie.Value);
-                                    using (SqlDataReader veriOkuyucu = HesapKontrol.ExecuteReader())
-                                    {
-                                        if (veriOkuyucu.HasRows)
-                                        {
-                                            while (veriOkuyucu.Read())
-                                            {
-                                                if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
-                                                {
-                                                    sqlCon.Close();
-                                                    Response.Redirect("/giris.aspx");
-                                                }
-                                                else
-                                                {
-                                                    if (!veriOkuyucu.GetBoolean(1))
-                                                    {
-                                                        sqlCon.Close();
-                                                        Response.Redirect("/bloklandi.html");
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            Response.Redirect("/cikis.aspx");
-                                        }
-                                    }
-                                }
+                                Response.Redirect("/cikis.aspx");
                             }
                         }
                     }
                 }
-                catch (Exception)
-                {
-                }
+
             }
         }
     }
