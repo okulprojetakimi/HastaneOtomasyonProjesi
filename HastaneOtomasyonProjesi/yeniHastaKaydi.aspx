@@ -22,18 +22,6 @@
                 </tr>
 
               <tr>
-                  <%--  <%
-                        Random idGenerator = new Random();
-                        int randId = idGenerator.Next(111111,999999);
-                    %>
-                    <td>
-                        <div class="form-group">
-                            <label for="hasta_Tc">Hasta ID</label>
-                            <asp:TextBox CssClass="form-control" ID="hasta_Id" runat="server" />
-                           <!--  <input type="number" value="<% = randId %>" class="form-control" id="hasta_Id" name="hasta_Id" aria-describedby="hasta_Id" placeholder="Hasta ID"> -->
-                            <span><label>ID Numarası sistem tarafından otomatik oluşturulmaktadır.</label></span>
-                        </div>
-                    </td>--%>
                     <td>
                         <div class="form-group">
                             <label for="hasta_Tc">Hasta TC</label>

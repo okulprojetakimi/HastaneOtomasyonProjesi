@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 namespace HastaneOtomasyonProjesi
 {
@@ -14,27 +10,22 @@ namespace HastaneOtomasyonProjesi
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string ilac = HttpContext.Current.Request.QueryString["ilacIsmi"];
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "" || ilac == null || ilac == "")
             {
-                Response.Redirect("/cikis.aspx");
+                Response.Redirect("/panel.aspx");
             }
             else
             {
-                if (HttpContext.Current.Request.QueryString["ilacIsmi"] == null)
+                using (SqlConnection veritabaniBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
-                    Response.Redirect("/panel.aspx");
-                }
-                else
-                {
-                    string ilacIsmi = HttpContext.Current.Request.QueryString["ilacIsmi"];
-                    using (SqlConnection veritabaniBaglanti = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    veritabaniBaglanti.Open();
+                    using (SqlCommand veriCek = new SqlCommand("SELECT * FROM ilaclar_tablosu WHERE ilacIsmi LIKE @parametre", veritabaniBaglanti))
                     {
-                        veritabaniBaglanti.Open();
-                        using (SqlCommand veriCek = new SqlCommand("SELECT * FROM ilaclar_tablosu WHERE ilacIsmi LIKE @parametre", veritabaniBaglanti))
+                        veriCek.Parameters.AddWithValue("@parametre", "%" + ilac + "%");
+                        using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
                         {
-                            veriCek.Parameters.AddWithValue("@parametre", "%" + ilacIsmi + "%");
-                            SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
                             DataTable tablo = new DataTable();
                             tablo.Load(veriOkuyucu);
                             string json = JsonConvert.SerializeObject(tablo, Formatting.Indented);

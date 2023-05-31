@@ -26,55 +26,50 @@ namespace HastaneOtomasyonProjesi
             using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
             {
                 sqlBaglantisi.Open();
-
-                byte[] randomBytes = new byte[4];
-                using (var rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+                using (SqlCommand kontrol = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar WHERE hasta_Tc = @tckn", sqlBaglantisi))
                 {
-                    rng.GetBytes(randomBytes);
-                }
-                int randomNumber = BitConverter.ToInt32(randomBytes, 0);
+                    kontrol.Parameters.AddWithValue("@tckn", Request.Form["hasta_Tc"]);
+                    SqlDataReader dr = kontrol.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        sqlBaglantisi.Close();
+                        Response.Write("<script>alert('Bu bilgilere sahip bir hasta daha önceden eklenmiş.')</script>");
+                    }
+                    else
+                    {
+                        using (SqlCommand hastaEkleme = new SqlCommand("INSERT INTO hasta_kayitlar (hasta_Id, hasta_Tc,hasta_Adi, hasta_Soyadi,hasta_kanGrubu,hasta_BabaAdi,hasta_AnneAdi,hasta_DogumYeri,hasta_DogumTarihi,hasta_Cinsiyet,hasta_Adres,hasta_Eposta,hasta_faxNo,hasta_evTelefonu,hasta_cepTelefonu,hasta_sigortaTuru,hasta_karneNo,hasta_sicilNo,hasta_YakinAdi,hasta_yakinlikDerecesi,hasta_tedaviDurumu,hasta_tedaviTuru) VALUES (@hasta_Id, @hasta_Tc,@hasta_Adi, @hasta_Soyadi,@hasta_kanGrubu,@hasta_BabaAdi,@hasta_AnneAdi,@hasta_DogumYeri,@hasta_DogumTarihi,@hasta_Cinsiyet,@hasta_Adres,@hasta_Eposta,@hasta_faxNo,@hasta_evTelefonu,@hasta_cepTelefonu,@hasta_sigortaTuru,@hasta_karneNo,@hasta_sicilNo,@hasta_YakinAdi,@hasta_yakinlikDerecesi,@hasta_tedaviDurumu,@hasta_tedaviTuru)", sqlBaglantisi))
+                        {
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Id", new Random().Next(1111111, 9999999));
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Tc", Request.Form["hasta_Tc"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Adi", Request.Form["hasta_Adi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Soyadi", Request.Form["hasta_Soyadi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_kanGrubu", Request.Form["hasta_kanGrubu"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_BabaAdi", Request.Form["hasta_BabaAdi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_AnneAdi", Request.Form["hasta_AnneAdi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_DogumYeri", Request.Form["hasta_DogumYeri"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_DogumTarihi", Request.Form["hasta_DogumTarihi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Cinsiyet", Request.Form["hasta_Cinsiyet"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Adres", Request.Form["hasta_Adres"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_Eposta", Request.Form["hasta_Eposta"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_faxNo", Request.Form["hasta_faxNo"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_evTelefonu", Request.Form["hasta_evTelefonu"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_cepTelefonu", Request.Form["hasta_cepTelefonu"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_sigortaTuru", Request.Form["hasta_sigortaTuru"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_karneNo", Request.Form["hasta_karneNo"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_sicilNo", Request.Form["hasta_sicilNo"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_YakinAdi", Request.Form["hasta_YakinAdi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_yakinlikDerecesi", Request.Form["hasta_yakinlikDerecesi"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_tedaviDurumu", Request.Form["hasta_tedaviDurumu"]);
+                            hastaEkleme.Parameters.AddWithValue("@hasta_tedaviTuru", Request.Form["hasta_tedaviTuru"]);
 
-
-                using (SqlCommand hastaEkleme = new SqlCommand("INSERT INTO hasta_kayitlar (hasta_Id, hasta_Tc,hasta_Adi, hasta_Soyadi,hasta_kanGrubu,hasta_BabaAdi,hasta_AnneAdi,hasta_DogumYeri,hasta_DogumTarihi,hasta_Cinsiyet,hasta_Adres,hasta_Eposta,hasta_faxNo,hasta_evTelefonu,hasta_cepTelefonu,hasta_sigortaTuru,hasta_karneNo,hasta_sicilNo,hasta_YakinAdi,hasta_yakinlikDerecesi,hasta_tedaviDurumu,hasta_tedaviTuru) VALUES (@hasta_Id, @hasta_Tc,@hasta_Adi, @hasta_Soyadi,@hasta_kanGrubu,@hasta_BabaAdi,@hasta_AnneAdi,@hasta_DogumYeri,@hasta_DogumTarihi,@hasta_Cinsiyet,@hasta_Adres,@hasta_Eposta,@hasta_faxNo,@hasta_evTelefonu,@hasta_cepTelefonu,@hasta_sigortaTuru,@hasta_karneNo,@hasta_sicilNo,@hasta_YakinAdi,@hasta_yakinlikDerecesi,@hasta_tedaviDurumu,@hasta_tedaviTuru)", sqlBaglantisi))
-                {
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Id", randomNumber);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Tc", Request.Form["hasta_Tc"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Adi", Request.Form["hasta_Adi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Soyadi", Request.Form["hasta_Soyadi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_kanGrubu", Request.Form["hasta_kanGrubu"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_BabaAdi", Request.Form["hasta_BabaAdi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_AnneAdi", Request.Form["hasta_AnneAdi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_DogumYeri", Request.Form["hasta_DogumYeri"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_DogumTarihi", Request.Form["hasta_DogumTarihi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Cinsiyet", Request.Form["hasta_Cinsiyet"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Adres", Request.Form["hasta_Adres"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_Eposta", Request.Form["hasta_Eposta"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_faxNo", Request.Form["hasta_faxNo"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_evTelefonu", Request.Form["hasta_evTelefonu"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_cepTelefonu", Request.Form["hasta_cepTelefonu"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_sigortaTuru", Request.Form["hasta_sigortaTuru"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_karneNo", Request.Form["hasta_karneNo"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_sicilNo", Request.Form["hasta_sicilNo"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_YakinAdi", Request.Form["hasta_YakinAdi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_yakinlikDerecesi", Request.Form["hasta_yakinlikDerecesi"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_tedaviDurumu", Request.Form["hasta_tedaviDurumu"]);
-                    hastaEkleme.Parameters.AddWithValue("@hasta_tedaviTuru", Request.Form["hasta_tedaviTuru"]);
-
-                    hastaEkleme.ExecuteNonQuery();
-                    Response.Write("<script>Swal.fire('Başarılı!', 'Hasta başarıyla eklendi!', 'success')</script>");
-                    hastaEkleme.Dispose();
-                    sqlBaglantisi.Close();
+                            hastaEkleme.ExecuteNonQuery();
+                            Response.Write("<script>alert('İşlem başarılı.')</script>");
+                            hastaEkleme.Dispose();
+                            sqlBaglantisi.Close();
+                        }
+                    }
                 }
             }
-            //try
-            //{
-
-            //}
-            //catch (Exception damnError)
-            //{
-            //    Response.Write("<script>Swal.fire('Warning!', " + damnError.Message + ",'warning')</script>");
-            //}
-
         }
     }
 }
