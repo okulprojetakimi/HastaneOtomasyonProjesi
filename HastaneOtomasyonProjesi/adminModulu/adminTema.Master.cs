@@ -26,32 +26,41 @@ namespace HastaneOtomasyonProjesi.adminModulu
                 using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
                     sqlCon.Open();
-                    using (SqlCommand veriCek = new SqlCommand("SELECT personel_kullaniciHesap.personel_ErisimKodu, personel_kullaniciHesap.personel_HesapAktiflik, personel_kullaniciHesap.personel_ErisimDuzey FROM personel_kullaniciHesap, personel_tablo WHERE personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu AND personel_tablo.personel_Id = personel_kullaniciHesap.personelId", sqlCon))
+                    using (SqlCommand yetkiCek = new SqlCommand("SELECT personel_ErisimDuzey FROM personel_kullaniciHesap WHERE personel_ErisimKodu = @eKod", sqlCon))
                     {
-                        veriCek.Parameters.AddWithValue("@erisimKodu", kontrolCookie.Value);
-                        using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
+                        yetkiCek.Parameters.AddWithValue("@eKod", kontrolCookie.Value);
+                        Response.Write((int)yetkiCek.ExecuteScalar());
+                        if (yetkiCek.ExecuteScalar().ToString() == "1")
                         {
-                            if (veriOkuyucu.Read())
+                            using (SqlCommand veriCek = new SqlCommand("SELECT personel_kullaniciHesap.personel_ErisimKodu, personel_kullaniciHesap.personel_HesapAktiflik FROM personel_kullaniciHesap WHERE personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu", sqlCon))
                             {
-                                if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
+                                veriCek.Parameters.AddWithValue("@erisimKodu", kontrolCookie.Value);
+                                using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
                                 {
-                                    Response.Redirect("/cikis.aspx");
+                                    if (veriOkuyucu.Read())
+                                    {
+                                        if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
+                                        {
+                                            Response.Redirect("/cikis.aspx");
+                                        }
+                                        else if (!veriOkuyucu.GetBoolean(1))
+                                        {
+                                            Response.Redirect("/bloklandi.html");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Response.Redirect("/cikis.aspx");
+                                    }
                                 }
-                                else if (!veriOkuyucu.GetBoolean(1))
-                                {
-                                    Response.Redirect("/bloklandi.html");
-                                }
-                                else if (veriOkuyucu.GetInt32(2) != 1)
-                                {
-                                    Response.Redirect("/panel.aspx");
-                                }
-                            }
-                            else
-                            {
-                                Response.Redirect("/cikis.aspx");
                             }
                         }
+                        else
+                        {
+                            Response.Redirect("/panel.aspx");
+                        }
                     }
+                    
                 }
 
             }
