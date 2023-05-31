@@ -15,7 +15,7 @@
                         <asp:TextBox ID="personel_Tc" CssClass="form-control" runat="server" />
                     </div>
                 </td>
-                <td> 
+                <td>
                     <div>
                         <label for="personel_Telefon">Personel Telefon No:</label>
                         <asp:TextBox ID="personel_Telefon" CssClass="form-control" runat="server" />
@@ -88,7 +88,17 @@
                 <td>
                     <div>
                         <label for="personel_Turu">Personel Türü:</label>
-                        <asp:TextBox ID="personel_Turu" CssClass="form-control" runat="server" />
+                        <asp:DropDownList CssClass="form-control" runat="server" ID="personel_Turu">
+                            <asp:ListItem Text="Seçiniz" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Doktor" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Admin" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Şöfor" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Temizlik Görevlisi" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="Anestezi Teknikeri" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="Hasta  Danışmanı" Value="6"></asp:ListItem>
+                            <asp:ListItem Text="Radyoloji  Teknikeri" Value="7"></asp:ListItem>
+                            <asp:ListItem Text="Hemşire" Value="8"></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                 </td>
             </tr>
@@ -120,7 +130,7 @@
                         </select>
                     </div>
                 </td>
-               <script>
+                <script>
                     $(document).ready(function () {
                         $("#personel_Bolum").change(function () {
                             document.getElementById('<%= secilenPoliklinik.ClientID %>').value = document.getElementById("personel_Bolum").value;
@@ -144,7 +154,7 @@
                         });
                     });
 
-               </script>
+                </script>
             </tr>
             <style>
                 table {

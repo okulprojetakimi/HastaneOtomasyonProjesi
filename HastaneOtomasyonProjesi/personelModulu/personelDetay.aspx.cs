@@ -99,7 +99,7 @@ namespace HastaneOtomasyonProjesi.personelModulu
                         sqlcom.Parameters.AddWithValue("@pSozlesme", personel_SozlesmeTipi.Text);
                         sqlcom.Parameters.AddWithValue("@pKan", personel_kanGrubu.SelectedValue);
                         sqlcom.Parameters.AddWithValue("@pIkamet", personel_ikametAdres.Text);
-                        sqlcom.Parameters.AddWithValue("@pTuru", personel_Turu.Text);
+                        sqlcom.Parameters.AddWithValue("@pTuru", personel_Turu.SelectedItem.Text);
                         sqlcom.Parameters.AddWithValue("@pIzin", personel_izinDurum.SelectedValue);
                         sqlcom.Parameters.AddWithValue("@personelTckn", HttpContext.Current.Request.QueryString["personelTc"]);
 

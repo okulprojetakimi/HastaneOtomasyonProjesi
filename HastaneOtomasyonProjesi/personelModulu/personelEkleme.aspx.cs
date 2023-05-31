@@ -39,7 +39,7 @@ namespace HastaneOtomasyonProjesi.personelModulu
                     personelEkleme.Parameters.AddWithValue("@personel_SozlesmeTipi", personel_SozlesmeTipi.Text);
                     personelEkleme.Parameters.AddWithValue("@personel_kanGrubu", Request.Form["personel_kanGrubu"]);
                     personelEkleme.Parameters.AddWithValue("@personel_ikametAdres", personel_ikametAdres.Text);
-                    personelEkleme.Parameters.AddWithValue("@personel_Turu", personel_Turu.Text);
+                    personelEkleme.Parameters.AddWithValue("@personel_Turu", personel_Turu.SelectedItem.Text);
                     personelEkleme.Parameters.AddWithValue("@personel_IzinDurum", false);
                     personelEkleme.Parameters.AddWithValue("@personel_Tc", personel_Tc.Text);
 

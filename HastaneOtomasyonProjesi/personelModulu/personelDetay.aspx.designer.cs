@@ -120,7 +120,16 @@ namespace HastaneOtomasyonProjesi.personelModulu
         /// Otomatik olarak oluşturulan alan.
         /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox personel_Turu;
+        protected global::System.Web.UI.WebControls.DropDownList personel_Turu;
+
+        /// <summary>
+        /// DropDownList1 denetimi.
+        /// </summary>
+        /// <remarks>
+        /// Otomatik olarak oluşturulan alan.
+        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
         /// personel_izinDurum denetimi.
