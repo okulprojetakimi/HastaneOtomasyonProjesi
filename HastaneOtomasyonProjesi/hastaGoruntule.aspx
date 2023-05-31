@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Hasta Görüntüle" EnableViewState="false" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaGoruntule.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaGoruntule" %>
+﻿<%@ Page Language="C#" Async="True" Title="Hasta Görüntüle" EnableViewState="false" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastaGoruntule.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastaGoruntule" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>

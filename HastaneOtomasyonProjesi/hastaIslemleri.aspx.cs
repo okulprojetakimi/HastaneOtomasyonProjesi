@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
 namespace HastaneOtomasyonProjesi
 {
     public partial class hastaIslemleri : System.Web.UI.Page
     {
+        public SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
@@ -20,21 +15,24 @@ namespace HastaneOtomasyonProjesi
             {
                 Response.Redirect("/cikis.aspx");
             }
-
-
-            if (!IsPostBack)
+            else
             {
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                if (!IsPostBack)
                 {
-                    string query = "SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);
-                    enYeniOnHasta.DataSource = dataTable;
-                    enYeniOnHasta.DataBind();
+                    using (SqlCommand command = new SqlCommand("SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar", connection))
+                    {
+                        connection.Open();
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            dataAdapter.Fill(dataTable);
+                            enYeniOnHasta.DataSource = dataTable;
+                            enYeniOnHasta.DataBind();
+                        }
+                        connection.Close();
+                    }
                 }
-            }
+            } 
         }
 
         protected void hasta_Ara_Click(object sender, EventArgs e)
@@ -43,19 +41,20 @@ namespace HastaneOtomasyonProjesi
             string hastaIsim = Request.Form["hastaIsmi"];
             string hastaSoyismi = Request.Form["hastaSoyismi"];
 
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            using (SqlCommand command = new SqlCommand("SELECT TOP 5 hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar WHERE hasta_Adi = @hastaAd AND hasta_Soyadi = @hastaSoyad ORDER BY hasta_Tc DESC", connection))
             {
-                string query = "SELECT TOP 5 hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar WHERE hasta_Adi = @hastaAd AND hasta_Soyadi = @hastaSoyad ORDER BY hasta_Tc DESC";
-                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
                 command.Parameters.AddWithValue("@hastaAd", hastaIsim);
                 command.Parameters.AddWithValue("@hastaSoyad", hastaSoyismi);
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                enYeniOnHasta.DataSource = dataTable;
-                enYeniOnHasta.DataBind();
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    enYeniOnHasta.DataSource = dataTable;
+                    enYeniOnHasta.DataBind();
+                }
+                connection.Close();
             }
-
         }
 
         protected void yeniHastaEkle_Click(object sender, EventArgs e)
