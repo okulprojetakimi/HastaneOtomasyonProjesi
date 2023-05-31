@@ -13,6 +13,13 @@
         <br />
         <a href="personelPlanEkle.aspx">
             <a id="ekleme_Yonlendir" href="personelPlanEkle.aspx?personelNumara="><button type="button" class="btn btn-success" id="planEkle">+ Plan Ekleme</button></a></a>
+        <button type="button" class="btn btn-success" id="plan_Aktarma" onclick="popupAc()"><i class="fa-solid fa-list"></i> Personel Plan Dışa Aktarma</button>
+        <script>
+            function popupAc() {
+                var personelId = document.getElementById('<%= personel_Id.ClientID %>').value;
+                var popupWindow = window.open("personelListeAl.aspx?personelNumarasi=" + personelId, "_blank", "width=1200,height=512");
+            }
+        </script>
         <!-- -->
         <br />
         <table cellpadding="15">

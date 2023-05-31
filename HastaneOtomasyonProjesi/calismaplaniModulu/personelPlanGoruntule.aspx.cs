@@ -9,8 +9,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
-using OfficeOpenXml;
-using OfficeOpenXml.Style;
 using System.Text;
 
 namespace HastaneOtomasyonProjesi.calismaplaniModulu
@@ -33,36 +31,7 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
             }
         }
 
-        private void excelAktar()
-        {
-            // Yeni bir Excel paketi oluştur
-            using (ExcelPackage package = new ExcelPackage())
-            {
-                // Excel çalışma kitabı oluştur
-                ExcelWorkbook workbook = package.Workbook;
-                // Excel sayfası oluştur
-                ExcelWorksheet worksheet = workbook.Worksheets.Add("Veri Sayfası");
-
-                // GridView'deki verileri Excel sayfasına aktar
-                int rowStart = 1;
-                int colStart = 1;
-                for (int i = 0; i < GridView1.Rows.Count; i++)
-                {
-                    for (int j = 0; j < GridView1.Columns.Count; j++)
-                    {
-                        // Veriyi Excel hücresine yaz
-                        worksheet.Cells[rowStart + i, colStart + j].Value = GridView1.Rows[i].Cells[j].Text;
-                    }
-                }
-
-                // Excel dosyasını kaydet
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", "attachment;  filename=Veriler.xlsx");
-                Response.BinaryWrite(package.GetAsByteArray());
-                Response.End();
-            }
-        }
+       
 
 
 
@@ -118,7 +87,6 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
 
         protected void excel_Aktar_Click(object sender, EventArgs e)
         {
-            excelAktar();
         }
     }
 

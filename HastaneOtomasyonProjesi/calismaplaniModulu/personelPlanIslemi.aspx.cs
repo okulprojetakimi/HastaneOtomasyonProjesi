@@ -15,6 +15,10 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
             {
                 Response.Redirect("/panel.aspx");
             }
+            else
+            {
+                personel_Id.Value = HttpContext.Current.Request.QueryString["pId"];
+            }
         }
     }
 }
