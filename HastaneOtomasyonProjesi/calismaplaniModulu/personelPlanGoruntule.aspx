@@ -6,7 +6,7 @@
         <p style="color: white;">Bu sayfada seçilen personelin belirtilen tarihteki çalışma planını görüntüleyebilir ve silebilirsiniz.</p>
         <br />
         <%-- <button type="button" class="btn btn-success">Listeyi Dışa Aktar</button>--%>
-        <button type="button" class="btn btn-success" onclick="location.href='personelPlanGoruntule.aspx?listeid=<%= listeId %>';">Listeyi Dışa Aktar</button>
+        <asp:Button Text="Listeyi Dışarı Aktar" CssClass="btn btn-success" ID="excel_Aktar" runat="server" OnClick="excel_Aktar_Click" />
         <asp:Button ID="btnSil" runat="server" Text="Listeyi Sil" CssClass="btn btn-success" OnClick="btnSil_Click" />
 
         <style>
