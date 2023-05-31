@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HastaneOtomasyonProjesi
 {
     public partial class SiteMaster : MasterPage
     {
+        public string yetkiDuzey = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             /* Mevcut Oturum Bilgilerini Al */
@@ -26,7 +24,7 @@ namespace HastaneOtomasyonProjesi
                 using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                 {
                     sqlCon.Open();
-                    using (SqlCommand veriCek = new SqlCommand("SELECT personel_kullaniciHesap.personel_ErisimKodu, personel_kullaniciHesap.personel_HesapAktiflik, sistem_Tablo.ayar_BakimModu FROM personel_kullaniciHesap, sistem_Tablo WHERE personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu", sqlCon))
+                    using (SqlCommand veriCek = new SqlCommand("SELECT personel_kullaniciHesap.personel_ErisimKodu, personel_kullaniciHesap.personel_HesapAktiflik, sistem_Tablo.ayar_BakimModu, personel_Tablo.personel_Turu FROM personel_kullaniciHesap, sistem_Tablo, personel_Tablo WHERE personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu AND personel_kullaniciHesap.personelId = personel_Tablo.personel_Id", sqlCon))
                     {
                         veriCek.Parameters.AddWithValue("@erisimKodu", kontrolCookie.Value);
                         using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
@@ -45,6 +43,7 @@ namespace HastaneOtomasyonProjesi
                                 {
                                     Response.Redirect("/bakim.aspx");
                                 }
+                                yetkiDuzey = veriOkuyucu.GetString(3);
                             }
                             else
                             {

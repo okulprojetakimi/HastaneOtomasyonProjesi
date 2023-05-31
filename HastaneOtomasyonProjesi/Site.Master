@@ -27,12 +27,13 @@
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
 
 </head>
-<style>
-    body {
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-</style>
+
 <body style="background: url(/Content/arkaplan.jpg);">
+    <style>
+        body {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
     <center>
         <a href="/panel.aspx">
             <img src="/Content/logo.png" /></a>
@@ -79,7 +80,6 @@
             background: linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
             background: -moz-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
             background: -webkit-linear-gradient(180deg, hsla(120, 6%, 90%, 1) 0%, hsla(227, 23%, 40%, 1) 100%);
-            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E4E7E4", endColorstr="#4E587D", GradientType=1 );
         }
 
             .fix_Button:hover {
@@ -91,7 +91,6 @@
                 background: linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
                 background: -moz-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
                 background: -webkit-linear-gradient(180deg, hsla(0, 0%, 89%, 1) 0%, hsla(0, 0%, 26%, 1) 100%);
-                filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E2E2E2", endColorstr="#424242", GradientType=1 );
                 transition: 1.5s;
             }
     </style>
