@@ -94,19 +94,7 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
-            {
-                Response.Redirect("/cikis.aspx");
-            }
-            else
-            {
-                using (SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
-                {
-                    /* DropDownList e doktor listesini getirme */
-                    //personelCek(sqlBaglan);
-                }
-            }
+
         }
 
         protected void ameliyatEkle_Buton_Click(object sender, EventArgs e)
