@@ -14,66 +14,58 @@ namespace HastaneOtomasyonProjesi.personelModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            // personelTc
+            if (HttpContext.Current.Request.QueryString["personelTc"] == null)
             {
-                Response.Redirect("/cikis.aspx");
+                Response.Redirect("/panel.aspx");
             }
             else
             {
-                // personelTc
-                if (HttpContext.Current.Request.QueryString["personelTc"] == null)
+                // Devam
+                if (!IsPostBack)
                 {
-                    Response.Redirect("/panel.aspx");
-                }
-                else
-                {
-                    // Devam
-                    if (!IsPostBack)
+                    using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        using (SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                        sqlcon.Open();
+                        using (SqlCommand bolumCek = new SqlCommand("SELECT * FROM personelBolum_tablo", sqlcon))
                         {
-                            sqlcon.Open();
-                            using (SqlCommand bolumCek = new SqlCommand("SELECT * FROM personelBolum_tablo", sqlcon))
+                            SqlDataReader reader = bolumCek.ExecuteReader();
+                            while (reader.Read())
                             {
-                                SqlDataReader reader = bolumCek.ExecuteReader();
-                                while (reader.Read())
-                                {
-                                    personel_Bolum.Items.Add(new ListItem(reader["pBolumIsmi"].ToString(), reader["pBolumId"].ToString() ));
-                                }
-                                reader.Close();
+                                personel_Bolum.Items.Add(new ListItem(reader["pBolumIsmi"].ToString(), reader["pBolumId"].ToString()));
                             }
-                            using (SqlCommand sqlKomut = new SqlCommand("SELECT personel_tablo.personel_Isim, personel_tablo.personel_Soyisim, personel_tablo.personel_Telefon, personel_tablo.personel_Eposta, personel_tablo.personel_SicilNo, personel_tablo.personel_SozlesmeTipi, personel_kanGrubu, personel_tablo.personel_ikametAdres, personel_tablo.personel_Turu, personel_tablo.personel_IzinDurum, personel_tablo.personel_Tc, personel_Bolum FROM personel_tablo, personelBolum_tablo, kan_Grubu WHERE personel_tablo.personel_Tc = @pTc AND personel_tablo.personel_Bolum = personelBolum_tablo.pBolumID;", sqlcon))
-                            {
-                                sqlKomut.Parameters.AddWithValue("@pTc", HttpContext.Current.Request.QueryString["personelTc"]);
-                                SqlDataReader veriOkuyucu = sqlKomut.ExecuteReader();
-                                while (veriOkuyucu.Read())
-                                {
-                                    personel_Isim.Text = veriOkuyucu.GetString(0);
-                                    personel_Soyisim.Text = veriOkuyucu.GetString(1);
-                                    personel_Telefon.Text = veriOkuyucu.GetString(2);
-                                    personel_Eposta.Text = veriOkuyucu.GetString(3);
-                                    personel_SicilNo.Text = veriOkuyucu.GetString(4);
-                                    personel_SozlesmeTipi.Text = veriOkuyucu.GetString(5);
-                                    personel_kanGrubu.SelectedIndex = veriOkuyucu.GetInt32(6);
-                                    personel_ikametAdres.Text = veriOkuyucu.GetString(7);
-                                    personel_Turu.Text = veriOkuyucu.GetString(8);
-                                    
-                                    if (veriOkuyucu.GetBoolean(9))
-                                    {
-                                        personel_izinDurum.SelectedIndex = 0;
-                                    }
-                                    else
-                                    {
-                                        personel_izinDurum.SelectedIndex = 1;
-                                    }
-                                    personel_Tc.Text = veriOkuyucu.GetString(10);
-                                    personel_Bolum.SelectedIndex = veriOkuyucu.GetInt32(11);
-                                    
-                                }
-                            }
-                            sqlcon.Close();
+                            reader.Close();
                         }
+                        using (SqlCommand sqlKomut = new SqlCommand("SELECT personel_tablo.personel_Isim, personel_tablo.personel_Soyisim, personel_tablo.personel_Telefon, personel_tablo.personel_Eposta, personel_tablo.personel_SicilNo, personel_tablo.personel_SozlesmeTipi, personel_kanGrubu, personel_tablo.personel_ikametAdres, personel_tablo.personel_Turu, personel_tablo.personel_IzinDurum, personel_tablo.personel_Tc, personel_Bolum FROM personel_tablo, personelBolum_tablo, kan_Grubu WHERE personel_tablo.personel_Tc = @pTc AND personel_tablo.personel_Bolum = personelBolum_tablo.pBolumID;", sqlcon))
+                        {
+                            sqlKomut.Parameters.AddWithValue("@pTc", HttpContext.Current.Request.QueryString["personelTc"]);
+                            SqlDataReader veriOkuyucu = sqlKomut.ExecuteReader();
+                            while (veriOkuyucu.Read())
+                            {
+                                personel_Isim.Text = veriOkuyucu.GetString(0);
+                                personel_Soyisim.Text = veriOkuyucu.GetString(1);
+                                personel_Telefon.Text = veriOkuyucu.GetString(2);
+                                personel_Eposta.Text = veriOkuyucu.GetString(3);
+                                personel_SicilNo.Text = veriOkuyucu.GetString(4);
+                                personel_SozlesmeTipi.Text = veriOkuyucu.GetString(5);
+                                personel_kanGrubu.SelectedIndex = veriOkuyucu.GetInt32(6);
+                                personel_ikametAdres.Text = veriOkuyucu.GetString(7);
+                                personel_Turu.Text = veriOkuyucu.GetString(8);
+
+                                if (veriOkuyucu.GetBoolean(9))
+                                {
+                                    personel_izinDurum.SelectedIndex = 0;
+                                }
+                                else
+                                {
+                                    personel_izinDurum.SelectedIndex = 1;
+                                }
+                                personel_Tc.Text = veriOkuyucu.GetString(10);
+                                personel_Bolum.SelectedIndex = veriOkuyucu.GetInt32(11);
+
+                            }
+                        }
+                        sqlcon.Close();
                     }
                 }
             }
