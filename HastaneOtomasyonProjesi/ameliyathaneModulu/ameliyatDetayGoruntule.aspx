@@ -22,7 +22,9 @@
 
 
         <!-- -->
-        <button type="button" class="btn btn-info" id="FormAc"><i class="fa-sharp fa-solid fa-notes-medical"></i>Ameliyata ilaç ekle</button>
+        <button type="button" class="btn btn-info" id="FormAc"><i class="fa-sharp fa-solid fa-notes-medical"></i> Ameliyata ilaç ekle</button>
+        <asp:Button CssClass="btn btn-success" Text="Ameliyat Bitiş Ayarla" ID="bitis_Ayarla" runat="server" OnClick="bitis_Ayarla_Click" />
+        <br />
         <div class="acilirKutu_IlacArama" id="acilirKutu_IlacArama">
             <div class="ilacArama_Kutusu">
                 <table>
@@ -152,7 +154,7 @@
         </table>
         <br />
         <br />
-        <h1 style="color: white;"><i class="fa-solid fa-list-ol"></i>Kullanılan İlaçlar</h1>
+        <h1 style="color: white;"><i class="fa-solid fa-list-ol"></i> Kullanılan İlaçlar</h1>
         <div>
 
             <asp:GridView ID="ameliyatKullanilan_Tablo" runat="server" CellPadding="15" ForeColor="#333333" GridLines="None" EmptyDataText="Eklenmiş bir ilaç bulunamadı!">
