@@ -4,14 +4,13 @@
     <main>
         <!-- Kutu -->
         <div class="hasta_IlacGoruntuleme_Kutusu">
-            <h2>İlaca devam edilecekmi?</h2>
-            <asp:DropDownList ID="ilacDurum" runat="server">
+            <h2 style="color: white;">İlaca devam edilecekmi?</h2>
+            <br />
+            <asp:DropDownList CssClass="btn btn-info dropdown-toggle dropdown-toggle-split" ID="ilacDurum" runat="server">
                 <asp:ListItem Text="İlaca Devam" Value="1"></asp:ListItem>
                 <asp:ListItem Text="İlaç Kesildi" Value="0"></asp:ListItem>
             </asp:DropDownList>
-
-            <br />
-            <asp:Button CssClass="btn btn-info" Text="İlaç Kaydını Düzenle" ID="hasta_IlacDuzenle" runat="server" OnClick="hasta_IlacDuzenle_Click" />
+            <asp:Button CssClass="btn btn-success" Text="Kaydet" ID="hasta_IlacDuzenle" runat="server" OnClick="hasta_IlacDuzenle_Click" />
         </div>
     </main>
 </asp:Content>

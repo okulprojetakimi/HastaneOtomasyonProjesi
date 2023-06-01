@@ -1,70 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HastaneOtomasyonProjesi
 {
     public partial class hastaIlacGoruntuleme : System.Web.UI.Page
     {
-        public string gelenKayitId = "";
+        public string gelenKayitId = HttpContext.Current.Request.QueryString["vIlacId"];
         public bool durum;
+        public SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            if (HttpContext.Current.Request.QueryString["vIlacId"] == null)
             {
-                Response.Redirect("/cikis.aspx");
+                Response.Redirect("/panel.aspx");
             }
             else
             {
-                if (HttpContext.Current.Request.QueryString["vIlacId"] == null)
+                using (SqlCommand vCek = new SqlCommand("SELECT hasta_IlacDevamDurumu FROM hastaIlac_tablosu WHERE hastailac_Id = @hId", con))
                 {
-                    Response.Redirect("/panel.aspx");
-                }
-                else
-                {
-                    gelenKayitId = HttpContext.Current.Request.QueryString["vIlacId"];
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                    con.Open();
+                    vCek.Parameters.AddWithValue("@hId", gelenKayitId);
+                    using (SqlDataReader oku = vCek.ExecuteReader())
                     {
-                        con.Open();
-                        using (SqlCommand vCek = new SqlCommand("SELECT hasta_IlacDevamDurumu FROM hastaIlac_tablosu WHERE hastailac_Id = @hId", con))
+                        while (oku.Read())
                         {
-                            vCek.Parameters.AddWithValue("@hId", gelenKayitId);
-                            SqlDataReader oku = vCek.ExecuteReader();
-                            while (oku.Read())
-                            {
-                                durum = oku.GetBoolean(0);
-                            }
-                            oku.Close();
-                            vCek.Dispose();
-                            con.Close();
+                            durum = oku.GetBoolean(0);
                         }
+                        oku.Close();
+                        con.Close();
                     }
-
                 }
-                
             }
         }
 
         protected void hasta_IlacDuzenle_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            
+            using (SqlCommand ilacKaydiDuzenle = new SqlCommand("UPDATE hastaIlac_tablosu SET hasta_IlacDevamDurumu = @deger WHERE hastailac_Id = @IDparametre", con))
             {
                 con.Open();
-                using (SqlCommand ilacKaydiDuzenle = new SqlCommand("UPDATE hastaIlac_tablosu SET hasta_IlacDevamDurumu = @deger WHERE hastailac_Id = @IDparametre", con))
-                {
-                    ilacKaydiDuzenle.Parameters.AddWithValue("@deger", ilacDurum.SelectedValue.ToString());
-                    ilacKaydiDuzenle.Parameters.AddWithValue("@IDparametre", gelenKayitId);
-                    ilacKaydiDuzenle.ExecuteNonQuery();
-                    ilacKaydiDuzenle.Dispose();
-                    con.Close();
-                }
-
+                ilacKaydiDuzenle.Parameters.AddWithValue("@deger", ilacDurum.SelectedValue.ToString());
+                ilacKaydiDuzenle.Parameters.AddWithValue("@IDparametre", gelenKayitId);
+                ilacKaydiDuzenle.ExecuteNonQuery();
+                ilacKaydiDuzenle.Dispose();
+                con.Close();
             }
         }
     }

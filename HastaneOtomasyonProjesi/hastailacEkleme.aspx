@@ -1,25 +1,6 @@
 ﻿<%@ Page Title="Hasta ilaç ekleme" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="hastailacEkleme.aspx.cs" Inherits="HastaneOtomasyonProjesi.hastailacEkleme" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- <asp:GridView ID="ilacListesi" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-        <AlternatingRowStyle BackColor="White" />
-        <Columns>
-            <asp:BoundField DataField="ilacId" HeaderText="İlaç Numarası" />
-            <asp:BoundField DataField="ilacIsmi" HeaderText="İlaç İsmi" />
-            <asp:BoundField DataField="ilacreceteTuru" HeaderText="İlaç Reçete Türü" />
-            <asp:BoundField DataField="ilacFiyat" HeaderText="İlaç Fiyatı" />
-        </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView> -->
     <!-- İlaç Listesi -->
     <main>
         <h1 style="color: white;"><i class="fa-solid fa-pills"></i>Hastaya İlaç Ekleme</h1>
@@ -89,9 +70,12 @@
 
         </script>
 
-        <div>
-            <asp:TextBox CssClass="form-control" ID="ilacIdNum" runat="server" />  
-        </div>
-        <asp:Button CssClass="btn btn-success" Text="+ Ilac ekle" runat="server" ID="hastaIlac_Ekle" OnClick="hastaIlac_Ekle_Click" />
+        <table>
+            <tr>
+                <td>İlaç Numarası: <asp:TextBox CssClass="form-control" ID="ilacIdNum" runat="server" /></td>
+                <td><asp:Button CssClass="btn btn-success" Text="+ Ilac ekle" runat="server" ID="hastaIlac_Ekle" OnClick="hastaIlac_Ekle_Click" /></td>
+            </tr>
+
+        </table>
     </main>
 </asp:Content>

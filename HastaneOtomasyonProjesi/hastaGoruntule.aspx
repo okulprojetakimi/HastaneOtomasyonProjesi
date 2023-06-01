@@ -98,10 +98,15 @@
                 </Columns>
             </asp:GridView>
             <br />
-            Hasta İlaç Id: <asp:TextBox ID="hastaIlac_ID" CssClass="form-control" runat="server" />
+            Hasta İlaç Id: <input class="form-control" id="hastaIlac_ID" />
             <br />
-            <asp:Button runat="server" ID="hastaIlacForm_yonlendir" CssClass="btn btn-info" Text="Hasta İlaç Görüntüle" OnClick="hastaIlacForm_yonlendir_Click" /></td>
-            
+            <button type="button" class="btn btn-success" id="goruntuleButton" name="goruntuleButton" onclick="popupAc()">Görüntüle</button></td>
+             <script>
+                 function popupAc() {
+                     var ilacId = document.getElementById("hastaIlac_ID").value;
+                     var popupWindow = window.open("hastaIlacGoruntule.aspx?vIlacId=" + ilacId, "_blank", "width=375,height=675");
+                }
+             </script>
         </div>
 
         <div id="tetkikDialog">
