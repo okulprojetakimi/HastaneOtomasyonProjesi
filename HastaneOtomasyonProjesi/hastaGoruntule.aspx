@@ -323,12 +323,6 @@
                              <asp:TextBox runat="server" CssClass="form-control" ID="hasta_cepTelefonu" />
                         </div>
                     </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="hasta_OdemeDurumu">Hasta Ödeme Durumu</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="hasta_OdemeDurumu" />
-                        </div>
-                    </td>
                 </tr>
                 <tr>
                     <td>

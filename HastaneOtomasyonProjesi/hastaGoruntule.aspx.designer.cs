@@ -222,15 +222,6 @@ namespace HastaneOtomasyonProjesi
         protected global::System.Web.UI.WebControls.TextBox hasta_cepTelefonu;
 
         /// <summary>
-        /// hasta_OdemeDurumu denetimi.
-        /// </summary>
-        /// <remarks>
-        /// Otomatik olarak oluşturulan alan.
-        /// Değiştirmek için, alan bildirimini tasarımcı dosyasından arka plan kod dosyasına taşıyın.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hasta_OdemeDurumu;
-
-        /// <summary>
         /// hasta_AnneAd denetimi.
         /// </summary>
         /// <remarks>
