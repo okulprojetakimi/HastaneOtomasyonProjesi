@@ -443,6 +443,7 @@
     <Compile Include="cikis.aspx.designer.cs">
       <DependentUpon>cikis.aspx</DependentUpon>
     </Compile>
+    <Compile Include="erisimDuzey.cs" />
     <Compile Include="giris.aspx.cs">
       <DependentUpon>giris.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

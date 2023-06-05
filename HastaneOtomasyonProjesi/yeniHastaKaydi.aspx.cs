@@ -18,6 +18,16 @@ namespace HastaneOtomasyonProjesi
             {
                 Response.Redirect("/cikis.aspx");
             }
+            else
+            {
+                using (erisimDuzey duzeyKontrol = new erisimDuzey())
+                {
+                    if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value))
+                    {
+                        Response.Redirect("/panel.aspx");
+                    }
+                }
+            }
 
         }
 

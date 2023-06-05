@@ -17,6 +17,13 @@ namespace HastaneOtomasyonProjesi
             }
             else
             {
+                using (erisimDuzey duzeyKontrol = new erisimDuzey())
+                {
+                    if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value))
+                    {
+                        Response.Redirect("/panel.aspx");
+                    }
+                }
                 if (!IsPostBack)
                 {
                     using (SqlCommand command = new SqlCommand("SELECT hasta_Tc, hasta_Adi, hasta_Soyadi, hasta_yakinAdi, hasta_tedaviDurumu FROM hasta_kayitlar", connection))
@@ -32,7 +39,8 @@ namespace HastaneOtomasyonProjesi
                         connection.Close();
                     }
                 }
-            } 
+
+            }
         }
 
         protected void hasta_Ara_Click(object sender, EventArgs e)

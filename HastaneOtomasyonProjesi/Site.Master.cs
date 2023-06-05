@@ -8,7 +8,7 @@ namespace HastaneOtomasyonProjesi
 {
     public partial class SiteMaster : MasterPage
     {
-        public string yetkiDuzey = "";
+        public SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
             /* Mevcut Oturum Bilgilerini Al */
@@ -21,38 +21,47 @@ namespace HastaneOtomasyonProjesi
             else
             {
                 /* Kontrol İşlemleri Başlar */
-                using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                sqlCon.Open();
+                string sorgu = @"SELECT 
+                    personel_kullaniciHesap.personel_ErisimKodu, 
+                    personel_kullaniciHesap.personel_HesapAktiflik, 
+                    sistem_Tablo.ayar_BakimModu, 
+                    personel_Tablo.personel_Isim + ' ' + personel_Tablo.personel_Soyisim AS [isimsoyisim] 
+                FROM 
+                    personel_kullaniciHesap, 
+                    sistem_Tablo, 
+                    personel_Tablo 
+                WHERE 
+                    personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu 
+                    AND personel_kullaniciHesap.personelId = personel_Tablo.personel_Id";
+
+                using (SqlCommand veriCek = new SqlCommand(sorgu, sqlCon))
                 {
-                    sqlCon.Open();
-                    using (SqlCommand veriCek = new SqlCommand("SELECT personel_kullaniciHesap.personel_ErisimKodu, personel_kullaniciHesap.personel_HesapAktiflik, sistem_Tablo.ayar_BakimModu, personel_Tablo.personel_Turu FROM personel_kullaniciHesap, sistem_Tablo, personel_Tablo WHERE personel_kullaniciHesap.personel_ErisimKodu = @erisimKodu AND personel_kullaniciHesap.personelId = personel_Tablo.personel_Id", sqlCon))
+                    veriCek.Parameters.AddWithValue("@erisimKodu", kontrolCookie.Value);
+                    using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
                     {
-                        veriCek.Parameters.AddWithValue("@erisimKodu", kontrolCookie.Value);
-                        using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
+                        if (veriOkuyucu.Read())
                         {
-                            if (veriOkuyucu.Read())
-                            {
-                                if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
-                                {
-                                    Response.Redirect("/cikis.aspx");
-                                }
-                                else if (!veriOkuyucu.GetBoolean(1))
-                                {
-                                    Response.Redirect("/bloklandi.html");
-                                }
-                                else if (veriOkuyucu.GetBoolean(2))
-                                {
-                                    Response.Redirect("/bakim.aspx");
-                                }
-                                yetkiDuzey = veriOkuyucu.GetString(3);
-                            }
-                            else
+                            if (veriOkuyucu.GetString(0) != kontrolCookie.Value)
                             {
                                 Response.Redirect("/cikis.aspx");
                             }
+                            else if (!veriOkuyucu.GetBoolean(1))
+                            {
+                                Response.Redirect("/bloklandi.html");
+                            }
+                            else if (veriOkuyucu.GetBoolean(2))
+                            {
+                                Response.Redirect("/bakim.aspx");
+                            }
+                            Response.Write("Oturum açan personel: " + veriOkuyucu.GetString(3));
+                        }
+                        else
+                        {
+                            Response.Redirect("/cikis.aspx");
                         }
                     }
                 }
-
             }
         }
     }

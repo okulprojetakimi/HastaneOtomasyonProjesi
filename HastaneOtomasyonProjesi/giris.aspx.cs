@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection.Emit;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Drawing;
 
 namespace HastaneOtomasyonProjesi
 {
-
-
     public partial class giris : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -26,12 +19,27 @@ namespace HastaneOtomasyonProjesi
             }
         }
 
-        private bool ValidateReCaptcha()
+        private static string Sifrele(string metin)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] metinBytes = Encoding.ASCII.GetBytes(metin);
+                byte[] hashBytes = md5.ComputeHash(metinBytes);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
+
+        private bool ReCaptchaGecerliMi()
         {
             string response = Request.Form["g-recaptcha-response"];
-            bool valid = false;
+            bool gecerli = false;
 
-            // reCAPTCHA doğrulama işlemini burada gerçekleştirin
+            // reCAPTCHA doğrulamasını burada gerçekleştirin
             // Google reCAPTCHA API'sini kullanarak doğrulama yapabilirsiniz
 
             // Örnek bir doğrulama kodu
@@ -39,15 +47,10 @@ namespace HastaneOtomasyonProjesi
             {
                 // reCAPTCHA doğrulama kodunu burada doğrulayın
                 // Google reCAPTCHA API'sini kullanabilirsiniz
-                valid = true; // Geçici olarak doğrulama başarılı olarak kabul ediyoruz
+                gecerli = true; // Geçici olarak doğrulama başarılı olarak kabul ediyoruz
             }
 
-            return valid;
-        }
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
+            return gecerli;
         }
 
         protected void Button1_Click1(object sender, EventArgs e)
@@ -56,27 +59,26 @@ namespace HastaneOtomasyonProjesi
             {
                 if (IsPostBack)
                 {
-                    if (ValidateReCaptcha())
+                    if (ReCaptchaGecerliMi())
                     {
                         using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                         {
                             sqlBaglantisi.Open();
-                            using (SqlCommand uyeSorgula = new SqlCommand("SELECT personel_ErisimDuzey, personelKId FROM personel_kullaniciHesap WHERE personelKullaniciAdi = @kadi AND personelKullaniciSifre = @ksifre", sqlBaglantisi))
+                            using (SqlCommand uyeSorgula = new SqlCommand("SELECT personel_ErisimDuzey, personelKId, personel_Turu FROM personel_kullaniciHesap, personel_tablo WHERE personelKullaniciAdi = @kadi AND personelKullaniciSifre = @ksifre AND personel_kullaniciHesap.personelId = personel_tablo.personel_Id", sqlBaglantisi))
                             {
                                 uyeSorgula.Parameters.AddWithValue("@kadi", kullaniciAdi.Text);
-                                uyeSorgula.Parameters.AddWithValue("@ksifre", kullaniciSifre.Text);
+                                uyeSorgula.Parameters.AddWithValue("@ksifre", Sifrele(kullaniciSifre.Text));
                                 SqlDataReader sqlOku = uyeSorgula.ExecuteReader();
-                                sqlOku.Read();
-
-                                if (sqlOku.HasRows)
+                                if (sqlOku.Read())
                                 {
                                     string personelErisimKodu = "";
+
                                     /* Personel erişim kodu oluşturma */
-                                    Random rastgeleSayiUret = new Random();
-                                    string allCase = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789=-";
-                                    for (int index = 0; index < 16; index++)
+                                    Random rastgeleSayiUretici = new Random();
+                                    string tumKarakterler = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789=-";
+                                    for (int i = 0; i < 16; i++)
                                     {
-                                        personelErisimKodu = personelErisimKodu + allCase[rastgeleSayiUret.Next(0, allCase.Length)];
+                                        personelErisimKodu += tumKarakterler[rastgeleSayiUretici.Next(0, tumKarakterler.Length)];
                                     }
 
                                     using (SqlConnection sqlBagla = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
@@ -85,46 +87,39 @@ namespace HastaneOtomasyonProjesi
                                         using (SqlCommand yetkiKoduVer = new SqlCommand("UPDATE personel_kullaniciHesap SET personel_ErisimKodu = @erisimkodu, personelSonErisim = @sonErisimT WHERE personelKullaniciAdi = @personelKadi AND personelKullaniciSifre = @kSifre", sqlBagla))
                                         {
                                             yetkiKoduVer.Parameters.AddWithValue("@erisimkodu", personelErisimKodu);
-                                            yetkiKoduVer.Parameters.AddWithValue("@sonErisimT", DateTime.Parse(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString()));
+                                            yetkiKoduVer.Parameters.AddWithValue("@sonErisimT", DateTime.Now);
                                             yetkiKoduVer.Parameters.AddWithValue("@personelKadi", kullaniciAdi.Text);
-                                            yetkiKoduVer.Parameters.AddWithValue("@kSifre", kullaniciSifre.Text);
+                                            yetkiKoduVer.Parameters.AddWithValue("@kSifre", Sifrele(kullaniciSifre.Text));
                                             yetkiKoduVer.ExecuteNonQuery();
-                                            yetkiKoduVer.Dispose();
                                         }
-                                        sqlBagla.Close();
                                     }
-                                    /* Cookie tanımlanıyor ! */
+
+                                    /* Cookie tanımlama */
                                     HttpCookie yetkiDuzeyi = new HttpCookie("erisimCookie");
                                     yetkiDuzeyi.Value = personelErisimKodu;
                                     yetkiDuzeyi.Expires = DateTime.Now.AddDays(1);
                                     Response.Cookies.Add(yetkiDuzeyi);
 
-                                    /* Son olarak panele yönlendirme yapılıyor!  */
+                                    /* Son olarak panele yönlendirme yapma */
                                     Response.Redirect("/panel.aspx");
                                 }
                                 else
                                 {
                                     Label1.Text = "Kullanıcı adı veya şifre yanlış!";
                                 }
-                                sqlBaglantisi.Close();
                             }
                         }
                     }
                     else
                     {
-                        
                         Response.Write("<h1 style='color: Red;'>Lütfen Captcha Doğrulamasını Tamamlayınız.</h1>");
                     }
                 }
-                else
-                {
-
-                }
             }
-            catch (Exception damnError)
+            catch (Exception hata)
             {
-                Label1.Text = "Teknik bir hata var Lütfen sistem yöneticisi ile görüşün!";
-                Label1.Text += "<br>" + damnError.Message;
+                Label1.Text = "Teknik bir hata oluştu. Lütfen sistem yöneticisi ile iletişime geçin!";
+                Label1.Text += "<br>" + hata.Message;
             }
         }
     }
