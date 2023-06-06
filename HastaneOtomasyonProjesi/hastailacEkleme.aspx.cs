@@ -13,29 +13,34 @@ namespace HastaneOtomasyonProjesi
         public SqlConnection sqlBaglan = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["hasta"] == null)
+            using (erisimDuzey duzeyKontrol = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
-                sqlBaglan.Open();
-                using (SqlCommand komut = new SqlCommand("SELECT hasta_Id,hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastaTC", sqlBaglan))
-                {
-                    komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
-                    using (SqlDataReader veriOkuyucu = komut.ExecuteReader())
-                    {
-                        while (veriOkuyucu.Read())
-                        {
-                            hastaId = veriOkuyucu.GetInt32(0);
-                            string hastaIsim = veriOkuyucu.GetString(1);
-                            string hastaSoyIsim = veriOkuyucu.GetString(2);
+                HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
 
-                            ilac_Hasta.Text = "İlaç eklenecek hasta: " + hastaIsim + " " + hastaSoyIsim;
-                            ilac_HastaTc.Text = "İlaç eklenecek hastanın TCKN: " + hastaTcNum;
+                if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value) || HttpContext.Current.Request.QueryString["hasta"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    sqlBaglan.Open();
+                    using (SqlCommand komut = new SqlCommand("SELECT hasta_Id,hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastaTC", sqlBaglan))
+                    {
+                        komut.Parameters.AddWithValue("@hastaTC", hastaTcNum);
+                        using (SqlDataReader veriOkuyucu = komut.ExecuteReader())
+                        {
+                            while (veriOkuyucu.Read())
+                            {
+                                hastaId = veriOkuyucu.GetInt32(0);
+                                string hastaIsim = veriOkuyucu.GetString(1);
+                                string hastaSoyIsim = veriOkuyucu.GetString(2);
+
+                                ilac_Hasta.Text = "İlaç eklenecek hasta: " + hastaIsim + " " + hastaSoyIsim;
+                                ilac_HastaTc.Text = "İlaç eklenecek hastanın TCKN: " + hastaTcNum;
+                            }
                         }
+                        sqlBaglan.Close();
                     }
-                    sqlBaglan.Close();
                 }
             }
         }

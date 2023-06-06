@@ -225,6 +225,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="giris.aspx" />
+    <Content Include="hastaBilgiGoruntule.aspx" />
     <Content Include="hastaGoruntule.aspx" />
     <Content Include="hastailacEkleme.aspx" />
     <Content Include="hastaIlacGoruntule.aspx" />
@@ -457,6 +458,13 @@
     </Compile>
     <Compile Include="giris.Master.designer.cs">
       <DependentUpon>giris.Master</DependentUpon>
+    </Compile>
+    <Compile Include="hastaBilgiGoruntule.aspx.cs">
+      <DependentUpon>hastaBilgiGoruntule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hastaBilgiGoruntule.aspx.designer.cs">
+      <DependentUpon>hastaBilgiGoruntule.aspx</DependentUpon>
     </Compile>
     <Compile Include="hastaGoruntule.aspx.cs">
       <DependentUpon>hastaGoruntule.aspx</DependentUpon>

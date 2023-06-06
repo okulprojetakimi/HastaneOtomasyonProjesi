@@ -80,7 +80,7 @@
         <!-- Hasta Listesi Bitişi -->
         <br />
         <!-- Hasta Görüntüleme Formu -->
-        <h2 style="color: white;">Hasta Görüntüleme</h2>
+        <h2 style="color: white;">Hasta İşlem</h2>
         <br />
         <div class="form-group">
             <asp:TextBox CssClass="form-control" ID="hasta_Tc_Numara" runat="server" />
@@ -90,5 +90,6 @@
             <br />
         </div>
         <asp:Button Text="Hasta Görüntüle" ID="hastaGoruntule_Buton" CssClass="btn btn-info" runat="server" OnClick="hastaGoruntule_Buton_Click" />
+        <asp:Button Text="Hasta Bilgileri Görüntüle" ID="hastaBilgileriGoruntule" CssClass="btn btn-info" runat="server" OnClick="hastaBilgileriGoruntule_Click" />
     </main>
 </asp:Content>

@@ -22,6 +22,13 @@ namespace HastaneOtomasyonProjesi
             }
             else
             {
+                using (erisimDuzey duzeyKontrol = new erisimDuzey())
+                {
+                    if (!duzeyKontrol.yetkiKontrol("Doktor", Request.Cookies["erisimCookie"].Value))
+                    {
+                        Response.Redirect("/panel.aspx");
+                    }
+                }
                 hasta_TcLabel.Text = mainTCKN;
                 sqlCn.Open();
                 using (SqlCommand idCek = new SqlCommand("SELECT hasta_Id, hasta_Adi, hasta_Soyadi FROM hasta_kayitlar WHERE hasta_Tc = @hastatcnum", sqlCn))

@@ -10,26 +10,30 @@ namespace HastaneOtomasyonProjesi
         public string notNumarasi = HttpContext.Current.Request.QueryString["notIdNum"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "" || notNumarasi == null)
+            using (erisimDuzey duzeyKontrol = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
-                using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+                if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || notNumarasi == null)
                 {
-                    sqlBaglantisi.Open();
-                    using (SqlCommand notSilmeKomutu = new SqlCommand("DELETE FROM hasta_Notlari WHERE hasta_NotId = @notNumarasi", sqlBaglantisi))
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    using (SqlConnection sqlBaglantisi = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        notSilmeKomutu.Parameters.AddWithValue("@notNumarasi", notNumarasi);
-                        notSilmeKomutu.ExecuteNonQuery();
-                        Response.Redirect("hastaIslemleri.aspx");
-                        notSilmeKomutu.Dispose();
-                        sqlBaglantisi.Close();
+                        sqlBaglantisi.Open();
+                        using (SqlCommand notSilmeKomutu = new SqlCommand("DELETE FROM hasta_Notlari WHERE hasta_NotId = @notNumarasi", sqlBaglantisi))
+                        {
+                            notSilmeKomutu.Parameters.AddWithValue("@notNumarasi", notNumarasi);
+                            notSilmeKomutu.ExecuteNonQuery();
+                            Response.Redirect("hastaIslemleri.aspx");
+                            notSilmeKomutu.Dispose();
+                            sqlBaglantisi.Close();
+                        }
                     }
                 }
             }
+
         }
     }
 }

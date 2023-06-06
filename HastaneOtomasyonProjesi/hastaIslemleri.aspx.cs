@@ -19,7 +19,7 @@ namespace HastaneOtomasyonProjesi
             {
                 using (erisimDuzey duzeyKontrol = new erisimDuzey())
                 {
-                    if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value))
+                    if (!duzeyKontrol.yetkiKontrol("Doktor", Request.Cookies["erisimCookie"].Value) || !duzeyKontrol.yetkiKontrol("Danışman", Request.Cookies["erisimCookie"].Value))
                     {
                         Response.Redirect("/panel.aspx");
                     }
@@ -73,6 +73,19 @@ namespace HastaneOtomasyonProjesi
         protected void hastaGoruntule_Buton_Click(object sender, EventArgs e)
         {
             Response.Redirect("hastaGoruntule.aspx?hasta=" + hasta_Tc_Numara.Text);
+        }
+
+        protected void hastaBilgileriGoruntule_Click(object sender, EventArgs e)
+        {
+            connection.Open();
+            using (SqlCommand cmd = new SqlCommand("SELECT hasta_Id FROM hasta_kayitlar WHERE hasta_Tc = @hastaTckn", connection))
+            {
+                cmd.Parameters.AddWithValue("@hastaTckn", hasta_Tc_Numara.Text);
+                object idNum = cmd.ExecuteScalar();
+                connection.Close();
+                Response.Redirect("hastaBilgiGoruntule.aspx?hastaNumarasi=" + idNum.ToString());
+            }
+            
         }
     }
 }

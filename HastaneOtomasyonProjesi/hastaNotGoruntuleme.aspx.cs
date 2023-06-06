@@ -17,43 +17,49 @@ namespace HastaneOtomasyonProjesi
         public SqlConnection hastaVeriCek = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["notIdNum"] == null)
+
+            using (erisimDuzey duzeyKontrol = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
-                if (!IsPostBack)
+                HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+
+                if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value) || HttpContext.Current.Request.QueryString["notIdNum"] == null)
                 {
-                    hastaVeriCek.Open();
-                    using (SqlCommand hastaIdGetir = new SqlCommand("SELECT hasta_Notlari.hasta_Not AS [Hasta Not], hasta_Notlari.hasta_Id AS [Hasta Id], hasta_Notlari.hasta_notTarihi AS [Hasta Not Tarihi], hasta_kayitlar.hasta_Adi AS [Hasta Adı], hasta_kayitlar.hasta_Soyadi AS [Hasta Soyadı], hasta_kayitlar.hasta_Tc AS [Hasta Tc] FROM hasta_Notlari, hasta_kayitlar WHERE hasta_notlari.hasta_NotId = @hNId AND hasta_Notlari.hasta_Id = hasta_kayitlar.hasta_Id;", hastaVeriCek))
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    if (!IsPostBack)
                     {
-                        hastaIdGetir.Parameters.AddWithValue("@hNId", notIdNumarasi);
-                        using (SqlDataReader idOku = hastaIdGetir.ExecuteReader())
+                        hastaVeriCek.Open();
+                        using (SqlCommand hastaIdGetir = new SqlCommand("SELECT hasta_Notlari.hasta_Not AS [Hasta Not], hasta_Notlari.hasta_Id AS [Hasta Id], hasta_Notlari.hasta_notTarihi AS [Hasta Not Tarihi], hasta_kayitlar.hasta_Adi AS [Hasta Adı], hasta_kayitlar.hasta_Soyadi AS [Hasta Soyadı], hasta_kayitlar.hasta_Tc AS [Hasta Tc] FROM hasta_Notlari, hasta_kayitlar WHERE hasta_notlari.hasta_NotId = @hNId AND hasta_Notlari.hasta_Id = hasta_kayitlar.hasta_Id;", hastaVeriCek))
                         {
-                            if (!idOku.HasRows)
+                            hastaIdGetir.Parameters.AddWithValue("@hNId", notIdNumarasi);
+                            using (SqlDataReader idOku = hastaIdGetir.ExecuteReader())
                             {
-                                Response.Redirect("/panel.aspx");
-                            }
-                            else
-                            {
-                                while (idOku.Read())
+                                if (!idOku.HasRows)
                                 {
-                                    hastaNotVerisi = idOku.GetString(0);
-                                    hastaIdNumarasi = idOku.GetInt32(1);
-                                    hastaNotTarih = idOku.GetDateTime(2);
-                                    hastaAdi = idOku.GetString(3);
-                                    hastaSoyadi = idOku.GetString(4);
-                                    hastaTcNumarasi = idOku.GetString(5);
+                                    Response.Redirect("/panel.aspx");
                                 }
+                                else
+                                {
+                                    while (idOku.Read())
+                                    {
+                                        hastaNotVerisi = idOku.GetString(0);
+                                        hastaIdNumarasi = idOku.GetInt32(1);
+                                        hastaNotTarih = idOku.GetDateTime(2);
+                                        hastaAdi = idOku.GetString(3);
+                                        hastaSoyadi = idOku.GetString(4);
+                                        hastaTcNumarasi = idOku.GetString(5);
+                                    }
+                                }
+                                idOku.Close();
                             }
-                            idOku.Close();
+                            hastaVeriCek.Close();
                         }
-                        hastaVeriCek.Close();
+                        hasta_TcLabel.Text = hastaTcNumarasi;
+                        hasta_IsimSoyisim.Text = hastaAdi + " " + hastaSoyadi;
+                        eski_Veri.Text = hastaNotVerisi;
                     }
-                    hasta_TcLabel.Text = hastaTcNumarasi;
-                    hasta_IsimSoyisim.Text = hastaAdi + " " + hastaSoyadi;
-                    eski_Veri.Text = hastaNotVerisi;
                 }
             }
             

@@ -13,24 +13,29 @@ namespace HastaneOtomasyonProjesi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["vIlacId"] == null)
+            using (erisimDuzey duzeyKontrol = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
-                using (SqlCommand vCek = new SqlCommand("SELECT hasta_IlacDevamDurumu FROM hastaIlac_tablosu WHERE hastailac_Id = @hId", con))
+                HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+
+                if (!duzeyKontrol.yetkiKontrol("Danışman", kontrolCookie.Value) || HttpContext.Current.Request.QueryString["vIlacId"] == null)
                 {
-                    con.Open();
-                    vCek.Parameters.AddWithValue("@hId", gelenKayitId);
-                    using (SqlDataReader oku = vCek.ExecuteReader())
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    using (SqlCommand vCek = new SqlCommand("SELECT hasta_IlacDevamDurumu FROM hastaIlac_tablosu WHERE hastailac_Id = @hId", con))
                     {
-                        while (oku.Read())
+                        con.Open();
+                        vCek.Parameters.AddWithValue("@hId", gelenKayitId);
+                        using (SqlDataReader oku = vCek.ExecuteReader())
                         {
-                            durum = oku.GetBoolean(0);
+                            while (oku.Read())
+                            {
+                                durum = oku.GetBoolean(0);
+                            }
+                            oku.Close();
+                            con.Close();
                         }
-                        oku.Close();
-                        con.Close();
                     }
                 }
             }

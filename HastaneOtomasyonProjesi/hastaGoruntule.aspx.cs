@@ -12,15 +12,18 @@ namespace HastaneOtomasyonProjesi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["hasta"] == null)
+            using (erisimDuzey duzeyKontrol = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
-                mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
-                LoadData();
-            }
+                if (HttpContext.Current.Request.QueryString["hasta"] == null || !duzeyKontrol.yetkiKontrol("Doktor", Request.Cookies["erisimCookie"].Value))
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+                else
+                {
+                    mainTckn = HttpContext.Current.Request.QueryString["hasta"].ToString();
+                    LoadData();
+                }
+            } 
         }
 
         private void LoadData()
@@ -37,7 +40,6 @@ namespace HastaneOtomasyonProjesi
                 }
                 else
                 {
-                    FillHastaFields(sqlConnection, hastaId);
                     BindNotListesi(sqlConnection, hastaId);
                     BindTetkikCek(sqlConnection, hastaId);
                     BindIlacVerisi(sqlConnection, hastaId);
@@ -55,40 +57,7 @@ namespace HastaneOtomasyonProjesi
             }
         }
 
-        private void FillHastaFields(SqlConnection sqlConnection, int hastaId)
-        {
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM hasta_kayitlar WHERE hasta_Id = @hastaId", sqlConnection))
-            {
-                cmd.Parameters.AddWithValue("@hastaId", hastaId);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        hasta_Tc.Text = reader.GetString(1);
-                        hasta_Adi.Text = reader.GetString(2);
-                        hasta_Soyadi.Text = reader.GetString(3);
-                        hasta_kanGrubu.SelectedValue = reader.GetInt32(4).ToString();
-                        hasta_babaAd.Text = reader.GetString(5);
-                        hasta_AnneAd.Text = reader.GetString(6);
-                        hasta_DogumYer.Text = reader.GetString(7);
-                        hasta_DogumTarihi.Text = reader.GetDateTime(8).ToString();
-                        hasta_Cinsiyet.Text = reader.GetString(9);
-                        hasta_Adres.Text = reader.GetString(10);
-                        hasta_Eposta.Text = reader.GetString(11);
-                        hasta_faxNo.Text = reader.GetString(12);
-                        hasta_evTelefonu.Text = reader.GetString(13);
-                        hasta_cepTelefonu.Text = reader.GetString(14);
-                        hasta_sigortaTuru.Text = reader.GetString(15);
-                        hasta_karneNo.Text = reader.GetString(16);
-                        hasta_sicilNo.Text = reader.GetString(17);
-                        hasta_YakinAdi.Text = reader.GetString(18);
-                        hasta_yakinlikDerecesi.Text = reader.GetString(19);
-                        hasta_tedaviDurumu.Text = reader.GetString(20);
-                        hasta_tedaviTuru.Text = reader.GetString(21);
-                    }
-                }
-            }
-        }
+        
 
         private void BindNotListesi(SqlConnection sqlConnection, int hastaId)
         {
@@ -155,11 +124,6 @@ namespace HastaneOtomasyonProjesi
             Response.Redirect("hastaTetkikDetay.aspx?tetkikId=" + hasta_TetkikDetayID.Text);
         }
 
-        protected void kaydet_Button_Click(object sender, EventArgs e)
-        {
-            Response.Write("Hasta adı: " + hasta_Adi.Text);
-            string hastaIsim = hasta_Adi.Text;
-            Response.Write("Yeni: " + hastaIsim);
-        }
+        
     }
 }
