@@ -29,6 +29,7 @@ namespace HastaneOtomasyonProjesi
                 {
                     return false;
                 }
+                sqlCon.Close();
             }
         }
 

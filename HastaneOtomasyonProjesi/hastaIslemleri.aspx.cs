@@ -17,12 +17,13 @@ namespace HastaneOtomasyonProjesi
             }
             else
             {
-                using (erisimDuzey duzeyKontrol = new erisimDuzey())
+                if (new erisimDuzey().yetkiKontrol("Doktor", kontrolCookie.Value) || new erisimDuzey().yetkiKontrol("Danışman", kontrolCookie.Value))
                 {
-                    if (!duzeyKontrol.yetkiKontrol("Doktor", Request.Cookies["erisimCookie"].Value) || !duzeyKontrol.yetkiKontrol("Danışman", Request.Cookies["erisimCookie"].Value))
-                    {
-                        Response.Redirect("/panel.aspx");
-                    }
+
+                }
+                else
+                {
+                    Response.Redirect("/panel.aspx");
                 }
                 if (!IsPostBack)
                 {
