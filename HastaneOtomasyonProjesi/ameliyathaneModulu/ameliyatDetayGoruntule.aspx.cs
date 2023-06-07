@@ -12,58 +12,67 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["ameliyatNumarasi"] != null)
+            HttpCookie kontrol = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisimKontrol = new erisimDuzey())
             {
-                string ameliyatNumarasi = HttpContext.Current.Request.QueryString["ameliyatNumarasi"];
-
-                using (SqlConnection sqlBaglanti = new SqlConnection(connectionString))
+                if (!erisimKontrol.yetkiKontrol("Hemşire", kontrol.Value))
                 {
-                    sqlBaglanti.Open();
+                    Response.Redirect("/panel.aspx");
+                }
+                if (HttpContext.Current.Request.QueryString["ameliyatNumarasi"] != null)
+                {
+                    string ameliyatNumarasi = HttpContext.Current.Request.QueryString["ameliyatNumarasi"];
 
-                    using (SqlCommand veriCek = new SqlCommand("SELECT personel_Tablo.personel_Isim + ' ' + personel_Tablo.personel_Soyisim AS [doktorIsmi], ameliyathane_Tablo.ameliyatGirisTarihi, ameliyathane_Tablo.ameliyatCikisTarihi, ameliyathane_Tablo.ameliyatNotu, ameliyathane_Tablo.ameliyatAnesteziTuru FROM ameliyathane_Tablo INNER JOIN personel_tablo ON ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id WHERE ameliyatId = @parametre", sqlBaglanti))
+                    using (SqlConnection sqlBaglanti = new SqlConnection(connectionString))
                     {
-                        veriCek.Parameters.AddWithValue("@parametre", ameliyatNumarasi);
-                        using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
+                        sqlBaglanti.Open();
+
+                        using (SqlCommand veriCek = new SqlCommand("SELECT personel_Tablo.personel_Isim + ' ' + personel_Tablo.personel_Soyisim AS [doktorIsmi], ameliyathane_Tablo.ameliyatGirisTarihi, ameliyathane_Tablo.ameliyatCikisTarihi, ameliyathane_Tablo.ameliyatNotu, ameliyathane_Tablo.ameliyatAnesteziTuru FROM ameliyathane_Tablo INNER JOIN personel_tablo ON ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id WHERE ameliyatId = @parametre", sqlBaglanti))
                         {
-                            if (veriOkuyucu.Read())
+                            veriCek.Parameters.AddWithValue("@parametre", ameliyatNumarasi);
+                            using (SqlDataReader veriOkuyucu = veriCek.ExecuteReader())
                             {
-                                ameliyatAnesteziTuru.Text = veriOkuyucu.GetString(4);
-                                ameliyat_Doktor.Text = veriOkuyucu.GetString(0);
-                                ameliyat_Not.Text = veriOkuyucu.GetString(3);
-                                ameliyat_GirisT.Text = veriOkuyucu.GetDateTime(1).ToString();
-                                if (!veriOkuyucu.IsDBNull(2))
+                                if (veriOkuyucu.Read())
                                 {
-                                    ameliyat_CikisT.Text = veriOkuyucu.GetDateTime(2).ToString();
+                                    ameliyatAnesteziTuru.Text = veriOkuyucu.GetString(4);
+                                    ameliyat_Doktor.Text = veriOkuyucu.GetString(0);
+                                    ameliyat_Not.Text = veriOkuyucu.GetString(3);
+                                    ameliyat_GirisT.Text = veriOkuyucu.GetDateTime(1).ToString();
+                                    if (!veriOkuyucu.IsDBNull(2))
+                                    {
+                                        ameliyat_CikisT.Text = veriOkuyucu.GetDateTime(2).ToString();
+                                    }
+                                    else
+                                    {
+                                        ameliyat_CikisT.Text = "Bitmedi";
+                                    }
                                 }
                                 else
                                 {
-                                    ameliyat_CikisT.Text = "Bitmedi";
+                                    Response.Redirect("/panel.aspx");
                                 }
                             }
-                            else
-                            {
-                                Response.Redirect("/panel.aspx");
-                            }
                         }
-                    }
 
-                    using (SqlCommand ilacCek = new SqlCommand("SELECT ameliyathane_kullanilanIlaclar.k_IlacAmeliyatId AS [Kayıt Numarası], ilaclar_tablosu.ilacIsmi AS [Kullanılan İlaç İsmi], ilaclar_tablosu.ilacreceteTuru AS [İlaç Reçete Türü] FROM ameliyathane_kullanilanIlaclar INNER JOIN ilaclar_tablosu ON ameliyathane_kullanilanIlaclar.k_IlacBilgi = ilaclar_tablosu.ilacId WHERE ameliyathane_kullanilanIlaclar.k_IlacAmeliyatId = @idParametre", sqlBaglanti))
-                    {
-                        ilacCek.Parameters.AddWithValue("@idParametre", ameliyatNumarasi);
-                        DataTable veriTablosu = new DataTable();
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(ilacCek))
+                        using (SqlCommand ilacCek = new SqlCommand("SELECT ameliyathane_kullanilanIlaclar.k_IlacAmeliyatId AS [Kayıt Numarası], ilaclar_tablosu.ilacIsmi AS [Kullanılan İlaç İsmi], ilaclar_tablosu.ilacreceteTuru AS [İlaç Reçete Türü] FROM ameliyathane_kullanilanIlaclar INNER JOIN ilaclar_tablosu ON ameliyathane_kullanilanIlaclar.k_IlacBilgi = ilaclar_tablosu.ilacId WHERE ameliyathane_kullanilanIlaclar.k_IlacAmeliyatId = @idParametre", sqlBaglanti))
                         {
-                            adapter.Fill(veriTablosu);
+                            ilacCek.Parameters.AddWithValue("@idParametre", ameliyatNumarasi);
+                            DataTable veriTablosu = new DataTable();
+                            using (SqlDataAdapter adapter = new SqlDataAdapter(ilacCek))
+                            {
+                                adapter.Fill(veriTablosu);
+                            }
+                            ameliyatKullanilan_Tablo.DataSource = veriTablosu;
+                            ameliyatKullanilan_Tablo.DataBind();
                         }
-                        ameliyatKullanilan_Tablo.DataSource = veriTablosu;
-                        ameliyatKullanilan_Tablo.DataBind();
                     }
                 }
+                else
+                {
+                    Response.Redirect("anasayfa.aspx");
+                }
             }
-            else
-            {
-                Response.Redirect("anasayfa.aspx");
-            }
+                
         }
 
         protected void hastaIlac_Ekle_Click(object sender, EventArgs e)

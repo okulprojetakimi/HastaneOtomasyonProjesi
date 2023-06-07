@@ -15,29 +15,35 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+            HttpCookie kontrol = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisimKontrol = new erisimDuzey())
             {
-                sqlCon.Open();
-                using (SqlCommand veriCek = new SqlCommand("SELECT hasta_kayitlar.hasta_Tc AS [Hasta TCKN], ameliyathane_Tablo.ameliyatId AS [Ameliyat Numarası], ameliyathane_Tablo.ameliyatGirisTarihi AS [Ameliyata Giriş Tarihi], ameliyathane_Tablo.ameliyatCikisTarihi AS [Ameliyatın Bitiş Tarihi], personel_tablo.personel_Isim AS [Doktor Ismi],personel_tablo.personel_Soyisim AS [Doktor Soyismi], hasta_kayitlar.hasta_Adi AS [Hasta Adı],hasta_kayitlar.hasta_Soyadi AS [Hasta Soyadı] FROM ameliyathane_Tablo, hasta_kayitlar, personel_tablo WHERE ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id AND ameliyathane_Tablo.ameliyatHastaId = hasta_kayitlar.hasta_Id AND CAST(ameliyathane_Tablo.ameliyatGirisTarihi AS DATE) = @tarih", sqlCon))
+                if (!erisimKontrol.yetkiKontrol("Hemşire", kontrol.Value))
                 {
-                    veriCek.Parameters.AddWithValue("@tarih", DateTime.Parse(DateTime.Now.ToLongDateString()));
-                    SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
-                    if (!veriOkuyucu.HasRows)
+                    Response.Redirect("/panel.aspx");
+                }
+                using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                {
+                    sqlCon.Open();
+                    using (SqlCommand veriCek = new SqlCommand("SELECT hasta_kayitlar.hasta_Tc AS [Hasta TCKN], ameliyathane_Tablo.ameliyatId AS [Ameliyat Numarası], ameliyathane_Tablo.ameliyatGirisTarihi AS [Ameliyata Giriş Tarihi], ameliyathane_Tablo.ameliyatCikisTarihi AS [Ameliyatın Bitiş Tarihi], personel_tablo.personel_Isim AS [Doktor Ismi],personel_tablo.personel_Soyisim AS [Doktor Soyismi], hasta_kayitlar.hasta_Adi AS [Hasta Adı],hasta_kayitlar.hasta_Soyadi AS [Hasta Soyadı] FROM ameliyathane_Tablo, hasta_kayitlar, personel_tablo WHERE ameliyathane_Tablo.ameliyatPersonelId = personel_tablo.personel_Id AND ameliyathane_Tablo.ameliyatHastaId = hasta_kayitlar.hasta_Id AND CAST(ameliyathane_Tablo.ameliyatGirisTarihi AS DATE) = @tarih", sqlCon))
                     {
-                        Response.Write("Listelenecek bir ameliyat yok!");
-                    }
-                    else
-                    {
-                        bugunku_ameliyatlarListesi.DataSource = veriOkuyucu;
-                        bugunku_ameliyatlarListesi.DataBind();
-                    }
+                        veriCek.Parameters.AddWithValue("@tarih", DateTime.Parse(DateTime.Now.ToLongDateString()));
+                        SqlDataReader veriOkuyucu = veriCek.ExecuteReader();
+                        if (!veriOkuyucu.HasRows)
+                        {
+                            Response.Write("Listelenecek bir ameliyat yok!");
+                        }
+                        else
+                        {
+                            bugunku_ameliyatlarListesi.DataSource = veriOkuyucu;
+                            bugunku_ameliyatlarListesi.DataBind();
+                        }
 
-                    veriOkuyucu.Close();
-                    sqlCon.Close();
+                        veriOkuyucu.Close();
+                        sqlCon.Close();
+                    }
                 }
             }
-
-
         }
 
         protected void detayButon_Click(object sender, EventArgs e)

@@ -94,7 +94,14 @@ namespace HastaneOtomasyonProjesi.ameliyathaneModulu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            HttpCookie kontrol = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisimKontrol = new erisimDuzey())
+            {
+                if (!erisimKontrol.yetkiKontrol("Hemşire", kontrol.Value))
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+            }
         }
 
         protected void ameliyatEkle_Buton_Click(object sender, EventArgs e)
