@@ -21,66 +21,53 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/cikis.aspx");
-            }
-            else
-            {
-                if (HttpContext.Current.Request.QueryString["randevuNumara"] != null)
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || HttpContext.Current.Request.QueryString["randevuNumara"] != null)
                 {
-                    if (!IsPostBack)
+                    Response.Redirect("/panel.aspx");
+                }
+                if (!IsPostBack)
+                {
+                    using (SqlConnection bag = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {
-                        using (SqlConnection bag = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
+                        bag.Open();
+
+                        string randevuQuery = "SELECT r.randevuId, r.hastaId, p.pIsim AS PoliklinikAdi , p.pId , r.randevuTarih, r.randevuSaat, r.randevuNot, pr.personel_Isim, pr.personel_Soyisim, pr.personel_Id " +
+                                              "FROM randevu_modulu AS r " +
+                                              "INNER JOIN poliklinik_Tablo AS p ON r.randevuPoliklinik = p.pId " +
+                                              "INNER JOIN personel_tablo AS pr ON r.randevuDoktor = pr.personel_Id " +
+                                              "WHERE r.randevuId = @randevuId";
+
+                        using (SqlCommand randevuCommand = new SqlCommand(randevuQuery, bag))
                         {
-                            bag.Open();
 
-                            string randevuQuery = "SELECT r.randevuId, r.hastaId, p.pIsim AS PoliklinikAdi , p.pId , r.randevuTarih, r.randevuSaat, r.randevuNot, pr.personel_Isim, pr.personel_Soyisim, pr.personel_Id " +
-                                                  "FROM randevu_modulu AS r " +
-                                                  "INNER JOIN poliklinik_Tablo AS p ON r.randevuPoliklinik = p.pId " +
-                                                  "INNER JOIN personel_tablo AS pr ON r.randevuDoktor = pr.personel_Id " +
-                                                  "WHERE r.randevuId = @randevuId";
+                            randevuCommand.Parameters.AddWithValue("@randevuId", randevuId);
 
-                            using (SqlCommand randevuCommand = new SqlCommand(randevuQuery, bag))
+                            using (SqlDataReader reader = randevuCommand.ExecuteReader())
                             {
-
-                                randevuCommand.Parameters.AddWithValue("@randevuId", randevuId);
-
-                                using (SqlDataReader reader = randevuCommand.ExecuteReader())
+                                if (reader.Read())
                                 {
-                                    if (reader.Read())
-                                    {
-                                        string poliklinik = reader["PoliklinikAdi"].ToString();
-                                        int poliklinikId = Convert.ToInt32(reader["pId"]);
-                                        DateTime tarih = Convert.ToDateTime(reader["randevuTarih"]);
-                                        string saat = reader["randevuSaat"].ToString();
-                                        string notlar = reader["randevuNot"].ToString();
-                                        string doktorIsim = reader["personel_Isim"].ToString();
-                                        string doktorSoyisim = reader["personel_Soyisim"].ToString();
-                                        int doktorId = Convert.ToInt32(reader["personel_Id"]);
+                                    string poliklinik = reader["PoliklinikAdi"].ToString();
+                                    int poliklinikId = Convert.ToInt32(reader["pId"]);
+                                    DateTime tarih = Convert.ToDateTime(reader["randevuTarih"]);
+                                    string saat = reader["randevuSaat"].ToString();
+                                    string notlar = reader["randevuNot"].ToString();
+                                    string doktorIsim = reader["personel_Isim"].ToString();
+                                    string doktorSoyisim = reader["personel_Soyisim"].ToString();
+                                    int doktorId = Convert.ToInt32(reader["personel_Id"]);
 
-                                        reader.Close();
+                                    reader.Close();
 
-                                        randevuTarih.Value = tarih.ToString("yyyy-MM-dd");
-                                        randevuSaat.Text = saat;
-                                        randevuNot.Text = notlar;
-
-                                        //randevuPoliklinik.Items.Clear();
-                                        //randevuPoliklinik.Items.Add(new ListItem(poliklinik, poliklinikId.ToString()));
-
-                                        //randevuDoktor.Items.Clear();
-                                        //randevuDoktor.Items.Add(new ListItem(doktorIsim + " " + doktorSoyisim, doktorId.ToString()));
-                                    }
+                                    randevuTarih.Value = tarih.ToString("yyyy-MM-dd");
+                                    randevuSaat.Text = saat;
+                                    randevuNot.Text = notlar;
                                 }
                             }
                         }
                     }
                 }
-                else
-                {
-                    Response.Redirect("/panel.aspx");
-                }
-            }  
+            }
         }
 
         protected void randevu_Guncelle_Click(object sender, EventArgs e)

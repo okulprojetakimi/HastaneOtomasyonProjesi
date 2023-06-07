@@ -12,13 +12,12 @@ namespace HastaneOtomasyonProjesi.randevuModulu
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
-            if (kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/cikis.aspx");
-            }
-            else
-            {
-
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+                {
+                    Response.Redirect("/panel.aspx");
+                }
             }
         }
 
