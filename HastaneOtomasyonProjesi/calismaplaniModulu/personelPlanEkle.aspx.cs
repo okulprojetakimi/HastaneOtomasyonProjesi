@@ -16,14 +16,17 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
         public string pNumARA = HttpContext.Current.Request.QueryString["personel_Numara"];
         protected void Page_Load(object sender, EventArgs e)
         {
-            personelid.Value = HttpContext.Current.Request.QueryString["personel_Numara"];
-
-            if (!IsPostBack)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || pNumARA == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+                personelid.Value = HttpContext.Current.Request.QueryString["personel_Numara"];
             }
         }
-        //?personel_Numara=3
+
         protected void kaydet_Buton(object sender, EventArgs e)
         {
             

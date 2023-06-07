@@ -19,21 +19,25 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
         public string listeId = HttpContext.Current.Request.QueryString["listeid"];
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["listeid"]))
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "")
                 {
-                    if (int.TryParse(Request.QueryString["listeid"], out int parsedListeId))
+                    Response.Redirect("/panel.aspx");
+                }
+                if (!IsPostBack)
+                {
+                    if (!string.IsNullOrEmpty(Request.QueryString["listeid"]))
                     {
-                        BindGridView(parsedListeId);
+                        if (int.TryParse(Request.QueryString["listeid"], out int parsedListeId))
+                        {
+                            BindGridView(parsedListeId);
+                        }
                     }
                 }
             }
         }
-
-       
-
-
 
         private void BindGridView(int listeId)
         {

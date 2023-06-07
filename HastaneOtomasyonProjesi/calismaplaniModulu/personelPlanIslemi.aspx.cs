@@ -11,12 +11,13 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["pId"] == null)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || HttpContext.Current.Request.QueryString["pId"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
                 personel_Id.Value = HttpContext.Current.Request.QueryString["pId"];
             }
         }

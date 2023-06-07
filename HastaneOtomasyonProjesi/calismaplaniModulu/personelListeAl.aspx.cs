@@ -23,13 +23,13 @@ namespace HastaneOtomasyonProjesi.calismaplaniModulu
         private SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            // personelId
-            if (IDDegeri == null)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || IDDegeri == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
                 using (SqlCommand personelVerisi = new SqlCommand("SELECT personel_Isim, personel_Soyisim FROM personel_Tablo WHERE personel_Id = @pId", sqlcon))
                 {
                     sqlcon.Open();
