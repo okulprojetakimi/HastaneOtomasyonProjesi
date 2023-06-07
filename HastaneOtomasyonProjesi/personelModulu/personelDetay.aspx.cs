@@ -14,13 +14,13 @@ namespace HastaneOtomasyonProjesi.personelModulu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // personelTc
-            if (HttpContext.Current.Request.QueryString["personelTc"] == null)
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || HttpContext.Current.Request.QueryString["personelTc"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
                 // Devam
                 if (!IsPostBack)
                 {

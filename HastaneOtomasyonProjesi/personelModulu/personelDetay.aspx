@@ -77,17 +77,16 @@
                     <td>
                         <label>Personel Türü</label>
                         <asp:DropDownList CssClass="form-control" runat="server" ID="personel_Turu">
-                                <asp:ListItem Text="Seçiniz" Value="yok"></asp:ListItem>
-                                <asp:ListItem Text="Doktor" Value="Doktor"></asp:ListItem>
-                                <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>
-                                <asp:ListItem Text="Şöfor" Value="Şöfor"></asp:ListItem>
-                                <asp:ListItem Text="Temizlik Görevlisi" Value="Temizlik Görevlisi"></asp:ListItem>
-                                <asp:ListItem Text="Anestezi Teknikeri" Value="Anestezi Teknikeri"></asp:ListItem>
-                                <asp:ListItem Text="Hasta  Danışmanı" Value="Hasta  Danışmanı"></asp:ListItem>
-                                <asp:ListItem Text="Radyoloji  Teknikeri" Value="Radyoloji  Teknikeri"></asp:ListItem>
-                                <asp:ListItem Text="Hemşire" Value="Hemşire"></asp:ListItem>
-                                <asp:ListItem Text="laborant" Value="Laborant"></asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:ListItem Text="Seçiniz" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Doktor" Value="Doktor"></asp:ListItem>
+                            <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>
+                            <asp:ListItem Text="Şöfor" Value="Şoför"></asp:ListItem>
+                            <asp:ListItem Text="Temizlik Görevlisi" Value="Temizlik Görevlisi"></asp:ListItem>
+                            <asp:ListItem Text="Anestezi Teknikeri" Value="Anestezi Teknikeri"></asp:ListItem>
+                            <asp:ListItem Text="Laboratuvar Teknikeri" Value="Laboratuvar Teknikeri"></asp:ListItem>
+                            <asp:ListItem Text="Danışman" Value="Hasta Danışmanı"></asp:ListItem>
+                            <asp:ListItem Text="Hemşire" Value="Hemşire"></asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                     <td>
                         <label for="personel_izinDurum">Personel İzin Durumu: </label>

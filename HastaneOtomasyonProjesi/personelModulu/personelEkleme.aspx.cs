@@ -14,7 +14,14 @@ namespace HastaneOtomasyonProjesi.personelModulu
         public int pIsim;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
+            using (erisimDuzey erisim = new erisimDuzey())
+            {
+                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "")
+                {
+                    Response.Redirect("/panel.aspx");
+                }
+            }
         }
         protected void personelEkleButon_click(object sender, EventArgs e)
         {
