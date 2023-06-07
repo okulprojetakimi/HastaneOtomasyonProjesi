@@ -18,12 +18,13 @@ namespace HastaneOtomasyonProjesi.laboratuvarModulu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["hastaNumara"] == null)
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
+                HttpCookie cookie = Request.Cookies["erisimCookie"];
+                if (!erisim.yetkiKontrol("Laboratuvar Teknikeri", cookie.Value) || HttpContext.Current.Request.QueryString["hastaNumara"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
                 hastaId = HttpContext.Current.Request.QueryString["hastaNumara"];
                 personelCek(sqlBaglan);
 

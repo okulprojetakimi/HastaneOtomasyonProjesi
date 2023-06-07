@@ -14,12 +14,13 @@ namespace HastaneOtomasyonProjesi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Request.QueryString["tetkikId"] == null)
+            using (erisimDuzey erisim = new erisimDuzey())
             {
-                Response.Redirect("/panel.aspx");
-            }
-            else
-            {
+                HttpCookie cookie = Request.Cookies["erisimCookie"];
+                if (!erisim.yetkiKontrol("Laboratuvar Teknikeri", cookie.Value) || HttpContext.Current.Request.QueryString["tetkikId"] == null)
+                {
+                    Response.Redirect("/panel.aspx");
+                }
                 /* Burdan sonra başlar */
                 tetkikIdNumarasi = HttpContext.Current.Request.QueryString["tetkikId"];
 

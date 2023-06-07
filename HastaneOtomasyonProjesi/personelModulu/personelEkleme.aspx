@@ -95,6 +95,7 @@
                             <asp:ListItem Text="Şöfor" Value="Şoför"></asp:ListItem>
                             <asp:ListItem Text="Temizlik Görevlisi" Value="Temizlik Görevlisi"></asp:ListItem>
                             <asp:ListItem Text="Anestezi Teknikeri" Value="Anestezi Teknikeri"></asp:ListItem>
+                            <asp:ListItem Text="Laboratuvar Teknikeri" Value="Laboratuvar Teknikeri"></asp:ListItem>
                             <asp:ListItem Text="Danışman" Value="Hasta Danışmanı"></asp:ListItem>
                             <asp:ListItem Text="Hemşire" Value="Hemşire"></asp:ListItem>
                         </asp:DropDownList>
