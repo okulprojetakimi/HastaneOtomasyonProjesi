@@ -20,7 +20,11 @@ namespace HastaneOtomasyonProjesi
             {
                 sqlCon.Open();
                 sqlcom.Parameters.AddWithValue("@erisimKodu", erisimKodu);
-                string mevcut = sqlcom.ExecuteScalar().ToString().Trim();
+                object result = sqlcom.ExecuteScalar();
+                string mevcut = result != null ? result.ToString().Trim() : string.Empty;
+
+                sqlCon.Close();
+
                 if (mevcut == yetkiDuzeyi || mevcut == "Admin")
                 {
                     return true;
@@ -29,7 +33,6 @@ namespace HastaneOtomasyonProjesi
                 {
                     return false;
                 }
-                sqlCon.Close();
             }
         }
 
@@ -38,7 +41,6 @@ namespace HastaneOtomasyonProjesi
             if (sqlCon != null)
             {
                 sqlCon.Dispose();
-                sqlCon = null;
             }
         }
     }
