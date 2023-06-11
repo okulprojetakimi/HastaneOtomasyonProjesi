@@ -8,18 +8,17 @@ namespace HastaneOtomasyonProjesi
 {
     public partial class hastaTetkikDetay : System.Web.UI.Page
     {
-        public string tetkikDetayId;
+        public string tetkikDetayId = HttpContext.Current.Request.QueryString["tetkikId"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             using (erisimDuzey duzeyKontrol = new erisimDuzey())
             {
-                if (!duzeyKontrol.yetkiKontrol("Danışman", Request.Cookies["erisimCookie"].ToString()) || HttpContext.Current.Request.QueryString["tetkikId"] == null)
+                if (HttpContext.Current.Request.QueryString["tetkikId"] == null)
                 {
                     Response.Redirect("/panel.aspx");
                 }
                 else
                 {
-                    tetkikDetayId = HttpContext.Current.Request.QueryString["tetkikId"].ToString();
                     // Veritabanı bağlantısını açma
                     using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString))
                     {

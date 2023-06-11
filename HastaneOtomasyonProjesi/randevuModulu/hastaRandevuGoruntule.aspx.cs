@@ -23,7 +23,7 @@ namespace HastaneOtomasyonProjesi.randevuModulu
             HttpCookie kontrolCookie = Request.Cookies["erisimCookie"];
             using (erisimDuzey erisim = new erisimDuzey())
             {
-                if (!erisim.yetkiKontrol("Danışman", kontrolCookie.Value) || kontrolCookie == null || kontrolCookie.Value.Trim() == "" || HttpContext.Current.Request.QueryString["randevuNumara"] != null)
+                if (kontrolCookie == null || kontrolCookie.Value.Trim() == "" || HttpContext.Current.Request.QueryString["randevuNumara"] != null)
                 {
                     Response.Redirect("/panel.aspx");
                 }

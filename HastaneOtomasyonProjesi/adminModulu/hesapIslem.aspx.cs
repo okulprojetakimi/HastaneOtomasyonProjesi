@@ -4,15 +4,31 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
 
 namespace HastaneOtomasyonProjesi.adminModulu
 {
     public partial class hesapIslem : System.Web.UI.Page
     {
+        private static string Sifrele(string metin)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] metinBytes = Encoding.ASCII.GetBytes(metin);
+                byte[] hashBytes = md5.ComputeHash(metinBytes);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
         public SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["veritabaniBilgi"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -76,7 +92,7 @@ namespace HastaneOtomasyonProjesi.adminModulu
                         guncelleme.Connection = sqlcon;
                         guncelleme.CommandText = "UPDATE personel_kullaniciHesap SET personelKullaniciAdi = @kullaniciAdi, personelKullaniciSifre = @sifre, personel_ErisimDuzey = @erisimDuzey, personel_ErisimKodu = @erisimKodu, personel_HesapAktiflik = @hesapAktiflik WHERE personelId = @pId";
                         guncelleme.Parameters.AddWithValue("@kullaniciAdi", personelKullaniciAdi.Text);
-                        guncelleme.Parameters.AddWithValue("@sifre", personelKullaniciSifre.Text);
+                        guncelleme.Parameters.AddWithValue("@sifre", Sifrele(personelKullaniciSifre.Text));
                         guncelleme.Parameters.AddWithValue("@erisimDuzey", personel_ErisimDuzey.SelectedIndex);
                         guncelleme.Parameters.AddWithValue("@erisimKodu", personel_ErisimKodu.Text);
                         guncelleme.Parameters.AddWithValue("@hesapAktiflik", personel_HesapAktiflik.SelectedIndex);
@@ -93,7 +109,7 @@ namespace HastaneOtomasyonProjesi.adminModulu
                         //@personelKId, @personelKullaniciAdi, @personelKullaniciSifre, @personelHOlusturmaTarihi, @personelSonErisim, @personelId, @personel_ErisimDuzey, @personel_ErisimKodu, @personel_HesapAktiflik
                         guncelleme.Parameters.AddWithValue("@personelKId", new Random().Next(11111, 99999));
                         guncelleme.Parameters.AddWithValue("@personelKullaniciAdi", personelKullaniciAdi.Text);
-                        guncelleme.Parameters.AddWithValue("@personelKullaniciSifre", personelKullaniciSifre.Text);
+                        guncelleme.Parameters.AddWithValue("@personelKullaniciSifre", Sifrele(personelKullaniciSifre.Text));
                         guncelleme.Parameters.AddWithValue("@personelHOlusturmaTarihi", tarih);
                         guncelleme.Parameters.AddWithValue("@personelSonErisim", tarih);
                         guncelleme.Parameters.AddWithValue("@personelId", HttpContext.Current.Request.QueryString["personelNumarasi"]);
